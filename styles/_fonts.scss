@@ -1,0 +1,35 @@
+/*===== GOOGLE FONTS =====*/
+@font-face {
+	font-family: Bitter;
+	src: url("./fonts/Bitter-VariableFont_wght.ttf");
+}
+
+@font-face {
+	font-family: Inter;
+	src: url("./fonts/InterTight-VariableFont_wght.ttf");
+}
+
+@font-face {
+	font-family: Canela Deck;
+	src: url("./fonts/CanelaText-Regular.otf");
+}
+
+// Font Stack Properties
+$fontStyle_main: "Canela Deck", sans-serif;
+$fontStyle_secondary: "Bitter", sans-serif;
+$fontStyle_body: "Inter", sans-serif;
+
+// Font Sizes
+$fontSize_xSmall: 0.75rem;
+$fontSize_small: 0.8rem;
+$fontSize_tiny: 0.9rem;
+$fontSize_normal: 1rem;
+$fontSize_medium: 1.25rem;
+$fontSize_large: 1.5rem;
+$fontSize_XL: 1.5rem;
+$fontSize_2XL: 1.75rem;
+$fontSize_3XL: 1.85rem;
+$fontSize_4XL: 2rem;
+$fontSize_5XL: 2.5rem;
+$fontSize_6XL: 3rem;
+$fontSize_7XL: 4rem;
