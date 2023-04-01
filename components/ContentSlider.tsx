@@ -194,7 +194,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									className="block object-cover object-center w-full h-full"
 								>
 									<source
-										src="/video/construction site Two.mp4"
+										src="/video/DBMX Racing Hero Video.mp4"
 										type="video/mp4"
 									/>
 								</video>
