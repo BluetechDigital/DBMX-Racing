@@ -7,6 +7,7 @@ import {getMainMenuLinks, getFooterMenuLinks} from "../lib/MenuLinks";
 
 // Components
 import MetaTag from "../components/Meta/MetaTag";
+import ContentSlider from "@/components/ContentSlider";
 
 export default function Home({seo, content, themesOptionsContent}: any) {
 	return (
@@ -20,7 +21,14 @@ export default function Home({seo, content, themesOptionsContent}: any) {
 			{/* <!--===== META TAG =====--> */}
 			<MetaTag title={`DBMX Racing`} seo={seo} />
 
-			<main></main>
+			<main>
+				{/* CONTENT SLIDER */}
+				<ContentSlider
+					content={content?.contentSlider?.content}
+					contentTwo={content?.contentSlider?.contentTwo}
+					contentThree={content?.contentSlider?.contentThree}
+				/>
+			</main>
 		</motion.div>
 	);
 }
@@ -60,6 +68,64 @@ export async function getStaticProps() {
 								mediaItemUrl
 							}
 						}
+						homePage {
+							contentSlider {
+								content {
+									tag
+									title
+									paragraph
+									publishedDate
+									buttonLink {
+										url
+										title
+										target
+									}
+									backgroundImage {
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+								contentTwo {
+									tag
+									title
+									paragraph
+									publishedDate
+									buttonLink {
+										url
+										title
+										target
+									}
+									backgroundImage {
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+								contentThree {
+									tag
+									title
+									paragraph
+									publishedDate
+									buttonLink {
+										url
+										title
+										target
+									}
+									backgroundImage {
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -78,6 +144,7 @@ export async function getStaticProps() {
 		props: {
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
+			content: response.data?.mainContent?.edges[0]?.node?.homePage,
 		},
 		revalidate: 60,
 	};

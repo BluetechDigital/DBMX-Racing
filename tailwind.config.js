@@ -34,8 +34,11 @@ module.exports = {
 
 			// Main colors
 			red: "#fa1d26",
-			lightRed: "#fa797e",
 			darkRed: "#a70107",
+			lightRed: "#fa797e",
+			goldPrime: "#dfc695",
+			goldYellow: "#D4AF37",
+			goldPrimeDark: "#d1a855",
 		},
 	},
 	plugins: [],

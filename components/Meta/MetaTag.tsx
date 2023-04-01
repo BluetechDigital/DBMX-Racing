@@ -38,7 +38,7 @@ const MetaTag: FC<IProps> = ({seo, title}) => {
 	return (
 		<Head>
 			{/* <!-- Website Title --> */}
-			<title key="title">{`${title} | Premium Motorcycle Gear`}</title>
+			<title key="title">{`${title} | Motocross Accessories & Parts`}</title>
 			<meta name="description" content={seo?.metaDesc} />
 			<link rel="icon" href="/img/logos\DBMX Racing Ico.ico" />
 			<meta

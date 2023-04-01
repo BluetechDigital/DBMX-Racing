@@ -88,12 +88,8 @@ ul {
 li,
 p {
 	a {
-		@apply text-lightRed transition-all ease-in-out duration-500 hover:text-red focus:text-red;
+		@apply text-goldPrime transition-all ease-in-out duration-500 hover:text-goldPrimeDark focus:text-goldPrimeDark;
 	}
-}
-
-p {
-	@apply tracking-wider;
 }
 
 /* SQUARES
@@ -108,13 +104,13 @@ PAGE LOADING ANIMATION */
 	position: fixed;
 	align-items: center;
 	justify-content: center;
-	background-color: rgba(1, 42, 45, 0.95);
+	background-color: rgba(167, 1, 7, 0.95);
 
 	.loader {
 		--duration: 3s;
-		--primary: #00c68e;
-		--primary-light: #00c68e;
-		--primary-rgba: rgba(0, 148, 106, 0);
+		--primary: #fa1d26;
+		--primary-light: #fa1d26;
+		--primary-rgba: rgba(114, 0, 4, 0);
 		width: 200px;
 		height: 320px;
 		position: relative;
