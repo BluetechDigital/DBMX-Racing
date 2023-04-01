@@ -1,7 +1,8 @@
 /*===== GOOGLE FONTS =====*/
+
 @font-face {
-	font-family: Bitter;
-	src: url("./fonts/Bitter-VariableFont_wght.ttf");
+	font-family: VarieraDemoRegular;
+	src: url("./fonts/VarieraDemoRegular-VariableFont_wght.ttf");
 }
 
 @font-face {
@@ -10,13 +11,13 @@
 }
 
 @font-face {
-	font-family: Canela Deck;
-	src: url("./fonts/CanelaText-Regular.otf");
+	font-family: NeoGramTrial;
+	src: url("./fonts/NeoGramTrial-VariableFont_wght.otf");
 }
 
 // Font Stack Properties
-$fontStyle_main: "Canela Deck", sans-serif;
-$fontStyle_secondary: "Bitter", sans-serif;
+$fontStyle_main: "VarieraDemoRegular", sans-serif;
+$fontStyle_secondary: "NeoGramTrial", sans-serif;
 $fontStyle_body: "Inter", sans-serif;
 
 // Font Sizes

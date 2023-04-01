@@ -16,6 +16,8 @@ interface IProps {
 			title: string;
 			target: string;
 		};
+		backgroundVideoUrl: string;
+		backgroundImageOrVideo: string;
 		backgroundImage: {
 			altText: string;
 			sourceUrl: string;
@@ -35,6 +37,8 @@ interface IProps {
 			title: string;
 			target: string;
 		};
+		backgroundVideoUrl: string;
+		backgroundImageOrVideo: string;
 		backgroundImage: {
 			altText: string;
 			sourceUrl: string;
@@ -54,6 +58,8 @@ interface IProps {
 			title: string;
 			target: string;
 		};
+		backgroundVideoUrl: string;
+		backgroundImageOrVideo: string;
 		backgroundImage: {
 			altText: string;
 			sourceUrl: string;
@@ -97,6 +103,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 	// Content Slider
 	const mainRef = useRef<HTMLDivElement>(null);
 	const postRef = useRef<HTMLDivElement>(null);
+	const mainImageVideoTailwindcss: string = `object-cover object-center w-full h-full`;
 	const mainContentTailwindcss: string = `absolute top-[100%] right-0 left-0 bottom-0 w-full h-full`;
 	const postContentTailwindcss: string = `relative px-8  py-4 text-white transition-all duration-75 ease-in-out opacity-30`;
 
@@ -105,7 +112,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 	const mainActive: string = styles.mainActive;
 	const mainNotActive: string = styles.mainNotActive;
 
-	// Sub post (Blue Squares)
+	// Sub post (goldYellow Squares)
 	const post: string = styles.post;
 	const postPost: string = styles.postPost;
 	const postActive: string = styles.postActive;
@@ -187,24 +194,43 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							className={`main-post ${mainActive} ${mainContentTailwindcss}`}
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full main-post__image">
+								{/* Video */}
 								<video
 									autoPlay
 									muted
 									loop
-									className="block object-cover object-center w-full h-full"
+									className={
+										content?.backgroundImageOrVideo === "Video"
+											? `block ${mainImageVideoTailwindcss}`
+											: ` hidden`
+									}
 								>
 									<source
-										src="/video/DBMX Racing Hero Video.mp4"
+										src={contentTwo?.backgroundVideoUrl}
 										type="video/mp4"
 									/>
 								</video>
+								{/* Image */}
+								<Image
+									width={content?.backgroundImage?.mediaDetails?.width}
+									height={content?.backgroundImage?.mediaDetails?.height}
+									className={
+										content?.backgroundImageOrVideo === "Image"
+											? `block ${mainImageVideoTailwindcss}`
+											: ` hidden`
+									}
+									src={content?.backgroundImage?.sourceUrl}
+									alt={`${content?.backgroundImage?.altText} image`}
+								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
-									<span className="py-[6px] px-6 bg-blue">{content?.tag}</span>
+									<span className="py-[6px] px-6 bg-goldYellow">
+										{content?.tag}
+									</span>
 								</div>
 								<h2
-									className="title font-[700] py-4 lg:py-8 text-white text-7xl w-full lg:w-[55rem] leading-[3.5rem]"
+									className="title py-4 lg:py-8 text-white text-12xl w-full lg:w-[55rem] leading-[4.5rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{content?.title}
@@ -212,9 +238,9 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								<Link
 									href={content?.buttonLink?.url}
 									target={content?.buttonLink?.target}
-									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-blue hover:stroke-blue"
+									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldYellow hover:stroke-goldYellow"
 								>
-									<span className="text-tiny">
+									<span className="font-bold text-medium">
 										{content?.buttonLink?.title}
 									</span>
 									<svg
@@ -237,22 +263,43 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+								{/* Video */}
+								<video
+									autoPlay
+									muted
+									loop
+									className={
+										contentTwo?.backgroundImageOrVideo === "Video"
+											? `block ${mainImageVideoTailwindcss}`
+											: ` hidden`
+									}
+								>
+									<source
+										src={contentTwo?.backgroundVideoUrl}
+										type="video/mp4"
+									/>
+								</video>
+								{/* Image */}
 								<Image
 									width={contentTwo?.backgroundImage?.mediaDetails?.width}
 									height={contentTwo?.backgroundImage?.mediaDetails?.height}
-									className="block object-cover object-center w-full h-full"
+									className={
+										contentTwo?.backgroundImageOrVideo === "Image"
+											? `block ${mainImageVideoTailwindcss}`
+											: ` hidden`
+									}
 									src={contentTwo?.backgroundImage?.sourceUrl}
 									alt={`${contentTwo?.backgroundImage?.altText} image`}
 								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
-									<span className="py-[6px] px-6 bg-blue">
+									<span className="py-[6px] px-6 bg-goldYellow">
 										{contentTwo?.tag}
 									</span>
 								</div>
 								<h2
-									className="title font-[700] py-4 lg:py-8 text-white text-7xl w-full lg:w-[55rem] leading-[3.5rem]"
+									className="title py-4 lg:py-8 text-white text-12xl w-full lg:w-[55rem] leading-[4.5rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentTwo?.title}
@@ -274,12 +321,12 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 											cx="10"
 											cy="10"
 											r="9"
-											stroke="#FF8300"
+											stroke="#fa1d26"
 											strokeWidth="2"
 										/>
 										<path d="M14 10L8 6V14L14 10Z" fill="white" />
 									</svg>
-									<span className="text-tiny">
+									<span className="font-bold text-medium">
 										{contentTwo?.buttonLink?.title}
 									</span>
 								</Link>
@@ -289,22 +336,43 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+								{/* Video */}
+								<video
+									autoPlay
+									muted
+									loop
+									className={
+										contentThree?.backgroundImageOrVideo === "Video"
+											? `block ${mainImageVideoTailwindcss}`
+											: ` hidden`
+									}
+								>
+									<source
+										src={contentThree?.backgroundVideoUrl}
+										type="video/mp4"
+									/>
+								</video>
+								{/* Image */}
 								<Image
 									width={contentThree?.backgroundImage?.mediaDetails?.width}
 									height={contentThree?.backgroundImage?.mediaDetails?.height}
-									className="block object-cover object-center w-full h-full"
+									className={
+										contentThree?.backgroundImageOrVideo === "Image"
+											? `block ${mainImageVideoTailwindcss}`
+											: ` hidden`
+									}
 									src={contentThree?.backgroundImage?.sourceUrl}
 									alt={`${contentThree?.backgroundImage?.altText} image`}
 								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
-									<span className="py-[6px] px-6 bg-blue">
+									<span className="py-[6px] px-6 bg-goldYellow">
 										{contentThree?.tag}
 									</span>
 								</div>
 								<h2
-									className="title font-[700] py-4 lg:py-8 text-white text-7xl w-full lg:w-[55rem] leading-[3.5rem]"
+									className="title py-4 lg:py-8 text-white text-12xl w-full lg:w-[55rem] leading-[4.5rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentThree?.title}
@@ -312,9 +380,9 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								<Link
 									href={contentThree?.buttonLink?.url}
 									target={contentThree?.buttonLink?.target}
-									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-blue hover:stroke-blue"
+									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldYellow hover:stroke-goldYellow"
 								>
-									<span className="text-tiny">
+									<span className="font-bold text-medium">
 										{contentThree?.buttonLink?.title}
 									</span>
 									<svg
@@ -357,9 +425,9 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									{content?.publishedDate}
 								</span>
 							</header>
-							<div className="flex flex-col items-center justify-between gap-4">
+							<div className="flex flex-col justify-between gap-4">
 								<h3
-									className="title font-[700] py-4 mt-8 text-white text-lg leading-[1.75rem]"
+									className="title py-4 mt-8 text-white text-5xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{content?.title}
@@ -393,9 +461,9 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									{contentTwo?.publishedDate}
 								</span>
 							</header>
-							<div className="flex flex-col items-center justify-between gap-4">
+							<div className="flex flex-col justify-between gap-4">
 								<h3
-									className="title font-[700] py-4 mt-8 text-white text-lg leading-[1.75rem]"
+									className="title py-4 mt-8 text-white text-5xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentTwo?.title}
@@ -429,9 +497,9 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									{contentThree?.publishedDate}
 								</span>
 							</header>
-							<div className="flex flex-col items-center justify-between gap-4">
+							<div className="flex flex-col justify-between gap-4">
 								<h3
-									className="title font-[700] py-4 mt-8 text-white text-lg leading-[1.75rem]"
+									className="title py-4 mt-8 text-white text-5xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentThree?.title}

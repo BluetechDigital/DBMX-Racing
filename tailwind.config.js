@@ -22,6 +22,10 @@ module.exports = {
 			"6xl": "2.5rem",
 			"7xl": "3rem",
 			"8xl": "4rem",
+			"9xl": "4rem",
+			"10xl": "4.5rem",
+			"11xl": "5rem",
+			"12xl": "5.5rem",
 		},
 		colors: {
 			// Base colors Variables
@@ -39,6 +43,7 @@ module.exports = {
 			goldPrime: "#dfc695",
 			goldYellow: "#D4AF37",
 			goldPrimeDark: "#d1a855",
+			goldPrimeDarker: "#b68b36",
 		},
 	},
 	plugins: [],

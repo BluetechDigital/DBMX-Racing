@@ -57,6 +57,7 @@ h4,
 h5,
 h6,
 button {
+	@apply font-[900] tracking-wide uppercase;
 	font-family: $fontStyle_main;
 
 	span {

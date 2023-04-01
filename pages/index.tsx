@@ -80,6 +80,8 @@ export async function getStaticProps() {
 										title
 										target
 									}
+									backgroundVideoUrl
+									backgroundImageOrVideo
 									backgroundImage {
 										sourceUrl
 										mediaDetails {
@@ -98,6 +100,8 @@ export async function getStaticProps() {
 										title
 										target
 									}
+									backgroundVideoUrl
+									backgroundImageOrVideo
 									backgroundImage {
 										sourceUrl
 										mediaDetails {
@@ -116,6 +120,8 @@ export async function getStaticProps() {
 										title
 										target
 									}
+									backgroundVideoUrl
+									backgroundImageOrVideo
 									backgroundImage {
 										sourceUrl
 										mediaDetails {

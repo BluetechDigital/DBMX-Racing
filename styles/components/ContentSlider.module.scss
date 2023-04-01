@@ -9,7 +9,7 @@
 	width: 100%;
 	width: 0;
 	height: inherit;
-	background: $goldYellow;
+	background: $goldPrimeDarker;
 	transition: all 0.16s;
 }
 
@@ -74,7 +74,7 @@
 .post:hover {
 	transition: none;
 	transition-delay: 0s;
-	background: $darkRed;
+	background: $goldPrimeDarker;
 }
 
 .postPost {
