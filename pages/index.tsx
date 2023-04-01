@@ -8,13 +8,7 @@ import {getMainMenuLinks, getFooterMenuLinks} from "../lib/MenuLinks";
 // Components
 import MetaTag from "../components/Meta/MetaTag";
 
-export default function Home({
-	seo,
-	content,
-	mainMenuLinks,
-	footerMenuLinks,
-	themesOptionsContent,
-}: any) {
+export default function Home({seo, content, themesOptionsContent}: any) {
 	return (
 		<motion.div
 			exit={{
@@ -66,37 +60,6 @@ export async function getStaticProps() {
 								mediaItemUrl
 							}
 						}
-						homePage {
-							heroSection {
-								title
-								paragraph
-								buttonLink {
-									url
-									title
-									target
-								}
-								buttonLinkTwo {
-									url
-									title
-									target
-								}
-								backgroundImage {
-									sourceUrl
-								}
-							}
-							contactBanner {
-								title
-								paragraph
-								image {
-									sourceUrl
-								}
-								buttonLink {
-									url
-									title
-									target
-								}
-							}
-						}
 					}
 				}
 			}
@@ -107,17 +70,14 @@ export async function getStaticProps() {
 		query: getHomePageContent,
 	});
 
-	const mainMenuLinks: object = await getMainMenuLinks();
-	const footerMenuLinks: object = await getFooterMenuLinks();
+	// const mainMenuLinks: object = await getMainMenuLinks();
+	// const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
-			mainMenuLinks,
-			footerMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
-			content: response.data?.mainContent?.edges[0]?.node?.homePage,
 		},
 		revalidate: 60,
 	};

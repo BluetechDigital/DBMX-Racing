@@ -1,5 +1,5 @@
-import {DocumentNode, gql} from "@apollo/client";
 import {client} from "../config/apollo";
+import {DocumentNode, gql} from "@apollo/client";
 
 // Themes Options Content
 export async function getThemesOptionsContent() {
@@ -33,10 +33,7 @@ export async function getThemesOptionsContent() {
 			query: content,
 		});
 
-		return {
-			themesOptions:
-				response?.data?.themesOptions?.edges[0]?.node?.themeOptions,
-		};
+		return response?.data?.themeOptions?.edges[0]?.node?.themeOptions;
 	} catch (error) {
 		console.log(error);
 		throw new Error(

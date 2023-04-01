@@ -38,12 +38,9 @@ const MetaTag: FC<IProps> = ({seo, title}) => {
 	return (
 		<Head>
 			{/* <!-- Website Title --> */}
-			<title key="title">{`${title} | Prime Apartments`}</title>
+			<title key="title">{`${title} | Premium Motorcycle Gear`}</title>
 			<meta name="description" content={seo?.metaDesc} />
-			<link
-				rel="icon"
-				href="https://mydummysite.co.uk/ToddLearningTwo/wp-content/uploads/2023/03/MponjoliMpeli-Apartments-Logo-Icon.png"
-			/>
+			<link rel="icon" href="/img/logos\DBMX Racing Ico.ico" />
 			<meta
 				name="robots"
 				content={`${seo?.metaRobotsNoindex} , ${seo?.metaRobotsNofollow}`}
