@@ -8,8 +8,17 @@ import {getMainMenuLinks, getFooterMenuLinks} from "../lib/MenuLinks";
 // Components
 import MetaTag from "../components/Meta/MetaTag";
 import ContentSlider from "@/components/ContentSlider";
+import TitleParagraph from "@/components/TitleParagraph";
+import Hero from "@/components/Hero";
 
-export default function Home({seo, content, themesOptionsContent}: any) {
+export default function Home({
+	seo,
+	content,
+	heroMenuLinks,
+	mainMenuLinks,
+	themesOptionsContent,
+}: any) {
+	// console.log(themesOptionsContent);
 	return (
 		<motion.div
 			exit={{
@@ -22,6 +31,25 @@ export default function Home({seo, content, themesOptionsContent}: any) {
 			<MetaTag title={`DBMX Racing`} seo={seo} />
 
 			<main>
+				<Hero
+					title={content?.heroSection?.title}
+					email={themesOptionsContent?.email}
+					paragraph={content?.heroSection?.paragraph}
+					heroMenuLinks={heroMenuLinks?.heroMenuLinks}
+					buttonLink={content?.heroSection?.buttonLink}
+					twitterLink={themesOptionsContent?.twitterLink}
+					phoneNumber={themesOptionsContent?.phoneNumber}
+					linkedinLink={themesOptionsContent?.linkedinLink}
+					facebookLink={themesOptionsContent?.facebookLink}
+					buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
+					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+				/>
+
+				<TitleParagraph
+					title={content?.titleParagraph?.title}
+					paragraph={content?.titleParagraph?.paragraph}
+				/>
+
 				{/* CONTENT SLIDER */}
 				<ContentSlider
 					content={content?.contentSlider?.content}
@@ -69,6 +97,25 @@ export async function getStaticProps() {
 							}
 						}
 						homePage {
+							heroSection {
+								title
+								paragraph
+								backgroundVideoUrl
+								buttonLink {
+									url
+									title
+									target
+								}
+								buttonLinkTwo {
+									url
+									title
+									target
+								}
+							}
+							titleParagraph {
+								title
+								paragraph
+							}
 							contentSlider {
 								content {
 									tag
@@ -142,12 +189,13 @@ export async function getStaticProps() {
 		query: getHomePageContent,
 	});
 
-	// const mainMenuLinks: object = await getMainMenuLinks();
+	const heroMenuLinks: object = await getMainMenuLinks();
 	// const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
+			heroMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			content: response.data?.mainContent?.edges[0]?.node?.homePage,

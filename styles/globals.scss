@@ -91,7 +91,7 @@ p {
 	@apply tracking-wider;
 
 	a {
-		@apply text-goldPrime transition-all ease-in-out duration-500 hover:text-goldPrimeDark focus:text-goldPrimeDark;
+		@apply text-goldPrimeDark transition-all ease-in-out duration-500 hover:text-darkRed focus:text-darkRed;
 	}
 }
 

@@ -15,7 +15,7 @@ const noPageExits = ({}: any) => {
 					className="h-[100vh] bg-cover bg-center bg-[no-repeat] flex flex-col justify-center items-center"
 					style={{
 						backgroundImage: `linear-gradient(0deg,rgba(1, 42, 45, 0.65),rgba(1, 42, 45, 0.65)),
-									url("http://dbmx-racing.local/wp-content/uploads/2023/03/pexels-roger-lagesse-9773945-scaled.jpg")`,
+									url("http://dbmx-racing.local/wp-content/uploads/2023/03/pexels-vikram-sundaramoorthy-1448385-scaled.jpg")`,
 					}}
 				>
 					<div className="px-10 my-auto overflow-hidden py-44">
