@@ -69,7 +69,7 @@ const SideMenu: FC<HeroProps> = ({
 									<NavbarMenuLinks
 										url={keys?.node?.url}
 										label={keys?.node?.label}
-										tailwindStyling="block py-4 text-medium font-semibold text-white hover:text-red"
+										tailwindStyling="block py-4 text-base tracking-[.15rem] font-semibold text-white hover:text-red"
 									/>
 								</li>
 							))}
