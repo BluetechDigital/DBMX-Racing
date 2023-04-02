@@ -67,6 +67,7 @@ const Hero: FC<HeroProps> = ({
 	return (
 		<section className={styles.hero}>
 			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[100vh]">
+				{/* Background Video */}
 				<div className="absolute top-0 bottom-0 left-0 w-full h-full">
 					<video
 						autoPlay
@@ -78,7 +79,7 @@ const Hero: FC<HeroProps> = ({
 					</video>
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
 				</div>
-				<nav className="fixed flex items-center justify-between w-full px-6 py-6 bg-pureBlack z-[999]">
+				<nav className="fixed flex items-center justify-between w-full px-6 py-10 lg:py-8 bg-pureBlack z-[999]">
 					<div className="absolute flex flex-col items-center">
 						<Link className="mr-auto text-3xl font-bold leading-none" href="/">
 							<Image
@@ -111,7 +112,6 @@ const Hero: FC<HeroProps> = ({
 						<span aria-hidden="true"></span>
 					</button>
 				</nav>
-
 				<div className="container relative flex flex-col items-baseline justify-center px-4 m-auto text-center sm:text-left">
 					<div className="max-w-lg">
 						<h1 className="flex flex-col sm:block text-left mb-3 text-7xl sm:text-8xl text-white font-bold lg:leading-[4.5rem]">

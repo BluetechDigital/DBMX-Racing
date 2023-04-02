@@ -45,9 +45,9 @@ const SideMenu: FC<HeroProps> = ({
 		>
 			<nav className="relative flex flex-col justify-between w-full h-full px-6 py-6 overflow-x-hidden overflow-y-auto bg-pureBlack">
 				<div>
-					<div className="flex flex-col items-center mb-16">
+					<div className="flex-col items-center hidden mb-16 lg:flex">
 						<Link
-							className="mt-16 mr-auto text-3xl font-bold leading-none"
+							className="mt-20 mr-auto text-3xl font-bold leading-none"
 							href="/"
 						>
 							<Image
@@ -59,7 +59,7 @@ const SideMenu: FC<HeroProps> = ({
 							/>
 						</Link>
 					</div>
-					<div className="px-4">
+					<div className="px-4 mt-20 lg:mt-0">
 						<ul>
 							{mainMenuLinks?.map((keys) => (
 								<li
