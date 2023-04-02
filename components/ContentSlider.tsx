@@ -84,10 +84,10 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 		let contentStyling: string;
 		if (isParagraphContent === null || isParagraphContent === undefined) {
 			contentStyling =
-				"hidden paragraph mt-2 font-[400] text-white text-base text-left leading-[1.5rem]";
+				"hidden paragraph mt-2 text-white text-base text-left leading-[1.5rem]";
 		} else {
 			contentStyling =
-				"block paragraph mt-2 font-[400] text-white text-base text-left leading-[1.5rem]";
+				"block paragraph mt-2 text-white text-base text-left leading-[1.5rem]";
 		}
 		return contentStyling;
 	}
@@ -418,10 +418,10 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								/>
 							</div>
 							<header className="flex items-center justify-between header">
-								<span className="text-tiny text-white font-[400]">
+								<span className="text-tiny text-white uppercase font-[600]">
 									{content?.tag}
 								</span>
-								<span className="text-tiny text-white font-[400]">
+								<span className="text-tiny text-white uppercase font-[600]">
 									{content?.publishedDate}
 								</span>
 							</header>
@@ -454,10 +454,10 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								/>
 							</div>
 							<header className="flex items-center justify-between header">
-								<span className="text-tiny text-white font-[400]">
+								<span className="text-tiny text-white uppercase font-[600]">
 									{contentTwo?.tag}
 								</span>
-								<span className="text-tiny text-white font-[400]">
+								<span className="text-tiny text-white uppercase font-[600]">
 									{contentTwo?.publishedDate}
 								</span>
 							</header>
@@ -490,10 +490,10 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								/>
 							</div>
 							<header className="flex items-center justify-between header">
-								<span className="text-tiny text-white font-[400]">
+								<span className="text-tiny text-white uppercase font-[600]">
 									{contentThree?.tag}
 								</span>
-								<span className="text-tiny text-white font-[400]">
+								<span className="text-tiny text-white uppercase font-[600]">
 									{contentThree?.publishedDate}
 								</span>
 							</header>
