@@ -125,7 +125,7 @@ const Hero: FC<HeroProps> = ({
 						/>
 						<motion.div
 							variants={stagger}
-							className="flex justify-center gap-4 sm:justify-start item-center"
+							className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-start"
 						>
 							<Link href={buttonLink?.url} target={buttonLink?.target}>
 								<motion.button

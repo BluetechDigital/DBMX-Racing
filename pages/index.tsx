@@ -10,6 +10,8 @@ import MetaTag from "../components/Meta/MetaTag";
 import ContentSlider from "@/components/ContentSlider";
 import TitleParagraph from "@/components/TitleParagraph";
 import Hero from "@/components/Hero";
+import StoreLocation from "@/components/StoreLocation";
+import Logos from "@/components/Logos";
 
 export default function Home({
 	seo,
@@ -50,11 +52,21 @@ export default function Home({
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
 
+				<Logos
+					title={content?.trustedBrands?.title}
+					logoGrid={content?.trustedBrands?.logos}
+				/>
+
 				{/* CONTENT SLIDER */}
 				<ContentSlider
 					content={content?.contentSlider?.content}
 					contentTwo={content?.contentSlider?.contentTwo}
 					contentThree={content?.contentSlider?.contentThree}
+				/>
+
+				<StoreLocation
+					title={content?.ourLocation?.title}
+					paragraph={content?.ourLocation?.paragraph}
 				/>
 			</main>
 		</motion.div>
@@ -115,6 +127,19 @@ export async function getStaticProps() {
 							titleParagraph {
 								title
 								paragraph
+							}
+							trustedBrands {
+								title
+								logos {
+									image {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
 							}
 							contentSlider {
 								content {
@@ -177,6 +202,10 @@ export async function getStaticProps() {
 										}
 									}
 								}
+							}
+							ourLocation {
+								title
+								paragraph
 							}
 						}
 					}
