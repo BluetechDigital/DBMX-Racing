@@ -46,7 +46,7 @@ const ContentStats: FC<IProps> = ({title, statsOne, statsTwo, paragraph}) => {
 					>
 						<motion.div variants={fadeInUp} className="w-full lg:w-1/2">
 							<div className="p-4 mx-auto text-center lg:max-w-lg lg:px-8 lg:py-4">
-								<h2 className="mb-6 text-3xl font-semibold text-center md:text-4xl text-goldPrime">
+								<h2 className="mb-6 text-3xl font-semibold text-center md:text-5xl text-goldPrime">
 									{statsOne?.subtitle}
 								</h2>
 								<h3 className="mb-3.5 text-center text-xl text-goldPrime font-bold">
@@ -60,7 +60,7 @@ const ContentStats: FC<IProps> = ({title, statsOne, statsTwo, paragraph}) => {
 						</motion.div>
 						<motion.div variants={fadeInUp} className="w-full lg:w-1/2">
 							<div className="p-4 mx-auto lg:px-8 lg:py-4 lg:max-w-lg">
-								<h2 className="mb-6 text-3xl font-bold text-center md:text-4xl text-goldPrime">
+								<h2 className="mb-6 text-3xl font-bold text-center md:text-5xl text-goldPrime">
 									{statsTwo?.subtitle}
 								</h2>
 								<h3 className="mb-3.5 text-center text-xl text-goldPrime font-bold">
