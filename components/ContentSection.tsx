@@ -52,36 +52,32 @@ const ContentSection: FC<IProps> = ({title, subtitle, bottomContent}) => {
 						className="block object-cover object-center w-full h-full lg:hidden"
 					/>
 				</div>
-				<div className="w-full p-8 lg:w-1/2 xl:flex-1 xl:px-10 xl:pl-20">
-					<div className="flex flex-col items-center max-w-none lg:items-start lg:max-w-xl">
+				<div className="p-8 xl:flex-1 xl:px-10 xl:pl-20">
+					<div className="flex flex-col items-center max-w-none lg:items-start lg:max-w-4xl">
 						<div className="pb-10 border-b lg:pb-32 border-goldPrime mb-11">
 							<Paragraph
 								content={bottomContent?.mainContent}
-								tailwindStyling="lg:max-w-lg text-white text-left text-medium"
+								tailwindStyling="text-white text-left text-medium"
 							/>
 						</div>
 						<div className="flex flex-col gap-6 lg:flex-row">
-							<div className="w-auto lg:w-1/2">
-								<div className="lg:max-w-xs">
-									<h3 className="mb-4 text-xl font-semibold tracking-wider text-goldPrime">
-										{bottomContent?.title}
-									</h3>
-									<Paragraph
-										content={bottomContent?.paragraph}
-										tailwindStyling="lg:max-w-lg py-6 text-white text-left text-base"
-									/>
-								</div>
+							<div>
+								<h3 className="mb-4 text-xl font-semibold tracking-wider text-goldPrime">
+									{bottomContent?.title}
+								</h3>
+								<Paragraph
+									content={bottomContent?.paragraph}
+									tailwindStyling="lg:max-w-lg py-6 text-white text-left text-base"
+								/>
 							</div>
-							<div className="w-auto lg:w-1/2">
-								<div className="lg:max-w-xs">
-									<h3 className="mb-4 text-xl font-semibold tracking-wider text-goldPrime">
-										{bottomContent?.titleTwo}
-									</h3>
-									<Paragraph
-										content={bottomContent?.paragraphTwo}
-										tailwindStyling="lg:max-w-lg py-6 text-white text-left text-base"
-									/>
-								</div>
+							<div>
+								<h3 className="mb-4 text-xl font-semibold tracking-wider text-goldPrime">
+									{bottomContent?.titleTwo}
+								</h3>
+								<Paragraph
+									content={bottomContent?.paragraphTwo}
+									tailwindStyling="lg:max-w-lg py-6 text-white text-left text-base"
+								/>
 							</div>
 						</div>
 					</div>

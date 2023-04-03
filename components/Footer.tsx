@@ -1,7 +1,6 @@
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Paragraph from "./Elements/Paragraph";
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 
 interface FooterProps {
@@ -46,57 +45,69 @@ const Footer: FC<FooterProps> = ({
 								className="object-contain object-center w-full h-[50px]"
 							/>
 						</Link>
-						<div className="flex flex-col items-start gap-4">
-							<div className="flex flex-col justify-center gap-2">
-								<span className="flex items-center gap-2 text-goldPrime">
-									Tel:
-									<Link
-										className="leading-none transition-all duration-500 ease-in-out text-goldPrime text-tiny hover:text-red"
-										href={`tel:${phoneNumber}`}
-									>
-										{phoneNumber}
-									</Link>
-								</span>
-								<span className="flex items-center gap-2 text-goldPrime">
-									Email:
-									<Link
-										className="leading-none transition-all duration-500 ease-in-out text-goldPrime text-tiny hover:text-red"
-										href={`mailto:${email}`}
-									>
-										{email}
-									</Link>
-								</span>
-							</div>
-							<div className="flex gap-4">
-								<Image
-									height={500}
-									width={500}
-									alt="DBMX Racing FSB Certification"
-									src="http://dbmx-racing.local/wp-content/uploads/2023/04/fsb-148w.jpg"
-									className="object-contain object-center w-full h-[75px]"
-								/>
-							</div>
+						<div className="flex flex-row items-start gap-4 mt-4">
+							<Image
+								height={500}
+								width={500}
+								alt="DBMX Racing FSB Certification"
+								src="http://dbmx-racing.local/wp-content/uploads/2023/04/fsb-148w.jpg"
+								className="object-contain object-center w-full h-[75px]"
+							/>
 						</div>
 					</div>
-					<div className="px-4 mt-0 lg:mt-20">
-						<ul className="flex flex-col items-start justify-center gap-4 lg:items-end lg:flex-row">
-							{footerMenuLinks?.map((keys) => (
-								<li
-									key={keys?.node?.id}
-									className="mb-1 w-max border-b-[1px] text-center border-goldPrime border-opacity-50"
+					<ul className="flex flex-col items-start justify-center gap-4 sm:items-center lg:flex-row">
+						{footerMenuLinks?.map((keys) => (
+							<li
+								key={keys?.node?.id}
+								className="mb-1 w-max border-b-[1px] text-center border-goldPrime border-opacity-50"
+							>
+								<NavbarMenuLinks
+									url={keys?.node?.url}
+									label={keys?.node?.label}
+									tailwindStyling="block py-4 text-base tracking-[.15rem] font-semibold text-white hover:text-red"
+								/>
+							</li>
+						))}
+					</ul>
+					<div className="flex flex-col items-end gap-4">
+						<div className="flex flex-col justify-center gap-2">
+							<span className="flex items-center gap-2 text-goldPrime">
+								Tel:
+								<Link
+									className="text-base leading-none transition-all duration-500 ease-in-out text-goldPrime hover:text-red"
+									href={`tel:${phoneNumber}`}
 								>
-									<NavbarMenuLinks
-										url={keys?.node?.url}
-										label={keys?.node?.label}
-										tailwindStyling="block py-4 text-base tracking-[.15rem] font-semibold text-white hover:text-red"
-									/>
-								</li>
-							))}
-						</ul>
+									{phoneNumber}
+								</Link>
+							</span>
+							<span className="flex items-center gap-2 text-goldPrime">
+								Email:
+								<Link
+									className="text-base leading-none transition-all duration-500 ease-in-out text-goldPrime hover:text-red"
+									href={`mailto:${email}`}
+								>
+									{email}
+								</Link>
+							</span>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div className="p-6 lg:p-2 bg-darkRed">
+			<div className="flex flex-col items-center justify-center gap-4 py-4 mx-auto bg-black sm:flex-row sm:mx-0">
+				<Link
+					href={`/terms-of-use`}
+					className="mx-2 tracking-widest text-white transition-all duration-500 ease-in-out text-tiny hover:text-darkRed"
+				>
+					Terms &amp; of Use
+				</Link>
+				<Link
+					href={`/privacy-cookie-policy`}
+					className="mx-2 tracking-widest text-white transition-all duration-500 ease-in-out text-tiny hover:text-darkRed"
+				>
+					Privacy & Cookies Policy
+				</Link>
+			</div>
+			<div className="p-6 lg:p-2 bg-goldPrimeDarker">
 				<div className="container flex flex-col-reverse items-center justify-center px-0 mx-auto gap-y-8 lg:flex-row lg:justify-between">
 					<p className="max-w-2xl py-2 text-left text-white text-tiny">
 						{copyRightText}
