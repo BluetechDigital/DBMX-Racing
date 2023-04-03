@@ -261,7 +261,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 										/>
 										<path d="M14 10L8 6V14L14 10Z" fill="white" />
 									</svg>
-									<span className="font-bold text-medium">
+									<span className="font-bold text-medium hover:text-red">
 										{content?.buttonLink?.title}
 									</span>
 									<svg
@@ -351,7 +351,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 										/>
 										<path d="M14 10L8 6V14L14 10Z" fill="white" />
 									</svg>
-									<span className="font-bold text-medium">
+									<span className="font-bold text-medium hover:text-red">
 										{contentTwo?.buttonLink?.title}
 									</span>
 								</Link>
@@ -428,7 +428,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 										/>
 										<path d="M14 10L8 6V14L14 10Z" fill="white" />
 									</svg>
-									<span className="font-bold text-medium">
+									<span className="font-bold text-medium hover:text-red">
 										{contentThree?.buttonLink?.title}
 									</span>
 									<svg
