@@ -57,14 +57,11 @@ const Footer: FC<FooterProps> = ({
 					</div>
 					<ul className="flex flex-col items-start justify-center gap-4 sm:items-center lg:flex-row">
 						{footerMenuLinks?.map((keys) => (
-							<li
-								key={keys?.node?.id}
-								className="mb-1 w-max border-b-[1px] text-center border-goldPrime border-opacity-50"
-							>
+							<li key={keys?.node?.id} className="mb-1 text-center w-max">
 								<NavbarMenuLinks
 									url={keys?.node?.url}
 									label={keys?.node?.label}
-									tailwindStyling="block py-4 text-base tracking-[.15rem] font-semibold text-white hover:text-red"
+									tailwindStyling="block py-4 text-base tracking-[.15rem] uppercase font-semibold text-white hover:text-red"
 								/>
 							</li>
 						))}

@@ -34,7 +34,7 @@ const FourImageGrid: FC<IProps> = ({title, servicesGrid}) => {
 					<div className="w-full px-4 mb-6 sm:w-1/2 xl:w-3/5 sm:mb-0">
 						<motion.h2
 							variants={fadeInUp}
-							className="text-4xl font-bold text-white font-heading"
+							className="text-3xl font-bold text-white md:text-4xl font-heading"
 						>
 							{title}
 						</motion.h2>

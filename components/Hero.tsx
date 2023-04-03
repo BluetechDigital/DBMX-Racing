@@ -113,8 +113,8 @@ const Hero: FC<HeroProps> = ({
 					</button>
 				</nav>
 				<div className="container relative flex flex-col items-baseline justify-center px-4 m-auto text-center sm:text-left">
-					<div className="max-w-lg">
-						<h1 className="flex flex-col sm:block text-left mb-3 text-7xl sm:text-8xl text-white font-bold lg:leading-[4.5rem]">
+					<div className="max-w-3xl">
+						<h1 className="flex flex-col sm:block text-left mb-3 text-7xl md:text-8xl text-white font-bold lg:leading-[4rem]">
 							{title}
 						</h1>
 					</div>
@@ -132,7 +132,7 @@ const Hero: FC<HeroProps> = ({
 									variants={fadeInUp}
 									className={
 										buttonLink?.url
-											? `block px-6 py-3 font-semibold tracking-widest text-lg  transition duration-200 w-fit sm:mx-0 hover:bg-darkerRed text-black hover:text-white bg-white rounded-t-lg rounded-l-lg`
+											? `block px-6 py-3 font-semibold tracking-widest text-base transition duration-200 w-fit sm:mx-0 hover:bg-darkerRed text-black hover:text-white bg-white rounded-t-lg rounded-l-lg`
 											: `hidden`
 									}
 								>
@@ -144,7 +144,7 @@ const Hero: FC<HeroProps> = ({
 									variants={fadeInUp}
 									className={
 										buttonLink?.url
-											? `block px-6 py-3 font-semibold tracking-widest text-lg text-white transition duration-200 w-fit sm:mx-0 hover:bg-darkerRed bg-red rounded-t-lg rounded-l-lg`
+											? `block px-6 py-3 font-semibold tracking-widest text-base text-white transition duration-200 w-fit sm:mx-0 hover:bg-darkerRed bg-red rounded-t-lg rounded-l-lg`
 											: `hidden`
 									}
 								>

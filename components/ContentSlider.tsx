@@ -223,14 +223,14 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									alt={`${content?.backgroundImage?.altText} image`}
 								/>
 							</div>
-							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldYellow">
 										{content?.tag}
 									</span>
 								</div>
 								<h2
-									className="title py-4 lg:py-8 text-white text-12xl w-full lg:w-[55rem] leading-[4.5rem]"
+									className="title py-4 lg:py-8 text-white text-8xl w-full lg:w-[55rem] leading-[4rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{content?.title}
@@ -313,14 +313,14 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									alt={`${contentTwo?.backgroundImage?.altText} image`}
 								/>
 							</div>
-							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldYellow">
 										{contentTwo?.tag}
 									</span>
 								</div>
 								<h2
-									className="title py-4 lg:py-8 text-white text-12xl w-full lg:w-[55rem] leading-[4.5rem]"
+									className="title py-4 lg:py-8 text-white text-8xl w-full lg:w-[55rem] leading-[4rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentTwo?.title}
@@ -390,14 +390,14 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									alt={`${contentThree?.backgroundImage?.altText} image`}
 								/>
 							</div>
-							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] 2xl:top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldYellow">
 										{contentThree?.tag}
 									</span>
 								</div>
 								<h2
-									className="title py-4 lg:py-8 text-white text-12xl w-full lg:w-[55rem] leading-[4.5rem]"
+									className="title py-4 lg:py-8 text-white text-8xl w-full lg:w-[55rem] leading-[4rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentThree?.title}
@@ -473,7 +473,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							</header>
 							<div className="flex flex-col justify-between gap-4">
 								<h3
-									className="title py-4 mt-8 text-white text-5xl leading-[2rem]"
+									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{content?.title}
@@ -509,7 +509,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							</header>
 							<div className="flex flex-col justify-between gap-4">
 								<h3
-									className="title py-4 mt-8 text-white text-5xl leading-[2rem]"
+									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentTwo?.title}
@@ -545,7 +545,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							</header>
 							<div className="flex flex-col justify-between gap-4">
 								<h3
-									className="title py-4 mt-8 text-white text-5xl leading-[2rem]"
+									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentThree?.title}

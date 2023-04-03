@@ -9,10 +9,11 @@ import {getMainMenuLinks, getFooterMenuLinks} from "../lib/MenuLinks";
 import Footer from "@/components/Footer";
 import HeroTwo from "@/components/HeroTwo";
 import MetaTag from "../components/Meta/MetaTag";
-import ContactInfo from "@/components/ContactInfo";
 import StoreLocation from "@/components/StoreLocation";
+import TitleParagraph from "@/components/TitleParagraph";
+import ContentStats from "@/components/ContentStats";
 
-const contactUs = ({
+const Services = ({
 	seo,
 	pageTitle,
 	content,
@@ -44,14 +45,16 @@ const contactUs = ({
 					backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
 				/>
 
-				<ContactInfo
-					email={themesOptionsContent?.email}
-					title={content?.contactInfo?.title}
-					paragraph={content?.contactInfo?.paragraph}
-					contactAddress={themesOptionsContent?.address}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					businessHours={themesOptionsContent?.businessHours}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+				<TitleParagraph
+					title={content?.titleParagraph?.title}
+					paragraph={content?.titleParagraph?.paragraph}
+				/>
+
+				<ContentStats
+					title={content?.contentStats?.title}
+					paragraph={content?.contentStats?.paragraph}
+					statsOne={content?.contentStats?.statsOne}
+					statsTwo={content?.contentStats?.statsTwo}
 				/>
 
 				<StoreLocation
@@ -74,16 +77,16 @@ const contactUs = ({
 };
 
 export async function getStaticProps() {
-	const getContactUsPageContent: any = gql`
+	const getServicesPageContent: any = gql`
 		{
-			pageTitle: pages(where: {id: 8, status: PUBLISH}) {
+			pageTitle: pages(where: {id: 12, status: PUBLISH}) {
 				edges {
 					node {
 						title
 					}
 				}
 			}
-			mainContent: pages(where: {id: 8, status: PUBLISH}) {
+			mainContent: pages(where: {id: 12, status: PUBLISH}) {
 				edges {
 					node {
 						seo {
@@ -115,7 +118,7 @@ export async function getStaticProps() {
 								mediaItemUrl
 							}
 						}
-						contactUsPage {
+						servicesPage {
 							heroSection {
 								title
 								paragraph
@@ -123,9 +126,23 @@ export async function getStaticProps() {
 									sourceUrl
 								}
 							}
-							contactInfo {
+							titleParagraph {
 								title
 								paragraph
+							}
+							contentStats {
+								title
+								paragraph
+								statsOne {
+									title
+									subtitle
+									paragraph
+								}
+								statsTwo {
+									title
+									subtitle
+									paragraph
+								}
 							}
 							ourLocation {
 								title
@@ -139,7 +156,7 @@ export async function getStaticProps() {
 	`;
 
 	const response: any = await client.query({
-		query: getContactUsPageContent,
+		query: getServicesPageContent,
 	});
 
 	const mainMenuLinks: object = await getMainMenuLinks();
@@ -153,10 +170,10 @@ export async function getStaticProps() {
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response?.data?.pageTitle?.edges[0]?.node?.title,
-			content: response.data?.mainContent?.edges[0]?.node?.contactUsPage,
+			content: response.data?.mainContent?.edges[0]?.node?.servicesPage,
 		},
 		revalidate: 60,
 	};
 }
 
-export default contactUs;
+export default Services;

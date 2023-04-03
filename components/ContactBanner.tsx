@@ -35,7 +35,7 @@ const ContactBanner: FC<IProps> = ({
 			<div className="container p-0 mx-auto">
 				<div className="flex flex-col items-center justify-between gap-10 px-0 py-8 lg:flex-row lg:px-8">
 					<div className="flex flex-col items-center justify-between gap-4 lg:items-start">
-						<h2 className="mb-4 text-3xl font-semibold leading-tight text-center text-white lg:text-left sm:text-4xl lg:text-5xl">
+						<h2 className="max-w-2xl mb-4 text-3xl font-semibold leading-tight text-center text-white md:text-4xl lg:text-left ">
 							{title}
 						</h2>
 						<Paragraph

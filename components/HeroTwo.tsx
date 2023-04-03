@@ -92,10 +92,10 @@ const HeroTwo: FC<HeroProps> = ({
 					</button>
 				</nav>
 				<div className="container relative flex flex-col items-center justify-center px-4 m-auto text-center">
-					<div className="max-w-lg">
+					<div className="max-w-3xl">
 						<motion.h1
 							variants={fadeInUp}
-							className="flex flex-col sm:block text-left mb-3 text-7xl sm:text-8xl text-white font-bold lg:leading-[4.5rem]"
+							className="flex flex-col sm:block text-center mb-3 text-7xl md:text-8xl text-white font-bold lg:leading-[4rem]"
 						>
 							{title}
 						</motion.h1>

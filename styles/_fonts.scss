@@ -1,7 +1,7 @@
 /*===== GOOGLE FONTS =====*/
 @font-face {
-	font-family: VarieraDemoRegular;
-	src: url("./fonts/VarieraDemoRegular-VariableFont_wght.ttf");
+	font-family: VitroTrialHeavy;
+	src: url("./fonts/VitroTrial-Heavy-VariableFont_wght.otf");
 }
 
 @font-face {
@@ -15,7 +15,7 @@
 }
 
 // Font Stack Properties
-$fontStyle_main: "VarieraDemoRegular", sans-serif;
+$fontStyle_main: "VitroTrialHeavy", sans-serif;
 $fontStyle_secondary: "NeoGramTrial", sans-serif;
 $fontStyle_body: "Inter", sans-serif;
 

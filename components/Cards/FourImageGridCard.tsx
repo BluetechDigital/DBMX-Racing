@@ -33,7 +33,7 @@ const FourImageGridCard: FC<IProps> = ({title, link, image}) => {
 					variants={fadeInUp}
 					className="absolute bottom-0 left-0 z-10 w-full p-8"
 				>
-					<h4 className="mb-2 text-2xl font-bold text-white">{title}</h4>
+					<h4 className="mb-2 text-xl font-bold text-white">{title}</h4>
 				</motion.div>
 				<div>
 					<Image

@@ -15,7 +15,7 @@ const StoreLocation: FC<IProps> = ({title, paragraph}) => {
 		<section className="bg-white ">
 			<div className="container p-4 mx-auto">
 				<motion.div variants={fadeInUp} className="flex flex-col py-28">
-					<h2 className="text-black text-center tracking-normal leading-[2.75rem] font-[600] text-2xl sm:text-3xl lg:text-5xl">
+					<h2 className="text-black text-center tracking-normal leading-[2.75rem] font-[600] text-3xl md:text-4xl">
 						{title}
 					</h2>
 					<Paragraph

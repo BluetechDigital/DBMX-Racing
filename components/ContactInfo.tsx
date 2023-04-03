@@ -9,6 +9,9 @@ interface IProps {
 	phoneNumber: string;
 	phoneNumberTwo: string;
 	contactAddress: string;
+	businessHours: {
+		content: string;
+	};
 }
 
 const ContactInfo: FC<IProps> = ({
@@ -16,6 +19,7 @@ const ContactInfo: FC<IProps> = ({
 	title,
 	paragraph,
 	phoneNumber,
+	businessHours,
 	contactAddress,
 	phoneNumberTwo,
 }) => {
@@ -29,8 +33,8 @@ const ContactInfo: FC<IProps> = ({
 					content={paragraph}
 					tailwindStyling="mb-20 text-medium text-black text-center leading-normal md:max-w-3xl mx-auto"
 				/>
-				<div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
-					<div className="w-full h-full lg:min-h-[400px] lg:w-1/3 p-3 border border-darkRed">
+				<div className="flex flex-col items-center justify-center gap-4 lg:grid lg:grid-cols-2">
+					<div className="w-full h-full lg:min-h-[300px] p-3 border border-darkRed">
 						<div className="flex flex-col items-center justify-center gap-4 text-center p-11">
 							<div className="relative w-16 h-16 mx-auto mb-6 border rounded-full border-darkRed">
 								<div className="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
@@ -52,17 +56,15 @@ const ContactInfo: FC<IProps> = ({
 								</div>
 							</div>
 							<h3 className="mb-4 text-xl font-bold leading-snug text-darkRed">
-								Send Email
+								Business Hours
 							</h3>
-							<Link
-								href={`mailto:${email}`}
-								className="text-base font-medium leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
-							>
-								{email}
-							</Link>
+							<Paragraph
+								content={businessHours?.content}
+								tailwindStyling="font-medium text-base sm:text-medium leading-relaxed text-left text-black"
+							/>
 						</div>
 					</div>
-					<div className="w-full h-full lg:min-h-[400px] lg:w-1/3 p-3 border border-darkRed">
+					<div className="w-full h-full lg:min-h-[300px] p-3 border border-darkRed">
 						<div className="flex flex-col items-center justify-center gap-4 text-center p-11">
 							<div className="relative w-16 h-16 mx-auto mb-6 border rounded-full border-darkRed">
 								<div className="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
@@ -108,7 +110,7 @@ const ContactInfo: FC<IProps> = ({
 							</div>
 						</div>
 					</div>
-					<div className="w-full h-full lg:min-h-[400px] lg:w-1/3 p-3 border border-darkRed">
+					<div className="w-full h-full lg:min-h-[300px] p-3 border border-darkRed">
 						<div className="flex flex-col items-center justify-center gap-4 text-center p-11">
 							<div className="relative w-16 h-16 mx-auto mb-6 border rounded-full border-darkRed">
 								<div className="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
@@ -143,6 +145,38 @@ const ContactInfo: FC<IProps> = ({
 								content={contactAddress}
 								tailwindStyling="font-medium text-base sm:text-medium leading-relaxed text-black"
 							/>
+						</div>
+					</div>
+					<div className="w-full h-full lg:min-h-[300px] p-3 border border-darkRed">
+						<div className="flex flex-col items-center justify-center gap-4 p-6 text-center">
+							<div className="relative w-16 h-16 mx-auto mb-6 border rounded-full border-darkRed">
+								<div className="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+									<svg
+										width="32"
+										height="33"
+										viewBox="0 0 32 33"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M4 11.1666L14.5208 18.1805C15.4165 18.7776 16.5835 18.7776 17.4792 18.1805L28 11.1666M6.66667 25.8333H25.3333C26.8061 25.8333 28 24.6394 28 23.1666V9.83329C28 8.36053 26.8061 7.16663 25.3333 7.16663H6.66667C5.19391 7.16663 4 8.36053 4 9.83329V23.1666C4 24.6394 5.19391 25.8333 6.66667 25.8333Z"
+											stroke="#a70107"
+											strokeWidth="2"
+											strokeLinecap="round"
+											strokeLinejoin="round"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<h3 className="mb-4 text-xl font-bold leading-snug text-darkRed">
+								Send Email
+							</h3>
+							<Link
+								href={`mailto:${email}`}
+								className="text-base font-medium leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
+							>
+								{email}
+							</Link>
 						</div>
 					</div>
 				</div>
