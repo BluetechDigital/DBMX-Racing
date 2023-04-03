@@ -6,7 +6,7 @@ export async function getMainMenuLinks() {
 	try {
 		const content: any = gql`
 			{
-				heroMenuLinks: menuItems(where: {location: PRIMARY}) {
+				mainMenuLinks: menuItems(where: {location: PRIMARY}) {
 					edges {
 						node {
 							id
@@ -23,7 +23,7 @@ export async function getMainMenuLinks() {
 		});
 
 		return {
-			heroMenuLinks: response?.data?.heroMenuLinks?.edges,
+			mainMenuLinks: response?.data?.mainMenuLinks?.edges,
 		};
 	} catch (error) {
 		console.log(error);

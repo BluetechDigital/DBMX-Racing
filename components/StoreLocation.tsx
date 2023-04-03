@@ -12,8 +12,8 @@ interface IProps {
 
 const StoreLocation: FC<IProps> = ({title, paragraph}) => {
 	return (
-		<section className="p-4 bg-white lg:px-0">
-			<div className="container p-0 mx-auto">
+		<section className="bg-white ">
+			<div className="container p-4 mx-auto">
 				<motion.div variants={fadeInUp} className="flex flex-col py-28">
 					<h2 className="text-black text-center tracking-normal leading-[2.75rem] font-[600] text-2xl sm:text-3xl lg:text-5xl">
 						{title}

@@ -12,13 +12,11 @@ import Footer from "@/components/Footer";
 import MetaTag from "../components/Meta/MetaTag";
 import ContentSlider from "@/components/ContentSlider";
 import StoreLocation from "@/components/StoreLocation";
-import FourImageGrid from "@/components/FourImageGrid";
 import TitleParagraph from "@/components/TitleParagraph";
-import ContactBanner from "@/components/ContactBanner";
-import ContentSection from "@/components/ContentSection";
 
-export default function Home({
+export default function Products({
 	seo,
+	pageTitle,
 	content,
 	mainMenuLinks,
 	footerMenuLinks,
@@ -33,7 +31,7 @@ export default function Home({
 			animate="animate"
 		>
 			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={`DBMX Racing`} seo={seo} />
+			<MetaTag title={pageTitle} seo={seo} />
 
 			<main>
 				<Hero
@@ -55,29 +53,12 @@ export default function Home({
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
 
-				<FourImageGrid
-					title={content?.productGrid?.title}
-					servicesGrid={content?.productGrid?.services}
-				/>
-
-				<ContentSection
-					title={content?.contentSection?.title}
-					subtitle={content?.contentSection?.subtitle}
-					bottomContent={content?.contentSection?.bottomContent}
-				/>
-
-				<ContactBanner
-					title={content?.contactBanner?.title}
-					paragraph={content?.contactBanner?.paragraph}
-					buttonLink={content?.contactBanner?.buttonLink}
-					backgroundImage={content?.contactBanner?.backgroundImage?.sourceUrl}
-				/>
-
 				<Logos
 					title={content?.trustedBrands?.title}
 					logoGrid={content?.trustedBrands?.logos}
 				/>
 
+				{/* CONTENT SLIDER */}
 				<ContentSlider
 					content={content?.contentSlider?.content}
 					contentTwo={content?.contentSlider?.contentTwo}
@@ -104,8 +85,15 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-	const getHomePageContent: any = gql`
+	const getProductsPageContent: any = gql`
 		{
+			pageTitle: pages(where: {id: 6, status: PUBLISH}) {
+				edges {
+					node {
+						title
+					}
+				}
+			}
 			mainContent: pages(where: {id: 6, status: PUBLISH}) {
 				edges {
 					node {
@@ -157,56 +145,6 @@ export async function getStaticProps() {
 							titleParagraph {
 								title
 								paragraph
-							}
-							productGrid {
-								title
-								services {
-									title
-									link {
-										url
-										title
-										target
-									}
-									image {
-										altText
-										sourceUrl
-										mediaDetails {
-											height
-											width
-										}
-									}
-								}
-							}
-							contentSection {
-								title
-								subtitle
-								bottomContent {
-									title
-									titleTwo
-									paragraph
-									paragraphTwo
-									mainContent
-									image {
-										altText
-										sourceUrl
-										mediaDetails {
-											height
-											width
-										}
-									}
-								}
-							}
-							contactBanner {
-								title
-								paragraph
-								buttonLink {
-									url
-									title
-									target
-								}
-								backgroundImage {
-									sourceUrl
-								}
 							}
 							trustedBrands {
 								title
@@ -295,7 +233,7 @@ export async function getStaticProps() {
 	`;
 
 	const response: any = await client.query({
-		query: getHomePageContent,
+		query: getProductsPageContent,
 	});
 
 	const mainMenuLinks: object = await getMainMenuLinks();
@@ -308,6 +246,7 @@ export async function getStaticProps() {
 			footerMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
+			pageTitle: response?.data?.pageTitle?.edges[0]?.node?.title,
 			content: response.data?.mainContent?.edges[0]?.node?.homePage,
 		},
 		revalidate: 60,

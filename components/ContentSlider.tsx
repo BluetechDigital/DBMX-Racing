@@ -240,6 +240,27 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									target={content?.buttonLink?.target}
 									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldYellow hover:stroke-goldYellow"
 								>
+									<svg
+										className={
+											content?.backgroundImageOrVideo === "Video"
+												? `block mr-[12px]`
+												: ` hidden`
+										}
+										width="30"
+										height="30"
+										viewBox="0 0 20 20"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<circle
+											cx="10"
+											cy="10"
+											r="9"
+											stroke="#fa1d26"
+											strokeWidth="2"
+										/>
+										<path d="M14 10L8 6V14L14 10Z" fill="white" />
+									</svg>
 									<span className="font-bold text-medium">
 										{content?.buttonLink?.title}
 									</span>
@@ -310,7 +331,11 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-orange hover:stroke-none"
 								>
 									<svg
-										className="mr-[12px]"
+										className={
+											contentTwo?.backgroundImageOrVideo === "Video"
+												? `block mr-[12px]`
+												: ` hidden`
+										}
 										width="30"
 										height="30"
 										viewBox="0 0 20 20"
@@ -382,6 +407,27 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									target={contentThree?.buttonLink?.target}
 									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldYellow hover:stroke-goldYellow"
 								>
+									<svg
+										className={
+											contentThree?.backgroundImageOrVideo === "Video"
+												? `block mr-[12px]`
+												: ` hidden`
+										}
+										width="30"
+										height="30"
+										viewBox="0 0 20 20"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<circle
+											cx="10"
+											cy="10"
+											r="9"
+											stroke="#fa1d26"
+											strokeWidth="2"
+										/>
+										<path d="M14 10L8 6V14L14 10Z" fill="white" />
+									</svg>
 									<span className="font-bold text-medium">
 										{contentThree?.buttonLink?.title}
 									</span>

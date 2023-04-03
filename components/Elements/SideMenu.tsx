@@ -1,6 +1,6 @@
+import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {FC} from "react";
 import styles from "../../styles/components/Hero.module.scss";
 
 // Components

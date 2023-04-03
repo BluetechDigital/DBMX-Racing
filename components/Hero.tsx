@@ -31,7 +31,7 @@ interface HeroProps {
 		title: string;
 		target: string;
 	};
-	heroMenuLinks: [
+	mainMenuLinks: [
 		{
 			node: {
 				id: string;
@@ -52,7 +52,7 @@ const Hero: FC<HeroProps> = ({
 	facebookLink,
 	linkedinLink,
 	buttonLinkTwo,
-	heroMenuLinks,
+	mainMenuLinks,
 	backgroundVideoUrl,
 }) => {
 	/* Hides or Displays the Full Nav Menu */
@@ -93,7 +93,7 @@ const Hero: FC<HeroProps> = ({
 					</div>
 					<ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:gap-x-10">
 						{/* Menu Link*/}
-						{heroMenuLinks?.map((keys) => (
+						{mainMenuLinks?.map((keys) => (
 							<li key={keys?.node?.id}>
 								<NavbarMenuLinks
 									url={keys?.node?.url}
@@ -164,7 +164,7 @@ const Hero: FC<HeroProps> = ({
 				twitterLink={twitterLink}
 				facebookLink={facebookLink}
 				linkedinLink={linkedinLink}
-				mainMenuLinks={heroMenuLinks}
+				mainMenuLinks={mainMenuLinks}
 			/>
 		</section>
 	);
