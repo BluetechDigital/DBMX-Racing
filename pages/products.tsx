@@ -3,15 +3,19 @@ import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import {getThemesOptionsContent} from "../lib/themesOptions";
-import {getMainMenuLinks, getFooterMenuLinks} from "../lib/MenuLinks";
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+} from "../lib/MenuLinks";
 
 // Components
-import Hero from "@/components/Hero";
 import Logos from "@/components/Logos";
 import Footer from "@/components/Footer";
+import HeroTwo from "@/components/HeroTwo";
 import MetaTag from "../components/Meta/MetaTag";
-import ContentSlider from "@/components/ContentSlider";
 import StoreLocation from "@/components/StoreLocation";
+import ContactBanner from "@/components/ContactBanner";
 import TitleParagraph from "@/components/TitleParagraph";
 
 export default function Products({
@@ -19,6 +23,7 @@ export default function Products({
 	pageTitle,
 	content,
 	mainMenuLinks,
+	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
 }: any) {
@@ -34,18 +39,17 @@ export default function Products({
 			<MetaTag title={pageTitle} seo={seo} />
 
 			<main>
-				<Hero
+				<HeroTwo
 					title={content?.heroSection?.title}
 					email={themesOptionsContent?.email}
 					paragraph={content?.heroSection?.paragraph}
 					mainMenuLinks={mainMenuLinks?.mainMenuLinks}
-					buttonLink={content?.heroSection?.buttonLink}
 					twitterLink={themesOptionsContent?.twitterLink}
 					phoneNumber={themesOptionsContent?.phoneNumber}
 					linkedinLink={themesOptionsContent?.linkedinLink}
 					facebookLink={themesOptionsContent?.facebookLink}
-					buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
-					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+					navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
+					backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
 				/>
 
 				<TitleParagraph
@@ -53,16 +57,18 @@ export default function Products({
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
 
+				{/* Product Grid */}
+
 				<Logos
 					title={content?.trustedBrands?.title}
 					logoGrid={content?.trustedBrands?.logos}
 				/>
 
-				{/* CONTENT SLIDER */}
-				<ContentSlider
-					content={content?.contentSlider?.content}
-					contentTwo={content?.contentSlider?.contentTwo}
-					contentThree={content?.contentSlider?.contentThree}
+				<ContactBanner
+					title={content?.contactBanner?.title}
+					paragraph={content?.contactBanner?.paragraph}
+					buttonLink={content?.contactBanner?.buttonLink}
+					backgroundImage={content?.contactBanner?.backgroundImage?.sourceUrl}
 				/>
 
 				<StoreLocation
@@ -87,14 +93,14 @@ export default function Products({
 export async function getStaticProps() {
 	const getProductsPageContent: any = gql`
 		{
-			pageTitle: pages(where: {id: 6, status: PUBLISH}) {
+			pageTitle: pages(where: {id: 10, status: PUBLISH}) {
 				edges {
 					node {
 						title
 					}
 				}
 			}
-			mainContent: pages(where: {id: 6, status: PUBLISH}) {
+			mainContent: pages(where: {id: 10, status: PUBLISH}) {
 				edges {
 					node {
 						seo {
@@ -126,25 +132,31 @@ export async function getStaticProps() {
 								mediaItemUrl
 							}
 						}
-						homePage {
+						productsPage {
 							heroSection {
 								title
 								paragraph
-								backgroundVideoUrl
-								buttonLink {
-									url
-									title
-									target
-								}
-								buttonLinkTwo {
-									url
-									title
-									target
+								backgroundImage {
+									sourceUrl
 								}
 							}
 							titleParagraph {
 								title
 								paragraph
+							}
+							productGrid {
+								title
+								products {
+									title
+									image {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
 							}
 							trustedBrands {
 								title
@@ -159,66 +171,16 @@ export async function getStaticProps() {
 									}
 								}
 							}
-							contentSlider {
-								content {
-									tag
+							contactBanner {
+								title
+								paragraph
+								buttonLink {
+									url
 									title
-									paragraph
-									publishedDate
-									buttonLink {
-										url
-										title
-										target
-									}
-									backgroundVideoUrl
-									backgroundImageOrVideo
-									backgroundImage {
-										sourceUrl
-										mediaDetails {
-											height
-											width
-										}
-									}
+									target
 								}
-								contentTwo {
-									tag
-									title
-									paragraph
-									publishedDate
-									buttonLink {
-										url
-										title
-										target
-									}
-									backgroundVideoUrl
-									backgroundImageOrVideo
-									backgroundImage {
-										sourceUrl
-										mediaDetails {
-											height
-											width
-										}
-									}
-								}
-								contentThree {
-									tag
-									title
-									paragraph
-									publishedDate
-									buttonLink {
-										url
-										title
-										target
-									}
-									backgroundVideoUrl
-									backgroundImageOrVideo
-									backgroundImage {
-										sourceUrl
-										mediaDetails {
-											height
-											width
-										}
-									}
+								backgroundImage {
+									sourceUrl
 								}
 							}
 							ourLocation {
@@ -237,17 +199,19 @@ export async function getStaticProps() {
 	});
 
 	const mainMenuLinks: object = await getMainMenuLinks();
+	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
 			mainMenuLinks,
+			navbarMenuLinks,
 			footerMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response?.data?.pageTitle?.edges[0]?.node?.title,
-			content: response.data?.mainContent?.edges[0]?.node?.homePage,
+			content: response.data?.mainContent?.edges[0]?.node?.productsPage,
 		},
 		revalidate: 60,
 	};

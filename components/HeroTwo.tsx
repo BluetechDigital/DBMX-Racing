@@ -30,6 +30,15 @@ interface HeroProps {
 			};
 		}
 	];
+	navbarMenuLinks: [
+		{
+			node: {
+				id: string;
+				url: string;
+				label: string;
+			};
+		}
+	];
 }
 
 const HeroTwo: FC<HeroProps> = ({
@@ -41,6 +50,7 @@ const HeroTwo: FC<HeroProps> = ({
 	facebookLink,
 	linkedinLink,
 	mainMenuLinks,
+	navbarMenuLinks,
 	backgroundImage,
 }) => {
 	/* Hides or Displays the Full Nav Menu */
@@ -72,7 +82,7 @@ const HeroTwo: FC<HeroProps> = ({
 					</div>
 					<ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:gap-x-10">
 						{/* Menu Link*/}
-						{mainMenuLinks?.map((keys) => (
+						{navbarMenuLinks?.map((keys) => (
 							<li key={keys?.node?.id}>
 								<NavbarMenuLinks
 									url={keys?.node?.url}
@@ -95,7 +105,7 @@ const HeroTwo: FC<HeroProps> = ({
 					<div className="max-w-3xl">
 						<motion.h1
 							variants={fadeInUp}
-							className="flex flex-col sm:block text-center mb-3 text-7xl md:text-8xl text-white font-bold lg:leading-[4rem]"
+							className="flex flex-col sm:block text-center mb-3 text-6xl md:text-7xl text-white font-bold lg:leading-[4rem]"
 						>
 							{title}
 						</motion.h1>

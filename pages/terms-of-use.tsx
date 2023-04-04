@@ -3,7 +3,11 @@ import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import {getThemesOptionsContent} from "../lib/themesOptions";
-import {getMainMenuLinks, getFooterMenuLinks} from "../lib/MenuLinks";
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+} from "../lib/MenuLinks";
 
 // Components
 import Footer from "@/components/Footer";
@@ -16,9 +20,10 @@ import TitleParagraph from "@/components/TitleParagraph";
 
 const TermsOfUse = ({
 	seo,
-	pageTitle,
 	content,
+	pageTitle,
 	mainMenuLinks,
+	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
 }: any) => {
@@ -43,6 +48,7 @@ const TermsOfUse = ({
 					phoneNumber={themesOptionsContent?.phoneNumber}
 					linkedinLink={themesOptionsContent?.linkedinLink}
 					facebookLink={themesOptionsContent?.facebookLink}
+					navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 					backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
 				/>
 
@@ -183,12 +189,14 @@ export async function getStaticProps() {
 	});
 
 	const mainMenuLinks: object = await getMainMenuLinks();
+	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
 			mainMenuLinks,
+			navbarMenuLinks,
 			footerMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,

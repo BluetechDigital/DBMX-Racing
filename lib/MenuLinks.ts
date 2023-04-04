@@ -32,6 +32,37 @@ export async function getMainMenuLinks() {
 		);
 	}
 }
+// Navbar Menu Links
+export async function getNavbarMenuLinks() {
+	try {
+		const content: any = gql`
+			{
+				navbarMenuLinks: menuItems(where: {location: SECONDARY}) {
+					edges {
+						node {
+							id
+							url
+							label
+						}
+					}
+				}
+			}
+		`;
+
+		const response: any = await client.query({
+			query: content,
+		});
+
+		return {
+			navbarMenuLinks: response?.data?.navbarMenuLinks?.edges,
+		};
+	} catch (error) {
+		console.log(error);
+		throw new Error(
+			"Something went wrong trying to fetch main menu links content"
+		);
+	}
+}
 
 // Footer Menu Links
 export async function getFooterMenuLinks() {

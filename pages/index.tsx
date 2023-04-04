@@ -3,7 +3,11 @@ import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import {getThemesOptionsContent} from "../lib/themesOptions";
-import {getMainMenuLinks, getFooterMenuLinks} from "../lib/MenuLinks";
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+} from "../lib/MenuLinks";
 
 // Components
 import Hero from "@/components/Hero";
@@ -21,6 +25,7 @@ export default function Home({
 	seo,
 	content,
 	mainMenuLinks,
+	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
 }: any) {
@@ -46,6 +51,7 @@ export default function Home({
 					phoneNumber={themesOptionsContent?.phoneNumber}
 					linkedinLink={themesOptionsContent?.linkedinLink}
 					facebookLink={themesOptionsContent?.facebookLink}
+					navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 					buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
 					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
 				/>
@@ -299,12 +305,14 @@ export async function getStaticProps() {
 	});
 
 	const mainMenuLinks: object = await getMainMenuLinks();
+	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
 	const themesOptionsContent: object = await getThemesOptionsContent();
 
 	return {
 		props: {
 			mainMenuLinks,
+			navbarMenuLinks,
 			footerMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,

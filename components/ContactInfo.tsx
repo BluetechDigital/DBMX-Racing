@@ -2,6 +2,9 @@ import {FC} from "react";
 import Link from "next/link";
 import Paragraph from "../components/Elements/Paragraph";
 
+// Styling
+import styles from "../styles/components/ContactInfo.module.scss";
+
 interface IProps {
 	email: string;
 	title: string;
@@ -24,7 +27,7 @@ const ContactInfo: FC<IProps> = ({
 	phoneNumberTwo,
 }) => {
 	return (
-		<section className="relative pt-24 overflow-hidden bg-white pb-36">
+		<section className={styles.contactInfo}>
 			<div className="container relative z-10 px-4 mx-auto">
 				<h2 className="mb-10 text-3xl font-bold leading-none text-center text-black sm:text-4xl tracking-px-n">
 					{title}
