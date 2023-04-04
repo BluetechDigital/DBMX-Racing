@@ -9,9 +9,12 @@ import {getMainMenuLinks, getFooterMenuLinks} from "../lib/MenuLinks";
 import Footer from "@/components/Footer";
 import HeroTwo from "@/components/HeroTwo";
 import MetaTag from "../components/Meta/MetaTag";
-import StoreLocation from "@/components/StoreLocation";
-import TitleParagraph from "@/components/TitleParagraph";
 import ContentStats from "@/components/ContentStats";
+import JumboContent from "../components/JumboContent";
+import StoreLocation from "@/components/StoreLocation";
+import ContactBanner from "@/components/ContactBanner";
+import TitleParagraph from "@/components/TitleParagraph";
+import Logos from "@/components/Logos";
 
 const Services = ({
 	seo,
@@ -55,6 +58,20 @@ const Services = ({
 					paragraph={content?.contentStats?.paragraph}
 					statsOne={content?.contentStats?.statsOne}
 					statsTwo={content?.contentStats?.statsTwo}
+				/>
+
+				<Logos
+					title={content?.trustedBrands?.title}
+					logoGrid={content?.trustedBrands?.logos}
+				/>
+
+				<JumboContent jumboContentSection={content?.jumboContentSection} />
+
+				<ContactBanner
+					title={content?.contactBanner?.title}
+					paragraph={content?.contactBanner?.paragraph}
+					buttonLink={content?.contactBanner?.buttonLink}
+					backgroundImage={content?.contactBanner?.backgroundImage?.sourceUrl}
 				/>
 
 				<StoreLocation
@@ -142,6 +159,53 @@ export async function getStaticProps() {
 									title
 									subtitle
 									paragraph
+								}
+							}
+							trustedBrands {
+								title
+								logos {
+									image {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+							}
+							jumboContentSection {
+								content {
+									title
+									subtitle
+									paragraph
+									imageLocation
+									backgroundDisplay
+									buttonLink {
+										url
+										title
+										target
+									}
+									image {
+										altText
+										sourceUrl
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+							}
+							contactBanner {
+								title
+								paragraph
+								buttonLink {
+									url
+									title
+									target
+								}
+								backgroundImage {
+									sourceUrl
 								}
 							}
 							ourLocation {

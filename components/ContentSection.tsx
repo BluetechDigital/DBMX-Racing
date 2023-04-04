@@ -49,7 +49,11 @@ const ContentSection: FC<IProps> = ({title, subtitle, bottomContent}) => {
 						src={bottomContent?.image?.sourceUrl}
 						width={bottomContent?.image?.mediaDetails?.width}
 						height={bottomContent?.image?.mediaDetails?.height}
-						className="block object-cover object-center w-full h-full lg:hidden"
+						className={
+							bottomContent?.image?.sourceUrl
+								? `block object-cover object-center w-full h-full lg:hidden`
+								: `hidden`
+						}
 					/>
 				</div>
 				<div className="p-8 xl:flex-1 xl:px-10 xl:pl-20">

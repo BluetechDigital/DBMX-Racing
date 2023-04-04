@@ -1,7 +1,10 @@
 import Head from "next/head";
-import Link from "next/link";
+import Footer from "@/components/Footer";
+import ErrorPage from "@/components/ErrorPage";
+import {getFooterMenuLinks} from "../lib/MenuLinks";
+import {getThemesOptionsContent} from "../lib/themesOptions";
 
-const noPageExits = ({}: any) => {
+const noPageExits = ({footerMenuLinks, themesOptionsContent}: any) => {
 	return (
 		<>
 			<Head>
@@ -11,56 +14,40 @@ const noPageExits = ({}: any) => {
 			</Head>
 
 			<main>
-				<section
-					className="h-[100vh] bg-cover bg-center bg-[no-repeat] flex flex-col justify-center items-center"
-					style={{
-						backgroundImage: `linear-gradient(0deg,rgba(1, 42, 45, 0.65),rgba(1, 42, 45, 0.65)),
-									url("http://dbmx-racing.local/wp-content/uploads/2023/03/pexels-vikram-sundaramoorthy-1448385-scaled.jpg")`,
-					}}
-				>
-					<div className="px-10 my-auto overflow-hidden py-44">
-						<div className="container p-0 mx-auto">
-							<h1 className="mb-4 text-5xl md:text-7xl text-white text-center font-[600] font-heading leading-tight">
-								Something went wrong!
-							</h1>
-							<p className="mx-auto my-10 text-lg leading-relaxed text-center text-white md:max-w-md">
-								The page you are looking for is not found! Try something else or
-								go back to homepage.
-							</p>
-							<div className="flex flex-col items-center justify-center mx-auto md:max-w-max">
-								<button type="button">
-									<Link
-										href={`/`}
-										className="flex flex-row px-6 py-4 leading-4 text-white transition-all duration-500 ease-in-out rounded-lg lg:py-6 lg:px-20 bg-red hover:bg-goldPrimeDarker"
-									>
-										<svg
-											className="mr-2.5 text-white"
-											width="16"
-											height="16"
-											viewBox="0 0 16 16"
-											fill="none"
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<path
-												d="M6.66667 12.6666L2 7.99998M2 7.99998L6.66667 3.33331M2 7.99998L14 7.99998"
-												stroke="currentColor"
-												strokeWidth="1.5"
-												strokeLinecap="round"
-												strokeLinejoin="round"
-											></path>
-										</svg>
-										<span className="text-xl tracking-wider text-white font-[900]">
-											Go Back to Homepage
-										</span>
-									</Link>
-								</button>
-							</div>
-						</div>
-					</div>
-				</section>
+				<ErrorPage
+					title={themesOptionsContent?.errorPageContent?.title}
+					paragraph={themesOptionsContent?.errorPageContent?.paragraph}
+					buttonLink={themesOptionsContent?.errorPageContent?.buttonLink}
+					backgroundImage={
+						themesOptionsContent?.errorPageContent?.backgroundImage?.sourceUrl
+					}
+				/>
+
+				<Footer
+					email={themesOptionsContent?.email}
+					phoneNumber={themesOptionsContent?.phoneNumber}
+					twitterLink={themesOptionsContent?.twitterLink}
+					facebookLink={themesOptionsContent?.facebookLink}
+					linkedinLink={themesOptionsContent?.linkedinLink}
+					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+					copyRightText={themesOptionsContent?.copyrightText}
+				/>
 			</main>
 		</>
 	);
 };
 
 export default noPageExits;
+
+export async function getStaticProps() {
+	const footerMenuLinks: object = await getFooterMenuLinks();
+	const themesOptionsContent: object = await getThemesOptionsContent();
+
+	return {
+		props: {
+			footerMenuLinks,
+			themesOptionsContent,
+		},
+		revalidate: 60,
+	};
+}

@@ -22,7 +22,11 @@ const LogoCard: FC<IProps> = ({image}) => {
 				src={image?.sourceUrl}
 				width={image?.mediaDetails?.width}
 				height={image?.mediaDetails?.height}
-				className="w-[150px] h-full sm:w-[150px] lg:w-full lg:h-[125px] object-contain object center"
+				className={
+					image?.sourceUrl
+						? `block w-[150px] h-full sm:w-[150px] lg:w-full lg:h-[125px] object-contain object center`
+						: `hidden`
+				}
 			/>
 		</motion.div>
 	);

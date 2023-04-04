@@ -26,7 +26,7 @@ const ContactInfo: FC<IProps> = ({
 	return (
 		<section className="relative pt-24 overflow-hidden bg-white pb-36">
 			<div className="container relative z-10 px-4 mx-auto">
-				<h2 className="mb-10 font-bold leading-none text-center text-black text-7xl sm:text-8xl tracking-px-n">
+				<h2 className="mb-10 text-3xl font-bold leading-none text-center text-black sm:text-4xl tracking-px-n">
 					{title}
 				</h2>
 				<Paragraph
@@ -90,7 +90,7 @@ const ContactInfo: FC<IProps> = ({
 							</h3>
 							<div className="flex flex-col items-center justify-center gap-4 sm:gap-2">
 								<span className="flex flex-col gap-4 font-medium text-center text-black sm:flex-row text-medium lg:text-left">
-									Main Office:
+									Tel:
 									<Link
 										href={`tel:${phoneNumber}`}
 										className="ml-2 text-base leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
@@ -99,7 +99,7 @@ const ContactInfo: FC<IProps> = ({
 									</Link>
 								</span>
 								<span className="flex flex-col gap-4 font-medium text-center text-black sm:flex-row text-medium lg:text-left">
-									Enquires:
+									Phone:
 									<Link
 										href={`tel:${phoneNumberTwo}`}
 										className="ml-2 text-base leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "

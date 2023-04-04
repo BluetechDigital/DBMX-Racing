@@ -41,7 +41,11 @@ const FourImageGridCard: FC<IProps> = ({title, link, image}) => {
 						src={image?.sourceUrl}
 						width={image?.mediaDetails?.width}
 						height={image?.mediaDetails?.height}
-						className="relative z-0 block object-cover w-full h-full min-h-[450px] max-h-[450px] transition-transform duration-500 transform group-hover:scale-102"
+						className={
+							image?.sourceUrl
+								? `block relative z-0 object-cover w-full h-full min-h-[450px] max-h-[450px] transition-transform duration-500 transform group-hover:scale-102`
+								: `hidden`
+						}
 					/>
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full bg-black opacity-20 hover:opacity-50 hover:bg-darkRed" />
 				</div>

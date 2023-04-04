@@ -127,7 +127,10 @@ const Hero: FC<HeroProps> = ({
 							variants={stagger}
 							className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-start"
 						>
-							<Link href={buttonLink?.url} target={buttonLink?.target}>
+							<Link
+								href={buttonLink?.url ? buttonLink?.url : `/`}
+								target={buttonLink?.target}
+							>
 								<motion.button
 									variants={fadeInUp}
 									className={
@@ -139,7 +142,10 @@ const Hero: FC<HeroProps> = ({
 									{buttonLink?.title}
 								</motion.button>
 							</Link>
-							<Link href={buttonLinkTwo?.url} target={buttonLinkTwo?.target}>
+							<Link
+								href={buttonLinkTwo?.url ? buttonLinkTwo?.url : `/`}
+								target={buttonLinkTwo?.target}
+							>
 								<motion.button
 									variants={fadeInUp}
 									className={
