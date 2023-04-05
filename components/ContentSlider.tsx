@@ -71,20 +71,7 @@ interface IProps {
 }
 
 const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
-	/* Check if paragraph content is null
-	 And Displays content if it null */
-	function isParagraphContent(isParagraphContent: string) {
-		let contentStyling: string;
-		if (isParagraphContent === null || isParagraphContent === undefined) {
-			contentStyling =
-				"hidden paragraph mt-2 text-white text-base text-left leading-[1.5rem]";
-		} else {
-			contentStyling =
-				"block paragraph mt-2 text-white text-base text-left leading-[1.5rem]";
-		}
-		return contentStyling;
-	}
-
+	/* Sanitize the WYSIWYG paragraph content */
 	function createTrimmedParagraphMarkup(paragraphContent: string) {
 		const sanitizedContent: string = DOMPurify.sanitize(paragraphContent);
 
