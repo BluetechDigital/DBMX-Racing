@@ -40,7 +40,7 @@ const Logos: FC<IProps> = ({title, logoGrid}) => {
 						{logoGrid.map((keys) => (
 							<LogoCard
 								image={keys?.image}
-								key={keys?.id || Math.floor(Math.random() * 1001)}
+								key={keys?.id || keys?.image?.sourceUrl}
 							/>
 						))}
 					</motion.div>

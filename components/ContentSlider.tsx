@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import styled from "styled-components";
 import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef, FC} from "react";
 import styles from "../styles/components/ContentSlider.module.scss";
@@ -70,12 +69,6 @@ interface IProps {
 		};
 	};
 }
-
-// Styling Components
-const ContentSliderStyling = styled.div`
-	width: 100%;
-	height: 100%;
-`;
 
 const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 	/* Check if paragraph content is null
@@ -177,7 +170,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 	}, [mainActive, mainNotActive, postActive, postNotActive]);
 
 	return (
-		<ContentSliderStyling className="w-full h-full">
+		<section className="w-full h-full">
 			<div
 				className="h-[100vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh]"
 				style={{
@@ -230,7 +223,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									</span>
 								</div>
 								<h2
-									className="title py-4 lg:py-8 text-white text-8xl w-full lg:w-[55rem] leading-[4rem]"
+									className="title py-4 lg:py-8 text-white text-6xl md:text-7xl lg:text-8xl w-full lg:w-[55rem] leading-[3rem] lg:leading-[4rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{content?.title}
@@ -320,7 +313,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									</span>
 								</div>
 								<h2
-									className="title py-4 lg:py-8 text-white text-8xl w-full lg:w-[55rem] leading-[4rem]"
+									className="title py-4 lg:py-8 text-white text-6xl md:text-7xl lg:text-8xl w-full lg:w-[55rem] leading-[3rem] lg:leading-[4rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentTwo?.title}
@@ -397,7 +390,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									</span>
 								</div>
 								<h2
-									className="title py-4 lg:py-8 text-white text-8xl w-full lg:w-[55rem] leading-[4rem]"
+									className="title py-4 lg:py-8 text-white text-6xl md:text-7xl lg:text-8xl w-full lg:w-[55rem] leading-[3rem] lg:leading-[4rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentThree?.title}
@@ -479,7 +472,11 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									{content?.title}
 								</h3>
 								<div
-									className={isParagraphContent(content?.paragraph)}
+									className={
+										content?.paragraph
+											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
+											: `hidden`
+									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
 										content?.paragraph
 									)}
@@ -515,7 +512,11 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									{contentTwo?.title}
 								</h3>
 								<div
-									className={isParagraphContent(contentTwo?.paragraph)}
+									className={
+										contentTwo?.paragraph
+											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
+											: `hidden`
+									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
 										contentTwo?.paragraph
 									)}
@@ -551,7 +552,11 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									{contentThree?.title}
 								</h3>
 								<div
-									className={isParagraphContent(contentThree?.paragraph)}
+									className={
+										contentThree?.paragraph
+											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
+											: `hidden`
+									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
 										contentThree?.paragraph
 									)}
@@ -561,7 +566,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 					</article>
 				</div>
 			</div>
-		</ContentSliderStyling>
+		</section>
 	);
 };
 

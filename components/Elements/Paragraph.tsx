@@ -9,7 +9,7 @@ interface ParagraphProps {
 }
 
 const Paragraph: FC<ParagraphProps> = ({content, tailwindStyling}) => {
-	/* Sanitize paragraph content */
+	/* Sanitize the WYSIWYG paragraph content */
 	function createParagraphMarkup(paragraphContent: string) {
 		return {
 			__html: DOMPurify.sanitize(paragraphContent),

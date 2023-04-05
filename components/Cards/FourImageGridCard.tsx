@@ -37,6 +37,7 @@ const FourImageGridCard: FC<IProps> = ({title, link, image}) => {
 				</motion.div>
 				<div>
 					<Image
+						priority={true}
 						alt={image?.altText}
 						src={image?.sourceUrl}
 						width={image?.mediaDetails?.width}

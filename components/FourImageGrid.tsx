@@ -49,7 +49,7 @@ const FourImageGrid: FC<IProps> = ({title, servicesGrid}) => {
 							link={keys?.link}
 							title={keys?.title}
 							image={keys?.image}
-							key={keys?.id || Math.floor(Math.random() * 1001)}
+							key={keys?.id || keys?.title}
 						/>
 					))}
 				</motion.div>

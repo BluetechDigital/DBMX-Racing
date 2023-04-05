@@ -47,7 +47,7 @@ const JumboContentCard: FC<IProps> = ({
 			buttonColor = "text-black";
 			backgroundColor = "bg-white";
 			paragraphColor = "text-black";
-			backgroundImage = `url("/svg/white.svg")`;
+			backgroundImage = `none`;
 			break;
 		case "Red":
 			titleColor = "text-white";
@@ -81,6 +81,7 @@ const JumboContentCard: FC<IProps> = ({
 						}
 					>
 						<Image
+							priority={true}
 							alt={image?.altText}
 							src={image?.sourceUrl}
 							width={image?.mediaDetails?.width}
@@ -135,6 +136,7 @@ const JumboContentCard: FC<IProps> = ({
 						}
 					>
 						<Image
+							priority={true}
 							alt={image?.altText}
 							src={image?.sourceUrl}
 							width={image?.mediaDetails?.width}

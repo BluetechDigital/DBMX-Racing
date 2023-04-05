@@ -10,24 +10,25 @@ import {
 } from "../lib/MenuLinks";
 
 // Components
-import Logos from "@/components/Logos";
 import Footer from "@/components/Footer";
+import Blogs from "@/components/Blogs";
 import HeroTwo from "@/components/HeroTwo";
 import MetaTag from "../components/Meta/MetaTag";
 import StoreLocation from "@/components/StoreLocation";
 import ContactBanner from "@/components/ContactBanner";
+import {getAllBlogsContent} from "@/lib/BlogPostsSlugs";
 import TitleParagraph from "@/components/TitleParagraph";
-import ProductGrid from "@/components/ProductGrid";
 
-export default function Products({
+const blogs = ({
 	seo,
-	pageTitle,
+	blogs,
 	content,
+	pageTitle,
 	mainMenuLinks,
 	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
-}: any) {
+}: any) => {
 	return (
 		<motion.div
 			exit={{
@@ -58,18 +59,7 @@ export default function Products({
 					paragraph={content?.titleParagraph?.paragraph}
 				/>
 
-				{/* Product Grid */}
-				<ProductGrid
-					title={content?.productGrid?.title}
-					subtitle={content?.productGrid?.subtitle}
-					paragraph={content?.productGrid?.paragraph}
-					productGrid={content?.productGrid?.products}
-				/>
-
-				<Logos
-					title={content?.trustedBrands?.title}
-					logoGrid={content?.trustedBrands?.logos}
-				/>
+				<Blogs blogs={blogs} />
 
 				<ContactBanner
 					title={content?.contactBanner?.title}
@@ -95,19 +85,19 @@ export default function Products({
 			</main>
 		</motion.div>
 	);
-}
+};
 
 export async function getStaticProps() {
-	const getProductsPageContent: any = gql`
+	const getBlogsPageContent: any = gql`
 		{
-			pageTitle: pages(where: {id: 10, status: PUBLISH}) {
+			pageTitle: pages(where: {id: 903, status: PUBLISH}) {
 				edges {
 					node {
 						title
 					}
 				}
 			}
-			mainContent: pages(where: {id: 10, status: PUBLISH}) {
+			mainContent: pages(where: {id: 903, status: PUBLISH}) {
 				edges {
 					node {
 						seo {
@@ -139,7 +129,7 @@ export async function getStaticProps() {
 								mediaItemUrl
 							}
 						}
-						productsPage {
+						blogsPage {
 							heroSection {
 								title
 								paragraph
@@ -150,35 +140,6 @@ export async function getStaticProps() {
 							titleParagraph {
 								title
 								paragraph
-							}
-							productGrid {
-								title
-								subtitle
-								paragraph
-								products {
-									title
-									image {
-										altText
-										sourceUrl
-										mediaDetails {
-											height
-											width
-										}
-									}
-								}
-							}
-							trustedBrands {
-								title
-								logos {
-									image {
-										altText
-										sourceUrl
-										mediaDetails {
-											height
-											width
-										}
-									}
-								}
 							}
 							contactBanner {
 								title
@@ -204,9 +165,10 @@ export async function getStaticProps() {
 	`;
 
 	const response: any = await client.query({
-		query: getProductsPageContent,
+		query: getBlogsPageContent,
 	});
 
+	const blogs: object = await getAllBlogsContent();
 	const mainMenuLinks: object = await getMainMenuLinks();
 	const navbarMenuLinks: object = await getNavbarMenuLinks();
 	const footerMenuLinks: object = await getFooterMenuLinks();
@@ -214,14 +176,17 @@ export async function getStaticProps() {
 
 	return {
 		props: {
+			blogs,
 			mainMenuLinks,
 			navbarMenuLinks,
 			footerMenuLinks,
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response?.data?.pageTitle?.edges[0]?.node?.title,
-			content: response.data?.mainContent?.edges[0]?.node?.productsPage,
+			content: response.data?.mainContent?.edges[0]?.node?.blogsPage,
 		},
 		revalidate: 60,
 	};
 }
+
+export default blogs;
