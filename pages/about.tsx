@@ -13,12 +13,12 @@ import {
 import Footer from "@/components/Footer";
 import HeroTwo from "@/components/HeroTwo";
 import MetaTag from "../components/Meta/MetaTag";
-import ContactInfo from "@/components/ContactInfo";
+import JumboContent from "../components/JumboContent";
 import StoreLocation from "@/components/StoreLocation";
-import Logos from "@/components/Logos";
-import ContactForm from "@/components/ContactForm";
+import ContactBanner from "@/components/ContactBanner";
+import TitleParagraph from "@/components/TitleParagraph";
 
-const contactUs = ({
+const about = ({
 	seo,
 	content,
 	pageTitle,
@@ -52,23 +52,18 @@ const contactUs = ({
 					backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
 				/>
 
-				<ContactInfo
-					email={themesOptionsContent?.email}
-					title={content?.contactInfo?.title}
-					paragraph={content?.contactInfo?.paragraph}
-					contactAddress={themesOptionsContent?.address}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+				<TitleParagraph
+					title={content?.titleParagraph?.title}
+					paragraph={content?.titleParagraph?.paragraph}
 				/>
 
-				<ContactForm
-					title={content?.contactForm?.title}
-					businessHours={themesOptionsContent?.businessHours}
-				/>
+				<JumboContent jumboContentSection={content?.jumboContentSection} />
 
-				<Logos
-					title={content?.trustedBrands?.title}
-					logoGrid={content?.trustedBrands?.logos}
+				<ContactBanner
+					title={content?.contactBanner?.title}
+					paragraph={content?.contactBanner?.paragraph}
+					buttonLink={content?.contactBanner?.buttonLink}
+					backgroundImage={content?.contactBanner?.backgroundImage?.sourceUrl}
 				/>
 
 				<StoreLocation
@@ -91,16 +86,16 @@ const contactUs = ({
 };
 
 export async function getStaticProps() {
-	const getContactUsPageContent: any = gql`
+	const getAboutPageContent: any = gql`
 		{
-			pageTitle: pages(where: {id: 8, status: PUBLISH}) {
+			pageTitle: pages(where: {id: 939, status: PUBLISH}) {
 				edges {
 					node {
 						title
 					}
 				}
 			}
-			mainContent: pages(where: {id: 8, status: PUBLISH}) {
+			mainContent: pages(where: {id: 939, status: PUBLISH}) {
 				edges {
 					node {
 						seo {
@@ -132,7 +127,7 @@ export async function getStaticProps() {
 								mediaItemUrl
 							}
 						}
-						contactUsPage {
+						aboutPage {
 							heroSection {
 								title
 								paragraph
@@ -140,16 +135,22 @@ export async function getStaticProps() {
 									sourceUrl
 								}
 							}
-							contactInfo {
+							titleParagraph {
 								title
 								paragraph
 							}
-							contactForm {
-								title
-							}
-							trustedBrands {
-								title
-								logos {
+							jumboContentSection {
+								content {
+									title
+									subtitle
+									paragraph
+									imageLocation
+									backgroundDisplay
+									buttonLink {
+										url
+										title
+										target
+									}
 									image {
 										altText
 										sourceUrl
@@ -158,6 +159,18 @@ export async function getStaticProps() {
 											width
 										}
 									}
+								}
+							}
+							contactBanner {
+								title
+								paragraph
+								buttonLink {
+									url
+									title
+									target
+								}
+								backgroundImage {
+									sourceUrl
 								}
 							}
 							ourLocation {
@@ -172,7 +185,7 @@ export async function getStaticProps() {
 	`;
 
 	const response: any = await client.query({
-		query: getContactUsPageContent,
+		query: getAboutPageContent,
 	});
 
 	const mainMenuLinks: object = await getMainMenuLinks();
@@ -188,10 +201,10 @@ export async function getStaticProps() {
 			themesOptionsContent,
 			seo: response?.data?.mainContent?.edges[0]?.node?.seo,
 			pageTitle: response?.data?.pageTitle?.edges[0]?.node?.title,
-			content: response.data?.mainContent?.edges[0]?.node?.contactUsPage,
+			content: response.data?.mainContent?.edges[0]?.node?.aboutPage,
 		},
 		revalidate: 60,
 	};
 }
 
-export default contactUs;
+export default about;

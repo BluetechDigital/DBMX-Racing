@@ -52,7 +52,7 @@ export default async function handler(req: any, res: any) {
 			await transporter.sendMail({
 				...mailOptions,
 				...generateEmailContent(body),
-				bcc: "dirtboxmx@hotmail.com",
+				bcc: "toddowenmpeli02@gmail.com",
 				replyTo: body.email,
 				subject: `${
 					body.subject ? `New enquiry for ${body.subject}` : "Feedback Form"
