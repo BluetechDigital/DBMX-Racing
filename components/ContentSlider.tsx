@@ -99,7 +99,6 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 	const postNotActive: string = styles.postNotActive;
 
 	const progressBarFill: string = styles.progressBarFill;
-	const progressBarFillActive: string = styles.progressBarFillActive;
 
 	useEffect(() => {
 		// Main Content
