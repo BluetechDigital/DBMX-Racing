@@ -75,9 +75,9 @@ const HeroThree: FC<HeroProps> = ({
 
 	return (
 		<section className={styles.hero}>
-			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[75vh] z-[997]">
+			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[75vh]">
 				{/* Background Video */}
-				<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+				<div className="absolute top-0 bottom-0 left-0 w-full h-full z-[995]">
 					{/* Video */}
 					<video
 						autoPlay
