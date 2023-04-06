@@ -61,7 +61,7 @@ const Footer: FC<FooterProps> = ({
 								<NavbarMenuLinks
 									url={keys?.node?.url}
 									label={keys?.node?.label}
-									tailwindStyling="block py-4 text-base tracking-[.15rem] uppercase font-semibold text-white hover:text-red"
+									tailwindStyling="block py-0 lg:py-4 text-base tracking-[.15rem] uppercase font-semibold text-white hover:text-red"
 								/>
 							</li>
 						))}

@@ -41,7 +41,7 @@ const ProductGrid: FC<IProps> = ({title, subtitle, paragraph, productGrid}) => {
 							tailwindStyling="max-w-3xl mt-4 py-8 text-grey text-left text-medium"
 						/>
 					</div>
-					<div className="grid items-center justify-center grid-cols-2 gap-10 -mx-4 -mb-8 lg:grid-cols-4 lg:justify-between xl:-mx-8">
+					<div className="grid items-center justify-center gap-10 -mx-4 -mb-8 grid-col sm:grid-cols-2 lg:grid-cols-4 lg:justify-between xl:-mx-8">
 						{productGrid.map((keys) => (
 							<ProductCard
 								title={keys?.title}

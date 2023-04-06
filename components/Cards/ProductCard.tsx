@@ -34,7 +34,7 @@ const ProductCard: FC<IProps> = ({title, image}) => {
 			</motion.div>
 			<motion.h4
 				variants={fadeInUp}
-				className="mt-2 text-base font-bold tracking-widest text-left text-goldPrime"
+				className="mt-2 text-base font-bold tracking-widest text-center sm:text-left text-goldPrime"
 			>
 				{title}
 			</motion.h4>

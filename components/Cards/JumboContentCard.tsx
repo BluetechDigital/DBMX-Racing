@@ -65,7 +65,7 @@ const JumboContentCard: FC<IProps> = ({
 				backgroundImage: backgroundImage,
 			}}
 		>
-			<div className="container relative px-4 mx-auto">
+			<div className="container relative px-0 mx-auto lg:px-4">
 				<div
 					className={
 						imageLocation === "Left"
@@ -112,7 +112,7 @@ const JumboContentCard: FC<IProps> = ({
 							</motion.h2>
 							<Paragraph
 								content={paragraph}
-								tailwindStyling={`w-full lg:max-w-2xl mx-auto mt-4 py-8 ${paragraphColor} text-center sm:text-left text-medium`}
+								tailwindStyling={`w-full lg:max-w-2xl mx-auto mt-4 py-8 ${paragraphColor} text-left text-medium`}
 							/>
 							<Link
 								href={buttonLink?.url ? buttonLink?.url : `/`}

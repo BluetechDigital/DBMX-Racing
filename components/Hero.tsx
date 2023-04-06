@@ -124,7 +124,7 @@ const Hero: FC<HeroProps> = ({
 				</nav>
 				<div className="container relative flex flex-col items-baseline justify-center px-4 m-auto text-center sm:text-left">
 					<div className="max-w-3xl">
-						<h1 className="flex flex-col sm:block text-left mb-3 text-7xl md:text-8xl text-white font-bold lg:leading-[4rem]">
+						<h1 className="flex flex-col sm:block text-left mb-3 text-6xl sm:text-7xl md:text-8xl text-white font-bold leading-[3rem] lg:leading-[4rem]">
 							{title}
 						</h1>
 					</div>
