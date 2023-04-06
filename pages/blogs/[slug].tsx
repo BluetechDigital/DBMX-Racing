@@ -15,6 +15,7 @@ import JumboContent from "@/components/JumboContent";
 import ContactBanner from "@/components/ContactBanner";
 import TitleParagraph from "@/components/TitleParagraph";
 import HeroThree from "@/components/HeroThree";
+import BackHoverButton from "@/components/Elements/BackHoverButton";
 
 const singlePost = ({
 	seo,
@@ -51,6 +52,8 @@ const singlePost = ({
 					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
 					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
 				/>
+
+				<BackHoverButton link={`/blogs`} />
 
 				<TitleParagraph
 					title={content?.titleParagraph?.title}
