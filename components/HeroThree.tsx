@@ -139,7 +139,7 @@ const HeroThree: FC<HeroProps> = ({
 						<span aria-hidden="true"></span>
 					</button>
 				</nav>
-				<div className="container relative flex flex-col items-center justify-center px-4 m-auto text-center">
+				<div className="container relative flex flex-col items-center justify-center px-4 m-auto text-center z-[995]">
 					<div className="max-w-3xl">
 						<motion.h1
 							variants={fadeInUp}

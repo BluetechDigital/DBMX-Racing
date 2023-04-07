@@ -106,7 +106,7 @@ const JumboContentCard: FC<IProps> = ({
 							</motion.span>
 							<motion.h2
 								variants={fadeInUp}
-								className={`mt-2 mb-6 text-4xl font-semibold ${titleColor} lg:mb-10 lg:pr-8`}
+								className={`mt-2 text-4xl font-semibold ${titleColor} lg:pr-8`}
 							>
 								{title}
 							</motion.h2>
