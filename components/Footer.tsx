@@ -50,7 +50,7 @@ const Footer: FC<FooterProps> = ({
 								height={500}
 								width={500}
 								alt="DBMX Racing FSB Certification"
-								src="http://dbmx-racing.local/wp-content/uploads/2023/04/fsb-148w.jpg"
+								src="https://mydummysite.co.uk/ToddLearningTwo/wp-content/uploads/2023/04/fsb-148w.jpg"
 								className="object-contain object-center w-full h-[75px]"
 							/>
 						</div>
