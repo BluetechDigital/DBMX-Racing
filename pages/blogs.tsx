@@ -2,6 +2,7 @@
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
+import {getAllBlogsContent} from "@/lib/BlogPostsSlugs";
 import {getThemesOptionsContent} from "../lib/themesOptions";
 import {
 	getMainMenuLinks,
@@ -16,7 +17,6 @@ import HeroTwo from "@/components/HeroTwo";
 import MetaTag from "../components/Meta/MetaTag";
 import StoreLocation from "@/components/StoreLocation";
 import ContactBanner from "@/components/ContactBanner";
-import {getAllBlogsContent} from "@/lib/BlogPostsSlugs";
 import TitleParagraph from "@/components/TitleParagraph";
 
 const blogs = ({

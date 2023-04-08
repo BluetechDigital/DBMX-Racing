@@ -72,21 +72,26 @@ const Hero: FC<HeroProps> = ({
 		setMenuActive(!menuActive);
 	}
 
-	const mainImageVideoTailwindcss: string = `object-cover object-center w-full h-full`;
-
 	return (
 		<section className={styles.hero}>
 			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[100vh]">
 				{/* Background Video */}
-				<div className="absolute top-0 bottom-0 left-0 w-full h-full">
-					<video
-						autoPlay
-						muted
-						loop
-						className={`block ${mainImageVideoTailwindcss}`}
-					>
-						<source src={backgroundVideoUrl} type="video/mp4" />
-					</video>
+				<div className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
+					<div className="w-full h-full ">
+						<div className="relative pt-[56.25%] h-full">
+							<iframe
+								width="3840"
+								height="2160"
+								frameBorder="0"
+								allowFullScreen
+								title="DBMX Racing Hero Video"
+								allow="autoplay; fullscreen; picture-in-picture"
+								className="absolute top-0 left-0 w-full h-full min-h-screen"
+								src={`${backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
+							/>
+						</div>
+					</div>
+
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
 				</div>
 				<nav className="fixed flex items-center justify-between w-full px-6 py-10 lg:py-8 bg-pureBlack z-[999]">

@@ -1,23 +1,26 @@
-import "../styles/globals.scss";
+// Import
+import postHog from "posthog-js";
 import {useRouter} from "next/router";
 import type {AppProps} from "next/app";
 import {client} from "../config/apollo";
 import {useState, useEffect} from "react";
-import Layout from "@/components/Layout/Layout";
+import {PostHogProvider} from "posthog-js/react";
 import {ApolloProvider} from "@apollo/client/react";
 
-import postHog from "posthog-js";
-import {PostHogProvider} from "posthog-js/react";
+// Components
+import Layout from "@/components/Layout/Layout";
+
+// Styling
+import "../styles/globals.scss";
 
 // Check that PostHog is client-side (used to handle Next.js SSR)
 if (typeof window !== "undefined") {
-	postHog.init(`${process.env.NEXT_PUBLIC_POSTHOG_KEY}`, {
-		api_host:
-			`${process.env.NEXT_PUBLIC_POSTHOG_HOST}` || "https://app.posthog.com",
+	postHog.init(`${process.env.POSTHOG_KEY}`, {
+		api_host: `${process.env.POSTHOG_HOST}` || "https://app.posthog.com",
 		// Disable in development
-		loaded: (postHog) => {
-			if (process.env.NODE_ENV === "development") postHog.opt_out_capturing();
-		},
+		// loaded: (postHog) => {
+		// 	if (process.env.NODE_ENV === "development") postHog.opt_out_capturing();
+		// },
 	});
 }
 

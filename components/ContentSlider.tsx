@@ -174,21 +174,26 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full main-post__image">
 								{/* Video */}
-								<video
-									autoPlay
-									muted
-									loop
+								<div
 									className={
 										content?.backgroundImageOrVideo === "Video"
-											? `block ${mainImageVideoTailwindcss}`
+											? `w-full h-full overflow-hidden`
 											: ` hidden`
 									}
 								>
-									<source
-										src={contentTwo?.backgroundVideoUrl}
-										type="video/mp4"
-									/>
-								</video>
+									<div className="relative pt-[56.25%] h-full">
+										<iframe
+											width="3840"
+											height="2160"
+											frameBorder="0"
+											title="DBMX Racing Hero Video"
+											className="absolute top-0 left-0 w-full h-full"
+											allow="autoplay; fullscreen; picture-in-picture"
+											src={`${content?.backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
+										/>
+									</div>
+								</div>
+
 								{/* Image */}
 								<Image
 									width={content?.backgroundImage?.mediaDetails?.width}
@@ -264,21 +269,25 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
 								{/* Video */}
-								<video
-									autoPlay
-									muted
-									loop
+								<div
 									className={
 										contentTwo?.backgroundImageOrVideo === "Video"
-											? `block ${mainImageVideoTailwindcss}`
+											? `w-full h-full overflow-hidden`
 											: ` hidden`
 									}
 								>
-									<source
-										src={contentTwo?.backgroundVideoUrl}
-										type="video/mp4"
-									/>
-								</video>
+									<div className="relative pt-[56.25%] h-full">
+										<iframe
+											width="3840"
+											height="2160"
+											frameBorder="0"
+											title="DBMX Racing Hero Video"
+											className="absolute top-0 left-0 w-full h-full"
+											allow="autoplay; fullscreen; picture-in-picture"
+											src={`${contentTwo?.backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
+										/>
+									</div>
+								</div>
 								{/* Image */}
 								<Image
 									width={contentTwo?.backgroundImage?.mediaDetails?.width}
@@ -341,21 +350,25 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 						>
 							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
 								{/* Video */}
-								<video
-									autoPlay
-									muted
-									loop
+								<div
 									className={
 										contentThree?.backgroundImageOrVideo === "Video"
-											? `block ${mainImageVideoTailwindcss}`
+											? `w-full h-full overflow-hidden`
 											: ` hidden`
 									}
 								>
-									<source
-										src={contentThree?.backgroundVideoUrl}
-										type="video/mp4"
-									/>
-								</video>
+									<div className="relative pt-[56.25%] h-full">
+										<iframe
+											width="3840"
+											height="2160"
+											frameBorder="0"
+											title="DBMX Racing Hero Video"
+											className="absolute top-0 left-0 w-full h-full"
+											allow="autoplay; fullscreen; picture-in-picture"
+											src={`${contentThree?.backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
+										/>
+									</div>
+								</div>
 								{/* Image */}
 								<Image
 									width={contentThree?.backgroundImage?.mediaDetails?.width}
