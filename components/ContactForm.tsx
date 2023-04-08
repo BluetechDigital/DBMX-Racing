@@ -3,6 +3,7 @@ import {motion} from "framer-motion";
 import React, {useState, FC} from "react";
 import {sendContactForm} from "../lib/api";
 import Paragraph from "./Elements/Paragraph";
+import ReCAPTCHA from "react-google-recaptcha";
 import {useFormik, Formik, Field, Form} from "formik";
 import {fadeIn, fadeInUp, stagger} from "../animations/animations";
 
@@ -68,6 +69,17 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 		return errors;
 	};
 
+	// Google Recaptcha Validation
+	const [recaptchaResult, setRecaptchaResult] = useState(null);
+	const googleRecaptchaValidate = (value: any) => {
+		return value;
+	};
+
+	const handleRecaptchaChange = (response: any) => {
+		const result = googleRecaptchaValidate(response);
+		setRecaptchaResult(result);
+	};
+
 	/* Contact Form Fields
 	And Initial Values */
 	const formik: any = useFormik({
@@ -84,15 +96,21 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 				...prev,
 				isLoading: true,
 			}));
-			try {
-				await sendContactForm(values);
-				setState(initState);
-			} catch (error) {
-				setState((prev: any) => ({
-					...prev,
-					isLoading: false,
-					// error: error.message,
-				}));
+			if (recaptchaResult !== null || recaptchaResult !== undefined) {
+				try {
+					await sendContactForm(values);
+					setState(initState);
+				} catch (error) {
+					setState((prev: any) => ({
+						...prev,
+						isLoading: false,
+						// error: error.message,
+					}));
+				}
+			} else {
+				console.log(
+					"Error Message: Something went wrong with your Google Recaptcha validation. Please try again."
+				);
 			}
 		},
 	});
@@ -223,6 +241,13 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 										className="p-4 w-full h-48 font-[400] text-darkGrey placeholder-darkGrey bg-white bg-opacity-50 outline-none border-[1px] border-darkGrey active:border-darkRed focus:border-darkRed resize-none focus:ring-[1px] focus:ring-darkRed"
 									/>
 								</motion.div>
+								<motion.div variants={fadeInUp}>
+									<ReCAPTCHA
+										sitekey="6LfkXm4lAAAAACFUoSeHOLpzuXrR5YYPxnVrbSXt"
+										// sitekey={`${process.env.RECAPTCHA_SITE_KEY}`}
+										onChange={handleRecaptchaChange}
+									/>
+								</motion.div>
 								<motion.button
 									variants={fadeInUp}
 									// isLoading={isLoading}
@@ -232,12 +257,14 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 										!formik?.values?.lastName ||
 										!formik?.values?.email ||
 										!formik?.values?.subject ||
-										!formik?.values?.message
+										!formik?.values?.message ||
+										recaptchaResult === null ||
+										recaptchaResult === undefined
 									}
-									className="w-full text-white disabled:bg-opacity-50 disabled:cursor-not-allowed"
+									className="w-full text-white disabled:bg-opacity-20 disabled:cursor-not-allowed"
 									type="submit"
 								>
-									<span className={styles.submitButton}>
+									<span className={` ${styles.submitButton}`}>
 										<span className={styles.span}>
 											<svg
 												width="45px"
