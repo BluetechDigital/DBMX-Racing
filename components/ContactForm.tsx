@@ -70,14 +70,14 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 	};
 
 	// Google Recaptcha Validation
-	const [recaptchaResult, setRecaptchaResult] = useState(null);
-	const googleRecaptchaValidate = (value: any) => {
+	const [reCaptchaResult, setReCaptchaResult] = useState(null);
+	const googleReCaptchaValidate = (value: any) => {
 		return value;
 	};
 
-	const handleRecaptchaChange = (response: any) => {
-		const result = googleRecaptchaValidate(response);
-		setRecaptchaResult(result);
+	const handleReCaptchaChange = (response: any) => {
+		const result = googleReCaptchaValidate(response);
+		setReCaptchaResult(result);
 	};
 
 	/* Contact Form Fields
@@ -96,7 +96,7 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 				...prev,
 				isLoading: true,
 			}));
-			if (recaptchaResult !== null || recaptchaResult !== undefined) {
+			if (reCaptchaResult !== null || reCaptchaResult !== undefined) {
 				try {
 					await sendContactForm(values);
 					setState(initState);
@@ -244,7 +244,7 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 								<motion.div variants={fadeInUp}>
 									<ReCAPTCHA
 										sitekey={`6LfkXm4lAAAAACFUoSeHOLpzuXrR5YYPxnVrbSXt`}
-										onChange={handleRecaptchaChange}
+										onChange={handleReCaptchaChange}
 									/>
 								</motion.div>
 								<motion.button
@@ -257,8 +257,8 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 										!formik?.values?.email ||
 										!formik?.values?.subject ||
 										!formik?.values?.message ||
-										recaptchaResult === null ||
-										recaptchaResult === undefined
+										reCaptchaResult === null ||
+										reCaptchaResult === undefined
 									}
 									className="w-full text-white disabled:bg-opacity-20 disabled:cursor-not-allowed"
 									type="submit"
