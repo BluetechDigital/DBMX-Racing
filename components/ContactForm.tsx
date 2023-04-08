@@ -69,7 +69,7 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 		return errors;
 	};
 
-	// Google Recaptcha Validation
+	// Google ReCaptcha Validation
 	const [reCaptchaResult, setReCaptchaResult] = useState(null);
 	const googleReCaptchaValidate = (value: any) => {
 		return value;
