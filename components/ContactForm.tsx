@@ -243,8 +243,7 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 								</motion.div>
 								<motion.div variants={fadeInUp}>
 									<ReCAPTCHA
-										sitekey="6LfkXm4lAAAAACFUoSeHOLpzuXrR5YYPxnVrbSXt"
-										// sitekey={`${process.env.RECAPTCHA_SITE_KEY}`}
+										sitekey={`${process.env.RECAPTCHA_SITE_KEY}`}
 										onChange={handleRecaptchaChange}
 									/>
 								</motion.div>
