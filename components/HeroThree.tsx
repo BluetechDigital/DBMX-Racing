@@ -79,7 +79,13 @@ const HeroThree: FC<HeroProps> = ({
 				{/* Background Video */}
 				<div className="absolute top-0 bottom-0 left-0 w-full h-full z-[995]">
 					{/* Video */}
-					<div className="w-full h-full max-h-[75vh] overflow-hidden">
+					<div
+						className={
+							backgroundImageOrVideo === "Video"
+								? `w-full h-full max-h-[75vh] overflow-hidden`
+								: ` hidden`
+						}
+					>
 						<div className="relative pt-[56.25%] h-full">
 							<iframe
 								width="3840"
@@ -87,11 +93,7 @@ const HeroThree: FC<HeroProps> = ({
 								frameBorder="0"
 								title="DBMX Racing Hero Video"
 								allow="autoplay; fullscreen; picture-in-picture"
-								className={
-									backgroundImageOrVideo === "Video"
-										? `absolute top-0 left-0 w-full h-full`
-										: ` hidden`
-								}
+								className="absolute top-0 left-0 w-full h-full"
 								src={`${backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
 							/>
 						</div>

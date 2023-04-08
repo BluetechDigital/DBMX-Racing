@@ -77,7 +77,7 @@ const Hero: FC<HeroProps> = ({
 			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[100vh]">
 				{/* Background Video */}
 				<div className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
-					<div className="w-full h-full ">
+					<div className="w-full h-full">
 						<div className="relative pt-[56.25%] h-full">
 							<iframe
 								width="3840"
