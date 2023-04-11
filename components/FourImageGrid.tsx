@@ -31,10 +31,10 @@ const FourImageGrid: FC<IProps> = ({title, servicesGrid}) => {
 		<section className="py-12 bg-pureBlack md:pt-16 md:pb-20">
 			<div className="container px-4 mx-auto">
 				<div className="flex flex-wrap items-end mb-10 -mx-4">
-					<div className="w-full px-4 mb-6 sm:w-1/2 xl:w-3/5 sm:mb-0">
+					<div className="w-full max-w-xl px-4 mb-6 xl:w-3/5 sm:mb-0">
 						<motion.h2
 							variants={fadeInUp}
-							className="text-3xl font-bold text-white md:text-4xl font-heading"
+							className="text-3xl font-bold text-white md:text-4xl"
 						>
 							{title}
 						</motion.h2>

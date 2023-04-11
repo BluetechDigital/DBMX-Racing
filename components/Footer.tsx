@@ -6,6 +6,7 @@ import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 interface FooterProps {
 	email: string;
 	phoneNumber: string;
+	phoneNumberTwo: string;
 	twitterLink: string;
 	facebookLink: string;
 	linkedinLink: string;
@@ -25,6 +26,7 @@ interface FooterProps {
 const Footer: FC<FooterProps> = ({
 	email,
 	phoneNumber,
+	phoneNumberTwo,
 	twitterLink,
 	facebookLink,
 	linkedinLink,
@@ -34,7 +36,7 @@ const Footer: FC<FooterProps> = ({
 	return (
 		<section className="border-t-[5px] bg-pureBlack border-red">
 			<div className="container flex flex-col px-0 mx-auto gap-y-10">
-				<div className="flex flex-col items-start justify-between px-8 py-10 text-center lg:px-0 lg:items-center sm:flex-row lg:text-left gap-y-20">
+				<div className="flex flex-col items-start justify-between px-8 py-10 text-center lg:px-0 sm:items-end sm:grid sm:grid-cols-2 lg:flex lg:flex-row lg:text-left gap-y-20">
 					<div className="flex flex-col items-start justify-center gap-y-8">
 						<Link className="mr-auto text-3xl font-bold leading-none" href="/">
 							<Image
@@ -66,7 +68,7 @@ const Footer: FC<FooterProps> = ({
 							</li>
 						))}
 					</ul>
-					<div className="flex flex-col items-end gap-4">
+					<div className="flex flex-col items-baseline gap-4 lg:items-end">
 						<div className="flex flex-col justify-center gap-2">
 							<span className="flex items-center gap-2 text-goldPrime">
 								Tel:
@@ -75,6 +77,15 @@ const Footer: FC<FooterProps> = ({
 									href={`tel:${phoneNumber}`}
 								>
 									{phoneNumber}
+								</Link>
+							</span>
+							<span className="flex items-center gap-2 text-goldPrime">
+								Tel:
+								<Link
+									className="text-base leading-none transition-all duration-500 ease-in-out text-goldPrime hover:text-red"
+									href={`tel:${phoneNumberTwo}`}
+								>
+									{phoneNumberTwo}
 								</Link>
 							</span>
 							<span className="flex items-center gap-2 text-goldPrime">

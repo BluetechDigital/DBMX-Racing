@@ -44,7 +44,7 @@ const FourImageGridCard: FC<IProps> = ({title, link, image}) => {
 						height={image?.mediaDetails?.height}
 						className={
 							image?.sourceUrl
-								? `block relative z-0 object-cover w-full h-full min-h-[450px] max-h-[450px] transition-transform duration-500 transform group-hover:scale-102`
+								? `block relative z-0 object-cover object-center w-full h-full min-h-[250px] lg:min-h-[450px] max-h-[450px] transition-transform duration-500 transform group-hover:scale-102`
 								: `hidden`
 						}
 					/>

@@ -84,6 +84,7 @@ const contactUs = ({
 					linkedinLink={themesOptionsContent?.linkedinLink}
 					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 					copyRightText={themesOptionsContent?.copyrightText}
+					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
 				/>
 			</main>
 		</motion.div>

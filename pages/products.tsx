@@ -91,6 +91,7 @@ export default function Products({
 					linkedinLink={themesOptionsContent?.linkedinLink}
 					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 					copyRightText={themesOptionsContent?.copyrightText}
+					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
 				/>
 			</main>
 		</motion.div>
