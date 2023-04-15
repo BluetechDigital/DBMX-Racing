@@ -27,6 +27,7 @@ interface FooterProps {
 
 const Footer: FC<FooterProps> = ({
 	email,
+	emailTwo,
 	phoneNumber,
 	twitterLink,
 	facebookLink,

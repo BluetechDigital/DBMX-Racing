@@ -25,6 +25,7 @@ const noPageExits = ({footerMenuLinks, themesOptionsContent}: any) => {
 
 				<Footer
 					email={themesOptionsContent?.email}
+					emailTwo={themesOptionsContent?.emailTwo}
 					phoneNumber={themesOptionsContent?.phoneNumber}
 					twitterLink={themesOptionsContent?.twitterLink}
 					facebookLink={themesOptionsContent?.facebookLink}
