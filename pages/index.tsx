@@ -55,6 +55,7 @@ export default function Home({
 					navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 					buttonLinkTwo={content?.heroSection?.buttonLinkTwo}
 					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
+					backgroundImage={content?.heroSection?.backgroundImage?.sourceUrl}
 				/>
 
 				<TitleParagraph
@@ -140,6 +141,9 @@ export async function getStaticProps() {
 								title
 								paragraph
 								backgroundVideoUrl
+								backgroundImage {
+									sourceUrl
+								}
 								buttonLink {
 									url
 									title

@@ -20,6 +20,7 @@ interface HeroProps {
 	twitterLink: string;
 	linkedinLink: string;
 	facebookLink: string;
+	backgroundImage: string;
 	backgroundVideoUrl: string;
 	buttonLink: {
 		url: string;
@@ -63,6 +64,7 @@ const Hero: FC<HeroProps> = ({
 	buttonLinkTwo,
 	mainMenuLinks,
 	navbarMenuLinks,
+	backgroundImage,
 	backgroundVideoUrl,
 }) => {
 	/* Hides or Displays the Full Nav Menu */
@@ -76,8 +78,11 @@ const Hero: FC<HeroProps> = ({
 		<section className={styles.hero}>
 			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[100vh]">
 				{/* Background Video */}
-				<div className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
-					<div className="w-full h-full">
+				<div
+					className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
+					style={{backgroundImage: `url("${backgroundImage}")`}}
+				>
+					<div className="hidden w-full h-full 2xl:block">
 						<div className="relative pt-[56.25%] h-full">
 							<iframe
 								width="3840"

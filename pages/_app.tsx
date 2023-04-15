@@ -18,9 +18,9 @@ if (typeof window !== "undefined") {
 	postHog.init(`${process.env.POSTHOG_KEY}`, {
 		api_host: `${process.env.POSTHOG_HOST}` || "https://app.posthog.com",
 		// Disable in development
-		loaded: (postHog) => {
-			if (process.env.NODE_ENV === "development") postHog.opt_out_capturing();
-		},
+		// loaded: (postHog) => {
+		// 	if (process.env.NODE_ENV === "development") postHog.opt_out_capturing();
+		// },
 	});
 }
 
@@ -105,6 +105,7 @@ export default function App({Component, pageProps}: AppProps) {
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
+				{/* Cookie Policy Pop Up */}
 				{postHog.has_opted_in_capturing() ||
 				postHog.has_opted_out_capturing() ? null : (
 					<CookiePolicyCard />
