@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
+import parse from "html-react-parser";
+import styled from "styled-components";
 import {fadeInUp, fadeInTwo, stagger} from "../animations/animations";
 
 // Components
@@ -52,6 +54,24 @@ interface HeroProps {
 	];
 }
 
+const Vimeo = styled.div`
+	height: auto;
+	max-width: 100%;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 56.25%;
+
+	iframe,
+	object,
+	embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+`;
+
 const Hero: FC<HeroProps> = ({
 	title,
 	email,
@@ -76,25 +96,17 @@ const Hero: FC<HeroProps> = ({
 
 	return (
 		<section className={styles.hero}>
-			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[100vh]">
+			<div
+				className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[100vh]"
+				style={{backgroundImage: `url("${backgroundImage}")`}}
+			>
 				{/* Background Video */}
-				<div
-					className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
-					style={{backgroundImage: `url("${backgroundImage}")`}}
-				>
-					<div className="hidden w-full h-full 2xl:block">
-						<div className="relative pt-[56.25%] h-full">
-							<iframe
-								width="3840"
-								height="2160"
-								frameBorder="0"
-								allowFullScreen
-								title="DBMX Racing Hero Video"
-								allow="autoplay; fullscreen; picture-in-picture"
-								className="absolute top-0 left-0 w-full h-full min-h-screen"
-								src={`${backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
-							/>
-						</div>
+				<div className="absolute w-full h-full overflow-hidden">
+					<div className="hidden bg-center bg-no-repeat bg-cover 2xl:block">
+						<Vimeo>{parse(backgroundVideoUrl)}</Vimeo>
+					</div>
+					<div className="block 2xl:hidden">
+						<Vimeo>{parse(backgroundVideoUrl)}</Vimeo>
 					</div>
 
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
@@ -112,7 +124,6 @@ const Hero: FC<HeroProps> = ({
 						</Link>
 					</div>
 					<ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:gap-x-10">
-						{/* Menu Link*/}
 						{navbarMenuLinks?.map((keys) => (
 							<li key={keys?.node?.id}>
 								<NavbarMenuLinks

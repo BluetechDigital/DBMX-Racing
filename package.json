@@ -21,6 +21,7 @@
 		"formik": "^2.2.9",
 		"framer-motion": "^10.10.0",
 		"graphql": "^16.6.0",
+		"html-react-parser": "^3.0.15",
 		"isomorphic-dompurify": "^1.2.0",
 		"next": "13.2.4",
 		"nodemailer": "^6.9.1",
