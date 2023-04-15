@@ -5,6 +5,7 @@ import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 
 interface FooterProps {
 	email: string;
+	emailTwo: string;
 	phoneNumber: string;
 	phoneNumberTwo: string;
 	twitterLink: string;
@@ -23,15 +24,16 @@ interface FooterProps {
 		}
 	];
 }
+
 const Footer: FC<FooterProps> = ({
 	email,
 	phoneNumber,
-	phoneNumberTwo,
 	twitterLink,
 	facebookLink,
 	linkedinLink,
-	footerMenuLinks,
 	copyRightText,
+	phoneNumberTwo,
+	footerMenuLinks,
 }) => {
 	return (
 		<section className="border-t-[5px] bg-pureBlack border-red">

@@ -11,13 +11,12 @@ import {
 
 // Components
 import Logos from "@/components/Logos";
-import Footer from "@/components/Footer";
 import HeroTwo from "@/components/HeroTwo";
-import MetaTag from "../components/Meta/MetaTag";
+import Layout from "@/components/Layout/Layout";
+import ProductGrid from "@/components/ProductGrid";
 import StoreLocation from "@/components/StoreLocation";
 import ContactBanner from "@/components/ContactBanner";
 import TitleParagraph from "@/components/TitleParagraph";
-import ProductGrid from "@/components/ProductGrid";
 
 export default function Products({
 	seo,
@@ -36,10 +35,12 @@ export default function Products({
 			initial="initial"
 			animate="animate"
 		>
-			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={pageTitle} seo={seo} />
-
-			<main>
+			<Layout
+				seo={seo}
+				pageTitle={pageTitle}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
 				<HeroTwo
 					title={content?.heroSection?.title}
 					email={themesOptionsContent?.email}
@@ -82,18 +83,7 @@ export default function Products({
 					title={content?.ourLocation?.title}
 					paragraph={content?.ourLocation?.paragraph}
 				/>
-
-				<Footer
-					email={themesOptionsContent?.email}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyrightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
+			</Layout>
 		</motion.div>
 	);
 }

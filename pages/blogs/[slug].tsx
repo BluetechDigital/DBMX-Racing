@@ -9,12 +9,11 @@ import {
 import {fetchBlogPostsSlugs, fetchBlogPostsContent} from "@/lib/BlogPostsSlugs";
 
 // Components
-import Footer from "@/components/Footer";
-import MetaTag from "@/components/Meta/MetaTag";
+import HeroThree from "@/components/HeroThree";
+import Layout from "@/components/Layout/Layout";
 import JumboContent from "@/components/JumboContent";
 import ContactBanner from "@/components/ContactBanner";
 import TitleParagraph from "@/components/TitleParagraph";
-import HeroThree from "@/components/HeroThree";
 import BackHoverButton from "@/components/Elements/BackHoverButton";
 
 const singlePost = ({
@@ -34,10 +33,12 @@ const singlePost = ({
 			initial="initial"
 			animate="animate"
 		>
-			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={pageTitle} seo={seo} />
-
-			<main>
+			<Layout
+				seo={seo}
+				pageTitle={pageTitle}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
 				<HeroThree
 					title={content?.heroSection?.title}
 					email={themesOptionsContent?.email}
@@ -68,18 +69,7 @@ const singlePost = ({
 					buttonLink={content?.contactBanner?.buttonLink}
 					backgroundImage={content?.contactBanner?.backgroundImage?.sourceUrl}
 				/>
-
-				<Footer
-					email={themesOptionsContent?.email}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyrightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
+			</Layout>
 		</motion.div>
 	);
 };

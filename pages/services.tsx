@@ -10,15 +10,14 @@ import {
 } from "../lib/MenuLinks";
 
 // Components
-import Footer from "@/components/Footer";
+import Logos from "@/components/Logos";
 import HeroTwo from "@/components/HeroTwo";
-import MetaTag from "../components/Meta/MetaTag";
+import Layout from "@/components/Layout/Layout";
 import ContentStats from "@/components/ContentStats";
 import JumboContent from "../components/JumboContent";
 import StoreLocation from "@/components/StoreLocation";
 import ContactBanner from "@/components/ContactBanner";
 import TitleParagraph from "@/components/TitleParagraph";
-import Logos from "@/components/Logos";
 
 const Services = ({
 	seo,
@@ -37,10 +36,12 @@ const Services = ({
 			initial="initial"
 			animate="animate"
 		>
-			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={pageTitle} seo={seo} />
-
-			<main>
+			<Layout
+				seo={seo}
+				pageTitle={pageTitle}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
 				<HeroTwo
 					title={content?.heroSection?.title}
 					email={themesOptionsContent?.email}
@@ -84,18 +85,7 @@ const Services = ({
 					title={content?.ourLocation?.title}
 					paragraph={content?.ourLocation?.paragraph}
 				/>
-
-				<Footer
-					email={themesOptionsContent?.email}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyrightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
+			</Layout>
 		</motion.div>
 	);
 };

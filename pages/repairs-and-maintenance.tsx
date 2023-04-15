@@ -10,9 +10,8 @@ import {
 } from "../lib/MenuLinks";
 
 // Components
-import Footer from "@/components/Footer";
 import HeroTwo from "@/components/HeroTwo";
-import MetaTag from "../components/Meta/MetaTag";
+import Layout from "@/components/Layout/Layout";
 import JumboContent from "../components/JumboContent";
 import StoreLocation from "@/components/StoreLocation";
 import ContactBanner from "@/components/ContactBanner";
@@ -36,10 +35,12 @@ const repairsMaintenance = ({
 			initial="initial"
 			animate="animate"
 		>
-			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={pageTitle} seo={seo} />
-
-			<main>
+			<Layout
+				seo={seo}
+				pageTitle={pageTitle}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
 				<HeroTwo
 					title={content?.heroSection?.title}
 					email={themesOptionsContent?.email}
@@ -77,18 +78,7 @@ const repairsMaintenance = ({
 					title={content?.ourLocation?.title}
 					paragraph={content?.ourLocation?.paragraph}
 				/>
-
-				<Footer
-					email={themesOptionsContent?.email}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyrightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
+			</Layout>
 		</motion.div>
 	);
 };

@@ -8,7 +8,7 @@ import {PostHogProvider} from "posthog-js/react";
 import {ApolloProvider} from "@apollo/client/react";
 
 // Components
-import Layout from "@/components/Layout/Layout";
+import CookiePolicyCard from "@/components/Elements/CookiePolicyCard";
 
 // Styling
 import "../styles/globals.scss";
@@ -105,10 +105,12 @@ export default function App({Component, pageProps}: AppProps) {
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				<Layout>
-					<Loading />
-					<Component {...pageProps} />
-				</Layout>
+				{postHog.has_opted_in_capturing() ||
+				postHog.has_opted_out_capturing() ? null : (
+					<CookiePolicyCard />
+				)}
+				<Loading />
+				<Component {...pageProps} />
 			</PostHogProvider>
 		</ApolloProvider>
 	);

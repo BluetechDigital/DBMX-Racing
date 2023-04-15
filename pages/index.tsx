@@ -12,13 +12,12 @@ import {
 // Components
 import Hero from "@/components/Hero";
 import Logos from "@/components/Logos";
-import Footer from "@/components/Footer";
-import MetaTag from "../components/Meta/MetaTag";
+import Layout from "@/components/Layout/Layout";
 import ContentSlider from "@/components/ContentSlider";
 import StoreLocation from "@/components/StoreLocation";
 import FourImageGrid from "@/components/FourImageGrid";
-import TitleParagraph from "@/components/TitleParagraph";
 import ContactBanner from "@/components/ContactBanner";
+import TitleParagraph from "@/components/TitleParagraph";
 import ContentSection from "@/components/ContentSection";
 
 export default function Home({
@@ -37,10 +36,12 @@ export default function Home({
 			initial="initial"
 			animate="animate"
 		>
-			{/* <!--===== META TAG =====--> */}
-			<MetaTag title={`DBMX Racing`} seo={seo} />
-
-			<main>
+			<Layout
+				seo={seo}
+				pageTitle={"DBMX Racing"}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
 				<Hero
 					title={content?.heroSection?.title}
 					email={themesOptionsContent?.email}
@@ -94,18 +95,7 @@ export default function Home({
 					title={content?.ourLocation?.title}
 					paragraph={content?.ourLocation?.paragraph}
 				/>
-
-				<Footer
-					email={themesOptionsContent?.email}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyrightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
+			</Layout>
 		</motion.div>
 	);
 }
