@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import parse from "html-react-parser";
+import styled from "styled-components";
 import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef, FC} from "react";
 import styles from "../styles/components/ContentSlider.module.scss";
@@ -69,6 +71,24 @@ interface IProps {
 		};
 	};
 }
+
+const Vimeo = styled.div`
+	position: relative;
+	padding-bottom: 56.25%;
+	overflow: hidden;
+	max-width: 100%;
+	height: auto;
+
+	iframe,
+	object,
+	embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+`;
 
 const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 	/* Sanitize the WYSIWYG paragraph content */
@@ -172,7 +192,12 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 						<article
 							className={`main-post ${mainActive} ${mainContentTailwindcss}`}
 						>
-							<div className="absolute top-0 bottom-0 left-0 w-full h-full main-post__image">
+							<div
+								className="absolute top-0 bottom-0 left-0 w-full h-full bg-center bg-no-repeat bg-cover main-post__image"
+								style={{
+									backgroundImage: `url("${content?.backgroundImage?.sourceUrl}")`,
+								}}
+							>
 								{/* Video */}
 								<div
 									className={
@@ -181,17 +206,13 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 											: ` hidden`
 									}
 								>
-									<div className="relative pt-[56.25%] h-full">
-										<iframe
-											width="3840"
-											height="2160"
-											frameBorder="0"
-											title="DBMX Racing Hero Video"
-											className="absolute top-0 left-0 w-full h-full"
-											allow="autoplay; fullscreen; picture-in-picture"
-											src={`${content?.backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
-										/>
-									</div>
+									<Vimeo className="hidden 2xl:block">
+										{parse(
+											content?.backgroundVideoUrl
+												? content?.backgroundVideoUrl
+												: `/`
+										)}
+									</Vimeo>
 								</div>
 
 								{/* Image */}
@@ -267,7 +288,12 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 						<article
 							className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
 						>
-							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+							<div
+								className="absolute top-0 bottom-0 left-0 w-full h-full bg-center bg-no-repeat bg-cover"
+								style={{
+									backgroundImage: `url("${contentTwo?.backgroundImage?.sourceUrl}")`,
+								}}
+							>
 								{/* Video */}
 								<div
 									className={
@@ -276,18 +302,15 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 											: ` hidden`
 									}
 								>
-									<div className="relative pt-[56.25%] h-full">
-										<iframe
-											width="3840"
-											height="2160"
-											frameBorder="0"
-											title="DBMX Racing Hero Video"
-											className="absolute top-0 left-0 w-full h-full"
-											allow="autoplay; fullscreen; picture-in-picture"
-											src={`${contentTwo?.backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
-										/>
-									</div>
+									<Vimeo className="hidden 2xl:block">
+										{parse(
+											contentTwo?.backgroundVideoUrl
+												? contentTwo?.backgroundVideoUrl
+												: `/`
+										)}
+									</Vimeo>
 								</div>
+
 								{/* Image */}
 								<Image
 									width={contentTwo?.backgroundImage?.mediaDetails?.width}
@@ -348,7 +371,12 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 						<article
 							className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
 						>
-							<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+							<div
+								className="absolute top-0 bottom-0 left-0 w-full h-full bg-center bg-no-repeat bg-cover"
+								style={{
+									backgroundImage: `url("${contentThree?.backgroundImage?.sourceUrl}")`,
+								}}
+							>
 								{/* Video */}
 								<div
 									className={
@@ -357,18 +385,15 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 											: ` hidden`
 									}
 								>
-									<div className="relative pt-[56.25%] h-full">
-										<iframe
-											width="3840"
-											height="2160"
-											frameBorder="0"
-											title="DBMX Racing Hero Video"
-											className="absolute top-0 left-0 w-full h-full"
-											allow="autoplay; fullscreen; picture-in-picture"
-											src={`${contentThree?.backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
-										/>
-									</div>
+									<Vimeo className="hidden 2xl:block">
+										{parse(
+											contentThree?.backgroundVideoUrl
+												? contentThree?.backgroundVideoUrl
+												: `/`
+										)}
+									</Vimeo>
 								</div>
+
 								{/* Image */}
 								<Image
 									width={contentThree?.backgroundImage?.mediaDetails?.width}
