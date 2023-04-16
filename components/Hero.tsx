@@ -103,7 +103,7 @@ const Hero: FC<HeroProps> = ({
 				{/* Background Video */}
 				<div className="absolute w-full h-full overflow-hidden">
 					<Vimeo className="hidden 2xl:block">
-						{parse(backgroundVideoUrl)}
+						{parse(backgroundVideoUrl ? backgroundVideoUrl : `/`)}
 					</Vimeo>
 
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />

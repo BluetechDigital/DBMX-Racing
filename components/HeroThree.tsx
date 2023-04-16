@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
+import parse from "html-react-parser";
+import styled from "styled-components";
 import {fadeInUp} from "../animations/animations";
 
 // Components
@@ -50,6 +52,24 @@ interface HeroProps {
 	];
 }
 
+const Vimeo = styled.div`
+	position: relative;
+	padding-bottom: 56.25%;
+	overflow: hidden;
+	max-width: 100%;
+	height: auto;
+
+	iframe,
+	object,
+	embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+`;
+
 const HeroThree: FC<HeroProps> = ({
 	title,
 	email,
@@ -77,7 +97,10 @@ const HeroThree: FC<HeroProps> = ({
 		<section className={styles.hero}>
 			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[75vh]">
 				{/* Background Video */}
-				<div className="absolute top-0 bottom-0 left-0 w-full h-full z-[995]">
+				<div
+					className="absolute top-0 bottom-0 left-0 w-full h-full z-[995] bg-center bg-no-repeat bg-cover"
+					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
+				>
 					{/* Video */}
 					<div
 						className={
@@ -86,17 +109,9 @@ const HeroThree: FC<HeroProps> = ({
 								: ` hidden`
 						}
 					>
-						<div className="relative pt-[56.25%] h-full">
-							<iframe
-								width="3840"
-								height="2160"
-								frameBorder="0"
-								title="DBMX Racing Hero Video"
-								allow="autoplay; fullscreen; picture-in-picture"
-								className="absolute top-0 left-0 w-full h-full"
-								src={`${backgroundVideoUrl}?autoplay=1&loop=1&autopause=0&background=1&title=0&sidedock=0&controls=0`}
-							/>
-						</div>
+						<Vimeo className="hidden 2xl:block">
+							{parse(backgroundVideoUrl ? backgroundVideoUrl : `/`)}
+						</Vimeo>
 					</div>
 
 					{/* Image */}
