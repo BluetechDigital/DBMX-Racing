@@ -55,11 +55,11 @@ interface HeroProps {
 }
 
 const Vimeo = styled.div`
-	height: auto;
-	max-width: 100%;
-	overflow: hidden;
 	position: relative;
 	padding-bottom: 56.25%;
+	overflow: hidden;
+	max-width: 100%;
+	height: auto;
 
 	iframe,
 	object,
@@ -97,17 +97,14 @@ const Hero: FC<HeroProps> = ({
 	return (
 		<section className={styles.hero}>
 			<div
-				className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[100vh]"
+				className="relative flex flex-col h-full min-h-screen bg-center bg-no-repeat bg-cover"
 				style={{backgroundImage: `url("${backgroundImage}")`}}
 			>
 				{/* Background Video */}
 				<div className="absolute w-full h-full overflow-hidden">
-					<div className="hidden bg-center bg-no-repeat bg-cover 2xl:block">
-						<Vimeo>{parse(backgroundVideoUrl)}</Vimeo>
-					</div>
-					<div className="block 2xl:hidden">
-						<Vimeo>{parse(backgroundVideoUrl)}</Vimeo>
-					</div>
+					<Vimeo className="hidden 2xl:block">
+						{parse(backgroundVideoUrl)}
+					</Vimeo>
 
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
 				</div>
