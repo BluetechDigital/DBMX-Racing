@@ -3,14 +3,13 @@
 		"autopause",
 		"Borex",
 		"Brigends",
+		"changefreq",
 		"DBMX",
 		"focuskw",
 		"Gratelosdisplay",
 		"Javata",
-		"mozallow",
-		"msallow",
+		"lastmod",
 		"Nofollow",
-		"oallow",
 		"POSTHOG",
 		"recaptcha",
 		"Revelia",
@@ -18,7 +17,6 @@
 		"sidedock",
 		"sitekey",
 		"Tailwindcss",
-		"Variera",
-		"webkitallow"
+		"Variera"
 	]
 }

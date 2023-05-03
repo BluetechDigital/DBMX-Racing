@@ -3,6 +3,7 @@ import {DocumentNode, gql} from "@apollo/client";
 
 type SlugResponse = {
 	slug: string;
+	modified: string;
 };
 
 interface ISlug extends Array<SlugResponse> {}
@@ -14,6 +15,7 @@ export const fetchBlogPostsSlugs = async (): Promise<ISlug> => {
 				blogsSlugs: posts(where: {status: PUBLISH}) {
 					nodes {
 						slug
+						modified
 					}
 				}
 			}

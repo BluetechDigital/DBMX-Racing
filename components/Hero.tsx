@@ -94,6 +94,7 @@ const Hero: FC<HeroProps> = ({
 		setMenuActive(!menuActive);
 	}
 
+	console.log(backgroundVideoUrl);
 	return (
 		<section className={styles.hero}>
 			<div
@@ -101,11 +102,19 @@ const Hero: FC<HeroProps> = ({
 				style={{backgroundImage: `url("${backgroundImage}")`}}
 			>
 				{/* Background Video */}
-				<div className="absolute w-full h-full overflow-hidden">
-					<Vimeo className="hidden 2xl:block">
-						{parse(backgroundVideoUrl ? backgroundVideoUrl : `/`)}
-					</Vimeo>
-
+				<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+					<video
+						autoPlay
+						muted
+						loop
+						className={
+							backgroundVideoUrl
+								? "object-cover object-center w-full h-full"
+								: `hidden`
+						}
+					>
+						<source src={`${backgroundVideoUrl}`} type="video/mp4" />
+					</video>
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
 				</div>
 				<nav className="fixed flex items-center justify-between w-full px-6 py-10 lg:py-8 bg-pureBlack z-[999]">

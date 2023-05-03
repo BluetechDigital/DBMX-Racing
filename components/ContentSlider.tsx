@@ -198,21 +198,29 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									backgroundImage: `url("${content?.backgroundImage?.sourceUrl}")`,
 								}}
 							>
-								{/* Video */}
+								{/* Background Video */}
 								<div
 									className={
 										content?.backgroundImageOrVideo === "Video"
-											? `w-full h-full overflow-hidden`
+											? `absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden`
 											: ` hidden`
 									}
 								>
-									<Vimeo className="hidden 2xl:block">
-										{parse(
+									<video
+										autoPlay
+										muted
+										loop
+										className={
 											content?.backgroundVideoUrl
-												? content?.backgroundVideoUrl
-												: `/`
-										)}
-									</Vimeo>
+												? "object-cover object-center w-full h-full"
+												: `hidden`
+										}
+									>
+										<source
+											src={`${content?.backgroundVideoUrl}`}
+											type="video/mp4"
+										/>
+									</video>
 								</div>
 
 								{/* Image */}
@@ -294,21 +302,29 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									backgroundImage: `url("${contentTwo?.backgroundImage?.sourceUrl}")`,
 								}}
 							>
-								{/* Video */}
+								{/* Background Video */}
 								<div
 									className={
 										contentTwo?.backgroundImageOrVideo === "Video"
-											? `w-full h-full overflow-hidden`
+											? `absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden`
 											: ` hidden`
 									}
 								>
-									<Vimeo className="hidden 2xl:block">
-										{parse(
+									<video
+										autoPlay
+										muted
+										loop
+										className={
 											contentTwo?.backgroundVideoUrl
-												? contentTwo?.backgroundVideoUrl
-												: `/`
-										)}
-									</Vimeo>
+												? "object-cover object-center w-full h-full"
+												: `hidden`
+										}
+									>
+										<source
+											src={`${contentTwo?.backgroundVideoUrl}`}
+											type="video/mp4"
+										/>
+									</video>
 								</div>
 
 								{/* Image */}
@@ -377,23 +393,30 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									backgroundImage: `url("${contentThree?.backgroundImage?.sourceUrl}")`,
 								}}
 							>
-								{/* Video */}
+								{/* Background Video */}
 								<div
 									className={
 										contentThree?.backgroundImageOrVideo === "Video"
-											? `w-full h-full overflow-hidden`
+											? `absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden`
 											: ` hidden`
 									}
 								>
-									<Vimeo className="hidden 2xl:block">
-										{parse(
+									<video
+										autoPlay
+										muted
+										loop
+										className={
 											contentThree?.backgroundVideoUrl
-												? contentThree?.backgroundVideoUrl
-												: `/`
-										)}
-									</Vimeo>
+												? "object-cover object-center w-full h-full"
+												: `hidden`
+										}
+									>
+										<source
+											src={`${contentThree?.backgroundVideoUrl}`}
+											type="video/mp4"
+										/>
+									</video>
 								</div>
-
 								{/* Image */}
 								<Image
 									width={contentThree?.backgroundImage?.mediaDetails?.width}

@@ -98,20 +98,24 @@ const HeroThree: FC<HeroProps> = ({
 			<div className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[75vh]">
 				{/* Background Video */}
 				<div
-					className="absolute top-0 bottom-0 left-0 w-full h-full z-[995] bg-center bg-no-repeat bg-cover"
+					className="absolute top-0 bottom-0 left-0 w-full h-full max-h-[75vh] z-[995] bg-center bg-no-repeat bg-cover"
 					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 				>
-					{/* Video */}
-					<div
-						className={
-							backgroundImageOrVideo === "Video"
-								? `w-full h-full max-h-[75vh] overflow-hidden`
-								: ` hidden`
-						}
-					>
-						<Vimeo className="hidden 2xl:block">
-							{parse(backgroundVideoUrl ? backgroundVideoUrl : `/`)}
-						</Vimeo>
+					{/* Background Video */}
+					<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+						<video
+							autoPlay
+							muted
+							loop
+							className={
+								backgroundVideoUrl
+									? "object-cover object-center w-full h-full"
+									: `hidden`
+							}
+						>
+							<source src={`${backgroundVideoUrl}`} type="video/mp4" />
+						</video>
+						<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
 					</div>
 
 					{/* Image */}

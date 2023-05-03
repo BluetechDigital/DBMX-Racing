@@ -2,6 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
+import dateFormat from "dateformat";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
 import {fadeInUp, stagger} from "../../animations/animations";
@@ -66,7 +67,7 @@ const BlogsCard: FC<IProps> = ({
 				</Link>
 
 				<span className="mt-2 font-semibold text-goldPrimeDark text-tiny">
-					{date}
+					{dateFormat(date, "dddd, mmmm d, yyyy")}
 				</span>
 
 				<motion.div variants={fadeInUp}>
