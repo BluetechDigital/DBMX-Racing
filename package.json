@@ -12,36 +12,36 @@
 	"dependencies": {
 		"@apollo/client": "^3.7.13",
 		"@playwright/test": "^1.32.2",
-		"@types/node": "18.15.11",
-		"@types/react": "18.0.31",
-		"@types/react-dom": "18.0.11",
 		"dompurify": "^3.0.1",
-		"eslint": "8.37.0",
-		"eslint-config-next": "13.2.4",
 		"formik": "^2.2.9",
 		"framer-motion": "^10.12.4",
 		"graphql": "^16.6.0",
 		"html-react-parser": "^3.0.15",
 		"isomorphic-dompurify": "^1.2.0",
-		"next": "13.2.4",
+		"next": "^13.3.4",
 		"nodemailer": "^6.9.1",
 		"posthog-js": "^1.52.0",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
 		"react-google-recaptcha": "^2.1.0",
 		"sass": "^1.60.0",
-		"styled-components": "^5.3.9",
-		"typescript": "5.0.3"
+		"styled-components": "^5.3.9"
 	},
 	"devDependencies": {
 		"@types/dateformat": "^5.0.0",
+		"@types/node": "^18.16.3",
 		"@types/nodemailer": "^6.4.7",
+		"@types/react": "^18.2.1",
+		"@types/react-dom": "^18.2.3",
 		"@types/react-google-recaptcha": "^2.1.5",
 		"@types/styled-components": "^5.1.26",
 		"autoprefixer": "^10.4.14",
 		"dateformat": "^5.0.3",
+		"eslint": "^8.39.0",
+		"eslint-config-next": "^13.3.4",
 		"postcss": "^8.4.21",
 		"sitemap": "^7.1.1",
-		"tailwindcss": "^3.3.1"
+		"tailwindcss": "^3.3.1",
+		"typescript": "^5.0.4"
 	}
 }
