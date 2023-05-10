@@ -2,6 +2,7 @@
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
+import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../lib/themesOptions";
 import {
 	getMainMenuLinks,
@@ -20,14 +21,267 @@ import ContactBanner from "@/components/ContactBanner";
 import TitleParagraph from "@/components/TitleParagraph";
 import ContentSection from "@/components/ContentSection";
 
-export default function Home({
+interface IHome {
+	seo: {
+		canonical: string;
+		cornerstone: Boolean;
+		focuskw: string;
+		fullHead: string;
+		metaDesc: string;
+		metaKeywords: string;
+		metaRobotsNofollow: string;
+		metaRobotsNoindex: string;
+		opengraphAuthor: string;
+		opengraphDescription: string;
+		opengraphImage: {
+			mediaItemUrl: string;
+		};
+		opengraphModifiedTime: string;
+		opengraphPublishedTime: string;
+		opengraphPublisher: string;
+		opengraphSiteName: string;
+		opengraphTitle: string;
+		opengraphType: string;
+		opengraphUrl: string;
+		readingTime: number;
+		title: string;
+		twitterDescription: string;
+		twitterTitle: string;
+		twitterImage: {
+			mediaItemUrl: string;
+		};
+	};
+	content: {
+		heroSection: {
+			title: string;
+			paragraph: string;
+			backgroundVideoUrl: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			buttonLinkTwo: {
+				url: string;
+				title: string;
+				target: string;
+			};
+		};
+		titleParagraph: {
+			title: string;
+			paragraph: string;
+		};
+		productGrid: {
+			title: string;
+			services: [
+				{
+					id: string;
+					title: string;
+					link: {
+						url: string;
+						title: string;
+						target: string;
+					};
+					image: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							height: number;
+							width: number;
+						};
+					};
+				}
+			];
+		};
+		contentSection: {
+			title: string;
+			subtitle: string;
+			bottomContent: {
+				title: string;
+				titleTwo: string;
+				paragraph: string;
+				mainContent: string;
+				paragraphTwo: string;
+				image: {
+					altText: string;
+					sourceUrl: string;
+					mediaDetails: {
+						height: number;
+						width: number;
+					};
+				};
+			};
+		};
+		contactBanner: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
+		trustedBrands: {
+			title: string;
+			logos: [
+				{
+					id: string;
+					image: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							height: number;
+							width: number;
+						};
+					};
+				}
+			];
+		};
+		contentSlider: {
+			content: {
+				tag: string;
+				title: string;
+				paragraph: string;
+				publishedDate: string;
+				buttonLink: {
+					url: string;
+					title: string;
+					target: string;
+				};
+				backgroundVideoUrl: string;
+				backgroundImageOrVideo: string;
+				backgroundImage: {
+					altText: string;
+					sourceUrl: string;
+					mediaDetails: {
+						width: number;
+						height: number;
+					};
+				};
+			};
+			contentTwo: {
+				tag: string;
+				title: string;
+				paragraph: string;
+				publishedDate: string;
+				buttonLink: {
+					url: string;
+					title: string;
+					target: string;
+				};
+				backgroundVideoUrl: string;
+				backgroundImageOrVideo: string;
+				backgroundImage: {
+					altText: string;
+					sourceUrl: string;
+					mediaDetails: {
+						width: number;
+						height: number;
+					};
+				};
+			};
+			contentThree: {
+				tag: string;
+				title: string;
+				paragraph: string;
+				publishedDate: string;
+				buttonLink: {
+					url: string;
+					title: string;
+					target: string;
+				};
+				backgroundVideoUrl: string;
+				backgroundImageOrVideo: string;
+				backgroundImage: {
+					altText: string;
+					sourceUrl: string;
+					mediaDetails: {
+						width: number;
+						height: number;
+					};
+				};
+			};
+		};
+		ourLocation: {
+			title: string;
+			paragraph: string;
+		};
+	};
+	mainMenuLinks: {
+		mainMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	navbarMenuLinks: {
+		navbarMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	footerMenuLinks: {
+		footerMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	themesOptionsContent: {
+		address: string;
+		email: string;
+		emailTwo: string;
+		phoneNumber: string;
+		phoneNumberTwo: string;
+		copyrightText: string;
+		facebookLink: string;
+		linkedinLink: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
+	};
+}
+
+const Home: NextPage<IHome> = ({
 	seo,
 	content,
 	mainMenuLinks,
 	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
-}: any) {
+}) => {
 	return (
 		<motion.div
 			exit={{
@@ -99,9 +353,9 @@ export default function Home({
 			</Layout>
 		</motion.div>
 	);
-}
+};
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const getHomePageContent: any = gql`
 		{
 			mainContent: pages(where: {id: 6, status: PUBLISH}) {
@@ -315,4 +569,6 @@ export async function getStaticProps() {
 		},
 		revalidate: 60,
 	};
-}
+};
+
+export default Home;

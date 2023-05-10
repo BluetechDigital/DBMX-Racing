@@ -2,6 +2,7 @@
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
+import type {NextPage, GetStaticProps} from "next";
 import {getAllBlogsContent} from "@/lib/BlogPostsSlugs";
 import {getThemesOptionsContent} from "../lib/themesOptions";
 import {
@@ -18,7 +19,137 @@ import StoreLocation from "@/components/StoreLocation";
 import ContactBanner from "@/components/ContactBanner";
 import TitleParagraph from "@/components/TitleParagraph";
 
-const blogs = ({
+interface IBlogs {
+	seo: {
+		canonical: string;
+		cornerstone: Boolean;
+		focuskw: string;
+		fullHead: string;
+		metaDesc: string;
+		metaKeywords: string;
+		metaRobotsNofollow: string;
+		metaRobotsNoindex: string;
+		opengraphAuthor: string;
+		opengraphDescription: string;
+		opengraphImage: {
+			mediaItemUrl: string;
+		};
+		opengraphModifiedTime: string;
+		opengraphPublishedTime: string;
+		opengraphPublisher: string;
+		opengraphSiteName: string;
+		opengraphTitle: string;
+		opengraphType: string;
+		opengraphUrl: string;
+		readingTime: number;
+		title: string;
+		twitterDescription: string;
+		twitterTitle: string;
+		twitterImage: {
+			mediaItemUrl: string;
+		};
+	};
+	pageTitle: string;
+	content: {
+		heroSection: {
+			title: string;
+			paragraph: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
+		titleParagraph: {
+			title: string;
+			paragraph: string;
+		};
+		contactBanner: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
+		ourLocation: {
+			title: string;
+			paragraph: string;
+		};
+	};
+	blogs: [
+		{
+			node: {
+				id: string;
+				uri: string;
+				date: string;
+				title: string;
+				singleBlogPost: {
+					titleParagraph: {
+						paragraph: string;
+					};
+				};
+				featuredImage: {
+					node: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							width: number;
+							height: number;
+						};
+					};
+				};
+			};
+		}
+	];
+	mainMenuLinks: {
+		mainMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	navbarMenuLinks: {
+		navbarMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	footerMenuLinks: {
+		footerMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	themesOptionsContent: {
+		email: string;
+		emailTwo: string;
+		phoneNumber: string;
+		phoneNumberTwo: string;
+		twitterLink: string;
+		facebookLink: string;
+		linkedinLink: string;
+		copyRightText: string;
+	};
+}
+
+const blogs: NextPage<IBlogs> = ({
 	seo,
 	blogs,
 	content,
@@ -27,7 +158,7 @@ const blogs = ({
 	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
-}: any) => {
+}) => {
 	return (
 		<motion.div
 			exit={{
@@ -78,7 +209,7 @@ const blogs = ({
 	);
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const getBlogsPageContent: any = gql`
 		{
 			pageTitle: pages(where: {id: 903, status: PUBLISH}) {
@@ -178,6 +309,6 @@ export async function getStaticProps() {
 		},
 		revalidate: 60,
 	};
-}
+};
 
 export default blogs;

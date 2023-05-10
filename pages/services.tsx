@@ -2,6 +2,7 @@
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
+import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../lib/themesOptions";
 import {
 	getMainMenuLinks,
@@ -19,7 +20,183 @@ import StoreLocation from "@/components/StoreLocation";
 import ContactBanner from "@/components/ContactBanner";
 import TitleParagraph from "@/components/TitleParagraph";
 
-const Services = ({
+interface IServices {
+	seo: {
+		canonical: string;
+		cornerstone: Boolean;
+		focuskw: string;
+		fullHead: string;
+		metaDesc: string;
+		metaKeywords: string;
+		metaRobotsNofollow: string;
+		metaRobotsNoindex: string;
+		opengraphAuthor: string;
+		opengraphDescription: string;
+		opengraphImage: {
+			mediaItemUrl: string;
+		};
+		opengraphModifiedTime: string;
+		opengraphPublishedTime: string;
+		opengraphPublisher: string;
+		opengraphSiteName: string;
+		opengraphTitle: string;
+		opengraphType: string;
+		opengraphUrl: string;
+		readingTime: number;
+		title: string;
+		twitterDescription: string;
+		twitterTitle: string;
+		twitterImage: {
+			mediaItemUrl: string;
+		};
+	};
+	pageTitle: string;
+	content: {
+		heroSection: {
+			title: string;
+			paragraph: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
+		titleParagraph: {
+			title: string;
+			paragraph: string;
+		};
+		contentStats: {
+			title: string;
+			paragraph: string;
+			statsOne: {
+				title: string;
+				subtitle: string;
+				paragraph: string;
+			};
+			statsTwo: {
+				title: string;
+				subtitle: string;
+				paragraph: string;
+			};
+		};
+		trustedBrands: {
+			title: string;
+			logos: [
+				{
+					id: string;
+					image: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							height: number;
+							width: number;
+						};
+					};
+				}
+			];
+		};
+		jumboContentSection: [
+			{
+				content: {
+					id: string;
+					title: string;
+					subtitle: string;
+					paragraph: string;
+					imageLocation: string;
+					backgroundDisplay: string;
+					image: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							height: number;
+							width: number;
+						};
+					};
+					buttonLink: {
+						url: string;
+						title: string;
+						target: string;
+					};
+				};
+			}
+		];
+		contactBanner: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
+		ourLocation: {
+			title: string;
+			paragraph: string;
+		};
+	};
+	mainMenuLinks: {
+		mainMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	navbarMenuLinks: {
+		navbarMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	footerMenuLinks: {
+		footerMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	themesOptionsContent: {
+		address: string;
+		email: string;
+		emailTwo: string;
+		phoneNumber: string;
+		phoneNumberTwo: string;
+		copyrightText: string;
+		facebookLink: string;
+		linkedinLink: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
+	};
+}
+
+const Services: NextPage<IServices> = ({
 	seo,
 	content,
 	pageTitle,
@@ -27,7 +204,7 @@ const Services = ({
 	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
-}: any) => {
+}) => {
 	return (
 		<motion.div
 			exit={{
@@ -90,7 +267,7 @@ const Services = ({
 	);
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const getServicesPageContent: any = gql`
 		{
 			pageTitle: pages(where: {id: 12, status: PUBLISH}) {
@@ -237,6 +414,6 @@ export async function getStaticProps() {
 		},
 		revalidate: 60,
 	};
-}
+};
 
 export default Services;

@@ -14,7 +14,7 @@
 		"@playwright/test": "^1.32.2",
 		"dompurify": "^3.0.1",
 		"formik": "^2.2.9",
-		"framer-motion": "^10.12.4",
+		"framer-motion": "^10.12.9",
 		"graphql": "^16.6.0",
 		"html-react-parser": "^3.0.15",
 		"isomorphic-dompurify": "^1.2.0",
@@ -25,11 +25,11 @@
 		"react-dom": "^18.2.0",
 		"react-google-recaptcha": "^2.1.0",
 		"sass": "^1.60.0",
-		"styled-components": "^5.3.10"
+		"styled-components": "^5.3.9"
 	},
 	"devDependencies": {
 		"@types/dateformat": "^5.0.0",
-		"@types/node": "^20.1.1",
+		"@types/node": "^20.1.2",
 		"@types/nodemailer": "^6.4.7",
 		"@types/react": "^18.2.1",
 		"@types/react-dom": "^18.2.3",

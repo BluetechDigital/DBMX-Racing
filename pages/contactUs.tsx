@@ -2,6 +2,7 @@
 import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
+import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "../lib/themesOptions";
 import {
 	getMainMenuLinks,
@@ -17,7 +18,135 @@ import ContactForm from "@/components/ContactForm";
 import ContactInfo from "@/components/ContactInfo";
 import StoreLocation from "@/components/StoreLocation";
 
-const contactUs = ({
+interface IContactUs {
+	seo: {
+		canonical: string;
+		cornerstone: Boolean;
+		focuskw: string;
+		fullHead: string;
+		metaDesc: string;
+		metaKeywords: string;
+		metaRobotsNofollow: string;
+		metaRobotsNoindex: string;
+		opengraphAuthor: string;
+		opengraphDescription: string;
+		opengraphImage: {
+			mediaItemUrl: string;
+		};
+		opengraphModifiedTime: string;
+		opengraphPublishedTime: string;
+		opengraphPublisher: string;
+		opengraphSiteName: string;
+		opengraphTitle: string;
+		opengraphType: string;
+		opengraphUrl: string;
+		readingTime: number;
+		title: string;
+		twitterDescription: string;
+		twitterTitle: string;
+		twitterImage: {
+			mediaItemUrl: string;
+		};
+	};
+	pageTitle: string;
+	content: {
+		heroSection: {
+			title: string;
+			paragraph: string;
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
+		contactInfo: {
+			title: string;
+			paragraph: string;
+		};
+		contactForm: {
+			title: string;
+		};
+		trustedBrands: {
+			title: string;
+			logos: [
+				{
+					id: string;
+					image: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							height: number;
+							width: number;
+						};
+					};
+				}
+			];
+		};
+		ourLocation: {
+			title: string;
+			paragraph: string;
+		};
+	};
+	mainMenuLinks: {
+		mainMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	navbarMenuLinks: {
+		navbarMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	footerMenuLinks: {
+		footerMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	themesOptionsContent: {
+		address: string;
+		email: string;
+		emailTwo: string;
+		phoneNumber: string;
+		phoneNumberTwo: string;
+		copyrightText: string;
+		facebookLink: string;
+		linkedinLink: string;
+		twitterLink: string;
+		businessHours: {
+			content: string;
+		};
+		errorPageContent: {
+			title: string;
+			paragraph: string;
+			buttonLink: {
+				url: string;
+				title: string;
+				target: string;
+			};
+			backgroundImage: {
+				sourceUrl: string;
+			};
+		};
+	};
+}
+
+const contactUs: NextPage<IContactUs> = ({
 	seo,
 	content,
 	pageTitle,
@@ -25,7 +154,7 @@ const contactUs = ({
 	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
-}: any) => {
+}) => {
 	return (
 		<motion.div
 			exit={{
@@ -82,7 +211,7 @@ const contactUs = ({
 	);
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const getContactUsPageContent: any = gql`
 		{
 			pageTitle: pages(where: {id: 8, status: PUBLISH}) {
@@ -184,6 +313,6 @@ export async function getStaticProps() {
 		},
 		revalidate: 60,
 	};
-}
+};
 
 export default contactUs;

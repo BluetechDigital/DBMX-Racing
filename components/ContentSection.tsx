@@ -8,7 +8,6 @@ import {fadeIn} from "../animations/animations";
 interface IProps {
 	title: string;
 	subtitle: string;
-
 	bottomContent: {
 		title: string;
 		titleTwo: string;
