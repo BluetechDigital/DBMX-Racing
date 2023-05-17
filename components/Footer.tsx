@@ -39,7 +39,7 @@ const Footer: FC<FooterProps> = ({
 	return (
 		<section className="border-t-[5px] bg-pureBlack border-red">
 			<div className="container flex flex-col px-0 mx-auto gap-y-10">
-				<div className="flex flex-col items-start justify-between px-8 py-10 text-center lg:px-0 sm:items-end sm:grid sm:grid-cols-2 lg:flex lg:flex-row lg:text-left gap-y-20">
+				<div className="flex flex-col items-start justify-between px-8 py-10 text-center lg:px-4 sm:items-end sm:grid sm:grid-cols-2 lg:flex lg:flex-row lg:text-left gap-y-20">
 					<div className="flex flex-col items-start justify-center gap-y-8">
 						<Link className="mr-auto text-3xl font-bold leading-none" href="/">
 							<Image

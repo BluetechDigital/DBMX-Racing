@@ -3,12 +3,12 @@ import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import type {NextPage, GetStaticProps} from "next";
-import {getThemesOptionsContent} from "../lib/themesOptions";
+import {getThemesOptionsContent} from "../functions/themesOptions";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
-} from "../lib/MenuLinks";
+} from "../functions/MenuLinks";
 
 // Components
 import HeroTwo from "@/components/HeroTwo";

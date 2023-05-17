@@ -113,7 +113,7 @@ const HeroTwo: FC<HeroProps> = ({
 					<div className="max-w-xl">
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="mb-6 py-6 text-white leading-[1.75rem] font-[500] text-medium text-center"
+							tailwindStyling="py-6 text-white leading-[1.75rem] font-[500] text-medium text-center"
 						/>
 					</div>
 				</div>

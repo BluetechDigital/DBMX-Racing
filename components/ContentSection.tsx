@@ -28,7 +28,7 @@ interface IProps {
 const ContentSection: FC<IProps> = ({title, subtitle, bottomContent}) => {
 	return (
 		<section className="overflow-hidden lg:px-0 bg-darkRed pt-28">
-			<div className="container px-4 mx-auto mb-10 lg:px-0 lg:mb-28">
+			<div className="container px-4 mx-auto mb-10 lg:px-4 lg:mb-28">
 				<h2 className="mb-2 text-3xl font-bold leading-none text-center text-white lg:text-left md:text-4xl lg:text-6xl tracking-px-n">
 					{title}
 				</h2>

@@ -1,10 +1,10 @@
+// Import
 import Link from "next/link";
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
-import parse from "html-react-parser";
 import styled from "styled-components";
-import {fadeInUp, fadeInTwo, stagger} from "../animations/animations";
+import {fadeInUp, stagger} from "../animations/animations";
 
 // Components
 import SideMenu from "./Elements/SideMenu";
@@ -54,12 +54,16 @@ interface HeroProps {
 	];
 }
 
-const Vimeo = styled.div`
+const VideoContainer = styled.div`
 	position: relative;
 	padding-bottom: 56.25%;
 	overflow: hidden;
 	max-width: 100%;
+	width: 100%;
 	height: auto;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
 
 	iframe,
 	object,
@@ -67,6 +71,7 @@ const Vimeo = styled.div`
 		position: absolute;
 		top: 0;
 		left: 0;
+		border: 0;
 		width: 100%;
 		height: 100%;
 	}
@@ -94,7 +99,6 @@ const Hero: FC<HeroProps> = ({
 		setMenuActive(!menuActive);
 	}
 
-	console.log(backgroundVideoUrl);
 	return (
 		<section className={styles.hero}>
 			<div
@@ -102,20 +106,22 @@ const Hero: FC<HeroProps> = ({
 				style={{backgroundImage: `url("${backgroundImage}")`}}
 			>
 				{/* Background Video */}
-				<div className="absolute top-0 bottom-0 left-0 w-full h-full">
-					<video
-						autoPlay
-						muted
-						loop
-						className={
-							backgroundVideoUrl
-								? "object-cover object-center w-full h-full"
-								: `hidden`
-						}
-					>
-						<source src={`${backgroundVideoUrl}`} type="video/mp4" />
-					</video>
-					<div className="absolute top-0 bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
+				{/* https://www.youtube.com/embed/opQx4nZPQQ0?autoplay=1&mute=1&loop=1&controls=0&playlist=opQx4nZPQQ0&amp;showinfo=0 */}
+
+				<div className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
+					<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
+						<iframe
+							allowFullScreen
+							allow="autoplay; fullscreen; picture-in-picture"
+							className={
+								backgroundVideoUrl
+									? "absolute top-0 left-0 border-none w-full h-full"
+									: `hidden`
+							}
+							src={backgroundVideoUrl}
+						/>
+					</div>
+					<div className="absolute top-0 h-screen bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
 				</div>
 				<nav className="fixed flex items-center justify-between w-full px-6 py-10 lg:py-8 bg-pureBlack z-[999]">
 					<div className="absolute flex flex-col items-center">

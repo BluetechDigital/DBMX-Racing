@@ -1,13 +1,16 @@
 // Import
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {getThemesOptionsContent} from "../../lib/themesOptions";
+import {getThemesOptionsContent} from "../../functions/themesOptions";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
-} from "../../lib/MenuLinks";
-import {fetchBlogPostsSlugs, fetchBlogPostsContent} from "@/lib/BlogPostsSlugs";
+} from "../../functions/MenuLinks";
+import {
+	fetchBlogPostsSlugs,
+	fetchBlogPostsContent,
+} from "@/functions/BlogPostsSlugs";
 
 // Components
 import HeroThree from "@/components/HeroThree";

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import {motion} from "framer-motion";
 import React, {useState, FC} from "react";
-import {sendContactForm} from "../lib/api";
+import {sendContactForm} from "../functions/api";
 import Paragraph from "./Elements/Paragraph";
 import ReCAPTCHA from "react-google-recaptcha";
 import {useFormik, Formik, Field, Form} from "formik";

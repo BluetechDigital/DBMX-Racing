@@ -3,13 +3,13 @@ import {gql} from "@apollo/client";
 import {motion} from "framer-motion";
 import {client} from "../config/apollo";
 import type {NextPage, GetStaticProps} from "next";
-import {getAllBlogsContent} from "@/lib/BlogPostsSlugs";
-import {getThemesOptionsContent} from "../lib/themesOptions";
+import {getAllBlogsContent} from "@/functions/BlogPostsSlugs";
+import {getThemesOptionsContent} from "../functions/themesOptions";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
-} from "../lib/MenuLinks";
+} from "../functions/MenuLinks";
 
 // Components
 import Blogs from "@/components/Blogs";

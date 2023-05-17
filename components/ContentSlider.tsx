@@ -104,7 +104,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 	const mainRef = useRef<HTMLDivElement>(null);
 	const postRef = useRef<HTMLDivElement>(null);
 	const mainImageVideoTailwindcss: string = `object-cover object-center w-full h-full`;
-	const mainContentTailwindcss: string = `absolute top-[100%] right-0 left-0 bottom-0 w-full h-full`;
+	const mainContentTailwindcss: string = `absolute top-[100%] right-0 left-0 bottom-0 w-full h-full overflow-hidden`;
 	const postContentTailwindcss: string = `relative px-8  py-4 text-white transition-all duration-75 ease-in-out opacity-30`;
 
 	// Full Screen Nav Revealed Styling
@@ -193,34 +193,24 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							className={`main-post ${mainActive} ${mainContentTailwindcss}`}
 						>
 							<div
-								className="absolute top-0 bottom-0 left-0 w-full h-full bg-center bg-no-repeat bg-cover main-post__image"
+								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover main-post__image"
 								style={{
 									backgroundImage: `url("${content?.backgroundImage?.sourceUrl}")`,
 								}}
 							>
 								{/* Background Video */}
-								<div
-									className={
-										content?.backgroundImageOrVideo === "Video"
-											? `absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden`
-											: ` hidden`
-									}
-								>
-									<video
-										autoPlay
-										muted
-										loop
-										className={
-											content?.backgroundVideoUrl
-												? "object-cover object-center w-full h-full"
-												: `hidden`
-										}
-									>
-										<source
-											src={`${content?.backgroundVideoUrl}`}
-											type="video/mp4"
+								<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+									<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
+										<iframe
+											allowFullScreen
+											className={
+												content?.backgroundImageOrVideo === "Video"
+													? "absolute top-0 left-0 border-none w-full h-full"
+													: `hidden`
+											}
+											src={content?.backgroundVideoUrl}
 										/>
-									</video>
+									</div>
 								</div>
 
 								{/* Image */}
@@ -297,34 +287,24 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
 						>
 							<div
-								className="absolute top-0 bottom-0 left-0 w-full h-full bg-center bg-no-repeat bg-cover"
+								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
 								style={{
 									backgroundImage: `url("${contentTwo?.backgroundImage?.sourceUrl}")`,
 								}}
 							>
 								{/* Background Video */}
-								<div
-									className={
-										contentTwo?.backgroundImageOrVideo === "Video"
-											? `absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden`
-											: ` hidden`
-									}
-								>
-									<video
-										autoPlay
-										muted
-										loop
-										className={
-											contentTwo?.backgroundVideoUrl
-												? "object-cover object-center w-full h-full"
-												: `hidden`
-										}
-									>
-										<source
-											src={`${contentTwo?.backgroundVideoUrl}`}
-											type="video/mp4"
+								<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+									<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
+										<iframe
+											allowFullScreen
+											className={
+												contentTwo?.backgroundImageOrVideo === "Video"
+													? "absolute top-0 left-0 border-none w-full h-full"
+													: `hidden`
+											}
+											src={contentTwo?.backgroundVideoUrl}
 										/>
-									</video>
+									</div>
 								</div>
 
 								{/* Image */}
@@ -388,35 +368,26 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
 						>
 							<div
-								className="absolute top-0 bottom-0 left-0 w-full h-full bg-center bg-no-repeat bg-cover"
+								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
 								style={{
 									backgroundImage: `url("${contentThree?.backgroundImage?.sourceUrl}")`,
 								}}
 							>
 								{/* Background Video */}
-								<div
-									className={
-										contentThree?.backgroundImageOrVideo === "Video"
-											? `absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden`
-											: ` hidden`
-									}
-								>
-									<video
-										autoPlay
-										muted
-										loop
-										className={
-											contentThree?.backgroundVideoUrl
-												? "object-cover object-center w-full h-full"
-												: `hidden`
-										}
-									>
-										<source
-											src={`${contentThree?.backgroundVideoUrl}`}
-											type="video/mp4"
+								<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+									<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
+										<iframe
+											allowFullScreen
+											className={
+												contentThree?.backgroundImageOrVideo === "Video"
+													? "absolute top-0 left-0 border-none w-full h-full"
+													: `hidden`
+											}
+											src={contentThree?.backgroundVideoUrl}
 										/>
-									</video>
+									</div>
 								</div>
+
 								{/* Image */}
 								<Image
 									width={contentThree?.backgroundImage?.mediaDetails?.width}

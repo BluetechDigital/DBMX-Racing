@@ -1,8 +1,8 @@
 import Head from "next/head";
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {getFooterMenuLinks} from "../lib/MenuLinks";
-import {getThemesOptionsContent} from "../lib/themesOptions";
+import {getFooterMenuLinks} from "../functions/MenuLinks";
+import {getThemesOptionsContent} from "../functions/themesOptions";
 
 // Components
 import Footer from "@/components/Footer";

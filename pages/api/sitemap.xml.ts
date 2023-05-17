@@ -1,6 +1,6 @@
 // Import
 import {fetchAllPagesSlugs} from "@/functions/GetAllPagesLinks";
-import {fetchBlogPostsSlugs} from "@/lib/BlogPostsSlugs";
+import {fetchBlogPostsSlugs} from "@/functions/BlogPostsSlugs";
 
 const {SitemapStream, streamToPromise} = require("sitemap");
 const {Readable} = require("stream");
