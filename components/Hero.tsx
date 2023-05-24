@@ -112,7 +112,6 @@ const Hero: FC<HeroProps> = ({
 					<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
 						<iframe
 							allowFullScreen
-							allow="autoplay; fullscreen; picture-in-picture"
 							className={
 								backgroundVideoUrl
 									? "absolute top-0 left-0 border-none w-full h-full"
