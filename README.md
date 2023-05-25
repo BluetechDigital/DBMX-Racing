@@ -2,8 +2,8 @@
 
 1. All images are in 4K resolution, click to enlarge for better viewing.
 
-<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts.jpg" width="1080px" height="450px">
-<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (5).jpg" width="1080px" height="450px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts.jpg" width="1080px" height="550px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (5).jpg" width="1080px" height="550px">
 
 # Project Context
 This is a Next.js 13 project website I've built for a Motocross accessories and parts local business. A Typescript based project using nextjs 13 static side rendering. This projects is developed solely with Next.js 13 - featuring, Typescript, Javascript, React 18, Tailwind, and a Headless Wordpress CMS API
