@@ -27,5 +27,5 @@ a). https://dbmx-racing.vercel.app/
 <img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (3).jpg" width="1080px" height="550px">
 <img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (4).jpg" width="1080px" height="550px">
 <img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (5).jpg" width="1080px" height="550px">
-<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (6).jpg" width="1080px" height="450px">
-<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (7).jpg" width="1080px" height="750px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (6).jpg" width="1080px" height="850px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (7).jpg" width="1080px" height="850px">
