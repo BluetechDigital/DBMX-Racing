@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import parse from "html-react-parser";
 import styled from "styled-components";
 import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef, FC} from "react";

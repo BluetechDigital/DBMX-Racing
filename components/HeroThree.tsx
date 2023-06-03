@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
-import parse from "html-react-parser";
 import styled from "styled-components";
 import {fadeInUp} from "../animations/animations";
 
