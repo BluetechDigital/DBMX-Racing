@@ -41,15 +41,15 @@ const Blogs: FC<IProps> = ({blogs}) => {
 					className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"
 				>
 					{blogs?.length > 0 ? (
-						blogs.map((keys: any) => (
+						blogs.map((item: any, keys: any) => (
 							<BlogsCard
-								key={keys?.node?.id}
-								uri={keys?.node?.uri}
-								date={keys?.node?.date}
-								title={keys?.node?.title}
-								featuredImage={keys?.node?.featuredImage}
+								key={keys}
+								uri={item?.node?.uri}
+								date={item?.node?.date}
+								title={item?.node?.title}
+								featuredImage={item?.node?.featuredImage}
 								paragraph={
-									keys?.node?.singleBlogPost?.titleParagraph?.paragraph
+									item?.node?.singleBlogPost?.titleParagraph?.paragraph
 								}
 							/>
 						))

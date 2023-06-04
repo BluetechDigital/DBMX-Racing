@@ -145,15 +145,19 @@ const HeroThree: FC<HeroProps> = ({
 					</div>
 					<ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:gap-x-10">
 						{/* Menu Link*/}
-						{navbarMenuLinks?.map((keys) => (
-							<li key={keys?.node?.id}>
-								<NavbarMenuLinks
-									url={keys?.node?.url}
-									label={keys?.node?.label}
-									tailwindStyling="text-base tracking-[.15rem] text-white hover:text-goldPrime transition-all ease-in-out duration-500"
-								/>
-							</li>
-						))}
+						{navbarMenuLinks?.length > 0 ? (
+							navbarMenuLinks?.map((item: any, keys: any) => (
+								<li key={keys}>
+									<NavbarMenuLinks
+										url={item?.node?.url}
+										label={item?.node?.label}
+										tailwindStyling="text-base tracking-[.15rem] text-white hover:text-goldPrime transition-all ease-in-out duration-500"
+									/>
+								</li>
+							))
+						) : (
+							<></>
+						)}
 					</ul>
 					<button
 						type="button"

@@ -32,18 +32,22 @@ interface IProps {
 const jumboContent: FC<IProps> = ({jumboContentSection}) => {
 	return (
 		<section>
-			{jumboContentSection.map((keys) => (
-				<JumboContentCard
-					title={keys?.content?.title}
-					image={keys?.content?.image}
-					subtitle={keys?.content?.subtitle}
-					paragraph={keys?.content?.paragraph}
-					buttonLink={keys?.content?.buttonLink}
-					imageLocation={keys?.content?.imageLocation}
-					key={keys?.content?.id || keys?.content?.title}
-					backgroundDisplay={keys?.content?.backgroundDisplay}
-				/>
-			))}
+			{jumboContentSection?.length > 0 ? (
+				jumboContentSection.map((item: any, keys: any) => (
+					<JumboContentCard
+						key={keys}
+						title={item?.content?.title}
+						image={item?.content?.image}
+						subtitle={item?.content?.subtitle}
+						paragraph={item?.content?.paragraph}
+						buttonLink={item?.content?.buttonLink}
+						imageLocation={item?.content?.imageLocation}
+						backgroundDisplay={item?.content?.backgroundDisplay}
+					/>
+				))
+			) : (
+				<></>
+			)}
 		</section>
 	);
 };

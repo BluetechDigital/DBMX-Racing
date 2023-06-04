@@ -291,10 +291,17 @@ export const getStaticProps: GetStaticProps = async () => {
 	});
 
 	const blogs: object = await getAllBlogsContent();
-	const mainMenuLinks: object = await getMainMenuLinks();
-	const navbarMenuLinks: object = await getNavbarMenuLinks();
-	const footerMenuLinks: object = await getFooterMenuLinks();
-	const themesOptionsContent: object = await getThemesOptionsContent();
+	const [
+		mainMenuLinks,
+		navbarMenuLinks,
+		footerMenuLinks,
+		themesOptionsContent,
+	] = await Promise.all([
+		getMainMenuLinks(),
+		getNavbarMenuLinks(),
+		getFooterMenuLinks(),
+		getThemesOptionsContent(),
+	]);
 
 	return {
 		props: {

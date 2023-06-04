@@ -42,13 +42,17 @@ const ProductGrid: FC<IProps> = ({title, subtitle, paragraph, productGrid}) => {
 						/>
 					</div>
 					<div className="grid items-center justify-center gap-10 -mx-4 -mb-8 grid-col sm:grid-cols-2 lg:grid-cols-4 lg:justify-between xl:-mx-8">
-						{productGrid.map((keys) => (
-							<ProductCard
-								title={keys?.title}
-								image={keys?.image}
-								key={keys?.id || keys?.title}
-							/>
-						))}
+						{productGrid?.length > 0 ? (
+							productGrid.map((item: any, keys: any) => (
+								<ProductCard
+									key={keys}
+									title={item?.title}
+									image={item?.image}
+								/>
+							))
+						) : (
+							<></>
+						)}
 					</div>
 				</div>
 			</div>

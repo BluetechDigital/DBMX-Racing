@@ -44,14 +44,18 @@ const FourImageGrid: FC<IProps> = ({title, servicesGrid}) => {
 					variants={stagger}
 					className="flex flex-col items-center -mx-4 sm:grid sm:grid-cols-2"
 				>
-					{servicesGrid.map((keys) => (
-						<FourImageGridCard
-							link={keys?.link}
-							title={keys?.title}
-							image={keys?.image}
-							key={keys?.id || keys?.title}
-						/>
-					))}
+					{servicesGrid?.length > 0 ? (
+						servicesGrid.map((item: any, keys: any) => (
+							<FourImageGridCard
+								key={keys}
+								link={item?.link}
+								title={item?.title}
+								image={item?.image}
+							/>
+						))
+					) : (
+						<></>
+					)}
 				</motion.div>
 			</div>
 		</section>

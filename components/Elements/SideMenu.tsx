@@ -61,18 +61,22 @@ const SideMenu: FC<HeroProps> = ({
 					</div>
 					<div className="px-4 mt-20 lg:mt-0">
 						<ul>
-							{mainMenuLinks?.map((keys) => (
-								<li
-									key={keys?.node?.id}
-									className="mb-1 border-b-[1px] border-goldPrime border-opacity-50"
-								>
-									<NavbarMenuLinks
-										url={keys?.node?.url}
-										label={keys?.node?.label}
-										tailwindStyling="block py-4 text-base tracking-[.15rem] font-semibold text-white hover:text-red"
-									/>
-								</li>
-							))}
+							{mainMenuLinks?.length > 0 ? (
+								mainMenuLinks?.map((item: any, keys: any) => (
+									<li
+										key={keys}
+										className="mb-1 border-b-[1px] border-goldPrime border-opacity-50"
+									>
+										<NavbarMenuLinks
+											url={item?.node?.url}
+											label={item?.node?.label}
+											tailwindStyling="block py-4 text-base tracking-[.15rem] font-semibold text-white hover:text-red"
+										/>
+									</li>
+								))
+							) : (
+								<></>
+							)}
 						</ul>
 					</div>
 				</div>
