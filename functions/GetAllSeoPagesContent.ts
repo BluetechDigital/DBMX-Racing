@@ -7,7 +7,7 @@ export async function getAllSeoPagesContent(slug: string) {
 	try {
 		const content: DocumentNode = gql`
 			{
-				mainContent: pages(where: {title: "${slug}", status: PUBLISH}) {
+				mainContent: pages(where: {name: "${slug}", status: PUBLISH}) {
 					edges {
 						node {
 							seo {

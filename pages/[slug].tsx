@@ -12,13 +12,21 @@ import {
 } from "../functions/MenuLinks";
 
 // Components
+import Logos from "@/components/Logos";
 import HeroTwo from "@/components/HeroTwo";
 import Layout from "@/components/Layout/Layout";
+import ContactInfo from "@/components/ContactInfo";
+import ContactForm from "@/components/ContactForm";
+import ProductGrid from "@/components/ProductGrid";
+import ContentStats from "@/components/ContentStats";
 import JumboContent from "../components/JumboContent";
 import StoreLocation from "@/components/StoreLocation";
 import ContactBanner from "@/components/ContactBanner";
 import ContentSlider from "@/components/ContentSlider";
+import FourImageGrid from "@/components/FourImageGrid";
 import TitleParagraph from "@/components/TitleParagraph";
+import Blogs from "@/components/Blogs";
+import {getAllBlogsContent} from "@/functions/BlogPostsSlugs";
 
 interface IDynamicPages {
 	seo: {
@@ -52,6 +60,31 @@ interface IDynamicPages {
 	};
 	content: any;
 	pageTitle: string;
+	blogs: [
+		{
+			node: {
+				id: string;
+				uri: string;
+				date: string;
+				title: string;
+				singleBlogPost: {
+					titleParagraph: {
+						paragraph: string;
+					};
+				};
+				featuredImage: {
+					node: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							width: number;
+							height: number;
+						};
+					};
+				};
+			};
+		}
+	];
 	mainMenuLinks: {
 		mainMenuLinks: [
 			{
@@ -115,6 +148,7 @@ interface IDynamicPages {
 
 const dynamicPages: NextPage<IDynamicPages> = ({
 	seo,
+	blogs,
 	content,
 	pageTitle,
 	mainMenuLinks,
@@ -122,6 +156,8 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 	footerMenuLinks,
 	themesOptionsContent,
 }) => {
+	const FlexibleContentComponent =
+		"DefaultTemplate_Flexiblecontent_FlexibleContent";
 	return (
 		<motion.div
 			exit={{
@@ -140,7 +176,7 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 					content.map((item: any, keys: any) => (
 						<div key={keys}>
 							{item?.fieldGroupName ===
-							"Page_Flexiblecontent_FlexibleContent_HeroSection" ? (
+							`${FlexibleContentComponent}_HeroSection` ? (
 								<>
 									<HeroTwo
 										key={keys}
@@ -157,7 +193,7 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 									/>
 								</>
 							) : item?.fieldGroupName ===
-							  "Page_Flexiblecontent_FlexibleContent_TitleParagraph" ? (
+							  `${FlexibleContentComponent}_TitleParagraph` ? (
 								<>
 									<TitleParagraph
 										key={keys}
@@ -166,15 +202,67 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 									/>
 								</>
 							) : item?.fieldGroupName ===
-							  "Page_Flexiblecontent_FlexibleContent_JumboContentSection" ? (
+							  `${FlexibleContentComponent}_JumboContentSection` ? (
 								<>
 									<JumboContent
 										key={keys}
-										jumboContentSection={item?.jumboContentSection}
+										jumboContentSection={item?.contentSection}
 									/>
 								</>
 							) : item?.fieldGroupName ===
-							  "Page_Flexiblecontent_FlexibleContent_ContactBanner" ? (
+							  `${FlexibleContentComponent}_ContentStats` ? (
+								<>
+									<ContentStats
+										title={item?.title}
+										paragraph={item?.paragraph}
+										statsOne={item?.statsOne}
+										statsTwo={item?.statsTwo}
+									/>
+								</>
+							) : item?.fieldGroupName ===
+							  `${FlexibleContentComponent}_ProductGrid` ? (
+								<>
+									<FourImageGrid
+										title={item?.title}
+										servicesGrid={item?.services}
+									/>
+								</>
+							) : item?.fieldGroupName ===
+							  `${FlexibleContentComponent}_ProductGridTwo` ? (
+								<>
+									<ProductGrid
+										title={item?.title}
+										subtitle={item?.subtitle}
+										paragraph={item?.paragraph}
+										productGrid={item?.products}
+									/>
+								</>
+							) : item?.fieldGroupName ===
+							  `${FlexibleContentComponent}_TrustedBrands` ? (
+								<>
+									<Logos title={item?.title} logoGrid={item?.logos} />
+								</>
+							) : item?.fieldGroupName ===
+							  `${FlexibleContentComponent}_ContentSlider` ? (
+								<>
+									Displays the latest three published posts content dynamically
+								</>
+							) : item?.fieldGroupName ===
+							  `${FlexibleContentComponent}_ContentSliderTwo` ? (
+								<>
+									<ContentSlider
+										content={item?.content}
+										contentTwo={item?.contentTwo}
+										contentThree={item?.contentThree}
+									/>
+								</>
+							) : item?.fieldGroupName ===
+							  `${FlexibleContentComponent}_BlogsGrid` ? (
+								<>
+									<Blogs blogs={blogs} />
+								</>
+							) : item?.fieldGroupName ===
+							  `${FlexibleContentComponent}_ContactBanner` ? (
 								<>
 									<ContactBanner
 										key={keys}
@@ -185,7 +273,27 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 									/>
 								</>
 							) : item?.fieldGroupName ===
-							  "Page_Flexiblecontent_FlexibleContent_OurLocation" ? (
+							  `${FlexibleContentComponent}_ContactInfo` ? (
+								<>
+									<ContactInfo
+										title={item?.title}
+										paragraph={item?.paragraph}
+										email={themesOptionsContent?.email}
+										contactAddress={themesOptionsContent?.address}
+										phoneNumber={themesOptionsContent?.phoneNumber}
+										phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
+									/>
+								</>
+							) : item?.fieldGroupName ===
+							  `${FlexibleContentComponent}_ContactForm` ? (
+								<>
+									<ContactForm
+										title={item?.title}
+										businessHours={themesOptionsContent?.businessHours}
+									/>
+								</>
+							) : item?.fieldGroupName ===
+							  `${FlexibleContentComponent}_OurLocation` ? (
 								<>
 									<StoreLocation
 										title={item?.title}
@@ -226,11 +334,13 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 
 	// Fetch remaining content simultaneously
 	const [
+		blogs,
 		mainMenuLinks,
 		navbarMenuLinks,
 		footerMenuLinks,
 		themesOptionsContent,
 	] = await Promise.all([
+		getAllBlogsContent(),
 		getMainMenuLinks(),
 		getNavbarMenuLinks(),
 		getFooterMenuLinks(),
@@ -239,6 +349,7 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 
 	return {
 		props: {
+			blogs,
 			mainMenuLinks,
 			navbarMenuLinks,
 			footerMenuLinks,

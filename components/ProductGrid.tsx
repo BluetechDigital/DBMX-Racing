@@ -12,6 +12,11 @@ interface IProps {
 		{
 			id: string;
 			title: string;
+			link: {
+				url: string;
+				title: string;
+				target: string;
+			};
 			image: {
 				altText: string;
 				sourceUrl: string;
@@ -46,6 +51,7 @@ const ProductGrid: FC<IProps> = ({title, subtitle, paragraph, productGrid}) => {
 							productGrid.map((item: any, keys: any) => (
 								<ProductCard
 									key={keys}
+									link={item?.link}
 									title={item?.title}
 									image={item?.image}
 								/>
