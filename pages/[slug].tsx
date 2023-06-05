@@ -27,6 +27,8 @@ import FourImageGrid from "@/components/FourImageGrid";
 import TitleParagraph from "@/components/TitleParagraph";
 import Blogs from "@/components/Blogs";
 import {getAllBlogsContent} from "@/functions/BlogPostsSlugs";
+import {fetchContentSliderBlogPostsPostsContent} from "@/functions/ContentSliderPosts";
+import ContentSliderTwo from "@/components/ContentSliderTwo";
 
 interface IDynamicPages {
 	seo: {
@@ -144,6 +146,79 @@ interface IDynamicPages {
 			};
 		};
 	};
+	contentSliderPostsContent: {
+		content: [
+			{
+				uri: string;
+				date: string;
+				title: string;
+				singleBlogPost: {
+					heroSection: {
+						backgroundVideoUrl: string;
+						backgroundImageOrVideo: string;
+						backgroundImage: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					};
+					titleParagraph: {
+						title: string;
+						paragraph: string;
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				singleBlogPost: {
+					heroSection: {
+						backgroundVideoUrl: string;
+						backgroundImageOrVideo: string;
+						backgroundImage: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					};
+					titleParagraph: {
+						title: string;
+						paragraph: string;
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				singleBlogPost: {
+					heroSection: {
+						backgroundVideoUrl: string;
+						backgroundImageOrVideo: string;
+						backgroundImage: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					};
+					titleParagraph: {
+						title: string;
+						paragraph: string;
+					};
+				};
+			}
+		];
+	};
 }
 
 const dynamicPages: NextPage<IDynamicPages> = ({
@@ -155,6 +230,7 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
+	contentSliderPostsContent,
 }) => {
 	const FlexibleContentComponent =
 		"DefaultTemplate_Flexiblecontent_FlexibleContent";
@@ -245,7 +321,11 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 							) : item?.fieldGroupName ===
 							  `${FlexibleContentComponent}_ContentSlider` ? (
 								<>
-									Displays the latest three published posts content dynamically
+									<ContentSliderTwo
+										content={contentSliderPostsContent?.content[0]}
+										contentTwo={contentSliderPostsContent?.content[1]}
+										contentThree={contentSliderPostsContent?.content[2]}
+									/>
 								</>
 							) : item?.fieldGroupName ===
 							  `${FlexibleContentComponent}_ContentSliderTwo` ? (
@@ -339,12 +419,14 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 		navbarMenuLinks,
 		footerMenuLinks,
 		themesOptionsContent,
+		contentSliderPostsContent,
 	] = await Promise.all([
 		getAllBlogsContent(),
 		getMainMenuLinks(),
 		getNavbarMenuLinks(),
 		getFooterMenuLinks(),
 		getThemesOptionsContent(),
+		fetchContentSliderBlogPostsPostsContent(),
 	]);
 
 	return {
@@ -355,6 +437,7 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 			footerMenuLinks,
 			seo: seoContent,
 			themesOptionsContent,
+			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
 			pageTitle: flexibleContentComponents?.pageTitle,
 		},
