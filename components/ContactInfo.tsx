@@ -1,3 +1,4 @@
+// Import
 import {FC} from "react";
 import Link from "next/link";
 import Paragraph from "../components/Elements/Paragraph";

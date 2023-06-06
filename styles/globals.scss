@@ -58,6 +58,7 @@ h5,
 h6,
 button {
 	@apply font-[900] tracking-wide uppercase;
+
 	font-family: $fontStyle_main;
 
 	span {
@@ -82,7 +83,7 @@ ul {
 	li {
 		padding: 0px 10px;
 		position: relative;
-		list-style-type: decimal;
+		list-style-type: disc;
 
 		strong {
 			font-family: $fontStyle_main;

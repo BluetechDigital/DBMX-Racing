@@ -1,34 +1,21 @@
 // Import
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {getAllPagesURLs} from "@/functions/GetAllPagesURLs";
-import {getThemesOptionsContent} from "../functions/themesOptions";
+import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
+import {getAllBlogsContent} from "@/functions/GetAllBlogPostsSlugs";
 import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
-import {getAllFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
+import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
+import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
-} from "../functions/MenuLinks";
+} from "../functions/GetAllMenuLinks";
 
 // Components
-import Logos from "@/components/Logos";
-import HeroTwo from "@/components/HeroTwo";
 import Layout from "@/components/Layout/Layout";
-import ContactInfo from "@/components/ContactInfo";
-import ContactForm from "@/components/ContactForm";
-import ProductGrid from "@/components/ProductGrid";
-import ContentStats from "@/components/ContentStats";
-import JumboContent from "../components/JumboContent";
-import StoreLocation from "@/components/StoreLocation";
-import ContactBanner from "@/components/ContactBanner";
-import ContentSlider from "@/components/ContentSlider";
-import FourImageGrid from "@/components/FourImageGrid";
-import TitleParagraph from "@/components/TitleParagraph";
-import Blogs from "@/components/Blogs";
-import {getAllBlogsContent} from "@/functions/BlogPostsSlugs";
-import {fetchContentSliderBlogPostsPostsContent} from "@/functions/ContentSliderPosts";
-import ContentSliderTwo from "@/components/ContentSliderTwo";
+import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
 interface IDynamicPages {
 	seo: {
@@ -69,9 +56,15 @@ interface IDynamicPages {
 				uri: string;
 				date: string;
 				title: string;
-				singleBlogPost: {
-					titleParagraph: {
-						paragraph: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 				featuredImage: {
@@ -133,18 +126,6 @@ interface IDynamicPages {
 		businessHours: {
 			content: string;
 		};
-		errorPageContent: {
-			title: string;
-			paragraph: string;
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			backgroundImage: {
-				sourceUrl: string;
-			};
-		};
 	};
 	contentSliderPostsContent: {
 		content: [
@@ -152,45 +133,28 @@ interface IDynamicPages {
 				uri: string;
 				date: string;
 				title: string;
-				singleBlogPost: {
-					heroSection: {
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
-					};
-					titleParagraph: {
-						title: string;
-						paragraph: string;
-					};
-				};
-			},
-			{
-				uri: string;
-				date: string;
-				title: string;
-				singleBlogPost: {
-					heroSection: {
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
-					};
-					titleParagraph: {
-						title: string;
-						paragraph: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 			},
@@ -198,22 +162,57 @@ interface IDynamicPages {
 				uri: string;
 				date: string;
 				title: string;
-				singleBlogPost: {
-					heroSection: {
-						backgroundVideoUrl: string;
-						backgroundImageOrVideo: string;
-						backgroundImage: {
-							altText: string;
-							sourceUrl: string;
-							mediaDetails: {
-								height: number;
-								width: number;
-							};
-						};
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
-					titleParagraph: {
-						title: string;
-						paragraph: string;
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 			}
@@ -232,8 +231,6 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 	themesOptionsContent,
 	contentSliderPostsContent,
 }) => {
-	const FlexibleContentComponent =
-		"DefaultTemplate_Flexiblecontent_FlexibleContent";
 	return (
 		<motion.div
 			exit={{
@@ -248,153 +245,21 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 				themesOptionsContent={themesOptionsContent}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 			>
-				{content?.length > 0 ? (
-					content.map((item: any, keys: any) => (
-						<div key={keys}>
-							{item?.fieldGroupName ===
-							`${FlexibleContentComponent}_HeroSection` ? (
-								<>
-									<HeroTwo
-										key={keys}
-										title={item?.title}
-										email={themesOptionsContent?.email}
-										paragraph={item?.paragraph}
-										mainMenuLinks={mainMenuLinks?.mainMenuLinks}
-										twitterLink={themesOptionsContent?.twitterLink}
-										phoneNumber={themesOptionsContent?.phoneNumber}
-										linkedinLink={themesOptionsContent?.linkedinLink}
-										facebookLink={themesOptionsContent?.facebookLink}
-										navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
-										backgroundImage={item?.backgroundImage?.sourceUrl}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_TitleParagraph` ? (
-								<>
-									<TitleParagraph
-										key={keys}
-										title={item?.title}
-										paragraph={item?.paragraph}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_JumboContentSection` ? (
-								<>
-									<JumboContent
-										key={keys}
-										jumboContentSection={item?.contentSection}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_ContentStats` ? (
-								<>
-									<ContentStats
-										title={item?.title}
-										paragraph={item?.paragraph}
-										statsOne={item?.statsOne}
-										statsTwo={item?.statsTwo}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_ProductGrid` ? (
-								<>
-									<FourImageGrid
-										title={item?.title}
-										servicesGrid={item?.services}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_ProductGridTwo` ? (
-								<>
-									<ProductGrid
-										title={item?.title}
-										subtitle={item?.subtitle}
-										paragraph={item?.paragraph}
-										productGrid={item?.products}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_TrustedBrands` ? (
-								<>
-									<Logos title={item?.title} logoGrid={item?.logos} />
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_ContentSlider` ? (
-								<>
-									<ContentSliderTwo
-										content={contentSliderPostsContent?.content[0]}
-										contentTwo={contentSliderPostsContent?.content[1]}
-										contentThree={contentSliderPostsContent?.content[2]}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_ContentSliderTwo` ? (
-								<>
-									<ContentSlider
-										content={item?.content}
-										contentTwo={item?.contentTwo}
-										contentThree={item?.contentThree}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_BlogsGrid` ? (
-								<>
-									<Blogs blogs={blogs} />
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_ContactBanner` ? (
-								<>
-									<ContactBanner
-										key={keys}
-										title={item?.title}
-										paragraph={item?.paragraph}
-										buttonLink={item?.buttonLink}
-										backgroundImage={item?.backgroundImage?.sourceUrl}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_ContactInfo` ? (
-								<>
-									<ContactInfo
-										title={item?.title}
-										paragraph={item?.paragraph}
-										email={themesOptionsContent?.email}
-										contactAddress={themesOptionsContent?.address}
-										phoneNumber={themesOptionsContent?.phoneNumber}
-										phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_ContactForm` ? (
-								<>
-									<ContactForm
-										title={item?.title}
-										businessHours={themesOptionsContent?.businessHours}
-									/>
-								</>
-							) : item?.fieldGroupName ===
-							  `${FlexibleContentComponent}_OurLocation` ? (
-								<>
-									<StoreLocation
-										title={item?.title}
-										paragraph={item?.paragraph}
-									/>
-								</>
-							) : (
-								<></>
-							)}
-						</div>
-					))
-				) : (
-					<></>
-				)}
+				<RenderFlexibleContent
+					blogs={blogs}
+					content={content}
+					mainMenuLinks={mainMenuLinks}
+					navbarMenuLinks={navbarMenuLinks}
+					themesOptionsContent={themesOptionsContent}
+					contentSliderPostsContent={contentSliderPostsContent}
+				/>
 			</Layout>
 		</motion.div>
 	);
 };
 
 export async function getStaticPaths() {
-	const data = await getAllPagesURLs();
+	const data = await getAllPagesSlugs();
 	const paths = data.map((item) => ({
 		params: {
 			slug: item?.slug as String,
@@ -408,9 +273,8 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 	// Fetch priority content
 	const seoContent: any = await getAllSeoPagesContent(params?.slug);
 
-	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
-		params?.slug
-	);
+	const flexibleContentComponents: any =
+		await getAllPagesFlexibleContentComponents(params?.slug);
 
 	// Fetch remaining content simultaneously
 	const [
@@ -426,7 +290,7 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 		getNavbarMenuLinks(),
 		getFooterMenuLinks(),
 		getThemesOptionsContent(),
-		fetchContentSliderBlogPostsPostsContent(),
+		getContentSliderBlogPostsPostsContent(),
 	]);
 
 	return {

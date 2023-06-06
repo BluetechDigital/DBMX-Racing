@@ -1,26 +1,26 @@
 // Import
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {getThemesOptionsContent} from "../../functions/themesOptions";
+import {getThemesOptionsContent} from "../../functions/GetAllThemesOptions";
+import {getAllSeoBlogPostsContent} from "@/functions/GetAllSeoPagesContent";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
+import {getAllBlogPostFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
-} from "../../functions/MenuLinks";
+} from "../../functions/GetAllMenuLinks";
 import {
-	fetchBlogPostsSlugs,
-	fetchBlogPostsContent,
-} from "@/functions/BlogPostsSlugs";
+	getAllBlogPostsSlugs,
+	getAllBlogsContent,
+} from "@/functions/GetAllBlogPostsSlugs";
 
 // Components
-import HeroThree from "@/components/HeroThree";
 import Layout from "@/components/Layout/Layout";
-import JumboContent from "@/components/JumboContent";
-import ContactBanner from "@/components/ContactBanner";
-import TitleParagraph from "@/components/TitleParagraph";
 import BackHoverButton from "@/components/Elements/BackHoverButton";
+import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
-interface ISinglePost {
+interface IDynamicSinglePosts {
 	seo: {
 		canonical: string;
 		cornerstone: Boolean;
@@ -50,64 +50,39 @@ interface ISinglePost {
 			mediaItemUrl: string;
 		};
 	};
+	content: any;
 	pageTitle: string;
-	content: {
-		heroSection: {
-			title: string;
-			paragraph: string;
-			backgroundVideoUrl: string;
-			backgroundImageOrVideo: string;
-			backgroundImage: {
-				altText: string;
-				sourceUrl: string;
-				mediaDetails: {
-					width: number;
-					height: number;
+	blogs: [
+		{
+			node: {
+				id: string;
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
 				};
-			};
-		};
-		titleParagraph: {
-			title: string;
-			paragraph: string;
-		};
-		jumboContentSection: [
-			{
-				content: {
-					id: string;
-					title: string;
-					subtitle: string;
-					paragraph: string;
-					imageLocation: string;
-					backgroundDisplay: string;
-					image: {
+				featuredImage: {
+					node: {
 						altText: string;
 						sourceUrl: string;
 						mediaDetails: {
-							height: number;
 							width: number;
+							height: number;
 						};
 					};
-					buttonLink: {
-						url: string;
-						title: string;
-						target: string;
-					};
 				};
-			}
-		];
-		contactBanner: {
-			title: string;
-			paragraph: string;
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
 			};
-			backgroundImage: {
-				sourceUrl: string;
-			};
-		};
-	};
+		}
+	];
 	mainMenuLinks: {
 		mainMenuLinks: [
 			{
@@ -154,29 +129,110 @@ interface ISinglePost {
 		businessHours: {
 			content: string;
 		};
-		errorPageContent: {
-			title: string;
-			paragraph: string;
-			buttonLink: {
-				url: string;
+	};
+	contentSliderPostsContent: {
+		content: [
+			{
+				uri: string;
+				date: string;
 				title: string;
-				target: string;
-			};
-			backgroundImage: {
-				sourceUrl: string;
-			};
-		};
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			}
+		];
 	};
 }
 
-const singlePost: NextPage<ISinglePost> = ({
+const dynamicSinglePosts: NextPage<IDynamicSinglePosts> = ({
 	seo,
+	blogs,
 	content,
 	pageTitle,
 	mainMenuLinks,
 	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
+	contentSliderPostsContent,
 }) => {
 	return (
 		<motion.div
@@ -192,49 +248,26 @@ const singlePost: NextPage<ISinglePost> = ({
 				themesOptionsContent={themesOptionsContent}
 				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
 			>
-				<HeroThree
-					title={content?.heroSection?.title}
-					email={themesOptionsContent?.email}
-					paragraph={content?.heroSection?.paragraph}
-					mainMenuLinks={mainMenuLinks?.mainMenuLinks}
-					twitterLink={themesOptionsContent?.twitterLink}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
-					backgroundImage={content?.heroSection?.backgroundImage}
-					backgroundVideoUrl={content?.heroSection?.backgroundVideoUrl}
-					backgroundImageOrVideo={content?.heroSection?.backgroundImageOrVideo}
-				/>
-
 				<BackHoverButton link={`/blogs`} />
 
-				<TitleParagraph
-					title={content?.titleParagraph?.title}
-					paragraph={content?.titleParagraph?.paragraph}
-				/>
-
-				<JumboContent jumboContentSection={content?.jumboContentSection} />
-
-				<ContactBanner
-					title={content?.contactBanner?.title}
-					paragraph={content?.contactBanner?.paragraph}
-					buttonLink={content?.contactBanner?.buttonLink}
-					backgroundImage={content?.contactBanner?.backgroundImage?.sourceUrl}
+				<RenderFlexibleContent
+					blogs={blogs}
+					content={content}
+					mainMenuLinks={mainMenuLinks}
+					navbarMenuLinks={navbarMenuLinks}
+					themesOptionsContent={themesOptionsContent}
+					contentSliderPostsContent={contentSliderPostsContent}
 				/>
 			</Layout>
 		</motion.div>
 	);
 };
 
-export default singlePost;
-
 export async function getStaticPaths() {
-	const data = await fetchBlogPostsSlugs();
-
-	const paths = data.map((slugUrl) => ({
+	const data = await getAllBlogPostsSlugs();
+	const paths = data.map((item) => ({
 		params: {
-			slug: slugUrl?.slug as String,
+			slug: item?.slug as String,
 		},
 	}));
 
@@ -242,30 +275,43 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({params}: any) => {
-	const response: any = await fetchBlogPostsContent(params?.slug);
+	// Fetch priority content
+	const seoContent: any = await getAllSeoBlogPostsContent(params?.slug);
 
+	const flexibleContentComponents: any =
+		await getAllBlogPostFlexibleContentComponents(params?.slug);
+
+	// Fetch remaining content simultaneously
 	const [
+		blogs,
 		mainMenuLinks,
 		navbarMenuLinks,
 		footerMenuLinks,
 		themesOptionsContent,
+		contentSliderPostsContent,
 	] = await Promise.all([
+		getAllBlogsContent(),
 		getMainMenuLinks(),
 		getNavbarMenuLinks(),
 		getFooterMenuLinks(),
 		getThemesOptionsContent(),
+		getContentSliderBlogPostsPostsContent(),
 	]);
 
 	return {
 		props: {
+			blogs,
 			mainMenuLinks,
 			navbarMenuLinks,
 			footerMenuLinks,
+			seo: seoContent,
 			themesOptionsContent,
-			seo: response?.seo,
-			content: response?.content,
-			pageTitle: response?.pageTitle,
+			contentSliderPostsContent,
+			content: flexibleContentComponents?.content,
+			pageTitle: flexibleContentComponents?.pageTitle,
 		},
 		revalidate: 60,
 	};
 };
+
+export default dynamicSinglePosts;

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import BlogsCard from "./Cards/BlogsCard";
-import {fadeInUp, stagger} from "../animations/animations";
+import {stagger} from "../animations/animations";
 
 interface IProps {
 	blogs: [
@@ -12,9 +12,15 @@ interface IProps {
 				uri: string;
 				date: string;
 				title: string;
-				singleBlogPost: {
-					titleParagraph: {
-						paragraph: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
 					};
 				};
 				featuredImage: {
@@ -46,10 +52,14 @@ const Blogs: FC<IProps> = ({blogs}) => {
 								key={keys}
 								uri={item?.node?.uri}
 								date={item?.node?.date}
-								title={item?.node?.title}
 								featuredImage={item?.node?.featuredImage}
+								title={
+									item?.node?.template?.flexibleContent?.flexibleContent[0]
+										?.title
+								}
 								paragraph={
-									item?.node?.singleBlogPost?.titleParagraph?.paragraph
+									item?.node?.template?.flexibleContent?.flexibleContent[0]
+										?.paragraph
 								}
 							/>
 						))

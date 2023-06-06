@@ -10,22 +10,28 @@ interface IProps {
 		uri: string;
 		date: string;
 		title: string;
-		singleBlogPost: {
-			heroSection: {
-				backgroundVideoUrl: string;
-				backgroundImageOrVideo: string;
-				backgroundImage: {
-					altText: string;
-					sourceUrl: string;
-					mediaDetails: {
-						height: number;
-						width: number;
-					};
-				};
-			};
-			titleParagraph: {
-				title: string;
-				paragraph: string;
+		template: {
+			flexibleContent: {
+				flexibleContent: [
+					{
+						fieldGroupName: string;
+						backgroundVideoUrl: string;
+						backgroundImageOrVideo: string;
+						backgroundImage: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					},
+					{
+						fieldGroupName: string;
+						paragraph: string;
+						title: string;
+					}
+				];
 			};
 		};
 	};
@@ -33,22 +39,28 @@ interface IProps {
 		uri: string;
 		date: string;
 		title: string;
-		singleBlogPost: {
-			heroSection: {
-				backgroundVideoUrl: string;
-				backgroundImageOrVideo: string;
-				backgroundImage: {
-					altText: string;
-					sourceUrl: string;
-					mediaDetails: {
-						height: number;
-						width: number;
-					};
-				};
-			};
-			titleParagraph: {
-				title: string;
-				paragraph: string;
+		template: {
+			flexibleContent: {
+				flexibleContent: [
+					{
+						fieldGroupName: string;
+						backgroundVideoUrl: string;
+						backgroundImageOrVideo: string;
+						backgroundImage: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					},
+					{
+						fieldGroupName: string;
+						paragraph: string;
+						title: string;
+					}
+				];
 			};
 		};
 	};
@@ -56,22 +68,28 @@ interface IProps {
 		uri: string;
 		date: string;
 		title: string;
-		singleBlogPost: {
-			heroSection: {
-				backgroundVideoUrl: string;
-				backgroundImageOrVideo: string;
-				backgroundImage: {
-					altText: string;
-					sourceUrl: string;
-					mediaDetails: {
-						height: number;
-						width: number;
-					};
-				};
-			};
-			titleParagraph: {
-				title: string;
-				paragraph: string;
+		template: {
+			flexibleContent: {
+				flexibleContent: [
+					{
+						fieldGroupName: string;
+						backgroundVideoUrl: string;
+						backgroundImageOrVideo: string;
+						backgroundImage: {
+							altText: string;
+							sourceUrl: string;
+							mediaDetails: {
+								height: number;
+								width: number;
+							};
+						};
+					},
+					{
+						fieldGroupName: string;
+						paragraph: string;
+						title: string;
+					}
+				];
 			};
 		};
 	};
@@ -187,7 +205,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							<div
 								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover main-post__image"
 								style={{
-									backgroundImage: `url("${content?.singleBlogPost?.heroSection?.backgroundImage?.sourceUrl}")`,
+									backgroundImage: `url("${content?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.sourceUrl}")`,
 								}}
 							>
 								{/* Background Video */}
@@ -196,13 +214,14 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 										<iframe
 											allowFullScreen
 											className={
-												content?.singleBlogPost?.heroSection
+												content?.template?.flexibleContent?.flexibleContent[0]
 													?.backgroundImageOrVideo === "Video"
 													? "absolute top-0 left-0 border-none w-full h-full"
 													: `hidden`
 											}
 											src={
-												content?.singleBlogPost?.heroSection?.backgroundVideoUrl
+												content?.template?.flexibleContent?.flexibleContent[0]
+													?.backgroundVideoUrl
 											}
 										/>
 									</div>
@@ -211,31 +230,31 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								{/* Image */}
 								<Image
 									width={
-										content?.singleBlogPost?.heroSection?.backgroundImage
-											?.mediaDetails?.width
+										content?.template?.flexibleContent?.flexibleContent[0]
+											?.backgroundImage?.mediaDetails?.width
 									}
 									height={
-										content?.singleBlogPost?.heroSection?.backgroundImage
-											?.mediaDetails?.height
+										content?.template?.flexibleContent?.flexibleContent[0]
+											?.backgroundImage?.mediaDetails?.height
 									}
 									className={
-										content?.singleBlogPost?.heroSection
+										content?.template?.flexibleContent?.flexibleContent[0]
 											?.backgroundImageOrVideo === "Image"
 											? `block ${mainImageVideoTailwindcss}`
 											: ` hidden`
 									}
 									src={
-										content?.singleBlogPost?.heroSection?.backgroundImage
-											?.sourceUrl
+										content?.template?.flexibleContent?.flexibleContent[0]
+											?.backgroundImage?.sourceUrl
 									}
-									alt={`${content?.singleBlogPost?.heroSection?.backgroundImage?.altText} image`}
+									alt={`${content?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.altText} image`}
 								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldPrime">
 										{
-											content?.singleBlogPost?.heroSection
+											content?.template?.flexibleContent?.flexibleContent[0]
 												?.backgroundImageOrVideo
 										}
 									</span>
@@ -256,7 +275,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								>
 									<svg
 										className={
-											content?.singleBlogPost?.heroSection
+											content?.template?.flexibleContent?.flexibleContent[0]
 												?.backgroundImageOrVideo === "Video"
 												? `block mr-[12px]`
 												: ` hidden`
@@ -301,7 +320,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							<div
 								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
 								style={{
-									backgroundImage: `url("${contentTwo?.singleBlogPost?.heroSection?.backgroundImage?.sourceUrl}")`,
+									backgroundImage: `url("${contentTwo?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.sourceUrl}")`,
 								}}
 							>
 								{/* Background Video */}
@@ -310,14 +329,15 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 										<iframe
 											allowFullScreen
 											className={
-												contentTwo?.singleBlogPost?.heroSection
-													?.backgroundImageOrVideo === "Video"
+												contentTwo?.template?.flexibleContent
+													?.flexibleContent[0]?.backgroundImageOrVideo ===
+												"Video"
 													? "absolute top-0 left-0 border-none w-full h-full"
 													: `hidden`
 											}
 											src={
-												contentTwo?.singleBlogPost?.heroSection
-													?.backgroundVideoUrl
+												contentTwo?.template?.flexibleContent
+													?.flexibleContent[0]?.backgroundVideoUrl
 											}
 										/>
 									</div>
@@ -326,31 +346,31 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								{/* Image */}
 								<Image
 									width={
-										contentTwo?.singleBlogPost?.heroSection?.backgroundImage
-											?.mediaDetails?.width
+										contentTwo?.template?.flexibleContent?.flexibleContent[0]
+											?.backgroundImage?.mediaDetails?.width
 									}
 									height={
-										contentTwo?.singleBlogPost?.heroSection?.backgroundImage
-											?.mediaDetails?.height
+										contentTwo?.template?.flexibleContent?.flexibleContent[0]
+											?.backgroundImage?.mediaDetails?.height
 									}
 									className={
-										contentTwo?.singleBlogPost?.heroSection
+										contentTwo?.template?.flexibleContent?.flexibleContent[0]
 											?.backgroundImageOrVideo === "Image"
 											? `block ${mainImageVideoTailwindcss}`
 											: ` hidden`
 									}
 									src={
-										contentTwo?.singleBlogPost?.heroSection?.backgroundImage
-											?.sourceUrl
+										contentTwo?.template?.flexibleContent?.flexibleContent[0]
+											?.backgroundImage?.sourceUrl
 									}
-									alt={`${contentTwo?.singleBlogPost?.heroSection?.backgroundImage?.altText} image`}
+									alt={`${contentTwo?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.altText} image`}
 								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldPrime">
 										{
-											contentTwo?.singleBlogPost?.heroSection
+											contentTwo?.template?.flexibleContent?.flexibleContent[0]
 												?.backgroundImageOrVideo
 										}
 									</span>
@@ -371,7 +391,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								>
 									<svg
 										className={
-											contentTwo?.singleBlogPost?.heroSection
+											contentTwo?.template?.flexibleContent?.flexibleContent[0]
 												?.backgroundImageOrVideo === "Video"
 												? `block mr-[12px]`
 												: ` hidden`
@@ -416,7 +436,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							<div
 								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
 								style={{
-									backgroundImage: `url("${contentThree?.singleBlogPost?.heroSection?.backgroundImage?.sourceUrl}")`,
+									backgroundImage: `url("${contentThree?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.sourceUrl}")`,
 								}}
 							>
 								{/* Background Video */}
@@ -425,14 +445,15 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 										<iframe
 											allowFullScreen
 											className={
-												contentThree?.singleBlogPost?.heroSection
-													?.backgroundImageOrVideo === "Video"
+												contentThree?.template?.flexibleContent
+													?.flexibleContent[0]?.backgroundImageOrVideo ===
+												"Video"
 													? "absolute top-0 left-0 border-none w-full h-full"
 													: `hidden`
 											}
 											src={
-												contentThree?.singleBlogPost?.heroSection
-													?.backgroundVideoUrl
+												contentThree?.template?.flexibleContent
+													?.flexibleContent[0]?.backgroundVideoUrl
 											}
 										/>
 									</div>
@@ -441,32 +462,32 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								{/* Image */}
 								<Image
 									width={
-										contentThree?.singleBlogPost?.heroSection?.backgroundImage
-											?.mediaDetails?.width
+										contentThree?.template?.flexibleContent?.flexibleContent[0]
+											?.backgroundImage?.mediaDetails?.width
 									}
 									height={
-										contentThree?.singleBlogPost?.heroSection?.backgroundImage
-											?.mediaDetails?.height
+										contentThree?.template?.flexibleContent?.flexibleContent[0]
+											?.backgroundImage?.mediaDetails?.height
 									}
 									className={
-										contentThree?.singleBlogPost?.heroSection
+										contentThree?.template?.flexibleContent?.flexibleContent[0]
 											?.backgroundImageOrVideo === "Image"
 											? `block ${mainImageVideoTailwindcss}`
 											: ` hidden`
 									}
 									src={
-										contentThree?.singleBlogPost?.heroSection?.backgroundImage
-											?.sourceUrl
+										contentThree?.template?.flexibleContent?.flexibleContent[0]
+											?.backgroundImage?.sourceUrl
 									}
-									alt={`${contentThree?.singleBlogPost?.heroSection?.backgroundImage?.altText} image`}
+									alt={`${contentThree?.template?.flexibleContent?.flexibleContent[0]?.backgroundImage?.altText} image`}
 								/>
 							</div>
 							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 								<div className="inline-flex m-0 overflow-hidden tag">
 									<span className="py-[6px] px-6 bg-goldPrime">
 										{
-											contentThree?.singleBlogPost?.heroSection
-												?.backgroundImageOrVideo
+											contentThree?.template?.flexibleContent
+												?.flexibleContent[0]?.backgroundImageOrVideo
 										}
 									</span>
 								</div>
@@ -486,8 +507,8 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 								>
 									<svg
 										className={
-											contentThree?.singleBlogPost?.heroSection
-												?.backgroundImageOrVideo === "Video"
+											contentThree?.template?.flexibleContent
+												?.flexibleContent[0]?.backgroundImageOrVideo === "Video"
 												? `block mr-[12px]`
 												: ` hidden`
 										}
@@ -546,7 +567,10 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							</div>
 							<header className="flex items-center justify-between header">
 								<span className="text-sm text-white uppercase">
-									{content?.singleBlogPost?.heroSection?.backgroundImageOrVideo}
+									{
+										content?.template?.flexibleContent?.flexibleContent[0]
+											?.backgroundImageOrVideo
+									}
 								</span>
 								<span className="text-sm text-white ">
 									{dateFormat(new Date(content?.date), "dddd, mmmm d, yyyy")}
@@ -557,16 +581,21 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
-									{content?.singleBlogPost?.titleParagraph?.title}
+									{
+										content?.template?.flexibleContent?.flexibleContent[1]
+											?.title
+									}
 								</h3>
 								<div
 									className={
-										content?.singleBlogPost?.titleParagraph?.paragraph
+										content?.template?.flexibleContent?.flexibleContent[1]
+											?.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
 											: `hidden`
 									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-										content?.singleBlogPost?.titleParagraph?.paragraph
+										content?.template?.flexibleContent?.flexibleContent[1]
+											?.paragraph
 									)}
 								/>
 							</div>
@@ -590,7 +619,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							<header className="flex items-center justify-between header">
 								<span className="text-sm text-white uppercase">
 									{
-										contentTwo?.singleBlogPost?.heroSection
+										contentTwo?.template?.flexibleContent?.flexibleContent[0]
 											?.backgroundImageOrVideo
 									}
 								</span>
@@ -603,16 +632,21 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
-									{contentTwo?.singleBlogPost?.titleParagraph?.title}
+									{
+										contentTwo?.template?.flexibleContent?.flexibleContent[1]
+											?.title
+									}
 								</h3>
 								<div
 									className={
-										contentTwo?.singleBlogPost?.titleParagraph?.paragraph
+										contentTwo?.template?.flexibleContent?.flexibleContent[1]
+											?.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
 											: `hidden`
 									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-										contentTwo?.singleBlogPost?.titleParagraph?.paragraph
+										contentTwo?.template?.flexibleContent?.flexibleContent[1]
+											?.paragraph
 									)}
 								/>
 							</div>
@@ -636,7 +670,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 							<header className="flex items-center justify-between header">
 								<span className="text-sm text-white uppercase">
 									{
-										contentThree?.singleBlogPost?.heroSection
+										contentThree?.template?.flexibleContent?.flexibleContent[0]
 											?.backgroundImageOrVideo
 									}
 								</span>
@@ -652,16 +686,21 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
-									{contentThree?.singleBlogPost?.titleParagraph?.title}
+									{
+										contentThree?.template?.flexibleContent?.flexibleContent[1]
+											?.title
+									}
 								</h3>
 								<div
 									className={
-										contentThree?.singleBlogPost?.titleParagraph?.paragraph
+										contentThree?.template?.flexibleContent?.flexibleContent[1]
+											?.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
 											: `hidden`
 									}
 									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-										contentThree?.singleBlogPost?.titleParagraph?.paragraph
+										contentThree?.template?.flexibleContent?.flexibleContent[1]
+											?.paragraph
 									)}
 								/>
 							</div>

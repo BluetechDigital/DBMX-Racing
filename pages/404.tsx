@@ -1,14 +1,105 @@
-import Head from "next/head";
+// Import
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {getFooterMenuLinks} from "../functions/MenuLinks";
-import {getThemesOptionsContent} from "../functions/themesOptions";
+import {getAllBlogsContent} from "@/functions/GetAllBlogPostsSlugs";
+import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
+import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
+import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+} from "../functions/GetAllMenuLinks";
 
 // Components
-import Footer from "@/components/Footer";
-import ErrorPage from "@/components/ErrorPage";
+import Layout from "@/components/Layout/Layout";
+import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
 interface INoPageExits {
+	seo: {
+		canonical: string;
+		cornerstone: Boolean;
+		focuskw: string;
+		fullHead: string;
+		metaDesc: string;
+		metaKeywords: string;
+		metaRobotsNofollow: string;
+		metaRobotsNoindex: string;
+		opengraphAuthor: string;
+		opengraphDescription: string;
+		opengraphImage: {
+			mediaItemUrl: string;
+		};
+		opengraphModifiedTime: string;
+		opengraphPublishedTime: string;
+		opengraphPublisher: string;
+		opengraphSiteName: string;
+		opengraphTitle: string;
+		opengraphType: string;
+		opengraphUrl: string;
+		readingTime: number;
+		title: string;
+		twitterDescription: string;
+		twitterTitle: string;
+		twitterImage: {
+			mediaItemUrl: string;
+		};
+	};
+	content: any;
+	blogs: [
+		{
+			node: {
+				id: string;
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+				featuredImage: {
+					node: {
+						altText: string;
+						sourceUrl: string;
+						mediaDetails: {
+							width: number;
+							height: number;
+						};
+					};
+				};
+			};
+		}
+	];
+	mainMenuLinks: {
+		mainMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
+	navbarMenuLinks: {
+		navbarMenuLinks: [
+			{
+				node: {
+					id: string;
+					url: string;
+					label: string;
+				};
+			}
+		];
+	};
 	footerMenuLinks: {
 		footerMenuLinks: [
 			{
@@ -21,32 +112,121 @@ interface INoPageExits {
 		];
 	};
 	themesOptionsContent: {
+		address: string;
 		email: string;
 		emailTwo: string;
 		phoneNumber: string;
 		phoneNumberTwo: string;
-		twitterLink: string;
+		copyrightText: string;
 		facebookLink: string;
 		linkedinLink: string;
-		copyRightText: string;
-		errorPageContent: {
-			title: string;
-			paragraph: string;
-			buttonLink: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			backgroundImage: {
-				sourceUrl: string;
-			};
+		twitterLink: string;
+		businessHours: {
+			content: string;
 		};
+	};
+	contentSliderPostsContent: {
+		content: [
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			},
+			{
+				uri: string;
+				date: string;
+				title: string;
+				template: {
+					flexibleContent: {
+						flexibleContent: [
+							{
+								fieldGroupName: string;
+								backgroundVideoUrl: string;
+								backgroundImageOrVideo: string;
+								backgroundImage: {
+									altText: string;
+									sourceUrl: string;
+									mediaDetails: {
+										height: number;
+										width: number;
+									};
+								};
+							},
+							{
+								fieldGroupName: string;
+								paragraph: string;
+								title: string;
+							}
+						];
+					};
+				};
+			}
+		];
 	};
 }
 
 const noPageExits: NextPage<INoPageExits> = ({
+	seo,
+	blogs,
+	content,
+	mainMenuLinks,
+	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
+	contentSliderPostsContent,
 }) => {
 	return (
 		<motion.div
@@ -56,34 +236,21 @@ const noPageExits: NextPage<INoPageExits> = ({
 			initial="initial"
 			animate="animate"
 		>
-			<Head>
-				<title>404 Page Not Found | Prime Apartments</title>
-				<meta name="description" content="Generated by create next app" />
-				<link rel="icon" href="/img/Logo.png" />
-			</Head>
-
-			<main>
-				<ErrorPage
-					title={themesOptionsContent?.errorPageContent?.title}
-					paragraph={themesOptionsContent?.errorPageContent?.paragraph}
-					buttonLink={themesOptionsContent?.errorPageContent?.buttonLink}
-					backgroundImage={
-						themesOptionsContent?.errorPageContent?.backgroundImage?.sourceUrl
-					}
+			<Layout
+				seo={seo}
+				pageTitle={"DBMX Racing"}
+				themesOptionsContent={themesOptionsContent}
+				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			>
+				<RenderFlexibleContent
+					blogs={blogs}
+					content={content}
+					mainMenuLinks={mainMenuLinks}
+					navbarMenuLinks={navbarMenuLinks}
+					themesOptionsContent={themesOptionsContent}
+					contentSliderPostsContent={contentSliderPostsContent}
 				/>
-
-				<Footer
-					email={themesOptionsContent?.email}
-					emailTwo={themesOptionsContent?.emailTwo}
-					phoneNumber={themesOptionsContent?.phoneNumber}
-					twitterLink={themesOptionsContent?.twitterLink}
-					facebookLink={themesOptionsContent?.facebookLink}
-					linkedinLink={themesOptionsContent?.linkedinLink}
-					footerMenuLinks={footerMenuLinks?.footerMenuLinks}
-					copyRightText={themesOptionsContent?.copyRightText}
-					phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-				/>
-			</main>
+			</Layout>
 		</motion.div>
 	);
 };
@@ -91,13 +258,39 @@ const noPageExits: NextPage<INoPageExits> = ({
 export default noPageExits;
 
 export const getStaticProps: GetStaticProps = async () => {
-	const footerMenuLinks: object = await getFooterMenuLinks();
-	const themesOptionsContent: object = await getThemesOptionsContent();
+	// Fetch priority content
+	const seoContent: any = await getAllSeoPagesContent("error-page");
+
+	const flexibleContentComponents: any =
+		await getAllPagesFlexibleContentComponents("error-page");
+
+	// Fetch remaining content simultaneously
+	const [
+		blogs,
+		mainMenuLinks,
+		navbarMenuLinks,
+		footerMenuLinks,
+		themesOptionsContent,
+		contentSliderPostsContent,
+	] = await Promise.all([
+		getAllBlogsContent(),
+		getMainMenuLinks(),
+		getNavbarMenuLinks(),
+		getFooterMenuLinks(),
+		getThemesOptionsContent(),
+		getContentSliderBlogPostsPostsContent(),
+	]);
 
 	return {
 		props: {
+			blogs,
+			mainMenuLinks,
+			navbarMenuLinks,
 			footerMenuLinks,
+			seo: seoContent,
 			themesOptionsContent,
+			contentSliderPostsContent,
+			content: flexibleContentComponents?.content,
 		},
 		revalidate: 60,
 	};

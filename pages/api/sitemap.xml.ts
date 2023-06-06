@@ -1,13 +1,13 @@
 // Import
-import {fetchAllPagesSlugs} from "@/functions/GetAllPagesLinks";
-import {fetchBlogPostsSlugs} from "@/functions/BlogPostsSlugs";
+import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
+import {getAllBlogPostsSlugs} from "@/functions/GetAllBlogPostsSlugs";
 
 const {SitemapStream, streamToPromise} = require("sitemap");
 const {Readable} = require("stream");
 
 const sitemap = async (req: any, res: any) => {
-	const pagesSlugs = await fetchAllPagesSlugs();
-	const postsSlugs = await fetchBlogPostsSlugs();
+	const pagesSlugs = await getAllPagesSlugs();
+	const postsSlugs = await getAllBlogPostsSlugs();
 
 	// Pages & Blogs Arrays
 	const pagesLinks: any = [];
