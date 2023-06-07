@@ -109,7 +109,7 @@ const HeroTwo: FC<HeroProps> = ({
 					<div className="max-w-3xl">
 						<motion.h1
 							variants={fadeInUp}
-							className="flex flex-col sm:block text-center mb-3 text-6xl md:text-7xl text-white font-bold lg:leading-[4rem]"
+							className="flex flex-col sm:block text-center mb-3 text-xl sm:text-3xl md:text-6xl lg:text-7xl text-white font-bold lg:leading-[4rem]"
 						>
 							{title}
 						</motion.h1>
@@ -117,7 +117,7 @@ const HeroTwo: FC<HeroProps> = ({
 					<div className="max-w-xl">
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="py-6 text-white leading-[1.75rem] font-[500] text-medium text-center"
+							tailwindStyling="py-6 text-white leading-[1.75rem] font-[500] text-base sm:text-medium text-center"
 						/>
 					</div>
 				</div>

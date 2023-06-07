@@ -6,12 +6,10 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint",
-		"test": "playwright test"
+		"lint": "next lint"
 	},
 	"dependencies": {
 		"@apollo/client": "^3.7.13",
-		"@playwright/test": "^1.32.2",
 		"dompurify": "^3.0.1",
 		"formik": "^2.2.9",
 		"framer-motion": "^10.12.9",
@@ -23,8 +21,7 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-google-recaptcha": "^3.1.0",
-		"sass": "^1.60.0",
-		"styled-components": "^5.3.9"
+		"sass": "^1.60.0"
 	},
 	"devDependencies": {
 		"@types/dateformat": "^5.0.0",
@@ -33,7 +30,6 @@
 		"@types/react": "^18.2.1",
 		"@types/react-dom": "^18.2.3",
 		"@types/react-google-recaptcha": "^2.1.5",
-		"@types/styled-components": "^5.1.26",
 		"autoprefixer": "^10.4.14",
 		"dateformat": "^5.0.3",
 		"eslint": "^8.39.0",

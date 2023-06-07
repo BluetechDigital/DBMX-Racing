@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
-import styled from "styled-components";
 import {fadeInUp, stagger} from "../animations/animations";
 
 // Components
@@ -53,29 +52,6 @@ interface HeroProps {
 		}
 	];
 }
-
-const VideoContainer = styled.div`
-	position: relative;
-	padding-bottom: 56.25%;
-	overflow: hidden;
-	max-width: 100%;
-	width: 100%;
-	height: auto;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-
-	iframe,
-	object,
-	embed {
-		position: absolute;
-		top: 0;
-		left: 0;
-		border: 0;
-		width: 100%;
-		height: 100%;
-	}
-`;
 
 const Hero: FC<HeroProps> = ({
 	title,
@@ -160,14 +136,14 @@ const Hero: FC<HeroProps> = ({
 				</nav>
 				<div className="container relative flex flex-col items-baseline justify-center px-4 m-auto text-center sm:text-left">
 					<div className="max-w-3xl">
-						<h1 className="flex flex-col sm:block text-left mb-3 text-6xl sm:text-7xl md:text-8xl text-white font-bold leading-[3rem] lg:leading-[4rem]">
+						<h1 className="flex flex-col sm:block text-left mb-3 text-xl sm:text-3xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-bold leading-[3rem] lg:leading-[4rem]">
 							{title}
 						</h1>
 					</div>
 					<div className="max-w-xl">
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="mb-6 py-6 text-white leading-[1.75rem] font-[500] text-medium text-center sm:text-left"
+							tailwindStyling="mb-6 py-6 text-white leading-[1.75rem] font-[500] text-base sm:text-medium text-center sm:text-left"
 						/>
 						<motion.div
 							variants={stagger}

@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
-import styled from "styled-components";
 import {fadeInUp} from "../animations/animations";
 
 // Components
@@ -50,24 +49,6 @@ interface HeroProps {
 		}
 	];
 }
-
-const Vimeo = styled.div`
-	position: relative;
-	padding-bottom: 56.25%;
-	overflow: hidden;
-	max-width: 100%;
-	height: auto;
-
-	iframe,
-	object,
-	embed {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-`;
 
 const HeroThree: FC<HeroProps> = ({
 	title,
@@ -172,7 +153,7 @@ const HeroThree: FC<HeroProps> = ({
 					<div className="max-w-3xl">
 						<motion.h1
 							variants={fadeInUp}
-							className="flex flex-col sm:block text-center mb-3 text-6xl md:text-7xl text-white font-bold lg:leading-[4rem]"
+							className="flex flex-col sm:block text-center mb-3 text-xl sm:text-3xl md:text-6xl lg:text-7xl text-white font-bold lg:leading-[4rem]"
 						>
 							{title}
 						</motion.h1>
@@ -180,7 +161,7 @@ const HeroThree: FC<HeroProps> = ({
 					<div className="max-w-xl">
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="mb-6 py-6 text-white leading-[1.75rem] font-[500] text-medium text-center"
+							tailwindStyling="mb-6 py-6 text-white leading-normal sm:leading-[1.75rem] font-[500] text-base sm:text-medium text-center"
 						/>
 					</div>
 				</div>

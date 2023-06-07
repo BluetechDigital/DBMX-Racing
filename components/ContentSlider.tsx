@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import styled from "styled-components";
 import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef, FC} from "react";
 import styles from "../styles/components/ContentSlider.module.scss";
@@ -70,24 +69,6 @@ interface IProps {
 		};
 	};
 }
-
-const Vimeo = styled.div`
-	position: relative;
-	padding-bottom: 56.25%;
-	overflow: hidden;
-	max-width: 100%;
-	height: auto;
-
-	iframe,
-	object,
-	embed {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-`;
 
 const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 	/* Sanitize the WYSIWYG paragraph content */
@@ -177,7 +158,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 	return (
 		<section className="w-full h-full">
 			<div
-				className="h-[100vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh]"
+				className="h-[75vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh]"
 				style={{
 					gridTemplateRows: "1fr 3fr 1.5fr",
 					gridTemplateColumns: "50px 1fr 1fr 1fr 1fr 50px",

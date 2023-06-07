@@ -60,7 +60,7 @@ const BlogsCard: FC<IProps> = ({
 				<Link href={uri ? `blogs${uri}` : `/`}>
 					<motion.h2
 						variants={fadeInUp}
-						className="mb-2 text-xl font-semibold text-black font-heading"
+						className="mb-2 text-lg font-semibold text-black sm:text-xl"
 					>
 						{title}
 					</motion.h2>

@@ -188,7 +188,7 @@ const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
 			}}
 		>
 			<div
-				className="h-[100vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh]"
+				className="h-[75vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh]"
 				style={{
 					gridTemplateRows: "1fr 3fr 1.5fr",
 					gridTemplateColumns: "50px 1fr 1fr 1fr 1fr 50px",

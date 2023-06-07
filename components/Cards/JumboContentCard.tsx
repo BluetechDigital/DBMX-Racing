@@ -1,3 +1,4 @@
+// Import
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -100,19 +101,19 @@ const JumboContentCard: FC<IProps> = ({
 						>
 							<motion.span
 								variants={fadeInUp}
-								className="text-base font-semibold text-goldPrime"
+								className="text-base font-semibold text-center sm:text-left text-goldPrime"
 							>
 								{subtitle}
 							</motion.span>
 							<motion.h2
 								variants={fadeInUp}
-								className={`mt-2 text-4xl font-semibold ${titleColor} lg:pr-8`}
+								className={`mt-2 text-lg sm:text-3xl md:text-4xl text-center sm:text-left font-semibold ${titleColor} lg:pr-8`}
 							>
 								{title}
 							</motion.h2>
 							<Paragraph
 								content={paragraph}
-								tailwindStyling={`w-full lg:max-w-2xl mx-auto mt-4 py-8 ${paragraphColor} text-left text-medium`}
+								tailwindStyling={`w-full lg:max-w-2xl mx-auto mt-4 py-8 ${paragraphColor} text-left text-base`}
 							/>
 							<Link
 								href={buttonLink?.url ? buttonLink?.url : `/`}

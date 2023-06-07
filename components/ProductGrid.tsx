@@ -38,12 +38,12 @@ const ProductGrid: FC<IProps> = ({title, subtitle, paragraph, productGrid}) => {
 						<span className="font-bold tracking-wide uppercase text-red text-tiny">
 							{subtitle}
 						</span>
-						<h2 className="max-w-2xl mt-6 mb-2 text-4xl font-bold text-white font-heading">
+						<h2 className="max-w-2xl mt-6 mb-2 text-lg font-bold text-white sm:text-3xl md:text-4xl font-heading">
 							{title}
 						</h2>
 						<Paragraph
 							content={paragraph}
-							tailwindStyling="max-w-3xl mt-4 py-8 text-grey text-left text-medium"
+							tailwindStyling="max-w-3xl mt-4 py-8 text-grey text-left text-base"
 						/>
 					</div>
 					<div className="grid items-center justify-center gap-10 -mx-4 -mb-8 grid-col sm:grid-cols-2 lg:grid-cols-4 lg:justify-between xl:-mx-8">

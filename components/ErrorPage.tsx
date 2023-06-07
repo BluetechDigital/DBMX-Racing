@@ -33,7 +33,7 @@ const ErrorPage: FC<IProps> = ({
 				<div className="container p-0 mx-auto">
 					<motion.h1
 						variants={fadeInUp}
-						className="mb-4 text-5xl lg:text-7xl text-white text-center font-[600] font-heading leading-tight"
+						className="mb-4 text-xl sm:text-5xl lg:text-7xl text-white text-center font-[600] font-heading leading-tight"
 					>
 						{title}
 					</motion.h1>

@@ -1,10 +1,12 @@
 // Import
 import {FC} from "react";
 import Link from "next/link";
-import Paragraph from "../components/Elements/Paragraph";
 
 // Styling
 import styles from "../styles/components/ContactInfo.module.scss";
+
+// Components
+import Paragraph from "../components/Elements/Paragraph";
 
 interface IProps {
 	email: string;
@@ -26,12 +28,12 @@ const ContactInfo: FC<IProps> = ({
 	return (
 		<section className={styles.contactInfo}>
 			<div className="container relative z-10 px-8 mx-auto">
-				<h2 className="mb-10 text-3xl font-bold leading-none text-center text-black sm:text-4xl tracking-px-n">
+				<h2 className="mb-10 text-lg font-bold leading-none text-center text-black sm:text-3xl md:text-4xl tracking-px-n">
 					{title}
 				</h2>
 				<Paragraph
 					content={paragraph}
-					tailwindStyling="mb-20 text-medium text-black text-center leading-normal md:max-w-3xl mx-auto"
+					tailwindStyling="mb-20 text-base text-black text-center leading-normal md:max-w-3xl mx-auto"
 				/>
 				<div className="flex flex-col items-center justify-center gap-4 lg:grid lg:grid-cols-3">
 					<div className="w-full h-full lg:min-h-[300px] p-3 border border-darkRed">
@@ -55,7 +57,7 @@ const ContactInfo: FC<IProps> = ({
 									</svg>
 								</div>
 							</div>
-							<h3 className="mb-4 text-xl font-bold leading-snug text-darkRed">
+							<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl text-darkRed">
 								Send Email
 							</h3>
 							<div className="flex flex-col items-center justify-center">
@@ -89,7 +91,7 @@ const ContactInfo: FC<IProps> = ({
 									</svg>
 								</div>
 							</div>
-							<h3 className="mb-4 text-xl font-bold leading-snug text-darkRed">
+							<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl text-darkRed">
 								Call Us
 							</h3>
 							<div className="flex flex-col items-center justify-center gap-4 sm:gap-2">
@@ -142,7 +144,7 @@ const ContactInfo: FC<IProps> = ({
 									</svg>
 								</div>
 							</div>
-							<h3 className="mb-4 text-xl font-bold leading-snug text-darkRed">
+							<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl text-darkRed">
 								Address
 							</h3>
 							<Paragraph

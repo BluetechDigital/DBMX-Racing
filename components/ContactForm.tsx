@@ -1,14 +1,16 @@
-import Image from "next/image";
+// Import
 import {motion} from "framer-motion";
 import React, {useState, FC} from "react";
-import {sendContactForm} from "../functions/api";
-import Paragraph from "./Elements/Paragraph";
 import ReCAPTCHA from "react-google-recaptcha";
+import {sendContactForm} from "../functions/api";
 import {useFormik, Formik, Field, Form} from "formik";
 import {fadeIn, fadeInUp, stagger} from "../animations/animations";
 
 // Styling
 import styles from "../styles/components/ContactForm.module.scss";
+
+// Components
+import Paragraph from "./Elements/Paragraph";
 
 interface IProps {
 	title: string;
@@ -117,7 +119,7 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 
 	return (
 		<section
-			className="py-20 mx-auto overflow-hidden bg-center bg-no-repeat bg-cover bg-darkerRedTwo"
+			className="px-4 py-20 mx-auto overflow-hidden bg-center bg-no-repeat bg-cover bg-darkerRedTwo"
 			style={{
 				backgroundImage: `url("/svg/stacked-peaks.svg")`,
 			}}
@@ -131,7 +133,7 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 						<Form className="container mx-auto transition-all ease-in-out duration-[0.5s] md:max-w-xl shadow-12xl">
 							<motion.h3
 								variants={fadeIn}
-								className="mx-auto mb-16 text-xl font-semibold text-center uppercase sm:text-2xl"
+								className="mx-auto mb-16 text-lg font-semibold text-center uppercase sm:text-xl md:text-2xl"
 							>
 								{title}
 							</motion.h3>
@@ -297,7 +299,7 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 												</g>
 											</svg>
 										</span>
-										<h3 className="text-white uppercase text-medium">
+										<h3 className="text-base tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
 											Send Message
 										</h3>
 									</span>
@@ -306,7 +308,7 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 						</Form>
 					</Formik>
 				</div>
-				<div className="w-full lg:w-1/2 h-full lg:min-h-[300px] my-10 px-3 border border-darkRed">
+				<div className="w-full lg:w-1/2 h-full lg:min-h-[300px] my-10 px-0 sm:px-3 border border-darkRed">
 					<div className="flex flex-col items-center justify-center gap-4 text-center p-11">
 						<div className="relative w-16 h-16 mx-auto mb-6 border rounded-full border-darkRed">
 							<div className="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
@@ -327,7 +329,7 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 								</svg>
 							</div>
 						</div>
-						<h3 className="mb-4 text-xl font-bold leading-snug text-darkRed">
+						<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl text-darkRed">
 							Business Hours
 						</h3>
 						<Paragraph
