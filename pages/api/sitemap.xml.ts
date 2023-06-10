@@ -1,13 +1,14 @@
 // Import
+import {Readable} from "stream";
+import {SitemapStream, streamToPromise} from "sitemap";
 import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
 import {getAllBlogPostsSlugs} from "@/functions/GetAllBlogPostsSlugs";
 
-const {SitemapStream, streamToPromise} = require("sitemap");
-const {Readable} = require("stream");
-
 const sitemap = async (req: any, res: any) => {
-	const pagesSlugs = await getAllPagesSlugs();
-	const postsSlugs = await getAllBlogPostsSlugs();
+	const [pagesSlugs, postsSlugs] = await Promise.all([
+		getAllPagesSlugs(),
+		getAllBlogPostsSlugs(),
+	]);
 
 	// Pages & Blogs Arrays
 	const pagesLinks: any = [];
@@ -42,6 +43,8 @@ const sitemap = async (req: any, res: any) => {
 
 	// Create a stream to write to
 	const stream = new SitemapStream({hostname: process.env.SITE_URL});
+
+	req;
 
 	res.writeHead(200, {
 		"Content-Type": "application/xml",
