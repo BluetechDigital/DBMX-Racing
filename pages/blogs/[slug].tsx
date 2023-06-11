@@ -256,7 +256,7 @@ const dynamicSinglePosts: NextPage<IDynamicSinglePosts> = ({
 				<Layout>
 					<BackHoverButton link={`/blogs`} />
 
-					<RenderFlexibleContent content={content} />
+					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
 		</ContentContext.Provider>

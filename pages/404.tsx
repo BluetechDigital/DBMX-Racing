@@ -250,7 +250,7 @@ const noPageExits: NextPage<INoPageExits> = ({
 				animate="animate"
 			>
 				<Layout>
-					<RenderFlexibleContent content={content} />
+					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
 		</ContentContext.Provider>

@@ -1,5 +1,5 @@
 // Import
-import {FC} from "react";
+import {useContentContext} from "@/context/context";
 
 // Components
 import Hero from "@/components/Hero";
@@ -21,16 +21,15 @@ import ContentSection from "@/components/ContentSection";
 import TitleParagraph from "@/components/TitleParagraph";
 import ContentSliderTwo from "@/components/ContentSliderTwo";
 
-interface IFlexibleContent {
-	content: any;
-}
-const RenderFlexibleContent: FC<IFlexibleContent> = ({content}) => {
+const RenderFlexibleContent = () => {
+	const content = useContentContext();
+
 	const FlexibleContentComponent =
 		"DefaultTemplate_Flexiblecontent_FlexibleContent";
 	return (
 		<>
-			{content?.length > 0 ? (
-				content.map((item: any, keys: any) => (
+			{content.content?.length > 0 ? (
+				content.content.map((item: any, keys: any) => (
 					<div key={keys}>
 						{item?.fieldGroupName ===
 						`${FlexibleContentComponent}_HeroSection` ? (

@@ -251,7 +251,7 @@ const dynamicPages: NextPage<IDynamicContent> = ({
 				animate="animate"
 			>
 				<Layout>
-					<RenderFlexibleContent content={content} />
+					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
 		</ContentContext.Provider>
