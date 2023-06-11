@@ -250,14 +250,7 @@ const Home: NextPage<IHome> = ({
 				animate="animate"
 			>
 				<Layout>
-					<RenderFlexibleContent
-						blogs={blogs}
-						content={content}
-						mainMenuLinks={mainMenuLinks}
-						navbarMenuLinks={navbarMenuLinks}
-						themesOptionsContent={themesOptionsContent}
-						contentSliderPostsContent={contentSliderPostsContent}
-					/>
+					<RenderFlexibleContent content={content} />
 				</Layout>
 			</motion.div>
 		</ContentContext.Provider>

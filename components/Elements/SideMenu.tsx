@@ -5,36 +5,15 @@ import styles from "../../styles/components/Hero.module.scss";
 
 // Components
 import NavbarMenuLinks from "./../Elements/NavbarMenuLinks";
+import {useContentContext} from "@/context/context";
 
 interface HeroProps {
-	email: string;
-	phoneNumber: string;
 	menuActive: boolean;
-	twitterLink: string;
-	facebookLink: string;
-	linkedinLink: string;
-
-	// Menu Links
-	mainMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
 }
 
-const SideMenu: FC<HeroProps> = ({
-	email,
-	menuActive,
-	phoneNumber,
-	twitterLink,
-	facebookLink,
-	linkedinLink,
-	mainMenuLinks,
-}) => {
+const SideMenu: FC<HeroProps> = ({menuActive}) => {
+	const content = useContentContext();
+
 	return (
 		<div
 			className={
@@ -61,19 +40,21 @@ const SideMenu: FC<HeroProps> = ({
 					</div>
 					<div className="px-4 mt-20 lg:mt-0">
 						<ul>
-							{mainMenuLinks?.length > 0 ? (
-								mainMenuLinks?.map((item: any, keys: any) => (
-									<li
-										key={keys}
-										className="mb-1 border-b-[1px] border-goldPrime border-opacity-50"
-									>
-										<NavbarMenuLinks
-											url={item?.node?.url}
-											label={item?.node?.label}
-											tailwindStyling="block py-4 text-base tracking-[.15rem] font-semibold text-white hover:text-red"
-										/>
-									</li>
-								))
+							{content.mainMenuLinks.mainMenuLinks?.length > 0 ? (
+								content.mainMenuLinks.mainMenuLinks?.map(
+									(item: any, keys: any) => (
+										<li
+											key={keys}
+											className="mb-1 border-b-[1px] border-goldPrime border-opacity-50"
+										>
+											<NavbarMenuLinks
+												url={item?.node?.url}
+												label={item?.node?.label}
+												tailwindStyling="block py-4 text-base tracking-[.15rem] font-semibold text-white hover:text-red"
+											/>
+										</li>
+									)
+								)
 							) : (
 								<></>
 							)}
@@ -86,23 +67,26 @@ const SideMenu: FC<HeroProps> = ({
 							Tel:
 							<Link
 								className="leading-none transition-all duration-500 ease-in-out text-goldPrime text-tiny hover:text-red"
-								href={`tel:${phoneNumber}`}
+								href={`tel:${content.themesOptionsContent.phoneNumber}`}
 							>
-								{phoneNumber}
+								{content.themesOptionsContent.phoneNumber}
 							</Link>
 						</span>
 						<span className="flex items-center gap-2 text-goldPrime">
 							Email:
 							<Link
 								className="leading-none transition-all duration-500 ease-in-out text-goldPrime text-tiny hover:text-red"
-								href={`mailto:${email}`}
+								href={`mailto:${content.themesOptionsContent.email}`}
 							>
-								{email}
+								{content.themesOptionsContent.email}
 							</Link>
 						</span>
 					</div>
 					<div className="flex items-center justify-start gap-4 mb-4 text-center">
-						<Link className="inline-block px-1 text-green" href={facebookLink}>
+						<Link
+							className="inline-block px-1 text-green"
+							href={content.themesOptionsContent.facebookLink}
+						>
 							<svg
 								height="100%"
 								className="w-5 h-5"
@@ -123,7 +107,10 @@ const SideMenu: FC<HeroProps> = ({
 								/>
 							</svg>
 						</Link>
-						<Link className="inline-block px-1 text-green" href={twitterLink}>
+						<Link
+							className="inline-block px-1 text-green"
+							href={content.themesOptionsContent.twitterLink}
+						>
 							<svg
 								height="100%"
 								className="w-5 h-5"
@@ -144,7 +131,10 @@ const SideMenu: FC<HeroProps> = ({
 								/>
 							</svg>
 						</Link>
-						<Link className="inline-block px-1 text-green" href={linkedinLink}>
+						<Link
+							className="inline-block px-1 text-green"
+							href={content.themesOptionsContent.linkedinLink}
+						>
 							<svg
 								height="100%"
 								style={{

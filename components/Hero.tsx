@@ -8,19 +8,15 @@ import {fadeInUp, stagger} from "../animations/animations";
 // Components
 import SideMenu from "./Elements/SideMenu";
 import Paragraph from "./Elements/Paragraph";
+import {useContentContext} from "@/context/context";
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 
 // Styling
 import styles from "../styles/components/Hero.module.scss";
 
 interface HeroProps {
-	email: string;
 	title: string;
 	paragraph: string;
-	phoneNumber: string;
-	twitterLink: string;
-	linkedinLink: string;
-	facebookLink: string;
 	backgroundImage: string;
 	backgroundVideoUrl: string;
 	buttonLink: {
@@ -33,41 +29,18 @@ interface HeroProps {
 		title: string;
 		target: string;
 	};
-	mainMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
-	navbarMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
 }
 
 const Hero: FC<HeroProps> = ({
 	title,
-	email,
 	paragraph,
 	buttonLink,
-	phoneNumber,
-	twitterLink,
-	facebookLink,
-	linkedinLink,
 	buttonLinkTwo,
-	mainMenuLinks,
-	navbarMenuLinks,
 	backgroundImage,
 	backgroundVideoUrl,
 }) => {
+	const content = useContentContext();
+
 	/* Hides or Displays the Full Nav Menu */
 	const [menuActive, setMenuActive] = useState(false);
 
@@ -111,16 +84,18 @@ const Hero: FC<HeroProps> = ({
 						</Link>
 					</div>
 					<ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:gap-x-10">
-						{navbarMenuLinks?.length > 0 ? (
-							navbarMenuLinks?.map((item: any, keys: any) => (
-								<li key={keys}>
-									<NavbarMenuLinks
-										url={item?.node?.url}
-										label={item?.node?.label}
-										tailwindStyling="text-base tracking-[.15rem] text-white hover:text-goldPrime transition-all ease-in-out duration-500"
-									/>
-								</li>
-							))
+						{content.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
+							content.navbarMenuLinks.navbarMenuLinks?.map(
+								(item: any, keys: any) => (
+									<li key={keys}>
+										<NavbarMenuLinks
+											url={item?.node?.url}
+											label={item?.node?.label}
+											tailwindStyling="text-base tracking-[.15rem] text-white hover:text-goldPrime transition-all ease-in-out duration-500"
+										/>
+									</li>
+								)
+							)
 						) : (
 							<></>
 						)}
@@ -185,15 +160,7 @@ const Hero: FC<HeroProps> = ({
 			</div>
 
 			{/* Hidden Side Menu */}
-			<SideMenu
-				email={email}
-				menuActive={menuActive}
-				phoneNumber={phoneNumber}
-				twitterLink={twitterLink}
-				facebookLink={facebookLink}
-				linkedinLink={linkedinLink}
-				mainMenuLinks={mainMenuLinks}
-			/>
+			<SideMenu menuActive={menuActive} />
 		</section>
 	);
 };

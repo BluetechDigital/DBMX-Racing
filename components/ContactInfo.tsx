@@ -7,24 +7,15 @@ import styles from "../styles/components/ContactInfo.module.scss";
 
 // Components
 import Paragraph from "../components/Elements/Paragraph";
+import {useContentContext} from "@/context/context";
 
 interface IProps {
-	email: string;
 	title: string;
 	paragraph: string;
-	phoneNumber: string;
-	phoneNumberTwo: string;
-	contactAddress: string;
 }
 
-const ContactInfo: FC<IProps> = ({
-	email,
-	title,
-	paragraph,
-	phoneNumber,
-	contactAddress,
-	phoneNumberTwo,
-}) => {
+const ContactInfo: FC<IProps> = ({title, paragraph}) => {
+	const content = useContentContext();
 	return (
 		<section className={styles.contactInfo}>
 			<div className="container relative z-10 px-8 mx-auto">
@@ -62,10 +53,10 @@ const ContactInfo: FC<IProps> = ({
 							</h3>
 							<div className="flex flex-col items-center justify-center">
 								<Link
-									href={`mailto:${email}`}
+									href={`mailto:${content.themesOptionsContent.email}`}
 									className="text-base font-medium leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
 								>
-									{email}
+									{content.themesOptionsContent.email}
 								</Link>
 							</div>
 						</div>
@@ -98,19 +89,19 @@ const ContactInfo: FC<IProps> = ({
 								<span className="flex flex-col gap-4 font-medium text-center text-black sm:flex-row text-medium lg:text-left">
 									Tel:
 									<Link
-										href={`tel:${phoneNumber}`}
+										href={`tel:${content.themesOptionsContent.phoneNumber}`}
 										className="ml-2 text-base leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
 									>
-										{phoneNumber}
+										{content.themesOptionsContent.phoneNumber}
 									</Link>
 								</span>
 								<span className="flex flex-col gap-4 font-medium text-center text-black sm:flex-row text-medium lg:text-left">
 									Phone:
 									<Link
-										href={`tel:${phoneNumberTwo}`}
+										href={`tel:${content.themesOptionsContent.phoneNumberTwo}`}
 										className="ml-2 text-base leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
 									>
-										{phoneNumberTwo}
+										{content.themesOptionsContent.phoneNumberTwo}
 									</Link>
 								</span>
 							</div>
@@ -148,7 +139,7 @@ const ContactInfo: FC<IProps> = ({
 								Address
 							</h3>
 							<Paragraph
-								content={contactAddress}
+								content={content.themesOptionsContent.address}
 								tailwindStyling="font-medium text-base sm:text-medium leading-relaxed text-black"
 							/>
 						</div>

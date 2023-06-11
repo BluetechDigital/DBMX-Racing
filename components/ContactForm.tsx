@@ -3,6 +3,7 @@ import {motion} from "framer-motion";
 import React, {useState, FC} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {sendContactForm} from "../functions/api";
+import {useContentContext} from "@/context/context";
 import {useFormik, Formik, Field, Form} from "formik";
 import {fadeIn, fadeInUp, stagger} from "../animations/animations";
 
@@ -14,12 +15,11 @@ import Paragraph from "./Elements/Paragraph";
 
 interface IProps {
 	title: string;
-	businessHours: {
-		content: string;
-	};
 }
 
-const ContactForm: FC<IProps> = ({title, businessHours}) => {
+const ContactForm: FC<IProps> = ({title}) => {
+	const content = useContentContext();
+
 	const initState: {
 		error: string;
 		isLoading: boolean;
@@ -333,7 +333,7 @@ const ContactForm: FC<IProps> = ({title, businessHours}) => {
 							Business Hours
 						</h3>
 						<Paragraph
-							content={businessHours?.content}
+							content={content.themesOptionsContent.businessHours.content}
 							tailwindStyling="font-medium text-base sm:text-medium leading-relaxed text-left text-black"
 						/>
 					</div>

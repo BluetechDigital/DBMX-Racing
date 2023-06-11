@@ -23,173 +23,8 @@ import ContentSliderTwo from "@/components/ContentSliderTwo";
 
 interface IFlexibleContent {
 	content: any;
-	blogs: [
-		{
-			node: {
-				id: string;
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-				featuredImage: {
-					node: {
-						altText: string;
-						sourceUrl: string;
-						mediaDetails: {
-							width: number;
-							height: number;
-						};
-					};
-				};
-			};
-		}
-	];
-	mainMenuLinks: {
-		mainMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
-	};
-	navbarMenuLinks: {
-		navbarMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
-	};
-	themesOptionsContent: {
-		address: string;
-		email: string;
-		emailTwo: string;
-		phoneNumber: string;
-		phoneNumberTwo: string;
-		copyrightText: string;
-		facebookLink: string;
-		linkedinLink: string;
-		twitterLink: string;
-		businessHours: {
-			content: string;
-		};
-	};
-	contentSliderPostsContent: {
-		content: [
-			{
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								backgroundVideoUrl: string;
-								backgroundImageOrVideo: string;
-								backgroundImage: {
-									altText: string;
-									sourceUrl: string;
-									mediaDetails: {
-										height: number;
-										width: number;
-									};
-								};
-							},
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			},
-			{
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								backgroundVideoUrl: string;
-								backgroundImageOrVideo: string;
-								backgroundImage: {
-									altText: string;
-									sourceUrl: string;
-									mediaDetails: {
-										height: number;
-										width: number;
-									};
-								};
-							},
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			},
-			{
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								backgroundVideoUrl: string;
-								backgroundImageOrVideo: string;
-								backgroundImage: {
-									altText: string;
-									sourceUrl: string;
-									mediaDetails: {
-										height: number;
-										width: number;
-									};
-								};
-							},
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			}
-		];
-	};
 }
-const RenderFlexibleContent: FC<IFlexibleContent> = ({
-	blogs,
-	content,
-	mainMenuLinks,
-	navbarMenuLinks,
-	themesOptionsContent,
-	contentSliderPostsContent,
-}) => {
+const RenderFlexibleContent: FC<IFlexibleContent> = ({content}) => {
 	const FlexibleContentComponent =
 		"DefaultTemplate_Flexiblecontent_FlexibleContent";
 	return (
@@ -204,13 +39,6 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 									key={keys}
 									title={item?.title}
 									paragraph={item?.paragraph}
-									email={themesOptionsContent?.email}
-									mainMenuLinks={mainMenuLinks?.mainMenuLinks}
-									twitterLink={themesOptionsContent?.twitterLink}
-									phoneNumber={themesOptionsContent?.phoneNumber}
-									linkedinLink={themesOptionsContent?.linkedinLink}
-									facebookLink={themesOptionsContent?.facebookLink}
-									navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
@@ -222,14 +50,7 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 									paragraph={item?.paragraph}
 									buttonLink={item?.buttonLink}
 									buttonLinkTwo={item?.buttonLinkTwo}
-									email={themesOptionsContent?.email}
-									mainMenuLinks={mainMenuLinks?.mainMenuLinks}
 									backgroundVideoUrl={item?.backgroundVideoUrl}
-									twitterLink={themesOptionsContent?.twitterLink}
-									phoneNumber={themesOptionsContent?.phoneNumber}
-									linkedinLink={themesOptionsContent?.linkedinLink}
-									facebookLink={themesOptionsContent?.facebookLink}
-									navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
@@ -239,15 +60,8 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 								<HeroThree
 									title={item?.title}
 									paragraph={item?.paragraph}
-									email={themesOptionsContent?.email}
 									backgroundImage={item?.backgroundImage}
-									mainMenuLinks={mainMenuLinks?.mainMenuLinks}
 									backgroundVideoUrl={item?.backgroundVideoUrl}
-									twitterLink={themesOptionsContent?.twitterLink}
-									phoneNumber={themesOptionsContent?.phoneNumber}
-									linkedinLink={themesOptionsContent?.linkedinLink}
-									facebookLink={themesOptionsContent?.facebookLink}
-									navbarMenuLinks={navbarMenuLinks?.navbarMenuLinks}
 									backgroundImageOrVideo={item?.backgroundImageOrVideo}
 								/>
 							</>
@@ -282,9 +96,9 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 							<>
 								<ContentStats
 									title={item?.title}
-									paragraph={item?.paragraph}
 									statsOne={item?.statsOne}
 									statsTwo={item?.statsTwo}
+									paragraph={item?.paragraph}
 								/>
 							</>
 						) : item?.fieldGroupName ===
@@ -313,11 +127,7 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_ContentSlider` ? (
 							<>
-								<ContentSliderTwo
-									content={contentSliderPostsContent?.content[0]}
-									contentTwo={contentSliderPostsContent?.content[1]}
-									contentThree={contentSliderPostsContent?.content[2]}
-								/>
+								<ContentSliderTwo />
 							</>
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_ContentSliderTwo` ? (
@@ -331,7 +141,7 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_BlogsGrid` ? (
 							<>
-								<Blogs blogs={blogs} />
+								<Blogs />
 							</>
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_ContactBanner` ? (
@@ -347,22 +157,12 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_ContactInfo` ? (
 							<>
-								<ContactInfo
-									title={item?.title}
-									paragraph={item?.paragraph}
-									email={themesOptionsContent?.email}
-									contactAddress={themesOptionsContent?.address}
-									phoneNumber={themesOptionsContent?.phoneNumber}
-									phoneNumberTwo={themesOptionsContent?.phoneNumberTwo}
-								/>
+								<ContactInfo title={item?.title} paragraph={item?.paragraph} />
 							</>
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_ContactForm` ? (
 							<>
-								<ContactForm
-									title={item?.title}
-									businessHours={themesOptionsContent?.businessHours}
-								/>
+								<ContactForm title={item?.title} />
 							</>
 						) : item?.fieldGroupName ===
 						  `${FlexibleContentComponent}_OurLocation` ? (

@@ -1,44 +1,13 @@
 // Import
-import {FC} from "react";
 import {motion} from "framer-motion";
-import BlogsCard from "./Cards/BlogsCard";
 import {stagger} from "../animations/animations";
+import {useContentContext} from "@/context/context";
 
-interface IProps {
-	blogs: [
-		{
-			node: {
-				id: string;
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-				featuredImage: {
-					node: {
-						altText: string;
-						sourceUrl: string;
-						mediaDetails: {
-							width: number;
-							height: number;
-						};
-					};
-				};
-			};
-		}
-	];
-}
+// Components
+import BlogsCard from "./Cards/BlogsCard";
 
-const Blogs: FC<IProps> = ({blogs}) => {
+const Blogs = () => {
+	const content = useContentContext();
 	return (
 		<section className="px-4 py-24 bg-white">
 			<div className="container px-4 mx-auto">
@@ -46,8 +15,8 @@ const Blogs: FC<IProps> = ({blogs}) => {
 					variants={stagger}
 					className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"
 				>
-					{blogs?.length > 0 ? (
-						blogs.map((item: any, keys: any) => (
+					{content.blogs?.length > 0 ? (
+						content.blogs.map((item: any, keys: any) => (
 							<BlogsCard
 								key={keys}
 								uri={item?.node?.uri}
