@@ -1,10 +1,4 @@
 // Import
-import {motion} from "framer-motion";
-import type {NextPage, GetStaticProps} from "next";
-import {getThemesOptionsContent} from "../../functions/GetAllThemesOptions";
-import {getAllSeoBlogPostsContent} from "@/functions/GetAllSeoPagesContent";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
-import {getAllBlogPostFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
@@ -14,6 +8,13 @@ import {
 	getAllBlogPostsSlugs,
 	getAllBlogsContent,
 } from "@/functions/GetAllBlogPostsSlugs";
+import {motion} from "framer-motion";
+import {ContentContext} from "@/context/context";
+import type {NextPage, GetStaticProps} from "next";
+import {getThemesOptionsContent} from "../../functions/GetAllThemesOptions";
+import {getAllSeoBlogPostsContent} from "@/functions/GetAllSeoPagesContent";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
+import {getAllBlogPostFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Layout/Layout";
@@ -51,7 +52,6 @@ interface IDynamicSinglePosts {
 		};
 	};
 	content: any;
-	pageTitle: string;
 	blogs: [
 		{
 			node: {
@@ -227,7 +227,6 @@ const dynamicSinglePosts: NextPage<IDynamicSinglePosts> = ({
 	seo,
 	blogs,
 	content,
-	pageTitle,
 	mainMenuLinks,
 	navbarMenuLinks,
 	footerMenuLinks,
@@ -235,31 +234,39 @@ const dynamicSinglePosts: NextPage<IDynamicSinglePosts> = ({
 	contentSliderPostsContent,
 }) => {
 	return (
-		<motion.div
-			exit={{
-				opacity: 0,
+		<ContentContext.Provider
+			value={{
+				seo: seo,
+				blogs: blogs,
+				content: content,
+				mainMenuLinks: mainMenuLinks,
+				navbarMenuLinks: navbarMenuLinks,
+				footerMenuLinks: footerMenuLinks,
+				themesOptionsContent: themesOptionsContent,
+				contentSliderPostsContent: contentSliderPostsContent,
 			}}
-			initial="initial"
-			animate="animate"
 		>
-			<Layout
-				seo={seo}
-				pageTitle={pageTitle}
-				themesOptionsContent={themesOptionsContent}
-				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			<motion.div
+				exit={{
+					opacity: 0,
+				}}
+				initial="initial"
+				animate="animate"
 			>
-				<BackHoverButton link={`/blogs`} />
+				<Layout>
+					<BackHoverButton link={`/blogs`} />
 
-				<RenderFlexibleContent
-					blogs={blogs}
-					content={content}
-					mainMenuLinks={mainMenuLinks}
-					navbarMenuLinks={navbarMenuLinks}
-					themesOptionsContent={themesOptionsContent}
-					contentSliderPostsContent={contentSliderPostsContent}
-				/>
-			</Layout>
-		</motion.div>
+					<RenderFlexibleContent
+						blogs={blogs}
+						content={content}
+						mainMenuLinks={mainMenuLinks}
+						navbarMenuLinks={navbarMenuLinks}
+						themesOptionsContent={themesOptionsContent}
+						contentSliderPostsContent={contentSliderPostsContent}
+					/>
+				</Layout>
+			</motion.div>
+		</ContentContext.Provider>
 	);
 };
 

@@ -1,41 +1,14 @@
-import {FC} from "react";
+// Import
 import Link from "next/link";
 import Image from "next/image";
+import {useContentContext} from "@/context/context";
+
+// Components
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 
-interface FooterProps {
-	email: string;
-	emailTwo: string;
-	phoneNumber: string;
-	phoneNumberTwo: string;
-	twitterLink: string;
-	facebookLink: string;
-	linkedinLink: string;
-	copyRightText: string;
+const Footer = () => {
+	const content = useContentContext();
 
-	// Menu Links
-	footerMenuLinks: [
-		{
-			node: {
-				id: string;
-				url: string;
-				label: string;
-			};
-		}
-	];
-}
-
-const Footer: FC<FooterProps> = ({
-	email,
-	emailTwo,
-	phoneNumber,
-	twitterLink,
-	facebookLink,
-	linkedinLink,
-	copyRightText,
-	phoneNumberTwo,
-	footerMenuLinks,
-}) => {
 	return (
 		<section className="border-t-[5px] bg-pureBlack border-red">
 			<div className="container flex flex-col px-0 mx-auto gap-y-10">
@@ -61,16 +34,18 @@ const Footer: FC<FooterProps> = ({
 						</div>
 					</div>
 					<ul className="flex flex-col items-start justify-center gap-4 sm:items-center lg:flex-row">
-						{footerMenuLinks?.length > 0 ? (
-							footerMenuLinks?.map((item: any, keys: any) => (
-								<li key={keys} className="mb-1 text-center w-max">
-									<NavbarMenuLinks
-										url={item?.node?.url}
-										label={item?.node?.label}
-										tailwindStyling="block py-0 lg:py-4 text-base tracking-[.15rem] uppercase font-semibold text-white hover:text-red"
-									/>
-								</li>
-							))
+						{content.footerMenuLinks.footerMenuLinks?.length > 0 ? (
+							content.footerMenuLinks.footerMenuLinks?.map(
+								(item: any, keys: any) => (
+									<li key={keys} className="mb-1 text-center w-max">
+										<NavbarMenuLinks
+											url={item?.node?.url}
+											label={item?.node?.label}
+											tailwindStyling="block py-0 lg:py-4 text-base tracking-[.15rem] uppercase font-semibold text-white hover:text-red"
+										/>
+									</li>
+								)
+							)
 						) : (
 							<></>
 						)}
@@ -81,27 +56,27 @@ const Footer: FC<FooterProps> = ({
 								Tel:
 								<Link
 									className="text-base leading-none transition-all duration-500 ease-in-out text-goldPrime hover:text-red"
-									href={`tel:${phoneNumber}`}
+									href={`tel:${content.themesOptionsContent.phoneNumber}`}
 								>
-									{phoneNumber}
+									{content.themesOptionsContent.phoneNumber}
 								</Link>
 							</span>
 							<span className="flex items-center gap-2 text-goldPrime">
 								Tel:
 								<Link
 									className="text-base leading-none transition-all duration-500 ease-in-out text-goldPrime hover:text-red"
-									href={`tel:${phoneNumberTwo}`}
+									href={`tel:${content.themesOptionsContent.phoneNumberTwo}`}
 								>
-									{phoneNumberTwo}
+									{content.themesOptionsContent.phoneNumberTwo}
 								</Link>
 							</span>
 							<span className="flex items-center gap-2 text-goldPrime">
 								Email:
 								<Link
 									className="text-base leading-none transition-all duration-500 ease-in-out text-goldPrime hover:text-red"
-									href={`mailto:${email}`}
+									href={`mailto:${content.themesOptionsContent.email}`}
 								>
-									{email}
+									{content.themesOptionsContent.email}
 								</Link>
 							</span>
 						</div>
@@ -125,13 +100,13 @@ const Footer: FC<FooterProps> = ({
 			<div className="p-6 lg:p-2 bg-goldPrimeDarker">
 				<div className="container flex flex-col-reverse items-center justify-center px-0 mx-auto gap-y-8 lg:flex-row lg:justify-between">
 					<p className="max-w-2xl py-2 text-left text-white text-tiny">
-						{copyRightText}
+						{content.themesOptionsContent.copyrightText}
 					</p>
 					<div className="flex flex-col items-center justify-center gap-8 sm:flex-row">
 						<div className="flex items-center justify-start gap-4 text-center">
 							<Link
 								className="inline-block px-1 text-green"
-								href={facebookLink}
+								href={content.themesOptionsContent.facebookLink}
 							>
 								<svg
 									height="100%"
@@ -153,7 +128,10 @@ const Footer: FC<FooterProps> = ({
 									/>
 								</svg>
 							</Link>
-							<Link className="inline-block px-1 text-green" href={twitterLink}>
+							<Link
+								className="inline-block px-1 text-green"
+								href={content.themesOptionsContent.twitterLink}
+							>
 								<svg
 									height="100%"
 									className="w-5 h-5"
@@ -176,7 +154,7 @@ const Footer: FC<FooterProps> = ({
 							</Link>
 							<Link
 								className="inline-block px-1 text-green"
-								href={linkedinLink}
+								href={content.themesOptionsContent.linkedinLink}
 							>
 								<svg
 									height="100%"

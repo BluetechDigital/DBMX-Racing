@@ -203,8 +203,8 @@ const RenderFlexibleContent: FC<IFlexibleContent> = ({
 								<HeroTwo
 									key={keys}
 									title={item?.title}
-									email={themesOptionsContent?.email}
 									paragraph={item?.paragraph}
+									email={themesOptionsContent?.email}
 									mainMenuLinks={mainMenuLinks?.mainMenuLinks}
 									twitterLink={themesOptionsContent?.twitterLink}
 									phoneNumber={themesOptionsContent?.phoneNumber}

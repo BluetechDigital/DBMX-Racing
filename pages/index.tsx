@@ -1,16 +1,17 @@
 // Import
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+} from "../functions/GetAllMenuLinks";
 import {motion} from "framer-motion";
+import {ContentContext} from "@/context/context";
 import type {NextPage, GetStaticProps} from "next";
 import {getAllBlogsContent} from "@/functions/GetAllBlogPostsSlugs";
 import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
 import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
-import {
-	getMainMenuLinks,
-	getNavbarMenuLinks,
-	getFooterMenuLinks,
-} from "../functions/GetAllMenuLinks";
 
 // Components
 import Layout from "@/components/Layout/Layout";
@@ -229,29 +230,37 @@ const Home: NextPage<IHome> = ({
 	contentSliderPostsContent,
 }) => {
 	return (
-		<motion.div
-			exit={{
-				opacity: 0,
+		<ContentContext.Provider
+			value={{
+				seo: seo,
+				blogs: blogs,
+				content: content,
+				mainMenuLinks: mainMenuLinks,
+				navbarMenuLinks: navbarMenuLinks,
+				footerMenuLinks: footerMenuLinks,
+				themesOptionsContent: themesOptionsContent,
+				contentSliderPostsContent: contentSliderPostsContent,
 			}}
-			initial="initial"
-			animate="animate"
 		>
-			<Layout
-				seo={seo}
-				pageTitle={"DBMX Racing"}
-				themesOptionsContent={themesOptionsContent}
-				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			<motion.div
+				exit={{
+					opacity: 0,
+				}}
+				initial="initial"
+				animate="animate"
 			>
-				<RenderFlexibleContent
-					blogs={blogs}
-					content={content}
-					mainMenuLinks={mainMenuLinks}
-					navbarMenuLinks={navbarMenuLinks}
-					themesOptionsContent={themesOptionsContent}
-					contentSliderPostsContent={contentSliderPostsContent}
-				/>
-			</Layout>
-		</motion.div>
+				<Layout>
+					<RenderFlexibleContent
+						blogs={blogs}
+						content={content}
+						mainMenuLinks={mainMenuLinks}
+						navbarMenuLinks={navbarMenuLinks}
+						themesOptionsContent={themesOptionsContent}
+						contentSliderPostsContent={contentSliderPostsContent}
+					/>
+				</Layout>
+			</motion.div>
+		</ContentContext.Provider>
 	);
 };
 

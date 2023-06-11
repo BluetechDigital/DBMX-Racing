@@ -1,23 +1,6 @@
-// Import
-import {
-	getMainMenuLinks,
-	getNavbarMenuLinks,
-	getFooterMenuLinks,
-} from "../functions/GetAllMenuLinks";
-import {motion} from "framer-motion";
-import {ContentContext} from "@/context/context";
-import type {NextPage, GetStaticProps} from "next";
-import {getAllBlogsContent} from "@/functions/GetAllBlogPostsSlugs";
-import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
-import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
-import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
+import {createContext, useContext} from "react";
 
-// Components
-import Layout from "@/components/Layout/Layout";
-import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
-
-interface INoPageExits {
+interface IDynamicContent {
 	seo: {
 		canonical: string;
 		cornerstone: Boolean;
@@ -219,88 +202,16 @@ interface INoPageExits {
 	};
 }
 
-const noPageExits: NextPage<INoPageExits> = ({
-	seo,
-	blogs,
-	content,
-	mainMenuLinks,
-	navbarMenuLinks,
-	footerMenuLinks,
-	themesOptionsContent,
-	contentSliderPostsContent,
-}) => {
-	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				blogs: blogs,
-				content: content,
-				mainMenuLinks: mainMenuLinks,
-				navbarMenuLinks: navbarMenuLinks,
-				footerMenuLinks: footerMenuLinks,
-				themesOptionsContent: themesOptionsContent,
-				contentSliderPostsContent: contentSliderPostsContent,
-			}}
-		>
-			<motion.div
-				exit={{
-					opacity: 0,
-				}}
-				initial="initial"
-				animate="animate"
-			>
-				<Layout>
-					<RenderFlexibleContent
-						blogs={blogs}
-						content={content}
-						mainMenuLinks={mainMenuLinks}
-						navbarMenuLinks={navbarMenuLinks}
-						themesOptionsContent={themesOptionsContent}
-						contentSliderPostsContent={contentSliderPostsContent}
-					/>
-				</Layout>
-			</motion.div>
-		</ContentContext.Provider>
-	);
-};
+export const ContentContext = createContext<IDynamicContent | undefined>(
+	undefined
+);
 
-export default noPageExits;
+export const useContentContext = () => {
+	const content = useContext(ContentContext);
 
-export const getStaticProps: GetStaticProps = async () => {
-	// Fetch priority content
-	const seoContent: any = await getAllSeoPagesContent("error-page");
+	if (content === undefined) {
+		throw new Error(`useDynamicPagesContext must be used to render content.`);
+	}
 
-	const flexibleContentComponents: any =
-		await getAllPagesFlexibleContentComponents("error-page");
-
-	// Fetch remaining content simultaneously
-	const [
-		blogs,
-		mainMenuLinks,
-		navbarMenuLinks,
-		footerMenuLinks,
-		themesOptionsContent,
-		contentSliderPostsContent,
-	] = await Promise.all([
-		getAllBlogsContent(),
-		getMainMenuLinks(),
-		getNavbarMenuLinks(),
-		getFooterMenuLinks(),
-		getThemesOptionsContent(),
-		getContentSliderBlogPostsPostsContent(),
-	]);
-
-	return {
-		props: {
-			blogs,
-			mainMenuLinks,
-			navbarMenuLinks,
-			footerMenuLinks,
-			seo: seoContent,
-			themesOptionsContent,
-			contentSliderPostsContent,
-			content: flexibleContentComponents?.content,
-		},
-		revalidate: 60,
-	};
+	return content;
 };

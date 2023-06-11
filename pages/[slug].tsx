@@ -1,5 +1,11 @@
 // Import
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+} from "../functions/GetAllMenuLinks";
 import {motion} from "framer-motion";
+import {ContentContext} from "@/context/context";
 import type {NextPage, GetStaticProps} from "next";
 import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
 import {getAllBlogsContent} from "@/functions/GetAllBlogPostsSlugs";
@@ -7,17 +13,12 @@ import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
 import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
-import {
-	getMainMenuLinks,
-	getNavbarMenuLinks,
-	getFooterMenuLinks,
-} from "../functions/GetAllMenuLinks";
 
 // Components
 import Layout from "@/components/Layout/Layout";
 import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
-interface IDynamicPages {
+interface IDynamicContent {
 	seo: {
 		canonical: string;
 		cornerstone: Boolean;
@@ -48,7 +49,6 @@ interface IDynamicPages {
 		};
 	};
 	content: any;
-	pageTitle: string;
 	blogs: [
 		{
 			node: {
@@ -220,11 +220,10 @@ interface IDynamicPages {
 	};
 }
 
-const dynamicPages: NextPage<IDynamicPages> = ({
+const dynamicPages: NextPage<IDynamicContent> = ({
 	seo,
 	blogs,
 	content,
-	pageTitle,
 	mainMenuLinks,
 	navbarMenuLinks,
 	footerMenuLinks,
@@ -232,29 +231,37 @@ const dynamicPages: NextPage<IDynamicPages> = ({
 	contentSliderPostsContent,
 }) => {
 	return (
-		<motion.div
-			exit={{
-				opacity: 0,
+		<ContentContext.Provider
+			value={{
+				seo: seo,
+				blogs: blogs,
+				content: content,
+				mainMenuLinks: mainMenuLinks,
+				navbarMenuLinks: navbarMenuLinks,
+				footerMenuLinks: footerMenuLinks,
+				themesOptionsContent: themesOptionsContent,
+				contentSliderPostsContent: contentSliderPostsContent,
 			}}
-			initial="initial"
-			animate="animate"
 		>
-			<Layout
-				seo={seo}
-				pageTitle={pageTitle}
-				themesOptionsContent={themesOptionsContent}
-				footerMenuLinks={footerMenuLinks?.footerMenuLinks}
+			<motion.div
+				exit={{
+					opacity: 0,
+				}}
+				initial="initial"
+				animate="animate"
 			>
-				<RenderFlexibleContent
-					blogs={blogs}
-					content={content}
-					mainMenuLinks={mainMenuLinks}
-					navbarMenuLinks={navbarMenuLinks}
-					themesOptionsContent={themesOptionsContent}
-					contentSliderPostsContent={contentSliderPostsContent}
-				/>
-			</Layout>
-		</motion.div>
+				<Layout>
+					<RenderFlexibleContent
+						blogs={blogs}
+						content={content}
+						mainMenuLinks={mainMenuLinks}
+						navbarMenuLinks={navbarMenuLinks}
+						themesOptionsContent={themesOptionsContent}
+						contentSliderPostsContent={contentSliderPostsContent}
+					/>
+				</Layout>
+			</motion.div>
+		</ContentContext.Provider>
 	);
 };
 
