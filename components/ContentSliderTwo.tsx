@@ -281,11 +281,7 @@ const ContentSlider = () => {
 									{contentOne?.title}
 								</h2>
 								<Link
-									href={
-										contentOne?.uri
-											? `/operational-insights${contentOne?.uri}`
-											: `/operational-insights`
-									}
+									href={contentOne?.uri ? `/blogs${contentOne?.uri}` : `/blogs`}
 									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldPrime hover:stroke-goldPrime"
 								>
 									<svg
@@ -378,11 +374,7 @@ const ContentSlider = () => {
 									{contentTwo?.title}
 								</h2>
 								<Link
-									href={
-										contentTwo?.uri
-											? `/operational-insights${contentTwo?.uri}`
-											: `/operational-insights`
-									}
+									href={contentTwo?.uri ? `/blogs${contentTwo?.uri}` : `/blogs`}
 									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldPrime hover:stroke-goldPrime"
 								>
 									<svg
@@ -476,9 +468,7 @@ const ContentSlider = () => {
 								</h2>
 								<Link
 									href={
-										contentThree?.uri
-											? `/operational-insights${contentThree?.uri}`
-											: `/operational-insights`
+										contentThree?.uri ? `/blogs${contentThree?.uri}` : `/blogs`
 									}
 									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldPrime hover:stroke-goldPrime"
 								>
@@ -530,11 +520,7 @@ const ContentSlider = () => {
 						className={`${post} ${postActive} ${postContentTailwindcss}`}
 					>
 						<Link
-							href={
-								contentOne?.uri
-									? `/operational-insights${contentOne?.uri}`
-									: `/operational-insights`
-							}
+							href={contentOne?.uri ? `/blogs${contentOne?.uri}` : `/blogs`}
 						>
 							<div className="absolute top-0 left-0 h-[5px] w-full">
 								<div
@@ -573,11 +559,7 @@ const ContentSlider = () => {
 						className={`${post} ${postNotActive} ${postContentTailwindcss}`}
 					>
 						<Link
-							href={
-								contentTwo?.uri
-									? `/operational-insights${contentTwo?.uri}`
-									: `/operational-insights`
-							}
+							href={contentTwo?.uri ? `/blogs${contentTwo?.uri}` : `/blogs`}
 						>
 							<div className="absolute top-0 left-0 h-[5px] w-full">
 								<div
@@ -616,11 +598,7 @@ const ContentSlider = () => {
 						className={`${post} ${postNotActive} ${postContentTailwindcss}`}
 					>
 						<Link
-							href={
-								contentThree?.uri
-									? `/operational-insights${contentThree?.uri}`
-									: `/operational-insights`
-							}
+							href={contentThree?.uri ? `/blogs${contentThree?.uri}` : `/blogs`}
 						>
 							<div className="absolute top-0 left-0 h-[5px] w-full">
 								<div
