@@ -13,7 +13,7 @@ const Footer = () => {
 		<section className="border-t-[5px] bg-pureBlack border-red">
 			<div className="container flex flex-col px-0 mx-auto gap-y-10">
 				<div className="flex flex-col items-start justify-between px-8 py-10 text-center lg:px-4 sm:items-end sm:grid sm:grid-cols-2 lg:flex lg:flex-row lg:text-left gap-y-20">
-					<div className="flex flex-col items-start justify-center gap-y-8">
+					<div className="flex flex-col items-baseline justify-center gap-8 sm:items-center sm:flex-row">
 						<Link className="mr-auto text-3xl font-bold leading-none" href="/">
 							<Image
 								height={500}
@@ -23,15 +23,13 @@ const Footer = () => {
 								className="object-contain object-center w-full h-[50px]"
 							/>
 						</Link>
-						<div className="flex flex-row items-start gap-4 mt-4">
-							<Image
-								height={500}
-								width={500}
-								alt="DBMX Racing FSB Certification"
-								src="https://mydummysite.co.uk/ToddLearningTwo/wp-content/uploads/2023/04/fsb-148w.jpg"
-								className="object-contain object-center w-full h-[75px]"
-							/>
-						</div>
+						<Image
+							height={500}
+							width={500}
+							alt="DBMX Racing FSB Certification"
+							src="https://mydummysite.co.uk/ToddLearningTwo/wp-content/uploads/2023/04/fsb-148w.jpg"
+							className="object-contain object-center w-full h-[75px]"
+						/>
 					</div>
 					<ul className="flex flex-col items-start justify-center gap-4 sm:items-center lg:flex-row">
 						{content.footerMenuLinks.footerMenuLinks?.length > 0 ? (
