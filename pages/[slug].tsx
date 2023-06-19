@@ -3,224 +3,23 @@ import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
-} from "../functions/GetAllMenuLinks";
+} from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {motion} from "framer-motion";
 import {ContentContext} from "@/context/context";
 import type {NextPage, GetStaticProps} from "next";
-import {getAllPagesSlugs} from "@/functions/GetAllPagesSlugs";
-import {getAllBlogsContent} from "@/functions/GetAllBlogPostsSlugs";
-import {getAllSeoPagesContent} from "@/functions/GetAllSeoPagesContent";
-import {getThemesOptionsContent} from "../functions/GetAllThemesOptions";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/GetAllContentSliderPosts";
-import {getAllPagesFlexibleContentComponents} from "@/functions/GetAllFlexibleContentComponents";
+import {IContentContext} from "@/components/types";
+import {getAllPagesSlugs} from "@/functions/graphql/Queries/GetAllPagesSlugs";
+import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
+import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
+import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
+import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Layout/Layout";
 import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
-interface IDynamicContent {
-	seo: {
-		canonical: string;
-		cornerstone: Boolean;
-		focuskw: string;
-		fullHead: string;
-		metaDesc: string;
-		metaKeywords: string;
-		metaRobotsNofollow: string;
-		metaRobotsNoindex: string;
-		opengraphAuthor: string;
-		opengraphDescription: string;
-		opengraphImage: {
-			mediaItemUrl: string;
-		};
-		opengraphModifiedTime: string;
-		opengraphPublishedTime: string;
-		opengraphPublisher: string;
-		opengraphSiteName: string;
-		opengraphTitle: string;
-		opengraphType: string;
-		opengraphUrl: string;
-		readingTime: number;
-		title: string;
-		twitterDescription: string;
-		twitterTitle: string;
-		twitterImage: {
-			mediaItemUrl: string;
-		};
-	};
-	content: any;
-	blogs: [
-		{
-			node: {
-				id: string;
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-				featuredImage: {
-					node: {
-						altText: string;
-						sourceUrl: string;
-						mediaDetails: {
-							width: number;
-							height: number;
-						};
-					};
-				};
-			};
-		}
-	];
-	mainMenuLinks: {
-		mainMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
-	};
-	navbarMenuLinks: {
-		navbarMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
-	};
-	footerMenuLinks: {
-		footerMenuLinks: [
-			{
-				node: {
-					id: string;
-					url: string;
-					label: string;
-				};
-			}
-		];
-	};
-	themesOptionsContent: {
-		address: string;
-		email: string;
-		emailTwo: string;
-		phoneNumber: string;
-		phoneNumberTwo: string;
-		copyrightText: string;
-		facebookLink: string;
-		linkedinLink: string;
-		twitterLink: string;
-		businessHours: {
-			content: string;
-		};
-	};
-	contentSliderPostsContent: {
-		content: [
-			{
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								backgroundVideoUrl: string;
-								backgroundImageOrVideo: string;
-								backgroundImage: {
-									altText: string;
-									sourceUrl: string;
-									mediaDetails: {
-										height: number;
-										width: number;
-									};
-								};
-							},
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			},
-			{
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								backgroundVideoUrl: string;
-								backgroundImageOrVideo: string;
-								backgroundImage: {
-									altText: string;
-									sourceUrl: string;
-									mediaDetails: {
-										height: number;
-										width: number;
-									};
-								};
-							},
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			},
-			{
-				uri: string;
-				date: string;
-				title: string;
-				template: {
-					flexibleContent: {
-						flexibleContent: [
-							{
-								fieldGroupName: string;
-								backgroundVideoUrl: string;
-								backgroundImageOrVideo: string;
-								backgroundImage: {
-									altText: string;
-									sourceUrl: string;
-									mediaDetails: {
-										height: number;
-										width: number;
-									};
-								};
-							},
-							{
-								fieldGroupName: string;
-								paragraph: string;
-								title: string;
-							}
-						];
-					};
-				};
-			}
-		];
-	};
-}
-
-const dynamicPages: NextPage<IDynamicContent> = ({
+const dynamicPages: NextPage<IContentContext> = ({
 	seo,
 	blogs,
 	content,

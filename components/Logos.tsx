@@ -1,28 +1,13 @@
+// Imports
 import {FC} from "react";
+import {ILogos} from "./types";
 import {motion} from "framer-motion";
 import {fadeIn, stagger} from "../animations/animations";
 
 // Components
 import LogoCard from "../components/Cards/LogoCard";
 
-interface IProps {
-	title: string;
-	logoGrid: [
-		{
-			id: string;
-			image: {
-				altText: string;
-				sourceUrl: string;
-				mediaDetails: {
-					height: number;
-					width: number;
-				};
-			};
-		}
-	];
-}
-
-const Logos: FC<IProps> = ({title, logoGrid}) => {
+const Logos: FC<ILogos> = ({title, logoGrid}) => {
 	return (
 		<section className={`py-20 px-4 lg:px-0 bg-white`}>
 			<div className="container px-0 mx-auto">

@@ -1,6 +1,8 @@
+// Imports
 import Link from "next/link";
 import Image from "next/image";
 import {useState, FC} from "react";
+import {IHeroThree} from "./types";
 import {motion} from "framer-motion";
 import {fadeInUp} from "../animations/animations";
 import {useContentContext} from "@/context/context";
@@ -13,22 +15,7 @@ import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 // Styling
 import styles from "../styles/components/Hero.module.scss";
 
-interface HeroProps {
-	title: string;
-	paragraph: string;
-	backgroundVideoUrl: string;
-	backgroundImageOrVideo: string;
-	backgroundImage: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			width: number;
-			height: number;
-		};
-	};
-}
-
-const HeroThree: FC<HeroProps> = ({
+const HeroThree: FC<IHeroThree> = ({
 	title,
 	paragraph,
 	backgroundImage,

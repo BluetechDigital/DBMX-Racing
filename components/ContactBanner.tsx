@@ -1,21 +1,12 @@
+// Imports
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
+import {IContactBanner} from "./types";
 import Paragraph from "./Elements/Paragraph";
 import {fadeIn} from "../animations/animations";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-	backgroundImage: string;
-	buttonLink: {
-		url: string;
-		title: string;
-		target: string;
-	};
-}
-
-const ContactBanner: FC<IProps> = ({
+const ContactBanner: FC<IContactBanner> = ({
 	title,
 	paragraph,
 	buttonLink,

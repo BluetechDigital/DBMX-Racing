@@ -1,8 +1,8 @@
 import {useState} from "react";
 import postHog from "posthog-js";
 import {motion} from "framer-motion";
-import Paragraph from "../Elements/Paragraph";
-import {fadeInUp, stagger} from "../../animations/animations";
+import Paragraph from "@/components/Elements/Paragraph";
+import {fadeInUp, stagger} from "@/animations/animations";
 
 const CookiePolicyCard = () => {
 	const [showCookiePolicyCard, setShowCookiePolicyCard] = useState(true);

@@ -1,15 +1,12 @@
 // Import
 import {FC} from "react";
 import Link from "next/link";
+import {IBackHoverButton} from "@/components/types";
 
 // Styling
-import styles from "../../styles/components/BackHoverButton.module.scss";
+import styles from "@/styles/components/BackHoverButton.module.scss";
 
-interface IProps {
-	link: string;
-}
-
-const BackHoverButton: FC<IProps> = ({link}) => {
+const BackHoverButton: FC<IBackHoverButton> = ({link}) => {
 	return (
 		<div className="absolute items-center justify-center hidden w-full h-full xl:flex">
 			<div className="fixed left-10 z-[994] top-[7.5rem] flex justify-center">

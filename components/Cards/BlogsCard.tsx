@@ -3,28 +3,12 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import dateFormat from "dateformat";
+import {IBlogsCard} from "../types";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
 import {fadeInUp, stagger} from "../../animations/animations";
 
-interface IProps {
-	uri: string;
-	date: string;
-	title: string;
-	paragraph: string;
-	featuredImage: {
-		node: {
-			altText: string;
-			sourceUrl: string;
-			mediaDetails: {
-				width: number;
-				height: number;
-			};
-		};
-	};
-}
-
-const BlogsCard: FC<IProps> = ({
+const BlogsCard: FC<IBlogsCard> = ({
 	uri,
 	date,
 	title,
@@ -49,7 +33,11 @@ const BlogsCard: FC<IProps> = ({
 						src={featuredImage?.node?.sourceUrl}
 						width={featuredImage?.node?.mediaDetails?.width}
 						height={featuredImage?.node?.mediaDetails?.height}
-						className="object-cover object-center w-full h-full"
+						className={
+							featuredImage?.node?.sourceUrl
+								? `object-cover object-center w-full h-full`
+								: `hidden`
+						}
 					/>
 				</Link>
 			</div>

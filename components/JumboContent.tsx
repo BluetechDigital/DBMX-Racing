@@ -1,35 +1,11 @@
+// Imports
 import {FC} from "react";
+import {IJumboContent} from "./types";
+
+// Components
 import JumboContentCard from "./Cards/JumboContentCard";
 
-interface IProps {
-	jumboContentSection: [
-		{
-			content: {
-				id: string;
-				title: string;
-				subtitle: string;
-				paragraph: string;
-				imageLocation: string;
-				backgroundDisplay: string;
-				image: {
-					altText: string;
-					sourceUrl: string;
-					mediaDetails: {
-						height: number;
-						width: number;
-					};
-				};
-				buttonLink: {
-					url: string;
-					title: string;
-					target: string;
-				};
-			};
-		}
-	];
-}
-
-const jumboContent: FC<IProps> = ({jumboContentSection}) => {
+const jumboContent: FC<IJumboContent> = ({jumboContentSection}) => {
 	return (
 		<section>
 			{jumboContentSection?.length > 0 ? (

@@ -1,6 +1,7 @@
 // Import
 import Link from "next/link";
 import Image from "next/image";
+import {IHero} from "./types";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
 import {fadeInUp, stagger} from "../animations/animations";
@@ -14,24 +15,7 @@ import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 // Styling
 import styles from "../styles/components/Hero.module.scss";
 
-interface HeroProps {
-	title: string;
-	paragraph: string;
-	backgroundImage: string;
-	backgroundVideoUrl: string;
-	buttonLink: {
-		url: string;
-		title: string;
-		target: string;
-	};
-	buttonLinkTwo: {
-		url: string;
-		title: string;
-		target: string;
-	};
-}
-
-const Hero: FC<HeroProps> = ({
+const Hero: FC<IHero> = ({
 	title,
 	paragraph,
 	buttonLink,

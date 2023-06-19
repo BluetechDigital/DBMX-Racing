@@ -1,20 +1,16 @@
 // Import
 import {FC} from "react";
 import Link from "next/link";
+import {IContactInfo} from "./types";
+import {useContentContext} from "@/context/context";
 
 // Styling
 import styles from "../styles/components/ContactInfo.module.scss";
 
 // Components
 import Paragraph from "../components/Elements/Paragraph";
-import {useContentContext} from "@/context/context";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-}
-
-const ContactInfo: FC<IProps> = ({title, paragraph}) => {
+const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 	const content = useContentContext();
 	return (
 		<section className={styles.contactInfo}>

@@ -1,17 +1,14 @@
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
+import {ISideMenu} from "../types";
+import {useContentContext} from "@/context/context";
 import styles from "../../styles/components/Hero.module.scss";
 
 // Components
 import NavbarMenuLinks from "./../Elements/NavbarMenuLinks";
-import {useContentContext} from "@/context/context";
 
-interface HeroProps {
-	menuActive: boolean;
-}
-
-const SideMenu: FC<HeroProps> = ({menuActive}) => {
+const SideMenu: FC<ISideMenu> = ({menuActive}) => {
 	const content = useContentContext();
 
 	return (

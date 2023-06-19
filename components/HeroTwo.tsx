@@ -1,5 +1,7 @@
+// Imports
 import Link from "next/link";
 import Image from "next/image";
+import {IHeroTwo} from "./types";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
 import {fadeInUp} from "../animations/animations";
@@ -13,13 +15,7 @@ import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 // Styling
 import styles from "../styles/components/Hero.module.scss";
 
-interface HeroProps {
-	title: string;
-	paragraph: string;
-	backgroundImage: string;
-}
-
-const HeroTwo: FC<HeroProps> = ({title, paragraph, backgroundImage}) => {
+const HeroTwo: FC<IHeroTwo> = ({title, paragraph, backgroundImage}) => {
 	const content = useContentContext();
 
 	/* Hides or Displays the Full Nav Menu */

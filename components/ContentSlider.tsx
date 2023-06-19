@@ -1,76 +1,16 @@
+// Imports
 import Link from "next/link";
 import Image from "next/image";
+import {IContentSlider} from "./types";
 import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef, FC} from "react";
 import styles from "../styles/components/ContentSlider.module.scss";
 
-interface IProps {
-	content: {
-		tag: string;
-		title: string;
-		paragraph: string;
-		publishedDate: string;
-		buttonLink: {
-			url: string;
-			title: string;
-			target: string;
-		};
-		backgroundVideoUrl: string;
-		backgroundImageOrVideo: string;
-		backgroundImage: {
-			altText: string;
-			sourceUrl: string;
-			mediaDetails: {
-				width: number;
-				height: number;
-			};
-		};
-	};
-	contentTwo: {
-		tag: string;
-		title: string;
-		paragraph: string;
-		publishedDate: string;
-		buttonLink: {
-			url: string;
-			title: string;
-			target: string;
-		};
-		backgroundVideoUrl: string;
-		backgroundImageOrVideo: string;
-		backgroundImage: {
-			altText: string;
-			sourceUrl: string;
-			mediaDetails: {
-				width: number;
-				height: number;
-			};
-		};
-	};
-	contentThree: {
-		tag: string;
-		title: string;
-		paragraph: string;
-		publishedDate: string;
-		buttonLink: {
-			url: string;
-			title: string;
-			target: string;
-		};
-		backgroundVideoUrl: string;
-		backgroundImageOrVideo: string;
-		backgroundImage: {
-			altText: string;
-			sourceUrl: string;
-			mediaDetails: {
-				width: number;
-				height: number;
-			};
-		};
-	};
-}
-
-const ContentSlider: FC<IProps> = ({content, contentTwo, contentThree}) => {
+const ContentSlider: FC<IContentSlider> = ({
+	content,
+	contentTwo,
+	contentThree,
+}) => {
 	/* Sanitize the WYSIWYG paragraph content */
 	function createTrimmedParagraphMarkup(paragraphContent: string) {
 		const sanitizedContent: string = DOMPurify.sanitize(paragraphContent);

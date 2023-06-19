@@ -1,4 +1,4 @@
-import {client} from "../config/apollo";
+import {client} from "@/config/apollo";
 import {DocumentNode, gql} from "@apollo/client";
 
 type SlugResponse = {
@@ -29,7 +29,7 @@ export const getAllBlogPostsSlugs = async (): Promise<ISlug> => {
 		return response?.data?.blogsSlugs?.nodes;
 	} catch (error) {
 		console.log(error);
-		throw new Error("Something went wrong trying to fetch blogs slugs");
+		throw new Error("Something went wrong trying to get blogs slugs");
 	}
 };
 

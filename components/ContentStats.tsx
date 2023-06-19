@@ -1,24 +1,18 @@
+// Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import Paragraph from "./Elements/Paragraph";
+import {IContentStats} from "./types";
 import {fadeInUp, stagger} from "../animations/animations";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-	statsOne: {
-		title: string;
-		subtitle: string;
-		paragraph: string;
-	};
-	statsTwo: {
-		title: string;
-		subtitle: string;
-		paragraph: string;
-	};
-}
+// Components
+import Paragraph from "./Elements/Paragraph";
 
-const ContentStats: FC<IProps> = ({title, statsOne, statsTwo, paragraph}) => {
+const ContentStats: FC<IContentStats> = ({
+	title,
+	statsOne,
+	statsTwo,
+	paragraph,
+}) => {
 	return (
 		<section
 			className="py-20 overflow-hidden bg-center bg-no-repeat bg-cover bg-darkerRedTwo"

@@ -3,26 +3,10 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
+import {IFourImageGridCard} from "../types";
 import {fadeInUp} from "../../animations/animations";
 
-interface IProps {
-	title: string;
-	link: {
-		url: string;
-		title: string;
-		target: string;
-	};
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-const FourImageGridCard: FC<IProps> = ({title, link, image}) => {
+const FourImageGridCard: FC<IFourImageGridCard> = ({title, link, image}) => {
 	return (
 		<div className="w-full px-4">
 			<Link

@@ -1,32 +1,13 @@
+// Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
+import {IFourImageGrid} from "./types";
 import {fadeInUp, stagger} from "../animations/animations";
+
+// Components
 import FourImageGridCard from "./Cards/FourImageGridCard";
 
-interface IProps {
-	title: string;
-	servicesGrid: [
-		{
-			id: string;
-			title: string;
-			link: {
-				url: string;
-				title: string;
-				target: string;
-			};
-			image: {
-				altText: string;
-				sourceUrl: string;
-				mediaDetails: {
-					height: number;
-					width: number;
-				};
-			};
-		}
-	];
-}
-
-const FourImageGrid: FC<IProps> = ({title, servicesGrid}) => {
+const FourImageGrid: FC<IFourImageGrid> = ({title, servicesGrid}) => {
 	return (
 		<section className="py-12 bg-pureBlack md:pt-16 md:pb-20">
 			<div className="container px-4 mx-auto">

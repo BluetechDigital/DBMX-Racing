@@ -1,14 +1,10 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
+import {IParagraphProps} from "../types";
 import DOMPurify from "isomorphic-dompurify";
 import {fadeIn} from "../../animations/animations";
 
-interface ParagraphProps {
-	content: string;
-	tailwindStyling: string;
-}
-
-const Paragraph: FC<ParagraphProps> = ({content, tailwindStyling}) => {
+const Paragraph: FC<IParagraphProps> = ({content, tailwindStyling}) => {
 	/* Sanitize the WYSIWYG paragraph content */
 	function createParagraphMarkup(paragraphContent: string) {
 		return {

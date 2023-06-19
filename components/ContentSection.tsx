@@ -1,32 +1,16 @@
+// Imports
 import {FC} from "react";
 import Image from "next/image";
-import {motion} from "framer-motion";
-import {fadeIn} from "../animations/animations";
+import {IContentSection} from "./types";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
 
-interface IProps {
-	title: string;
-	subtitle: string;
-	bottomContent: {
-		title: string;
-		titleTwo: string;
-		paragraph: string;
-		mainContent: string;
-		paragraphTwo: string;
-		image: {
-			altText: string;
-			sourceUrl: string;
-			mediaDetails: {
-				height: number;
-				width: number;
-			};
-		};
-	};
-}
-
-const ContentSection: FC<IProps> = ({title, subtitle, bottomContent}) => {
+const ContentSection: FC<IContentSection> = ({
+	title,
+	subtitle,
+	bottomContent,
+}) => {
 	return (
 		<section className="overflow-hidden lg:px-0 bg-darkRed pt-28">
 			<div className="container px-4 mx-auto mb-10 lg:px-4 lg:mb-28">

@@ -1,24 +1,29 @@
 // Import
 import {
+	getAllBlogPostsSlugs,
+	getAllBlogsContent,
+} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
+import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {motion} from "framer-motion";
 import {ContentContext} from "@/context/context";
-import type {NextPage, GetStaticProps} from "next";
 import {IContentContext} from "@/components/types";
-import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
-import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
+import type {NextPage, GetStaticProps} from "next";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
+import {getPreviewRedirectUrl} from "@/functions/graphql/Queries/GetAllPreviewPages&Posts";
+import {getAllSeoBlogPostsContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
+import {getAllBlogPostFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Layout/Layout";
+import BackHoverButton from "@/components/Elements/BackHoverButton";
 import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
-const noPageExits: NextPage<IContentContext> = ({
+const dynamicSinglePosts: NextPage<IContentContext> = ({
 	seo,
 	blogs,
 	content,
@@ -49,6 +54,8 @@ const noPageExits: NextPage<IContentContext> = ({
 				animate="animate"
 			>
 				<Layout>
+					<BackHoverButton link={`/blogs`} />
+
 					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
@@ -56,14 +63,24 @@ const noPageExits: NextPage<IContentContext> = ({
 	);
 };
 
-export default noPageExits;
+export async function getStaticPaths() {
+	// const datas = await getPreviewRedirectUrl();
+	const data = await getAllBlogPostsSlugs();
+	const paths = data.map((item) => ({
+		params: {
+			slug: item?.slug as String,
+		},
+	}));
 
-export const getStaticProps: GetStaticProps = async () => {
+	return {paths, fallback: false};
+}
+
+export const getStaticProps: GetStaticProps = async ({params}: any) => {
 	// Fetch priority content
-	const seoContent: any = await getAllSeoPagesContent("error-page");
+	const seoContent: any = await getAllSeoBlogPostsContent(params?.slug);
 
 	const flexibleContentComponents: any =
-		await getAllPagesFlexibleContentComponents("error-page");
+		await getAllBlogPostFlexibleContentComponents(params?.slug);
 
 	// Fetch remaining content simultaneously
 	const [
@@ -92,7 +109,10 @@ export const getStaticProps: GetStaticProps = async () => {
 			themesOptionsContent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
+			pageTitle: flexibleContentComponents?.pageTitle,
 		},
 		revalidate: 60,
 	};
 };
+
+export default dynamicSinglePosts;

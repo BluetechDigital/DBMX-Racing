@@ -1,5 +1,5 @@
 import {gql} from "@apollo/client";
-import {client} from "../config/apollo";
+import {client} from "@/config/apollo";
 
 // Main Menu Links
 export async function getMainMenuLinks() {

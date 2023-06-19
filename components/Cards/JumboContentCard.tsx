@@ -3,31 +3,11 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
+import {IJumboContentCard} from "../types";
 import Paragraph from ".././Elements/Paragraph";
 import {fadeInUp, stagger} from "../../animations/animations";
 
-interface IProps {
-	title: string;
-	subtitle: string;
-	paragraph: string;
-	imageLocation: string;
-	backgroundDisplay: string;
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-	buttonLink: {
-		url: string;
-		title: string;
-		target: string;
-	};
-}
-
-const JumboContentCard: FC<IProps> = ({
+const JumboContentCard: FC<IJumboContentCard> = ({
 	title,
 	image,
 	subtitle,

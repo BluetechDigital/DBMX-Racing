@@ -1,14 +1,13 @@
+// Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import Paragraph from "./Elements/Paragraph";
+import {ITitleParagraph} from "./types";
 import {fadeInUp} from "../animations/animations";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-}
+// Components
+import Paragraph from "./Elements/Paragraph";
 
-const TitleParagraph: FC<IProps> = ({title, paragraph}) => {
+const TitleParagraph: FC<ITitleParagraph> = ({title, paragraph}) => {
 	return (
 		<section className="bg-white">
 			<div className="container p-0 mx-auto">

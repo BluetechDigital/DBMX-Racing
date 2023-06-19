@@ -2,7 +2,7 @@
 import postHog from "posthog-js";
 import {useRouter} from "next/router";
 import type {AppProps} from "next/app";
-import {client} from "../config/apollo";
+import {client} from "@/config/apollo";
 import {useState, useEffect} from "react";
 import {PostHogProvider} from "posthog-js/react";
 import {ApolloProvider} from "@apollo/client/react";

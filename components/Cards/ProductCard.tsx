@@ -3,26 +3,10 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
+import {IProductCard} from "../types";
 import {fadeInUp, stagger} from "../../animations/animations";
 
-interface IProps {
-	title: string;
-	link: {
-		url: string;
-		title: string;
-		target: string;
-	};
-	image: {
-		altText: string;
-		sourceUrl: string;
-		mediaDetails: {
-			height: number;
-			width: number;
-		};
-	};
-}
-
-const ProductCard: FC<IProps> = ({title, link, image}) => {
+const ProductCard: FC<IProductCard> = ({title, link, image}) => {
 	return (
 		<motion.div variants={stagger} className="w-full">
 			<Link href={link?.url ? link?.url : `/`} target={link?.target}>

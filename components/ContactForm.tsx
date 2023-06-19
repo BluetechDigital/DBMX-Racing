@@ -1,8 +1,9 @@
 // Import
 import {motion} from "framer-motion";
+import {IContactForm} from "./types";
 import React, {useState, FC} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import {sendContactForm} from "../functions/api";
+import {sendContactForm} from "@/functions/api";
 import {useContentContext} from "@/context/context";
 import {useFormik, Formik, Field, Form} from "formik";
 import {fadeIn, fadeInUp, stagger} from "../animations/animations";
@@ -13,11 +14,7 @@ import styles from "../styles/components/ContactForm.module.scss";
 // Components
 import Paragraph from "./Elements/Paragraph";
 
-interface IProps {
-	title: string;
-}
-
-const ContactForm: FC<IProps> = ({title}) => {
+const ContactForm: FC<IContactForm> = ({title}) => {
 	const content = useContentContext();
 
 	const initState: {

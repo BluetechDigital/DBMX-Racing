@@ -1,16 +1,13 @@
-import {motion} from "framer-motion";
+// Imports
 import {FC} from "react";
+import {motion} from "framer-motion";
+import {IStoreLocation} from "./types";
 import {fadeInUp} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
 
-interface IProps {
-	title: string;
-	paragraph: string;
-}
-
-const StoreLocation: FC<IProps> = ({title, paragraph}) => {
+const StoreLocation: FC<IStoreLocation> = ({title, paragraph}) => {
 	return (
 		<section className="bg-white ">
 			<div className="container p-4 mx-auto">
