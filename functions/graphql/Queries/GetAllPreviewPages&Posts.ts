@@ -1,34 +1,44 @@
 import {client} from "@/config/apollo";
-import {DocumentNode, gql} from "@apollo/client";
+import {DocumentNode, gql, useMutation} from "@apollo/client";
 
-type SlugResponse = {
-	postType: string;
-	previewPostId: string;
-};
-
-interface ISlug extends Array<SlugResponse> {}
-
-export const getPreviewRedirectUrl = async (
-	postType: string,
-	previewPostId: string
-) => {
+export const getAllDraftPostsSlugs = async () => {
 	try {
-		if (postType == null || undefined || previewPostId == null || undefined) {
-			return "";
-		}
+		const draftPostsSlugs: DocumentNode = gql`
+			{
+				login(
+					input: {
+						username: "toddmin"
+						password: "D3NHtD(NXh2hf7$vSst@QlyE"
+						clientMutationId: "uniqueId"
+					}
+				) {
+					user {
+						posts(where: {status: DRAFT}) {
+							nodes {
+								slug
+								modified
+							}
+						}
+					}
+				}
+			}
+		`;
 
-		switch (postType) {
-			case "post":
-				return `/blogs/preview/${previewPostId}/`;
-			case "page":
-				return `/pages/preview/${previewPostId}/`;
-			default:
-				return "/";
-		}
+		const [mutateFunction, {data, loading, error}] =
+			useMutation(draftPostsSlugs);
+
+		const response: any = await client.query({
+			mutation: draftPostsSlugs,
+		});
+
+		return {
+			data,
+			error,
+			loading,
+			mutateFunction,
+		};
 	} catch (error) {
 		console.log(error);
-		throw new Error(
-			"Something went wrong trying to get postType & previewPostId slugs"
-		);
+		throw new Error("Something went wrong trying to get all draft posts slugs");
 	}
 };

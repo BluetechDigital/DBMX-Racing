@@ -11,6 +11,7 @@ import {IContentContext} from "@/components/types";
 import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
 import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
+import {getAllDraftPostsSlugs} from "@/functions/graphql/Queries/GetAllPreviewPages&Posts";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
