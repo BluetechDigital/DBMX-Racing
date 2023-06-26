@@ -36,7 +36,6 @@ const RenderFlexibleContent = () => {
 						`${FlexibleContentComponent}_HeroSection` ? (
 							<>
 								<HeroTwo
-									key={keys}
 									title={item?.title}
 									paragraph={item?.paragraph}
 									backgroundImage={item?.backgroundImage?.sourceUrl}

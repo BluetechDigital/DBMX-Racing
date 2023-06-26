@@ -28,7 +28,7 @@ const HeroTwo: FC<IHeroTwo> = ({title, paragraph, backgroundImage}) => {
 	return (
 		<section className={styles.hero}>
 			<div
-				className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[65vh]"
+				className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[65vh] xl:min-h-[85vh] xxl:min-h-[65vh]"
 				style={{
 					backgroundImage: `linear-gradient(0deg,rgb(78, 1, 4, 0.65),rgb(78, 1, 4, 0.65)),url("${backgroundImage}")`,
 				}}
@@ -72,7 +72,7 @@ const HeroTwo: FC<IHeroTwo> = ({title, paragraph, backgroundImage}) => {
 						<span aria-hidden="true"></span>
 					</button>
 				</nav>
-				<div className="container relative flex flex-col items-center justify-center px-4 m-auto text-center">
+				<div className="container relative flex flex-col items-center justify-center px-4 pt-0 m-auto text-center xl:pt-20 xxl:pt-0">
 					<div className="max-w-3xl">
 						<motion.h1
 							variants={fadeInUp}
