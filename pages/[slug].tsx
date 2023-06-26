@@ -102,7 +102,6 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 			themesOptionsContent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
-			pageTitle: flexibleContentComponents?.pageTitle,
 		},
 		revalidate: 60,
 	};

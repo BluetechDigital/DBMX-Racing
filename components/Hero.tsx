@@ -39,8 +39,6 @@ const Hero: FC<IHero> = ({
 				style={{backgroundImage: `url("${backgroundImage}")`}}
 			>
 				{/* Background Video */}
-				{/* https://www.youtube.com/embed/opQx4nZPQQ0?autoplay=1&mute=1&loop=1&controls=0&playlist=opQx4nZPQQ0&amp;showinfo=0 */}
-
 				<div className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
 					<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
 						<iframe
@@ -53,7 +51,7 @@ const Hero: FC<IHero> = ({
 							src={backgroundVideoUrl}
 						/>
 					</div>
-					<div className="absolute top-0 h-screen bottom-0 left-0 w-full h-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
+					<div className="absolute top-0 h-screen bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
 				</div>
 				<nav className="fixed flex items-center justify-between w-full px-6 py-10 lg:py-8 bg-pureBlack z-[999]">
 					<div className="absolute flex flex-col items-center">

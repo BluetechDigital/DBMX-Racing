@@ -5,6 +5,7 @@ import {useContentContext} from "@/context/context";
 import Hero from "@/components/Hero";
 import Blogs from "@/components/Blogs";
 import Logos from "@/components/Logos";
+import Maintenance from "../Maintenance";
 import HeroTwo from "@/components/HeroTwo";
 import HeroThree from "@/components/HeroThree";
 import ErrorPage from "@/components/ErrorPage";
@@ -28,7 +29,7 @@ const RenderFlexibleContent = () => {
 		"DefaultTemplate_Flexiblecontent_FlexibleContent";
 	return (
 		<>
-			{content.content?.length > 0 ? (
+			{content.content.length > 0 ? (
 				content.content.map((item: any, keys: any) => (
 					<div key={keys}>
 						{item?.fieldGroupName ===
@@ -169,6 +170,17 @@ const RenderFlexibleContent = () => {
 								<StoreLocation
 									title={item?.title}
 									paragraph={item?.paragraph}
+								/>
+							</>
+						) : item?.fieldGroupName ===
+						  `${FlexibleContentComponent}_Maintenance` ? (
+							<>
+								<Maintenance
+									title={item?.title}
+									paragraph={item?.paragraph}
+									backgroundImage={item?.backgroundImage}
+									backgroundVideoUrl={item?.backgroundVideoUrl}
+									backgroundImageOrVideo={item?.backgroundImageOrVideo}
 								/>
 							</>
 						) : item?.fieldGroupName ===

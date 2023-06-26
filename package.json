@@ -10,11 +10,13 @@
 	},
 	"dependencies": {
 		"@apollo/client": "^3.7.13",
+		"cookie": "^0.5.0",
 		"dompurify": "^3.0.1",
 		"formik": "^2.2.9",
 		"framer-motion": "^10.12.9",
 		"graphql": "^16.6.0",
 		"isomorphic-dompurify": "^1.6.0",
+		"lodash": "^4.17.21",
 		"next": "^13.3.4",
 		"nodemailer": "^6.9.1",
 		"posthog-js": "^1.52.0",
@@ -24,7 +26,9 @@
 		"sass": "^1.60.0"
 	},
 	"devDependencies": {
+		"@types/cookie": "^0.5.1",
 		"@types/dateformat": "^5.0.0",
+		"@types/lodash": "^4.14.195",
 		"@types/node": "^20.1.2",
 		"@types/nodemailer": "^6.4.7",
 		"@types/react": "^18.2.1",

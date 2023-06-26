@@ -549,6 +549,21 @@ export interface ILogos {
 	];
 }
 
+export interface IMaintenance {
+	title: string;
+	paragraph: string;
+	backgroundVideoUrl: string;
+	backgroundImageOrVideo: string;
+	backgroundImage: {
+		altText: string;
+		sourceUrl: string;
+		mediaDetails: {
+			width: number;
+			height: number;
+		};
+	};
+}
+
 export interface IProductGrid {
 	title: string;
 	subtitle: string;

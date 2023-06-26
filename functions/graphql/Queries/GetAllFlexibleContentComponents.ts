@@ -8,13 +8,6 @@ export async function getAllPagesFlexibleContentComponents(slug: string) {
 	try {
 		const content: DocumentNode = gql`
 			{
-				pageTitle: pages(where: {name: "${slug}", status: PUBLISH}) {
-					edges {
-						node {
-							title
-						}
-					}
-				}
         mainContent: pages(where: {name: "${slug}", status: PUBLISH}) {
           edges {
             node {
@@ -267,6 +260,21 @@ export async function getAllPagesFlexibleContentComponents(slug: string) {
                         paragraph
                         title
                       }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Maintenance {
+                        backgroundImageOrVideo
+                        title
+                        paragraph
+                        fieldGroupName
+                        backgroundVideoUrl
+                        backgroundImage {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                      }
                       ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ErrorPageContent {
                         fieldGroupName
                         paragraph
@@ -295,7 +303,6 @@ export async function getAllPagesFlexibleContentComponents(slug: string) {
 		});
 
 		return {
-			pageTitle: response?.data?.pageTitle?.edges[0]?.node?.title,
 			content:
 				response.data?.mainContent?.edges[0]?.node?.template?.flexibleContent
 					?.flexibleContent,
@@ -315,13 +322,6 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
 	try {
 		const content: DocumentNode = gql`
 			{
-				pageTitle: posts(where: {name: "${slug}", status: PUBLISH}) {
-					edges {
-						node {
-							title
-						}
-					}
-				}
         mainContent: posts(where: {name: "${slug}", status: PUBLISH}) {
           edges {
             node {
@@ -574,6 +574,21 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
                         paragraph
                         title
                       }
+                      ... on DefaultTemplate_Flexiblecontent_FlexibleContent_Maintenance {
+                        backgroundImageOrVideo
+                        title
+                        paragraph
+                        fieldGroupName
+                        backgroundVideoUrl
+                        backgroundImage {
+                          altText
+                          sourceUrl
+                          mediaDetails {
+                            height
+                            width
+                          }
+                        }
+                      }
                       ... on DefaultTemplate_Flexiblecontent_FlexibleContent_ErrorPageContent {
                         fieldGroupName
                         paragraph
@@ -602,7 +617,6 @@ export async function getAllBlogPostFlexibleContentComponents(slug: string) {
 		});
 
 		return {
-			pageTitle: response?.data?.pageTitle?.edges[0]?.node?.title,
 			content:
 				response.data?.mainContent?.edges[0]?.node?.template?.flexibleContent
 					?.flexibleContent,
