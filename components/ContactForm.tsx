@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {motion} from "framer-motion";
 import {IContactForm} from "./types";
 import React, {useState, FC} from "react";

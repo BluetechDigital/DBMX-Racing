@@ -4,6 +4,8 @@ import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import {fadeInUp, stagger} from "../animations/animations";
+import validateAndSanitizeLoginForm from "@/functions/validator/login";
+import {getPreviewRedirectUrl} from "@/functions/redirects/redirects";
 
 // Components
 import ReCAPTCHA from "react-google-recaptcha";
@@ -23,41 +25,38 @@ const Login = () => {
 	const [loading, setLoading] = useState(false);
 
 	const onFormSubmit = (event: any) => {
-		// event.preventDefault();
-		// setErrorMessage(null);
-		// const {postType, previewPostId} = router?.query ?? {};
-		// // Validation and Sanitization.
-		// const validationResult = validateAndSanitizeLoginForm({
-		// 	username: loginFields?.username ?? "",
-		// 	password: loginFields?.password ?? "",
-		// });
-		// if (validationResult.isValid) {
-		// 	setLoading(true);
-		// 	return axios({
-		// 		data: {
-		// 			username: validationResult?.sanitizedData?.username ?? "",
-		// 			password: validationResult?.sanitizedData?.password ?? "",
-		// 		},
-		// 		method: "post",
-		// 		url: "/api/login",
-		// 	})
-		// 		.then((data: any) => {
-		// 			setLoading(false);
-		// 			const {success} = data?.data ?? {};
-		// 			// If its a preview request
-		// 			if (success && postType && previewPostId) {
-		// 				const previewUrl = getPreviewRedirectUrl(postType, previewPostId);
-		// 				router.push(previewUrl);
-		// 			}
-		// 			return data?.data?.success;
-		// 		})
-		// 		.catch(() => {
-		// 			setLoading(false);
-		// 			return false;
-		// 		});
-		// } else {
-		// 	setClientSideError(validationResult);
-		// }
+		event.preventDefault();
+		setErrorMessage(null);
+		const {postType, previewPostId} = router?.query ?? {};
+		// Validation and Sanitization.
+		const validationResult = validateAndSanitizeLoginForm({
+			username: loginFields?.username ?? "",
+			password: loginFields?.password ?? "",
+		});
+
+		if (validationResult.isValid) {
+			setLoading(true);
+			return fetch("/api/login", {
+				method: "post",
+				body: JSON.stringify(validationResult?.sanitizedData, null, 2),
+			})
+				.then((data: any) => {
+					setLoading(false);
+					const {success} = data?.data ?? {};
+					// If its a preview request
+					if (success && postType && previewPostId) {
+						const previewUrl = getPreviewRedirectUrl(postType, previewPostId);
+						router.push(previewUrl);
+					}
+					return data?.data?.success;
+				})
+				.catch(() => {
+					setLoading(false);
+					return false;
+				});
+		} else {
+			setClientSideError(validationResult);
+		}
 	};
 
 	/**
@@ -96,8 +95,8 @@ const Login = () => {
 	};
 
 	return (
-		<section className="flex flex-col items-center justify-center min-h-[50vh] bg-white">
-			<div className="w-5/12 p-8 m-auto mt-10 rounded-lg login-form md:ml-auto md:mt-12">
+		<section className="flex flex-col items-center justify-center h-full min-h-[75vh] bg-white">
+			<div className="w-5/12 p-8 m-auto">
 				<h4 className="block mb-5 text-lg font-medium text-black">Login</h4>
 				{!isEmpty(errorMessage) && (
 					<Paragraph
@@ -194,11 +193,10 @@ const Login = () => {
 								</svg>
 							</span>
 							<h3 className="text-base tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
-								Login
+								{loading ? "Logging In..." : "Login"}
 							</h3>
 						</span>
 					</motion.button>
-					{loading ? <p>Loading...</p> : null}
 				</motion.form>
 			</div>
 		</section>

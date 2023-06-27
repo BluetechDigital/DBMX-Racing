@@ -1,13 +1,15 @@
-// Import
+// Imports
+import {motion} from "framer-motion";
+import {ContentContext} from "@/context/context";
+import type {NextPage, GetStaticProps} from "next";
+import {IContentContext} from "@/components/types";
+
+// Queries Functions
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
-import {motion} from "framer-motion";
-import {ContentContext} from "@/context/context";
-import type {NextPage, GetStaticProps} from "next";
-import {IContentContext} from "@/components/types";
 import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
 import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
@@ -15,6 +17,7 @@ import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries
 import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
+import HeroFour from "@/components/HeroFour";
 import Layout from "@/components/Layout/Layout";
 import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
@@ -49,6 +52,8 @@ const noPageExits: NextPage<IContentContext> = ({
 				animate="animate"
 			>
 				<Layout>
+					<HeroFour />
+
 					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>

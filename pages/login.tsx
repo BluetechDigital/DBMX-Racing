@@ -1,17 +1,17 @@
 // Imports
-import {
-	getMainMenuLinks,
-	getNavbarMenuLinks,
-	getFooterMenuLinks,
-} from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {motion} from "framer-motion";
 import {NextPage, GetStaticProps} from "next";
 import Layout from "@/components/Layout/Layout";
 import {ContentContext} from "@/context/context";
 import {IContentContext} from "@/components/types";
-import {getPreviewRedirectUrl} from "@/functions/redirects/redirects";
-// import validateAndSanitizeLoginForm from "../src/utils/validator/login";
-// import {handleRedirectsAndReturnData} from "../src/utils/slug";
+// import {handleRedirectsAndReturnData} from "@/src/utils/slug";
+
+// Queries Functions
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+} from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
 import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
@@ -20,7 +20,7 @@ import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/
 
 // Components
 import Login from "../components/Login";
-import HeroTwo from "@/components/HeroTwo";
+import HeroFour from "@/components/HeroFour";
 
 const login: NextPage<IContentContext> = ({
 	seo,
@@ -53,13 +53,7 @@ const login: NextPage<IContentContext> = ({
 				animate="animate"
 			>
 				<Layout>
-					<HeroTwo
-						title={"Login"}
-						paragraph={"<p></p>"}
-						backgroundImage={
-							"https://mydummysite.co.uk/ToddLearningTwo/wp-content/uploads/2023/03/pexels-vikram-sundaramoorthy-1448385-scaled.jpg"
-						}
-					/>
+					<HeroFour />
 
 					<Login />
 				</Layout>

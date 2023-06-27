@@ -1,7 +1,10 @@
 // Imports
 import {isEmpty} from "lodash";
 
-export const getPreviewRedirectUrl = (postType = "", previewPostId = "") => {
+export const getPreviewRedirectUrl = (
+	postType: string | string[] = "",
+	previewPostId: string | string[] = ""
+) => {
 	if (isEmpty(postType) || isEmpty(previewPostId)) {
 		return "";
 	}
@@ -10,7 +13,7 @@ export const getPreviewRedirectUrl = (postType = "", previewPostId = "") => {
 		case "post":
 			return `/blogs/preview/${previewPostId}/`;
 		case "page":
-			return `/preview/${previewPostId}/`;
+			return `/page/preview/${previewPostId}/`;
 		default:
 			return "/";
 	}

@@ -1,4 +1,4 @@
-// Imports
+// Import
 import {motion} from "framer-motion";
 import {ContentContext} from "@/context/context";
 import type {NextPage, GetStaticProps} from "next";
@@ -72,10 +72,10 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async ({params}: any) => {
 	// Fetch priority content
-	const seoContent: any = await getAllSeoPagesContent(params?.slug);
+	const seoContent: any = await getAllSeoPagesContent("Home");
 
 	const flexibleContentComponents: any =
-		await getAllPagesFlexibleContentComponents(params?.slug);
+		await getAllPagesFlexibleContentComponents("Home");
 
 	// Fetch remaining content simultaneously
 	const [

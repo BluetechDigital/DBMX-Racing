@@ -15,7 +15,7 @@ import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlu
 import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
+import {getAllPreviewPagesFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewPagesAndPostsFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Layout/Layout";
@@ -72,10 +72,10 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async ({params}: any) => {
 	// Fetch priority content
-	const seoContent: any = await getAllSeoPagesContent(params?.slug);
+	const seoContent: any = await getAllSeoPagesContent("Home");
 
 	const flexibleContentComponents: any =
-		await getAllPagesFlexibleContentComponents(params?.slug);
+		await getAllPreviewPagesFlexibleContentComponents(1484);
 
 	// Fetch remaining content simultaneously
 	const [
