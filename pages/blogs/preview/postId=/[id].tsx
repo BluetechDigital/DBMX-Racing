@@ -32,6 +32,7 @@ const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({
 	defaultProps,
 }: any) => {
 	console.log(defaultProps);
+	console.log(defaultProps?.content);
 
 	return (
 		<ContentContext.Provider

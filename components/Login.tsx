@@ -95,7 +95,7 @@ const Login = () => {
 	};
 
 	return (
-		<section className="flex flex-col items-center justify-center h-full min-h-[75vh] bg-white">
+		<section className="flex flex-col items-center justify-center h-screen bg-white">
 			<div className="w-5/12 p-8 m-auto">
 				<h4 className="block mb-5 text-lg font-medium text-black">Login</h4>
 				{!isEmpty(errorMessage) && (
