@@ -25,15 +25,13 @@ import ContentSliderTwo from "@/components/ContentSliderTwo";
 const RenderFlexibleContent = () => {
 	const content = useContentContext();
 
-	const FlexibleContentComponent =
-		"DefaultTemplate_Flexiblecontent_FlexibleContent";
+	const postTemplate = "Post_Flexiblecontent_FlexibleContent";
 	return (
 		<>
 			{content.content.length > 0 ? (
 				content.content.map((item: any, keys: any) => (
 					<div key={keys}>
-						{item?.fieldGroupName ===
-						`${FlexibleContentComponent}_HeroSection` ? (
+						{item?.fieldGroupName === `${postTemplate}_HeroSection` ? (
 							<>
 								<HeroTwo
 									title={item?.title}
@@ -41,8 +39,7 @@ const RenderFlexibleContent = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_HeroSectionTwo` ? (
+						) : item?.fieldGroupName === `${postTemplate}_HeroSectionTwo` ? (
 							<>
 								<Hero
 									title={item?.title}
@@ -53,8 +50,7 @@ const RenderFlexibleContent = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_HeroSectionThree` ? (
+						) : item?.fieldGroupName === `${postTemplate}_HeroSectionThree` ? (
 							<>
 								<HeroThree
 									title={item?.title}
@@ -64,8 +60,7 @@ const RenderFlexibleContent = () => {
 									backgroundImageOrVideo={item?.backgroundImageOrVideo}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_TitleParagraph` ? (
+						) : item?.fieldGroupName === `${postTemplate}_TitleParagraph` ? (
 							<>
 								<TitleParagraph
 									key={keys}
@@ -73,8 +68,7 @@ const RenderFlexibleContent = () => {
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentSection` ? (
+						) : item?.fieldGroupName === `${postTemplate}_ContentSection` ? (
 							<>
 								<ContentSection
 									title={item?.title}
@@ -83,15 +77,14 @@ const RenderFlexibleContent = () => {
 								/>
 							</>
 						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_JumboContentSection` ? (
+						  `${postTemplate}_JumboContentSection` ? (
 							<>
 								<JumboContent
 									key={keys}
 									jumboContentSection={item?.contentSection}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentStats` ? (
+						) : item?.fieldGroupName === `${postTemplate}_ContentStats` ? (
 							<>
 								<ContentStats
 									title={item?.title}
@@ -100,16 +93,14 @@ const RenderFlexibleContent = () => {
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ProductGrid` ? (
+						) : item?.fieldGroupName === `${postTemplate}_ProductGrid` ? (
 							<>
 								<FourImageGrid
 									title={item?.title}
 									servicesGrid={item?.services}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ProductGridTwo` ? (
+						) : item?.fieldGroupName === `${postTemplate}_ProductGridTwo` ? (
 							<>
 								<ProductGrid
 									title={item?.title}
@@ -118,18 +109,15 @@ const RenderFlexibleContent = () => {
 									productGrid={item?.products}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_TrustedBrands` ? (
+						) : item?.fieldGroupName === `${postTemplate}_TrustedBrands` ? (
 							<>
 								<Logos title={item?.title} logoGrid={item?.logos} />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentSlider` ? (
+						) : item?.fieldGroupName === `${postTemplate}_ContentSlider` ? (
 							<>
 								<ContentSliderTwo />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentSliderTwo` ? (
+						) : item?.fieldGroupName === `${postTemplate}_ContentSliderTwo` ? (
 							<>
 								<ContentSlider
 									content={item?.content}
@@ -137,13 +125,11 @@ const RenderFlexibleContent = () => {
 									contentThree={item?.contentThree}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_BlogsGrid` ? (
+						) : item?.fieldGroupName === `${postTemplate}_BlogsGrid` ? (
 							<>
 								<Blogs />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContactBanner` ? (
+						) : item?.fieldGroupName === `${postTemplate}_ContactBanner` ? (
 							<>
 								<ContactBanner
 									key={keys}
@@ -153,26 +139,22 @@ const RenderFlexibleContent = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContactInfo` ? (
+						) : item?.fieldGroupName === `${postTemplate}_ContactInfo` ? (
 							<>
 								<ContactInfo title={item?.title} paragraph={item?.paragraph} />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContactForm` ? (
+						) : item?.fieldGroupName === `${postTemplate}_ContactForm` ? (
 							<>
 								<ContactForm title={item?.title} />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_OurLocation` ? (
+						) : item?.fieldGroupName === `${postTemplate}_OurLocation` ? (
 							<>
 								<StoreLocation
 									title={item?.title}
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_Maintenance` ? (
+						) : item?.fieldGroupName === `${postTemplate}_Maintenance` ? (
 							<>
 								<Maintenance
 									title={item?.title}
@@ -182,8 +164,7 @@ const RenderFlexibleContent = () => {
 									backgroundImageOrVideo={item?.backgroundImageOrVideo}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ErrorPageContent` ? (
+						) : item?.fieldGroupName === `${postTemplate}_ErrorPageContent` ? (
 							<>
 								<ErrorPage
 									title={item?.title}

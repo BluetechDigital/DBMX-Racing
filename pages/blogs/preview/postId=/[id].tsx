@@ -26,7 +26,7 @@ import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries
 // Components
 import Layout from "@/components/Layout/Layout";
 import {ContentContext} from "@/context/context";
-import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
+import RenderFlexibleContentTwo from "@/components/FlexibleContent/RenderFlexibleContentTwo";
 
 const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({
 	defaultProps,
@@ -55,7 +55,7 @@ const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({
 				className="h-screen bg-white"
 			>
 				<Layout>
-					<RenderFlexibleContent />
+					<RenderFlexibleContentTwo />
 				</Layout>
 			</motion.div>
 		</ContentContext.Provider>
