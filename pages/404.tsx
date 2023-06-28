@@ -11,7 +11,7 @@ import {
 	getFooterMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
-import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
+import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";

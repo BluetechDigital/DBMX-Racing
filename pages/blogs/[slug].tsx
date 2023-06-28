@@ -1,19 +1,21 @@
 // Imports
-import {
-	getAllBlogPostsSlugs,
-	getAllBlogsContent,
-} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
 import {motion} from "framer-motion";
+import {ContentContext} from "@/context/context";
+import type {NextPage, GetStaticProps} from "next";
+import {IContentContext} from "@/components/types";
+
+// Queries Functions
 import {
 	getMainMenuLinks,
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
-import {ContentContext} from "@/context/context";
-import type {NextPage, GetStaticProps} from "next";
-import {IContentContext} from "@/components/types";
+import {
+	getAllBlogPostsSlugs,
+	getAllBlogsContent,
+} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getAllSeoBlogPostsContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
+import {getAllSeoBlogPostsContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 import {getAllBlogPostFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 

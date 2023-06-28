@@ -24,9 +24,6 @@ export async function getPreviewPage(id: any) {
 				content
 				slug
 				uri
-				seo {
-					...SeoFragment
-				}
 				status
 			}
 		}
@@ -45,7 +42,6 @@ export async function getPreviewPage(id: any) {
 /* LOGIN USER
  Mutations Function */
 export async function loginUser(username: String, password: String) {
-	console.log(username, password, v4());
 	const LoginMutation: DocumentNode = gql`
 		mutation LOGIN($input: LoginInput!) {
 			login(input: $input) {
