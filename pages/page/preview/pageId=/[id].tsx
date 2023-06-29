@@ -8,6 +8,7 @@ import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";
 
 // Mutations Functions
 import {getAllPreviewPagesFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
+import {getAllPreviewSeoPagesContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
 
 // Queries Functions
 import {
@@ -17,7 +18,6 @@ import {
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getAllPreviewSeoPagesContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 
 // Components
@@ -25,7 +25,7 @@ import Layout from "@/components/Layout/Layout";
 import {ContentContext} from "@/context/context";
 import RenderFlexibleContentThree from "@/components/FlexibleContent/RenderFlexibleContentThree";
 
-const dynamicPreviewPages: NextPage<IContentContextTwo> = ({defaultProps}) => {
+const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({defaultProps}) => {
 	return (
 		<ContentContext.Provider
 			value={{
@@ -58,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
 	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
-		"page",
+		"post",
 		params?.id
 	);
 
@@ -115,12 +115,21 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 			content: flexibleContentComponents?.content,
 		};
 
-		return {
-			props: {
-				defaultProps,
-			},
-		};
+		if (!defaultProps.content) {
+			return {
+				redirect: {
+					permanent: false,
+					destination: loginRedirectURL || "/",
+				},
+			};
+		} else {
+			return {
+				props: {
+					defaultProps,
+				},
+			};
+		}
 	}
 };
 
-export default dynamicPreviewPages;
+export default dynamicPreviewPosts;

@@ -33,6 +33,9 @@ const cache = new InMemoryCache({
 				post: {
 					merge: customMergeFunction,
 				},
+				page: {
+					merge: customMergeFunction,
+				},
 			},
 		},
 	},
