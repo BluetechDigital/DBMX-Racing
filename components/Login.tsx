@@ -1,5 +1,5 @@
 // Imports
-import {useState} from "react";
+import {FC, useState} from "react";
 import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
@@ -14,7 +14,7 @@ import Paragraph from "@/components/Elements/Paragraph";
 // Styling
 import styles from "@/styles/components/ContactForm.module.scss";
 
-const Login = () => {
+const Login: FC = () => {
 	const router = useRouter();
 	const [loginFields, setLoginFields] = useState({
 		username: "",
@@ -28,6 +28,7 @@ const Login = () => {
 		event.preventDefault();
 		setErrorMessage(null);
 		const {postType, previewPostId} = router?.query ?? {};
+
 		// Validation and Sanitization.
 		const validationResult = validateAndSanitizeLoginForm({
 			username: loginFields?.username ?? "",
@@ -40,15 +41,12 @@ const Login = () => {
 				method: "post",
 				body: JSON.stringify(validationResult?.sanitizedData, null, 2),
 			})
-				.then((data: any) => {
+				.then((data) => {
 					setLoading(false);
-					const {success} = data?.data ?? {};
-					// If its a preview request
-					if (success && postType && previewPostId) {
-						const previewUrl = getPreviewRedirectUrl(postType, previewPostId);
-						router.push(previewUrl);
-					}
-					return data?.data?.success;
+
+					// Redirects User after logging in
+					const previewUrl = getPreviewRedirectUrl(postType, previewPostId);
+					router.push(previewUrl);
 				})
 				.catch(() => {
 					setLoading(false);
