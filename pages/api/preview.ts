@@ -2,7 +2,6 @@
 import {isEmpty} from "lodash";
 import {getAuthToken} from "@/functions/cookies/cookies";
 import {getPreviewRedirectUrl} from "@/functions/redirects/redirects";
-import {getAllPreviewPagesFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
 
 /**
  * http://localhost:3000/api/preview/?postType=page&postId=30
@@ -18,7 +17,7 @@ export default async function preview(req: any, res: any) {
 
 	if (isEmpty(authToken)) {
 		res.writeHead(307, {
-			Location: `/login/?postType=${postType}&previewPostId=${postId ?? ""}`,
+			Location: `/login/?postType=${postType}&previewPostId=${postId}`,
 		});
 	} else {
 		const previewUrl = getPreviewRedirectUrl(postType, postId);

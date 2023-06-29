@@ -21,6 +21,7 @@ interface IDynamicContent {
 	themesOptionsContent: IThemesOptionsContent;
 	contentSliderPostsContent: IContentSliderPostsContent;
 }
+
 interface IDynamicContentTwo {
 	defaultProps: {
 		seo: ISeo;

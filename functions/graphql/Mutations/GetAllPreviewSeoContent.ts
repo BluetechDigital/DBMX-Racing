@@ -6,7 +6,8 @@ import {DocumentNode, gql} from "@apollo/client";
 	every flexible content page) */
 export async function getAllPreviewSeoPagesContent(
 	id: number,
-	authToken: string
+	authToken: string,
+	loginRedirectURL: string
 ) {
 	try {
 		const content: DocumentNode = gql`
@@ -59,10 +60,12 @@ export async function getAllPreviewSeoPagesContent(
 
 		return response?.data?.mainContent?.seo;
 	} catch (error) {
-		console.log(error);
-		throw new Error(
-			"Something went wrong trying to fetch all pages seo content per page"
-		);
+		return {
+			redirect: {
+				destination: loginRedirectURL || "/",
+				statusCode: 307,
+			},
+		};
 	}
 }
 
@@ -70,7 +73,8 @@ export async function getAllPreviewSeoPagesContent(
 /* Fetch all Seo Content Blog Post */
 export async function getAllPreviewSeoBlogPostsContent(
 	id: number,
-	authToken: string
+	authToken: string,
+	loginRedirectURL: string
 ) {
 	try {
 		const content: DocumentNode = gql`
@@ -123,9 +127,11 @@ export async function getAllPreviewSeoBlogPostsContent(
 
 		return response?.data?.mainContent?.seo;
 	} catch (error) {
-		console.log(error);
-		throw new Error(
-			"Something went wrong trying to fetch all blog posts seo content per post"
-		);
+		return {
+			redirect: {
+				destination: loginRedirectURL || "/",
+				statusCode: 307,
+			},
+		};
 	}
 }

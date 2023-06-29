@@ -1,15 +1,12 @@
 // Imports
-import {
-	getLoginPreviewRedirectUrl,
-	handleRedirectsAndReturnData,
-} from "@/functions/redirects/redirects";
+import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
 import {IContentContextTwo} from "@/components/types";
 import type {GetServerSideProps, NextPage} from "next";
 import {getAuthToken} from "@/functions/cookies/cookies";
+import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";
 
 // Mutations Functions
-import {getPreviewPostSlugs} from "@/functions/graphql/Mutations/GetPreviewPostById";
 import {getAllPreviewPostsFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
 
 // Queries Functions
@@ -28,12 +25,7 @@ import Layout from "@/components/Layout/Layout";
 import {ContentContext} from "@/context/context";
 import RenderFlexibleContentTwo from "@/components/FlexibleContent/RenderFlexibleContentTwo";
 
-const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({
-	defaultProps,
-}: any) => {
-	console.log(defaultProps);
-	console.log(defaultProps?.content);
-
+const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({defaultProps}) => {
 	return (
 		<ContentContext.Provider
 			value={{
@@ -53,7 +45,6 @@ const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({
 				}}
 				initial="initial"
 				animate="animate"
-				className="h-screen bg-white"
 			>
 				<Layout>
 					<RenderFlexibleContentTwo />
@@ -66,39 +57,54 @@ const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
-
-	const previewPostSlug: any = await getPreviewPostSlugs(params?.id, authToken);
-
-	// Fetch priority content
-	const seoContent: any = await getAllPreviewSeoBlogPostsContent(
-		params?.id,
-		authToken
+	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
+		"post",
+		params?.id
 	);
 
-	const flexibleContentComponents: any =
-		await getAllPreviewPostsFlexibleContentComponents(params?.id, authToken);
+	if (isEmpty(authToken)) {
+		return {
+			redirect: {
+				permanent: false,
+				destination: loginRedirectURL || "/",
+				statusCode: 307,
+			},
+		};
+	} else {
+		// Fetch priority content
+		/* PREVIEW BLOGS POSTS SEO CONTENT */
+		const seoContent: any = await getAllPreviewSeoBlogPostsContent(
+			params?.id,
+			authToken,
+			loginRedirectURL
+		);
 
-	const loginRedirectURL = getLoginPreviewRedirectUrl("post", params?.id ?? "");
+		/* PREVIEW BLOGS POSTS FLEXIBLE CONTENT */
+		const flexibleContentComponents: any =
+			await getAllPreviewPostsFlexibleContentComponents(
+				params?.id,
+				authToken,
+				loginRedirectURL
+			);
 
-	// Fetch remaining content simultaneously
-	const [
-		blogs,
-		mainMenuLinks,
-		navbarMenuLinks,
-		footerMenuLinks,
-		themesOptionsContent,
-		contentSliderPostsContent,
-	] = await Promise.all([
-		getAllBlogsContent(),
-		getMainMenuLinks(),
-		getNavbarMenuLinks(),
-		getFooterMenuLinks(),
-		getThemesOptionsContent(),
-		getContentSliderBlogPostsPostsContent(),
-	]);
+		// Fetch remaining content simultaneously
+		const [
+			blogs,
+			mainMenuLinks,
+			navbarMenuLinks,
+			footerMenuLinks,
+			themesOptionsContent,
+			contentSliderPostsContent,
+		] = await Promise.all([
+			getAllBlogsContent(),
+			getMainMenuLinks(),
+			getNavbarMenuLinks(),
+			getFooterMenuLinks(),
+			getThemesOptionsContent(),
+			getContentSliderBlogPostsPostsContent(),
+		]);
 
-	const defaultProps = {
-		props: {
+		const defaultProps = {
 			blogs,
 			mainMenuLinks,
 			navbarMenuLinks,
@@ -106,19 +112,24 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 			seo: seoContent,
 			themesOptionsContent,
 			contentSliderPostsContent,
-			data: previewPostSlug?.data,
 			content: flexibleContentComponents?.content,
-		},
-	};
+		};
 
-	return handleRedirectsAndReturnData(
-		defaultProps,
-		previewPostSlug?.data,
-		previewPostSlug?.errors,
-		"post",
-		true,
-		loginRedirectURL
-	);
+		if (!defaultProps.content) {
+			return {
+				redirect: {
+					permanent: false,
+					destination: loginRedirectURL || "/",
+				},
+			};
+		} else {
+			return {
+				props: {
+					defaultProps,
+				},
+			};
+		}
+	}
 };
 
 export default dynamicPreviewPosts;

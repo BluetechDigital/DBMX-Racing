@@ -1,5 +1,4 @@
 // Import
-import {FC} from "react";
 import {useContentContext} from "@/context/context";
 
 // Components
@@ -23,18 +22,16 @@ import ContentSection from "@/components/ContentSection";
 import TitleParagraph from "@/components/TitleParagraph";
 import ContentSliderTwo from "@/components/ContentSliderTwo";
 
-const RenderFlexibleContent: FC = () => {
+const RenderFlexibleContent = () => {
 	const content = useContentContext();
 
-	const FlexibleContentComponent =
-		"DefaultTemplate_Flexiblecontent_FlexibleContent";
+	const pageTemplate = "Page_Flexiblecontent_FlexibleContent";
 	return (
 		<>
 			{content.content.length > 0 ? (
 				content.content.map((item: any, keys: any) => (
 					<div key={keys}>
-						{item?.fieldGroupName ===
-						`${FlexibleContentComponent}_HeroSection` ? (
+						{item?.fieldGroupName === `${pageTemplate}_HeroSection` ? (
 							<>
 								<HeroTwo
 									title={item?.title}
@@ -42,8 +39,7 @@ const RenderFlexibleContent: FC = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_HeroSectionTwo` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_HeroSectionTwo` ? (
 							<>
 								<Hero
 									title={item?.title}
@@ -54,8 +50,7 @@ const RenderFlexibleContent: FC = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_HeroSectionThree` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_HeroSectionThree` ? (
 							<>
 								<HeroThree
 									title={item?.title}
@@ -65,8 +60,7 @@ const RenderFlexibleContent: FC = () => {
 									backgroundImageOrVideo={item?.backgroundImageOrVideo}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_TitleParagraph` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_TitleParagraph` ? (
 							<>
 								<TitleParagraph
 									key={keys}
@@ -74,8 +68,7 @@ const RenderFlexibleContent: FC = () => {
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentSection` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_ContentSection` ? (
 							<>
 								<ContentSection
 									title={item?.title}
@@ -84,15 +77,14 @@ const RenderFlexibleContent: FC = () => {
 								/>
 							</>
 						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_JumboContentSection` ? (
+						  `${pageTemplate}_JumboContentSection` ? (
 							<>
 								<JumboContent
 									key={keys}
 									jumboContentSection={item?.contentSection}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentStats` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_ContentStats` ? (
 							<>
 								<ContentStats
 									title={item?.title}
@@ -101,16 +93,14 @@ const RenderFlexibleContent: FC = () => {
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ProductGrid` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_ProductGrid` ? (
 							<>
 								<FourImageGrid
 									title={item?.title}
 									servicesGrid={item?.services}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ProductGridTwo` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_ProductGridTwo` ? (
 							<>
 								<ProductGrid
 									title={item?.title}
@@ -119,18 +109,15 @@ const RenderFlexibleContent: FC = () => {
 									productGrid={item?.products}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_TrustedBrands` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_TrustedBrands` ? (
 							<>
 								<Logos title={item?.title} logoGrid={item?.logos} />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentSlider` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_ContentSlider` ? (
 							<>
 								<ContentSliderTwo />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentSliderTwo` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_ContentSliderTwo` ? (
 							<>
 								<ContentSlider
 									content={item?.content}
@@ -138,13 +125,11 @@ const RenderFlexibleContent: FC = () => {
 									contentThree={item?.contentThree}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_BlogsGrid` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_BlogsGrid` ? (
 							<>
 								<Blogs />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContactBanner` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_ContactBanner` ? (
 							<>
 								<ContactBanner
 									key={keys}
@@ -154,26 +139,22 @@ const RenderFlexibleContent: FC = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContactInfo` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_ContactInfo` ? (
 							<>
 								<ContactInfo title={item?.title} paragraph={item?.paragraph} />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContactForm` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_ContactForm` ? (
 							<>
 								<ContactForm title={item?.title} />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_OurLocation` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_OurLocation` ? (
 							<>
 								<StoreLocation
 									title={item?.title}
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_Maintenance` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_Maintenance` ? (
 							<>
 								<Maintenance
 									title={item?.title}
@@ -183,8 +164,7 @@ const RenderFlexibleContent: FC = () => {
 									backgroundImageOrVideo={item?.backgroundImageOrVideo}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ErrorPageContent` ? (
+						) : item?.fieldGroupName === `${pageTemplate}_ErrorPageContent` ? (
 							<>
 								<ErrorPage
 									title={item?.title}

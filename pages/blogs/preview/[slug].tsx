@@ -1,8 +1,7 @@
-// Imports
+// Import
 import {motion} from "framer-motion";
-import {NextPage, GetStaticProps} from "next";
-import Layout from "@/components/Layout/Layout";
 import {ContentContext} from "@/context/context";
+import type {NextPage, GetStaticProps} from "next";
 import {IContentContext} from "@/components/types";
 
 // Queries Functions
@@ -11,17 +10,18 @@ import {
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
+import {getAllPagesSlugs} from "@/functions/graphql/Queries/GetAllPagesSlugs";
 import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
-import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoContent";
+import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoPagesContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
-import Login from "@/components/Login";
-import HeroFour from "@/components/HeroFour";
+import Layout from "@/components/Layout/Layout";
+import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
-const login: NextPage<IContentContext> = ({
+const dynamicPages: NextPage<IContentContext> = ({
 	seo,
 	blogs,
 	content,
@@ -52,16 +52,25 @@ const login: NextPage<IContentContext> = ({
 				animate="animate"
 			>
 				<Layout>
-					<HeroFour />
-
-					<Login />
+					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
 		</ContentContext.Provider>
 	);
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export async function getStaticPaths() {
+	const data = await getAllPagesSlugs();
+	const paths = data.map((item) => ({
+		params: {
+			slug: item?.slug as String,
+		},
+	}));
+
+	return {paths, fallback: false};
+}
+
+export const getStaticProps: GetStaticProps = async ({params}: any) => {
 	// Fetch priority content
 	const seoContent: any = await getAllSeoPagesContent("Home");
 
@@ -100,4 +109,4 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
-export default login;
+export default dynamicPages;
