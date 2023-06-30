@@ -877,6 +877,18 @@ export default async function handler(req: any, res: any) {
 																								</a>
 																							</span>
 																						</p>
+																						<h3 style="font-size: 18px">Subject:</h3>
+																						<p
+																							style="
+																								margin: 0;
+																								font-size: 16px;
+																								mso-line-height-alt: 19.2px;
+																							"
+																						>
+																							<span style="font-size: 16px">
+																								${body.subject}
+																							</span>
+																						</p>
 																						<h3 style="font-size: 18px">Message:</h3>
 																						<p
 																							style="
