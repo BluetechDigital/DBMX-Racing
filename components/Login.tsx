@@ -44,9 +44,13 @@ const Login: FC = () => {
 				.then((data) => {
 					setLoading(false);
 
-					// Redirects User after logging in
-					const previewUrl = getPreviewRedirectUrl(postType, previewPostId);
-					router.push(previewUrl);
+					if (postType && previewPostId) {
+						// Redirects User after logging in
+						const previewUrl = getPreviewRedirectUrl(postType, previewPostId);
+						router.push(previewUrl);
+					} else {
+						router.push(`/`);
+					}
 				})
 				.catch(() => {
 					setLoading(false);

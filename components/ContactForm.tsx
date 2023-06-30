@@ -1,6 +1,7 @@
 // Imports
 import {motion} from "framer-motion";
 import {IContactForm} from "./types";
+import {useRouter} from "next/router";
 import React, {useState, FC} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {sendContactForm} from "@/functions/api";
@@ -15,20 +16,14 @@ import styles from "../styles/components/ContactForm.module.scss";
 import Paragraph from "./Elements/Paragraph";
 
 const ContactForm: FC<IContactForm> = ({title}) => {
+	const router = useRouter();
 	const content = useContentContext();
 
-	const initState: {
-		error: string;
-		isLoading: boolean;
-	} = {isLoading: false, error: " "};
-	const [state, setState]: any = useState(initState);
-	const {
-		isLoading,
-		error,
-	}: {
-		error: string;
-		isLoading: boolean;
-	} = state;
+	// Loading, Send & Error Message States
+	const [loading, setLoading] = useState(false);
+	const [messageSent, setMessageSent] = useState(false);
+	const [errorMessage, setErrorMessage] = useState(false);
+
 	// A custom validation function. This must return an object
 	// which keys are symmetrical to our values/initialValues
 	const validate: any = (values: any) => {
@@ -91,28 +86,49 @@ const ContactForm: FC<IContactForm> = ({title}) => {
 		},
 		validate,
 		onSubmit: async (values: any) => {
-			setState((prev: any) => ({
-				...prev,
-				isLoading: true,
-			}));
-			if (reCaptchaResult !== null || reCaptchaResult !== undefined) {
+			if (reCaptchaResult) {
 				try {
 					await sendContactForm(values);
-					setState(initState);
 				} catch (error) {
-					setState((prev: any) => ({
-						...prev,
-						isLoading: false,
-						// error: error.message,
-					}));
+					setErrorMessage(true);
+					throw new Error(
+						"Error Message: Something went wrong with Sending your Message. Please try again."
+					);
 				}
 			} else {
-				console.log(
+				throw new Error(
 					"Error Message: Something went wrong with your Google Recaptcha validation. Please try again."
 				);
 			}
 		},
 	});
+
+	// Form Submission
+	const onFormSubmit = (event: any) => {
+		event.preventDefault();
+		setErrorMessage(false);
+		if (reCaptchaResult) {
+			try {
+				setLoading(true);
+				/* Send Form Content */
+				formik.handleSubmit();
+				setLoading(false);
+				setMessageSent(true);
+				setTimeout(() => {
+					router.reload();
+				}, 3000);
+			} catch (error) {
+				setErrorMessage(true);
+				throw new Error(
+					"Error Message: Something went wrong with Sending your Message. Please try again."
+				);
+			}
+		} else {
+			throw new Error(
+				"Error Message: Something went wrong with your Google Recaptcha validation. Please try again."
+			);
+		}
+	};
 
 	return (
 		<section
@@ -135,13 +151,32 @@ const ContactForm: FC<IContactForm> = ({title}) => {
 								{title}
 							</motion.h3>
 
-							{isLoading ? (
+							{loading ? (
 								<motion.div
 									variants={fadeIn}
 									className="flex items-center justify-center my-4 mb-8 gap-x-2"
 								>
 									<h4 className="text-lg font-semibold text-center uppercase text-brightGreen">
-										Message sent
+										Sending Message...
+									</h4>
+								</motion.div>
+							) : messageSent ? (
+								<motion.div
+									variants={fadeIn}
+									className="flex items-center justify-center my-4 mb-8 gap-x-2"
+								>
+									<h4 className="text-lg font-semibold text-center uppercase text-goldYellow">
+										Message Sent
+									</h4>
+								</motion.div>
+							) : errorMessage ? (
+								<motion.div
+									variants={fadeIn}
+									className="flex items-center justify-center my-4 mb-8 gap-x-2"
+								>
+									<h4 className="text-lg font-semibold text-center uppercase text-darkRed">
+										Error Message: Something went wrong with sending your
+										message. Please try again.
 									</h4>
 								</motion.div>
 							) : null}
@@ -248,8 +283,7 @@ const ContactForm: FC<IContactForm> = ({title}) => {
 								</motion.div>
 								<motion.button
 									variants={fadeInUp}
-									// isLoading={isLoading}
-									onClick={formik.handleSubmit}
+									onClick={onFormSubmit}
 									disabled={
 										!formik?.values?.firstName ||
 										!formik?.values?.lastName ||
@@ -262,7 +296,13 @@ const ContactForm: FC<IContactForm> = ({title}) => {
 									className="w-full text-white disabled:bg-opacity-20 disabled:cursor-not-allowed"
 									type="submit"
 								>
-									<span className={` ${styles.submitButton}`}>
+									<span
+										className={
+											messageSent
+												? `${styles.messageSent}`
+												: `${styles.submitButton}`
+										}
+									>
 										<span className={styles.span}>
 											<svg
 												width="45px"
@@ -297,7 +337,13 @@ const ContactForm: FC<IContactForm> = ({title}) => {
 											</svg>
 										</span>
 										<h3 className="text-base tracking-widest text-white uppercase sm:tracking-wider sm:text-medium">
-											Send Message
+											{loading
+												? "Sending Message..."
+												: messageSent
+												? "Message Sent!"
+												: errorMessage
+												? "Sending Error!"
+												: "Send Message"}
 										</h3>
 									</span>
 								</motion.button>

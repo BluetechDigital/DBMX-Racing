@@ -17,18 +17,17 @@ body {
 }
 
 body::-webkit-scrollbar {
-	display: none;
-	width: 0.65rem;
-	height: 0.65rem;
+	width: 0.85rem;
+	height: 0.85rem;
 }
 
 body::-webkit-scrollbar-track {
-	background: $darkRed;
+	background: $baseColor_pureBlack;
 }
 
 body::-webkit-scrollbar-thumb {
 	background: $red;
-	border-radius: 100px;
+	border-radius: 5px;
 
 	&:hover {
 		transition: all 0.5s;

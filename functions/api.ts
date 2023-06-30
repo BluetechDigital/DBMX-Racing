@@ -14,31 +14,6 @@ export const sendContactForm = async (data: any) => {
 	});
 };
 
-/* PREVIEW PAGE */
-export async function getPreviewPage(id: any) {
-	const getPageByID: DocumentNode = gql`
-		query getPageByID($id: ID!) {
-			page(idType: DATABASE_ID, id: $id) {
-				id
-				title
-				content
-				slug
-				uri
-				status
-			}
-		}
-	`;
-
-	const {data, errors} = await client.query({
-		query: getPageByID,
-		variables: {
-			id: Number(id),
-		},
-	});
-
-	return data || {};
-}
-
 /* LOGIN USER
  Mutations Function */
 export async function loginUser(username: String, password: String) {
