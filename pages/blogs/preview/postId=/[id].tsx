@@ -1,13 +1,15 @@
 // Imports
 import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
-import {IContentContextTwo} from "@/components/types";
+
 import type {GetServerSideProps, NextPage} from "next";
 import {getAuthToken} from "@/functions/cookies/cookies";
+import {ContentContext, IContentContext} from "@/context/context";
 import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";
 
 // Mutations Functions
-import {getAllPreviewPostsFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
+import {getAllPreviewFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
+import {getAllPreviewSeoContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
 
 // Queries Functions
 import {
@@ -17,26 +19,35 @@ import {
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getAllPreviewSeoBlogPostsContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 
 // Components
 import Layout from "@/components/Layout/Layout";
-import {ContentContext} from "@/context/context";
-import RenderFlexibleContentTwo from "@/components/FlexibleContent/RenderFlexibleContentTwo";
+import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
-const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({defaultProps}) => {
+const dynamicPreviewPosts: NextPage<IContentContext> = ({
+	seo,
+	blogs,
+	content,
+	mainMenuLinks,
+	navbarMenuLinks,
+	footerMenuLinks,
+	themesOptionsContent,
+	postTypeFlexiblecontent,
+	contentSliderPostsContent,
+}) => {
 	return (
 		<ContentContext.Provider
 			value={{
-				seo: defaultProps?.seo,
-				blogs: defaultProps?.blogs,
-				content: defaultProps?.content,
-				mainMenuLinks: defaultProps?.mainMenuLinks,
-				navbarMenuLinks: defaultProps?.navbarMenuLinks,
-				footerMenuLinks: defaultProps?.footerMenuLinks,
-				themesOptionsContent: defaultProps?.themesOptionsContent,
-				contentSliderPostsContent: defaultProps?.contentSliderPostsContent,
+				seo: seo,
+				blogs: blogs,
+				content: content,
+				mainMenuLinks: mainMenuLinks,
+				navbarMenuLinks: navbarMenuLinks,
+				footerMenuLinks: footerMenuLinks,
+				themesOptionsContent: themesOptionsContent,
+				postTypeFlexiblecontent: postTypeFlexiblecontent,
+				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
 			<motion.div
@@ -47,7 +58,7 @@ const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({defaultProps}) => {
 				animate="animate"
 			>
 				<Layout>
-					<RenderFlexibleContentTwo />
+					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
 		</ContentContext.Provider>
@@ -57,8 +68,11 @@ const dynamicPreviewPosts: NextPage<IContentContextTwo> = ({defaultProps}) => {
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
+	const postType: string = "post";
+	const postTypeFlexiblecontent: string =
+		"Post_Flexiblecontent_FlexibleContent";
 	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
-		"post",
+		postType,
 		params?.id
 	);
 
@@ -66,25 +80,28 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 		return {
 			redirect: {
 				permanent: false,
-				destination: loginRedirectURL || "/",
-				statusCode: 307,
+				destination: loginRedirectURL || "/login",
+				query: {postType, previewPostId: params?.id},
 			},
 		};
 	} else {
 		// Fetch priority content
 		/* PREVIEW BLOGS POSTS SEO CONTENT */
-		const seoContent: any = await getAllPreviewSeoBlogPostsContent(
+		const seoContent: any = await getAllPreviewSeoContent(
 			params?.id,
 			authToken,
+			postType,
 			loginRedirectURL
 		);
 
 		/* PREVIEW BLOGS POSTS FLEXIBLE CONTENT */
 		const flexibleContentComponents: any =
-			await getAllPreviewPostsFlexibleContentComponents(
+			await getAllPreviewFlexibleContentComponents(
 				params?.id,
+				postType,
 				authToken,
-				loginRedirectURL
+				loginRedirectURL,
+				postTypeFlexiblecontent
 			);
 
 		// Fetch remaining content simultaneously
@@ -104,31 +121,19 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 			getContentSliderBlogPostsPostsContent(),
 		]);
 
-		const defaultProps = {
-			blogs,
-			mainMenuLinks,
-			navbarMenuLinks,
-			footerMenuLinks,
-			seo: seoContent,
-			themesOptionsContent,
-			contentSliderPostsContent,
-			content: flexibleContentComponents?.content,
+		return {
+			props: {
+				blogs,
+				mainMenuLinks,
+				navbarMenuLinks,
+				footerMenuLinks,
+				seo: seoContent,
+				themesOptionsContent,
+				postTypeFlexiblecontent,
+				contentSliderPostsContent,
+				content: flexibleContentComponents?.content,
+			},
 		};
-
-		if (!defaultProps.content) {
-			return {
-				redirect: {
-					permanent: false,
-					destination: loginRedirectURL || "/",
-				},
-			};
-		} else {
-			return {
-				props: {
-					defaultProps,
-				},
-			};
-		}
 	}
 };
 

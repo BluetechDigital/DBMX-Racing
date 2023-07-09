@@ -1,9 +1,8 @@
 // Imports
 import {motion} from "framer-motion";
-import {NextPage, GetStaticProps} from "next";
 import Layout from "@/components/Layout/Layout";
-import {ContentContext} from "@/context/context";
-import {IContentContext} from "@/components/types";
+import {NextPage, GetServerSideProps} from "next";
+import {ContentContext, IContentContext} from "@/context/context";
 
 // Queries Functions
 import {
@@ -29,6 +28,7 @@ const login: NextPage<IContentContext> = ({
 	navbarMenuLinks,
 	footerMenuLinks,
 	themesOptionsContent,
+	postTypeFlexiblecontent,
 	contentSliderPostsContent,
 }) => {
 	return (
@@ -41,6 +41,7 @@ const login: NextPage<IContentContext> = ({
 				navbarMenuLinks: navbarMenuLinks,
 				footerMenuLinks: footerMenuLinks,
 				themesOptionsContent: themesOptionsContent,
+				postTypeFlexiblecontent: postTypeFlexiblecontent,
 				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
@@ -61,7 +62,10 @@ const login: NextPage<IContentContext> = ({
 	);
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+	const postTypeFlexiblecontent: string =
+		"DefaultTemplate_Flexiblecontent_FlexibleContent";
+
 	// Fetch priority content
 	const seoContent: any = await getAllSeoPagesContent("Home");
 
@@ -93,10 +97,10 @@ export const getStaticProps: GetStaticProps = async () => {
 			footerMenuLinks,
 			seo: seoContent,
 			themesOptionsContent,
+			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
 		},
-		revalidate: 60,
 	};
 };
 

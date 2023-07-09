@@ -26,15 +26,13 @@ import ContentSliderTwo from "@/components/ContentSliderTwo";
 const RenderFlexibleContent: FC = () => {
 	const content = useContentContext();
 
-	const FlexibleContentComponent =
-		"DefaultTemplate_Flexiblecontent_FlexibleContent";
+	const Flexiblecontent = content.postTypeFlexiblecontent;
 	return (
 		<>
 			{content.content.length > 0 ? (
 				content.content.map((item: any, keys: any) => (
 					<div key={keys}>
-						{item?.fieldGroupName ===
-						`${FlexibleContentComponent}_HeroSection` ? (
+						{item?.fieldGroupName === `${Flexiblecontent}_HeroSection` ? (
 							<>
 								<HeroTwo
 									title={item?.title}
@@ -42,8 +40,7 @@ const RenderFlexibleContent: FC = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_HeroSectionTwo` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_HeroSectionTwo` ? (
 							<>
 								<Hero
 									title={item?.title}
@@ -55,7 +52,7 @@ const RenderFlexibleContent: FC = () => {
 								/>
 							</>
 						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_HeroSectionThree` ? (
+						  `${Flexiblecontent}_HeroSectionThree` ? (
 							<>
 								<HeroThree
 									title={item?.title}
@@ -65,8 +62,7 @@ const RenderFlexibleContent: FC = () => {
 									backgroundImageOrVideo={item?.backgroundImageOrVideo}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_TitleParagraph` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_TitleParagraph` ? (
 							<>
 								<TitleParagraph
 									key={keys}
@@ -74,8 +70,7 @@ const RenderFlexibleContent: FC = () => {
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentSection` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_ContentSection` ? (
 							<>
 								<ContentSection
 									title={item?.title}
@@ -84,15 +79,14 @@ const RenderFlexibleContent: FC = () => {
 								/>
 							</>
 						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_JumboContentSection` ? (
+						  `${Flexiblecontent}_JumboContentSection` ? (
 							<>
 								<JumboContent
 									key={keys}
 									jumboContentSection={item?.contentSection}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentStats` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_ContentStats` ? (
 							<>
 								<ContentStats
 									title={item?.title}
@@ -101,16 +95,14 @@ const RenderFlexibleContent: FC = () => {
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ProductGrid` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_ProductGrid` ? (
 							<>
 								<FourImageGrid
 									title={item?.title}
 									servicesGrid={item?.services}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ProductGridTwo` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_ProductGridTwo` ? (
 							<>
 								<ProductGrid
 									title={item?.title}
@@ -119,18 +111,16 @@ const RenderFlexibleContent: FC = () => {
 									productGrid={item?.products}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_TrustedBrands` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_TrustedBrands` ? (
 							<>
 								<Logos title={item?.title} logoGrid={item?.logos} />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentSlider` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_ContentSlider` ? (
 							<>
 								<ContentSliderTwo />
 							</>
 						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContentSliderTwo` ? (
+						  `${Flexiblecontent}_ContentSliderTwo` ? (
 							<>
 								<ContentSlider
 									content={item?.content}
@@ -138,13 +128,11 @@ const RenderFlexibleContent: FC = () => {
 									contentThree={item?.contentThree}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_BlogsGrid` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_BlogsGrid` ? (
 							<>
 								<Blogs />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContactBanner` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_ContactBanner` ? (
 							<>
 								<ContactBanner
 									key={keys}
@@ -154,26 +142,22 @@ const RenderFlexibleContent: FC = () => {
 									backgroundImage={item?.backgroundImage?.sourceUrl}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContactInfo` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_ContactInfo` ? (
 							<>
 								<ContactInfo title={item?.title} paragraph={item?.paragraph} />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ContactForm` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_ContactForm` ? (
 							<>
 								<ContactForm title={item?.title} />
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_OurLocation` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_OurLocation` ? (
 							<>
 								<StoreLocation
 									title={item?.title}
 									paragraph={item?.paragraph}
 								/>
 							</>
-						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_Maintenance` ? (
+						) : item?.fieldGroupName === `${Flexiblecontent}_Maintenance` ? (
 							<>
 								<Maintenance
 									title={item?.title}
@@ -184,7 +168,7 @@ const RenderFlexibleContent: FC = () => {
 								/>
 							</>
 						) : item?.fieldGroupName ===
-						  `${FlexibleContentComponent}_ErrorPageContent` ? (
+						  `${Flexiblecontent}_ErrorPageContent` ? (
 							<>
 								<ErrorPage
 									title={item?.title}
