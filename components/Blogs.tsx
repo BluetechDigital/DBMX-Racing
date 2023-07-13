@@ -1,6 +1,6 @@
 // Import
 import {motion} from "framer-motion";
-import {stagger} from "../animations/animations";
+import {initial, stagger} from "../animations/animations";
 import {useContentContext} from "@/context/context";
 
 // Components
@@ -12,7 +12,9 @@ const Blogs = () => {
 		<section className="px-4 py-24 bg-white">
 			<div className="container px-4 mx-auto">
 				<motion.div
-					variants={stagger}
+					initial={initial}
+					whileInView={stagger}
+					viewport={{once: true}}
 					className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"
 				>
 					{content.blogs?.length > 0 ? (
@@ -38,7 +40,9 @@ const Blogs = () => {
 						</h2>
 					)}
 				</motion.div>
-				{/* <motion.div variants={fadeInUp} className="text-center">
+				{/* <motion.div initial={initial}
+						whileInView={fadeInUp}
+						viewport={{once: true}} className="text-center">
 					<button className="px-8 py-5 text-base font-bold leading-normal tracking-wider text-white uppercase bg-red hover:bg-darkRed">
 						Load more articles
 					</button>

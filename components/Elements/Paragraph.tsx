@@ -3,7 +3,7 @@ import {FC} from "react";
 import {motion} from "framer-motion";
 import {IParagraphProps} from "../types";
 import DOMPurify from "isomorphic-dompurify";
-import {fadeIn} from "../../animations/animations";
+import {fadeInUp, initial} from "../../animations/animations";
 
 const Paragraph: FC<IParagraphProps> = ({content, tailwindStyling}) => {
 	/* Sanitize the WYSIWYG paragraph content */
@@ -15,7 +15,9 @@ const Paragraph: FC<IParagraphProps> = ({content, tailwindStyling}) => {
 
 	return (
 		<motion.div
-			variants={fadeIn}
+			initial={initial}
+			whileInView={fadeInUp}
+			viewport={{once: true}}
 			className={content ? `block ${tailwindStyling}` : `hidden`}
 			dangerouslySetInnerHTML={createParagraphMarkup(content)}
 		/>

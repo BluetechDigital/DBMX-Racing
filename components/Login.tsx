@@ -3,7 +3,7 @@ import {FC, useState} from "react";
 import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {fadeInUp, stagger, fadeIn} from "../animations/animations";
+import {initial, fadeInUp, stagger, fadeIn} from "../animations/animations";
 import validateAndSanitizeLoginForm from "@/functions/validator/login";
 import {getPreviewRedirectUrl} from "@/functions/redirects/redirects";
 
@@ -106,7 +106,7 @@ const Login: FC = () => {
 			<div className="w-5/12 p-8 m-auto">
 				{loading ? (
 					<motion.div
-						initial={`initial`}
+						initial={initial}
 						whileInView={fadeIn}
 						viewport={{once: true}}
 						className="flex items-center justify-center my-4 mb-8 gap-x-2"
@@ -117,7 +117,7 @@ const Login: FC = () => {
 					</motion.div>
 				) : loginSuccessful ? (
 					<motion.div
-						initial={`initial`}
+						initial={initial}
 						whileInView={fadeIn}
 						viewport={{once: true}}
 						className="flex items-center justify-center my-4 mb-8 gap-x-2"
@@ -128,7 +128,7 @@ const Login: FC = () => {
 					</motion.div>
 				) : errorMessage ? (
 					<motion.div
-						initial={`initial`}
+						initial={initial}
 						whileInView={fadeIn}
 						viewport={{once: true}}
 						className="flex items-center justify-center my-4 mb-8 gap-x-2"
@@ -139,7 +139,7 @@ const Login: FC = () => {
 					</motion.div>
 				) : (
 					<motion.div
-						initial={`initial`}
+						initial={initial}
 						whileInView={fadeIn}
 						viewport={{once: true}}
 						className="flex items-center justify-center my-4 mb-8 gap-x-2"
@@ -153,11 +153,15 @@ const Login: FC = () => {
 				)}
 				<motion.form
 					className="mb-4"
-					variants={stagger}
+					initial={initial}
+					whileInView={stagger}
+					viewport={{once: true}}
 					onSubmit={onFormSubmit}
 				>
 					<motion.label
-						variants={fadeInUp}
+						initial={initial}
+						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="my-4 text-sm leading-7 text-black"
 					>
 						Username:
@@ -173,7 +177,9 @@ const Login: FC = () => {
 					</motion.label>
 					<br />
 					<motion.label
-						variants={fadeInUp}
+						initial={initial}
+						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="my-4 text-sm leading-7 text-black"
 					>
 						Password:
@@ -187,14 +193,20 @@ const Login: FC = () => {
 							className="w-full px-3 py-1 mb-8 text-base leading-8 transition-colors duration-200 ease-in-out bg-white border rounded outline-none text-grey border-darkRed focus:border-darkRed focus:ring-2 focus:ring-darkRed"
 						/>
 					</motion.label>
-					<motion.div variants={fadeInUp}>
+					<motion.div
+						initial={initial}
+						whileInView={fadeInUp}
+						viewport={{once: true}}
+					>
 						<ReCAPTCHA
 							sitekey={`6LfkXm4lAAAAACFUoSeHOLpzuXrR5YYPxnVrbSXt`}
 							onChange={handleReCaptchaChange}
 						/>
 					</motion.div>
 					<motion.button
-						variants={fadeInUp}
+						initial={initial}
+						whileInView={fadeInUp}
+						viewport={{once: true}}
 						// isLoading={isLoading}
 						disabled={
 							!username ||

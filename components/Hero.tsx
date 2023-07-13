@@ -4,7 +4,7 @@ import Image from "next/image";
 import {IHero} from "./types";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
-import {fadeInUp, stagger} from "../animations/animations";
+import {fadeInUp, initial, stagger} from "../animations/animations";
 
 // Components
 import SideMenu from "./Elements/SideMenu";
@@ -103,7 +103,9 @@ const Hero: FC<IHero> = ({
 							tailwindStyling="mb-6 py-6 text-white leading-[1.75rem] font-[500] text-base sm:text-medium text-center sm:text-left"
 						/>
 						<motion.div
-							variants={stagger}
+							initial={initial}
+							whileInView={stagger}
+							viewport={{once: true}}
 							className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-start"
 						>
 							<Link
@@ -111,7 +113,9 @@ const Hero: FC<IHero> = ({
 								target={buttonLink?.target}
 							>
 								<motion.button
-									variants={fadeInUp}
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className={
 										buttonLink?.url
 											? `block px-6 py-3 font-semibold tracking-widest text-base transition duration-200 w-fit sm:mx-0 hover:bg-darkerRed text-black hover:text-white bg-white rounded-t-lg rounded-l-lg`
@@ -126,7 +130,9 @@ const Hero: FC<IHero> = ({
 								target={buttonLinkTwo?.target}
 							>
 								<motion.button
-									variants={fadeInUp}
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className={
 										buttonLink?.url
 											? `block px-6 py-3 font-semibold tracking-widest text-base text-white transition duration-200 w-fit sm:mx-0 hover:bg-darkerRed bg-red rounded-t-lg rounded-l-lg`

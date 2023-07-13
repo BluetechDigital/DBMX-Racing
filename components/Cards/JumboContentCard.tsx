@@ -5,7 +5,13 @@ import Image from "next/image";
 import {motion} from "framer-motion";
 import {IJumboContentCard} from "../types";
 import Paragraph from ".././Elements/Paragraph";
-import {fadeInUp, stagger} from "../../animations/animations";
+import {
+	fadeIn,
+	fadeInUp,
+	initial,
+	initialTwo,
+	stagger,
+} from "../../animations/animations";
 
 const JumboContentCard: FC<IJumboContentCard> = ({
 	title,
@@ -54,7 +60,10 @@ const JumboContentCard: FC<IJumboContentCard> = ({
 							: `flex flex-col items-center gap-6 lg:flex-row`
 					}
 				>
-					<div
+					<motion.div
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
 						className={
 							imageLocation === "Left"
 								? `block relative w-full px-4 lg:w-1/2`
@@ -73,20 +82,26 @@ const JumboContentCard: FC<IJumboContentCard> = ({
 									: `hidden`
 							}
 						/>
-					</div>
+					</motion.div>
 					<div className="w-full px-4 mb-12 lg:w-1/2 lg:mb-0">
 						<motion.div
-							variants={stagger}
+							initial={initial}
+							whileInView={stagger}
+							viewport={{once: true}}
 							className="flex flex-col justify-center max-w-2xl ite"
 						>
 							<motion.span
-								variants={fadeInUp}
+								initial={initial}
+								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className="text-base font-semibold text-center sm:text-left text-goldPrime"
 							>
 								{subtitle}
 							</motion.span>
 							<motion.h2
-								variants={fadeInUp}
+								initial={initial}
+								whileInView={fadeInUp}
+								viewport={{once: true}}
 								className={`mt-2 text-lg sm:text-3xl md:text-4xl text-center sm:text-left font-semibold ${titleColor} lg:pr-8`}
 							>
 								{title}
@@ -101,7 +116,9 @@ const JumboContentCard: FC<IJumboContentCard> = ({
 								className="text-center sm:text-left"
 							>
 								<motion.button
-									variants={fadeInUp}
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className={`text-lg font-medium ${buttonColor} no-underline hover:underline hover:text-red`}
 								>
 									{buttonLink?.title}
@@ -109,7 +126,10 @@ const JumboContentCard: FC<IJumboContentCard> = ({
 							</Link>
 						</motion.div>
 					</div>
-					<div
+					<motion.div
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
 						className={
 							imageLocation === "Right"
 								? `block relative w-full px-4 lg:w-1/2`
@@ -128,7 +148,7 @@ const JumboContentCard: FC<IJumboContentCard> = ({
 									: `hidden`
 							}
 						/>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</div>

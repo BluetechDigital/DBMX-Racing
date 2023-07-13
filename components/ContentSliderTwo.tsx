@@ -6,6 +6,14 @@ import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef} from "react";
 import {useContentContext} from "@/context/context";
 import styles from "../styles/components/ContentSlider.module.scss";
+import fadeInUp, {
+	fadeIn,
+	fadeInThree,
+	initial,
+	initialTwo,
+	stagger,
+} from "@/animations/animations";
+import {motion} from "framer-motion";
 
 const ContentSlider = () => {
 	const content = useContentContext();
@@ -515,8 +523,17 @@ const ContentSlider = () => {
 					</div>
 				</div>
 
-				<div ref={postRef} className={`postPost ${postPost}`}>
-					<article
+				<motion.div
+					initial={initial}
+					whileInView={stagger}
+					viewport={{once: true}}
+					ref={postRef}
+					className={`postPost ${postPost}`}
+				>
+					<motion.article
+						initial={initialTwo}
+						viewport={{once: true}}
+						whileInView={postNotActive ? fadeIn : fadeInThree}
 						className={`${post} ${postActive} ${postContentTailwindcss}`}
 					>
 						<Link
@@ -527,22 +544,48 @@ const ContentSlider = () => {
 									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
 								/>
 							</div>
-							<header className="flex items-center justify-between header">
-								<span className="text-sm text-white uppercase">
+							<motion.header
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex items-center justify-between header"
+							>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-sm text-white uppercase"
+								>
 									{contentOne.backgroundImageOrVideo}
-								</span>
-								<span className="text-sm text-white ">
+								</motion.span>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-sm text-white "
+								>
 									{dateFormat(new Date(contentOne?.date), "dddd, mmmm d, yyyy")}
-								</span>
-							</header>
-							<div className="flex flex-col justify-between gap-4">
-								<h3
+								</motion.span>
+							</motion.header>
+							<motion.div
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex flex-col justify-between gap-4"
+							>
+								<motion.h3
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentOne.titleTwo}
-								</h3>
-								<div
+								</motion.h3>
+								<motion.div
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className={
 										contentOne.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
@@ -552,10 +595,13 @@ const ContentSlider = () => {
 										contentOne.paragraph
 									)}
 								/>
-							</div>
+							</motion.div>
 						</Link>
-					</article>
-					<article
+					</motion.article>
+					<motion.article
+						initial={initialTwo}
+						viewport={{once: true}}
+						whileInView={postNotActive ? fadeIn : fadeInThree}
 						className={`${post} ${postNotActive} ${postContentTailwindcss}`}
 					>
 						<Link
@@ -566,22 +612,48 @@ const ContentSlider = () => {
 									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
 								/>
 							</div>
-							<header className="flex items-center justify-between header">
-								<span className="text-sm text-white uppercase">
+							<motion.header
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex items-center justify-between header"
+							>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-sm text-white uppercase"
+								>
 									{contentTwo.backgroundImageOrVideo}
-								</span>
-								<span className="text-sm text-white ">
+								</motion.span>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-sm text-white "
+								>
 									{dateFormat(new Date(contentTwo?.date), "dddd, mmmm d, yyyy")}
-								</span>
-							</header>
-							<div className="flex flex-col justify-between gap-4">
-								<h3
+								</motion.span>
+							</motion.header>
+							<motion.div
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex flex-col justify-between gap-4"
+							>
+								<motion.h3
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentTwo.title}
-								</h3>
-								<div
+								</motion.h3>
+								<motion.div
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className={
 										contentTwo.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
@@ -591,10 +663,13 @@ const ContentSlider = () => {
 										contentTwo.paragraph
 									)}
 								/>
-							</div>
+							</motion.div>
 						</Link>
-					</article>
-					<article
+					</motion.article>
+					<motion.article
+						initial={initialTwo}
+						viewport={{once: true}}
+						whileInView={postNotActive ? fadeIn : fadeInThree}
 						className={`${post} ${postNotActive} ${postContentTailwindcss}`}
 					>
 						<Link
@@ -605,25 +680,51 @@ const ContentSlider = () => {
 									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
 								/>
 							</div>
-							<header className="flex items-center justify-between header">
-								<span className="text-sm text-white uppercase">
+							<motion.header
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex items-center justify-between header"
+							>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-sm text-white uppercase"
+								>
 									{contentThree.backgroundImageOrVideo}
-								</span>
-								<span className="text-sm text-white ">
+								</motion.span>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-sm text-white "
+								>
 									{dateFormat(
 										new Date(contentThree?.date),
 										"dddd, mmmm d, yyyy"
 									)}
-								</span>
-							</header>
-							<div className="flex flex-col justify-between gap-4">
-								<h3
+								</motion.span>
+							</motion.header>
+							<motion.div
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex flex-col justify-between gap-4"
+							>
+								<motion.h3
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentThree.title}
-								</h3>
-								<div
+								</motion.h3>
+								<motion.div
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className={
 										contentThree.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
@@ -633,10 +734,10 @@ const ContentSlider = () => {
 										contentThree.paragraph
 									)}
 								/>
-							</div>
+							</motion.div>
 						</Link>
-					</article>
-				</div>
+					</motion.article>
+				</motion.div>
 			</div>
 		</section>
 	);

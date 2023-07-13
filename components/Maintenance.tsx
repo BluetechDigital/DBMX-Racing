@@ -3,7 +3,7 @@ import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {IMaintenance} from "./types";
-import {fadeIn, stagger} from "../animations/animations";
+import {fadeIn, initial, initialTwo, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -58,12 +58,16 @@ const Maintenance: FC<IMaintenance> = ({
 					<div className="absolute top-0 h-screen bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
 				</div>
 				<motion.div
-					variants={stagger}
+					initial={initial}
+					whileInView={stagger}
+					viewport={{once: true}}
 					className="container relative flex flex-col items-baseline justify-center px-4 m-auto text-center sm:text-left"
 				>
 					<div className="max-w-3xl mx-auto">
 						<motion.h1
-							variants={fadeIn}
+							initial={initialTwo}
+							whileInView={fadeIn}
+							viewport={{once: true}}
 							className="flex flex-col sm:block text-center mb-3 text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-bold leading-[2rem] sm:leading-[3rem] lg:leading-[4rem]"
 						>
 							{title}

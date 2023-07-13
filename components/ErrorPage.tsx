@@ -3,7 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import {IErrorPage} from "./types";
 import {motion} from "framer-motion";
-import {fadeInUp} from "../animations/animations";
+import {fadeInUp, initial} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -25,7 +25,9 @@ const ErrorPage: FC<IErrorPage> = ({
 			<div className="px-10 my-auto overflow-hidden py-44">
 				<div className="container p-0 mx-auto">
 					<motion.h1
-						variants={fadeInUp}
+						initial={initial}
+						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="mb-4 text-xl sm:text-5xl lg:text-7xl text-white text-center font-[600] font-heading leading-tight"
 					>
 						{title}
@@ -35,7 +37,12 @@ const ErrorPage: FC<IErrorPage> = ({
 						tailwindStyling="mx-auto my-10 text-lg leading-relaxed text-center text-white md:max-w-md"
 					/>
 					<div className="flex flex-col items-center justify-center mx-auto md:max-w-max">
-						<motion.button variants={fadeInUp} type="button">
+						<motion.button
+							initial={initial}
+							whileInView={fadeInUp}
+							viewport={{once: true}}
+							type="button"
+						>
 							<Link
 								href={buttonLink?.url ? buttonLink?.url : `/`}
 								target={buttonLink?.target}

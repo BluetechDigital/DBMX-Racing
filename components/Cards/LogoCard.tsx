@@ -2,11 +2,16 @@ import {FC} from "react";
 import Image from "next/image";
 import {ILogoCard} from "../types";
 import {motion} from "framer-motion";
-import {fadeIn} from "../../animations/animations";
+import {fadeIn, initialTwo} from "../../animations/animations";
 
 const LogoCard: FC<ILogoCard> = ({image}) => {
 	return (
-		<motion.div variants={fadeIn} className="mx-auto">
+		<motion.div
+			initial={initialTwo}
+			whileInView={fadeIn}
+			viewport={{once: true}}
+			className="mx-auto"
+		>
 			<Image
 				alt={image?.altText}
 				src={image?.sourceUrl}

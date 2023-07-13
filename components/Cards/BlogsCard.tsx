@@ -6,7 +6,7 @@ import dateFormat from "dateformat";
 import {IBlogsCard} from "../types";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
-import {fadeInUp, stagger} from "../../animations/animations";
+import {fadeInUp, initial, stagger} from "../../animations/animations";
 
 const BlogsCard: FC<IBlogsCard> = ({
 	uri,
@@ -42,12 +42,16 @@ const BlogsCard: FC<IBlogsCard> = ({
 				</Link>
 			</div>
 			<motion.div
-				variants={stagger}
+				initial={initial}
+				whileInView={stagger}
+				viewport={{once: true}}
 				className="flex flex-col items-baseline justify-between px-4 py-10"
 			>
 				<Link href={uri ? `blogs${uri}` : `/`}>
 					<motion.h2
-						variants={fadeInUp}
+						initial={initial}
+						whileInView={fadeInUp}
+						viewport={{once: true}}
 						className="mb-2 text-lg font-semibold text-black sm:text-xl"
 					>
 						{title}
@@ -58,7 +62,11 @@ const BlogsCard: FC<IBlogsCard> = ({
 					{dateFormat(date, "dddd, mmmm d, yyyy")}
 				</span>
 
-				<motion.div variants={fadeInUp}>
+				<motion.div
+					initial={initial}
+					whileInView={fadeInUp}
+					viewport={{once: true}}
+				>
 					<div
 						className={
 							paragraph
@@ -68,7 +76,11 @@ const BlogsCard: FC<IBlogsCard> = ({
 						dangerouslySetInnerHTML={createTrimmedParagraphMarkup(paragraph)}
 					/>
 				</motion.div>
-				<motion.div variants={fadeInUp}>
+				<motion.div
+					initial={initial}
+					whileInView={fadeInUp}
+					viewport={{once: true}}
+				>
 					<Link
 						href={uri ? `blogs${uri}` : `/`}
 						className="text-sm font-bold text-black uppercase transition duration-200 lg:text-red hover:text-goldPrime hover:underline"

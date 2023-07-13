@@ -2,7 +2,7 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import {IFourImageGrid} from "./types";
-import {fadeInUp, stagger} from "../animations/animations";
+import {fadeInUp, initial, stagger} from "../animations/animations";
 
 // Components
 import FourImageGridCard from "./Cards/FourImageGridCard";
@@ -19,7 +19,9 @@ const FourImageGrid: FC<IFourImageGrid> = ({title, servicesGrid}) => {
 				<div className="flex flex-wrap items-end mb-10 -mx-4">
 					<div className="relative w-full max-w-xl px-4 mb-6 xl:w-3/5 sm:mb-0">
 						<motion.h2
-							variants={fadeInUp}
+							initial={initial}
+							whileInView={fadeInUp}
+							viewport={{once: true}}
 							className="relative text-lg font-bold text-white z-[500] sm:text-3xl md:text-4xl"
 						>
 							{title}
@@ -35,7 +37,9 @@ const FourImageGrid: FC<IFourImageGrid> = ({title, servicesGrid}) => {
 					</div>
 				</div>
 				<motion.div
-					variants={stagger}
+					initial={initial}
+					whileInView={stagger}
+					viewport={{once: true}}
 					className="flex flex-col items-center -mx-4 sm:grid sm:grid-cols-2"
 				>
 					{servicesGrid?.length > 0 ? (

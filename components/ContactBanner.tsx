@@ -4,7 +4,7 @@ import Link from "next/link";
 import {motion} from "framer-motion";
 import {IContactBanner} from "./types";
 import Paragraph from "./Elements/Paragraph";
-import {fadeIn} from "../animations/animations";
+import fadeInUp, {fadeIn, initial, initialTwo} from "../animations/animations";
 
 const ContactBanner: FC<IContactBanner> = ({
 	title,
@@ -26,9 +26,14 @@ const ContactBanner: FC<IContactBanner> = ({
 			<div className="container p-0 mx-auto">
 				<div className="flex flex-col items-center justify-between gap-10 px-0 py-8 lg:flex-row lg:px-8">
 					<div className="flex flex-col items-center justify-between gap-4 lg:items-start">
-						<h2 className="max-w-2xl mb-4 text-lg font-semibold leading-tight text-center text-white sm:text-3xl md:text-4xl lg:text-left ">
+						<motion.h2
+							initial={initial}
+							whileInView={fadeInUp}
+							viewport={{once: true}}
+							className="max-w-2xl mb-4 text-lg font-semibold leading-tight text-center text-white sm:text-3xl md:text-4xl lg:text-left "
+						>
 							{title}
-						</h2>
+						</motion.h2>
 						<Paragraph
 							content={paragraph}
 							tailwindStyling="w-full lg:max-w-[40rem] mt-4 text-center lg:text-left text-white text-base"
@@ -36,7 +41,9 @@ const ContactBanner: FC<IContactBanner> = ({
 					</div>
 					<Link href={`${buttonLink?.url}`} target={`${buttonLink?.target}`}>
 						<motion.button
-							variants={fadeIn}
+							initial={initialTwo}
+							whileInView={fadeIn}
+							viewport={{once: true}}
 							className="px-12 py-4 text-base font-semibold tracking-widest text-white uppercase transition-all duration-500 ease-in-out sm:text-medium md:py-6 xl:px-20 bg-red hover:bg-goldPrimeDarker"
 						>
 							{buttonLink?.title}

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import {IContentStats} from "./types";
-import {fadeInUp, stagger} from "../animations/animations";
+import {fadeInUp, initial, stagger} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -24,7 +24,9 @@ const ContentStats: FC<IContentStats> = ({
 				<div className="flex flex-col items-center justify-between px-8 gap-x-24 lg:flex-row">
 					<div className="flex flex-col items-center justify-center">
 						<motion.h2
-							variants={fadeInUp}
+							initial={initial}
+							whileInView={fadeInUp}
+							viewport={{once: true}}
 							className="text-white text-center tracking-normal leading-normal sm:leading-[2.75rem] font-semibold text-lg sm:text-3xl md:text-4xl"
 						>
 							{title}
@@ -35,10 +37,17 @@ const ContentStats: FC<IContentStats> = ({
 						/>
 					</div>
 					<motion.div
-						variants={stagger}
+						initial={initial}
+						whileInView={stagger}
+						viewport={{once: true}}
 						className="flex flex-col items-center justify-center lg:flex-row"
 					>
-						<motion.div variants={fadeInUp} className="w-full lg:w-1/2">
+						<motion.div
+							initial={initial}
+							whileInView={fadeInUp}
+							viewport={{once: true}}
+							className="w-full lg:w-1/2"
+						>
 							<div className="p-4 mx-auto text-center lg:max-w-lg lg:px-8 lg:py-4">
 								<h2 className="mb-6 text-3xl font-semibold text-center md:text-5xl text-goldPrime">
 									{statsOne?.subtitle}
@@ -52,7 +61,12 @@ const ContentStats: FC<IContentStats> = ({
 								/>
 							</div>
 						</motion.div>
-						<motion.div variants={fadeInUp} className="w-full lg:w-1/2">
+						<motion.div
+							initial={initial}
+							whileInView={fadeInUp}
+							viewport={{once: true}}
+							className="w-full lg:w-1/2"
+						>
 							<div className="p-4 mx-auto lg:px-8 lg:py-4 lg:max-w-lg">
 								<h2 className="mb-6 text-3xl font-bold text-center md:text-5xl text-goldPrime">
 									{statsTwo?.subtitle}

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import {IStoreLocation} from "./types";
-import {fadeInUp} from "../animations/animations";
+import {fadeInUp, initial} from "../animations/animations";
 
 // Components
 import Paragraph from "./Elements/Paragraph";
@@ -11,7 +11,12 @@ const StoreLocation: FC<IStoreLocation> = ({title, paragraph}) => {
 	return (
 		<section className="bg-white ">
 			<div className="container p-4 mx-auto">
-				<motion.div variants={fadeInUp} className="flex flex-col py-28">
+				<motion.div
+					initial={initial}
+					whileInView={fadeInUp}
+					viewport={{once: true}}
+					className="flex flex-col py-28"
+				>
 					<h2 className="text-black text-center tracking-normal leading-normal sm:leading-[2.75rem] font-[600]  text-lg sm:text-3xl md:text-4xl">
 						{title}
 					</h2>

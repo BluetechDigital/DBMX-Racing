@@ -4,13 +4,23 @@ import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {IProductCard} from "../types";
-import {fadeInUp, stagger} from "../../animations/animations";
+import {fadeInUp, initial, stagger} from "../../animations/animations";
 
 const ProductCard: FC<IProductCard> = ({title, link, image}) => {
 	return (
-		<motion.div variants={stagger} className="w-full">
+		<motion.div
+			initial={initial}
+			whileInView={stagger}
+			viewport={{once: true}}
+			className="w-full"
+		>
 			<Link href={link?.url ? link?.url : `/`} target={link?.target}>
-				<motion.div variants={fadeInUp} className="bg-white">
+				<motion.div
+					initial={initial}
+					whileInView={fadeInUp}
+					viewport={{once: true}}
+					className="bg-white"
+				>
 					<Image
 						priority={true}
 						alt={image?.altText}
@@ -25,7 +35,9 @@ const ProductCard: FC<IProductCard> = ({title, link, image}) => {
 					/>
 				</motion.div>
 				<motion.h4
-					variants={fadeInUp}
+					initial={initial}
+					whileInView={fadeInUp}
+					viewport={{once: true}}
 					className="text-base font-bold tracking-widest text-center sm:text-left text-goldPrime"
 				>
 					{title}

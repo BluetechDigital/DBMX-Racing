@@ -5,6 +5,15 @@ import {IContentSlider} from "./types";
 import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef, FC} from "react";
 import styles from "../styles/components/ContentSlider.module.scss";
+import {
+	fadeIn,
+	fadeInThree,
+	fadeInUp,
+	initial,
+	initialTwo,
+	stagger,
+} from "@/animations/animations";
+import {motion} from "framer-motion";
 
 const ContentSlider: FC<IContentSlider> = ({
 	content,
@@ -381,8 +390,17 @@ const ContentSlider: FC<IContentSlider> = ({
 					</div>
 				</div>
 
-				<div ref={postRef} className={`postPost ${postPost}`}>
-					<article
+				<motion.div
+					initial={initial}
+					whileInView={stagger}
+					viewport={{once: true}}
+					ref={postRef}
+					className={`postPost ${postPost}`}
+				>
+					<motion.article
+						initial={initialTwo}
+						viewport={{once: true}}
+						whileInView={postNotActive ? fadeIn : fadeInThree}
 						className={`${post} ${postActive} ${postContentTailwindcss}`}
 					>
 						<Link
@@ -394,22 +412,48 @@ const ContentSlider: FC<IContentSlider> = ({
 									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
 								/>
 							</div>
-							<header className="flex items-center justify-between header">
-								<span className="text-tiny text-white uppercase font-[600]">
+							<motion.header
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex items-center justify-between header"
+							>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-tiny text-white uppercase font-[600]"
+								>
 									{content?.tag}
-								</span>
-								<span className="text-tiny text-white uppercase font-[600]">
+								</motion.span>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-tiny text-white uppercase font-[600]"
+								>
 									{content?.publishedDate}
-								</span>
-							</header>
-							<div className="flex flex-col justify-between gap-4">
-								<h3
+								</motion.span>
+							</motion.header>
+							<motion.div
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex flex-col justify-between gap-4"
+							>
+								<motion.h3
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{content?.title}
-								</h3>
-								<div
+								</motion.h3>
+								<motion.div
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className={
 										content?.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
@@ -419,10 +463,13 @@ const ContentSlider: FC<IContentSlider> = ({
 										content?.paragraph
 									)}
 								/>
-							</div>
+							</motion.div>
 						</Link>
-					</article>
-					<article
+					</motion.article>
+					<motion.article
+						initial={initialTwo}
+						viewport={{once: true}}
+						whileInView={postNotActive ? fadeIn : fadeInThree}
 						className={`${post} ${postNotActive} ${postContentTailwindcss}`}
 					>
 						<Link
@@ -434,22 +481,48 @@ const ContentSlider: FC<IContentSlider> = ({
 									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
 								/>
 							</div>
-							<header className="flex items-center justify-between header">
-								<span className="text-tiny text-white uppercase font-[600]">
+							<motion.header
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex items-center justify-between header"
+							>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-tiny text-white uppercase font-[600]"
+								>
 									{contentTwo?.tag}
-								</span>
-								<span className="text-tiny text-white uppercase font-[600]">
+								</motion.span>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-tiny text-white uppercase font-[600]"
+								>
 									{contentTwo?.publishedDate}
-								</span>
-							</header>
-							<div className="flex flex-col justify-between gap-4">
-								<h3
+								</motion.span>
+							</motion.header>
+							<motion.div
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex flex-col justify-between gap-4"
+							>
+								<motion.h3
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentTwo?.title}
-								</h3>
-								<div
+								</motion.h3>
+								<motion.div
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className={
 										contentTwo?.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
@@ -459,10 +532,13 @@ const ContentSlider: FC<IContentSlider> = ({
 										contentTwo?.paragraph
 									)}
 								/>
-							</div>
+							</motion.div>
 						</Link>
-					</article>
-					<article
+					</motion.article>
+					<motion.article
+						initial={initialTwo}
+						viewport={{once: true}}
+						whileInView={postNotActive ? fadeIn : fadeInThree}
 						className={`${post} ${postNotActive} ${postContentTailwindcss}`}
 					>
 						<Link
@@ -474,22 +550,48 @@ const ContentSlider: FC<IContentSlider> = ({
 									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
 								/>
 							</div>
-							<header className="flex items-center justify-between header">
-								<span className="text-tiny text-white uppercase font-[600]">
+							<motion.header
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex items-center justify-between header"
+							>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-tiny text-white uppercase font-[600]"
+								>
 									{contentThree?.tag}
-								</span>
-								<span className="text-tiny text-white uppercase font-[600]">
+								</motion.span>
+								<motion.span
+									initial={initialTwo}
+									whileInView={fadeIn}
+									viewport={{once: true}}
+									className="text-tiny text-white uppercase font-[600]"
+								>
 									{contentThree?.publishedDate}
-								</span>
-							</header>
-							<div className="flex flex-col justify-between gap-4">
-								<h3
+								</motion.span>
+							</motion.header>
+							<motion.div
+								initial={initial}
+								whileInView={stagger}
+								viewport={{once: true}}
+								className="flex flex-col justify-between gap-4"
+							>
+								<motion.h3
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 								>
 									{contentThree?.title}
-								</h3>
-								<div
+								</motion.h3>
+								<motion.div
+									initial={initial}
+									whileInView={fadeInUp}
+									viewport={{once: true}}
 									className={
 										contentThree?.paragraph
 											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
@@ -499,10 +601,10 @@ const ContentSlider: FC<IContentSlider> = ({
 										contentThree?.paragraph
 									)}
 								/>
-							</div>
+							</motion.div>
 						</Link>
-					</article>
-				</div>
+					</motion.article>
+				</motion.div>
 			</div>
 		</section>
 	);

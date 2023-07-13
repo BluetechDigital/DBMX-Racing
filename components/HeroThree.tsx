@@ -4,7 +4,7 @@ import Image from "next/image";
 import {useState, FC} from "react";
 import {IHeroThree} from "./types";
 import {motion} from "framer-motion";
-import {fadeInUp} from "../animations/animations";
+import {fadeInUp, initial} from "../animations/animations";
 import {useContentContext} from "@/context/context";
 
 // Components
@@ -114,7 +114,9 @@ const HeroThree: FC<IHeroThree> = ({
 				<div className="container relative flex flex-col items-center justify-center px-4 m-auto text-center z-[995]">
 					<div className="max-w-3xl">
 						<motion.h1
-							variants={fadeInUp}
+							initial={initial}
+							whileInView={fadeInUp}
+							viewport={{once: true}}
 							className="flex flex-col sm:block text-center mb-3 text-xl sm:text-3xl md:text-6xl lg:text-7xl text-white font-bold lg:leading-[4rem]"
 						>
 							{title}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {IFourImageGridCard} from "../types";
-import {fadeInUp} from "../../animations/animations";
+import {fadeInUp, initial} from "../../animations/animations";
 
 const FourImageGridCard: FC<IFourImageGridCard> = ({title, link, image}) => {
 	return (
@@ -15,7 +15,9 @@ const FourImageGridCard: FC<IFourImageGridCard> = ({title, link, image}) => {
 				className="relative block h-full mb-6 group"
 			>
 				<motion.div
-					variants={fadeInUp}
+					initial={initial}
+					whileInView={fadeInUp}
+					viewport={{once: true}}
 					className="absolute bottom-0 left-0 z-10 w-full p-8"
 				>
 					<h4 className="mb-2 text-lg font-bold text-white sm:text-xl">
