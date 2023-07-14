@@ -14,6 +14,14 @@ export const sendContactForm = async (data: any) => {
 	});
 };
 
+/* LOGIN USER */
+export const loginForm = async (data: any) => {
+	fetch("/api/login", {
+		method: "post",
+		body: JSON.stringify(data, null, 2),
+	});
+};
+
 /* LOGIN USER
  Mutations Function */
 export async function loginUser(username: String, password: String) {

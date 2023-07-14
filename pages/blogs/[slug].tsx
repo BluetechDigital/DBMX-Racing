@@ -1,7 +1,12 @@
 // Imports
+import {
+	postType,
+	ContentContext,
+	IContentContext,
+	flexibleContentType,
+} from "@/context/context";
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {ContentContext, IContentContext} from "@/context/context";
 
 // Queries Functions
 import {
@@ -10,13 +15,13 @@ import {
 	getFooterMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {
-	getAllBlogPostsSlugs,
 	getAllBlogsContent,
+	getAllBlogPostsSlugs,
 } from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
+import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getAllSeoBlogPostsContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllBlogPostFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
+import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Layout/Layout";
@@ -77,14 +82,14 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({params}: any) => {
-	const postTypeFlexiblecontent: string =
-		"DefaultTemplate_Flexiblecontent_FlexibleContent";
-
 	// Fetch priority content
-	const seoContent: any = await getAllSeoBlogPostsContent(params?.slug);
+	const seoContent: any = await getAllSeoContent(params?.slug, postType.posts);
 
-	const flexibleContentComponents: any =
-		await getAllBlogPostFlexibleContentComponents(params?.slug);
+	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
+		params?.slug,
+		postType.posts,
+		flexibleContentType?.pages
+	);
 
 	// Fetch remaining content simultaneously
 	const [
@@ -111,9 +116,9 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 			footerMenuLinks,
 			seo: seoContent,
 			themesOptionsContent,
-			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
+			postTypeFlexiblecontent: flexibleContentType?.pages,
 		},
 		revalidate: 60,
 	};

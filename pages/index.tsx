@@ -1,7 +1,13 @@
 // Imports
+import {
+	homePage,
+	postType,
+	ContentContext,
+	IContentContext,
+	flexibleContentType,
+} from "@/context/context";
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {ContentContext, IContentContext} from "@/context/context";
 
 // Queries Functions
 import {
@@ -9,11 +15,11 @@ import {
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
+import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
-import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
+import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Layout/Layout";
@@ -60,14 +66,14 @@ const Home: NextPage<IContentContext> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-	const postTypeFlexiblecontent: string =
-		"DefaultTemplate_Flexiblecontent_FlexibleContent";
-
 	// Fetch priority content
-	const seoContent: any = await getAllSeoPagesContent("Home");
+	const seoContent: any = await getAllSeoContent(homePage, postType?.pages);
 
-	const flexibleContentComponents: any =
-		await getAllPagesFlexibleContentComponents("Home");
+	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
+		homePage,
+		postType?.pages,
+		flexibleContentType?.pages
+	);
 
 	// Fetch remaining content simultaneously
 	const [
@@ -94,9 +100,9 @@ export const getStaticProps: GetStaticProps = async () => {
 			footerMenuLinks,
 			seo: seoContent,
 			themesOptionsContent,
-			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
+			postTypeFlexiblecontent: flexibleContentType?.pages,
 		},
 		revalidate: 60,
 	};

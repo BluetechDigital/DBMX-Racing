@@ -1,7 +1,13 @@
 // Imports
+import {
+	postType,
+	errorPage,
+	ContentContext,
+	IContentContext,
+	flexibleContentType,
+} from "@/context/context";
 import {motion} from "framer-motion";
 import type {NextPage, GetStaticProps} from "next";
-import {ContentContext, IContentContext} from "@/context/context";
 
 // Queries Functions
 import {
@@ -9,11 +15,11 @@ import {
 	getNavbarMenuLinks,
 	getFooterMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
+import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
-import {getAllSeoPagesContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-import {getAllPagesFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
+import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
 import HeroFour from "@/components/HeroFour";
@@ -65,14 +71,14 @@ const noPageExits: NextPage<IContentContext> = ({
 export default noPageExits;
 
 export const getStaticProps: GetStaticProps = async () => {
-	const postTypeFlexiblecontent: string =
-		"DefaultTemplate_Flexiblecontent_FlexibleContent";
-
 	// Fetch priority content
-	const seoContent: any = await getAllSeoPagesContent("error-page");
+	const seoContent: any = await getAllSeoContent(errorPage, postType?.pages);
 
-	const flexibleContentComponents: any =
-		await getAllPagesFlexibleContentComponents("error-page");
+	const flexibleContentComponents: any = await getAllFlexibleContentComponents(
+		errorPage,
+		postType?.pages,
+		flexibleContentType?.pages
+	);
 
 	// Fetch remaining content simultaneously
 	const [
@@ -99,9 +105,9 @@ export const getStaticProps: GetStaticProps = async () => {
 			footerMenuLinks,
 			seo: seoContent,
 			themesOptionsContent,
-			postTypeFlexiblecontent,
 			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
+			postTypeFlexiblecontent: flexibleContentType?.pages,
 		},
 		revalidate: 60,
 	};

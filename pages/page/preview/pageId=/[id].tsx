@@ -1,14 +1,19 @@
 // Imports
+import {
+	postType,
+	ContentContext,
+	IContentContext,
+	flexibleContentType,
+} from "@/context/context";
 import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
 import type {GetServerSideProps, NextPage} from "next";
 import {getAuthToken} from "@/functions/cookies/cookies";
-import {ContentContext, IContentContext} from "@/context/context";
 import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";
 
 // Mutations Functions
-import {getAllPreviewFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
 import {getAllPreviewSeoContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
+import {getAllPreviewFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
 
 // Queries Functions
 import {
@@ -67,11 +72,8 @@ const dynamicPreviewPosts: NextPage<IContentContext> = ({
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
 	const authToken: string = getAuthToken(context.req);
 	const {params}: any = context || {};
-	const postType: string = "page";
-	const postTypeFlexiblecontent: string =
-		"Page_Flexiblecontent_FlexibleContent";
 	const loginRedirectURL: string = getLoginPreviewRedirectUrl(
-		"page",
+		postType?.previewPost,
 		params?.id
 	);
 
@@ -89,7 +91,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 		const seoContent: any = await getAllPreviewSeoContent(
 			params?.id,
 			authToken,
-			postType,
+			postType?.previewPost,
 			loginRedirectURL
 		);
 
@@ -97,10 +99,10 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 		const flexibleContentComponents: any =
 			await getAllPreviewFlexibleContentComponents(
 				params?.id,
-				postType,
 				authToken,
+				postType?.previewPost,
 				loginRedirectURL,
-				postTypeFlexiblecontent
+				flexibleContentType?.previewPost
 			);
 
 		// Fetch remaining content simultaneously
@@ -128,9 +130,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 				footerMenuLinks,
 				seo: seoContent,
 				themesOptionsContent,
-				postTypeFlexiblecontent,
 				contentSliderPostsContent,
 				content: flexibleContentComponents?.content,
+				postTypeFlexiblecontent: flexibleContentType?.previewPost,
 			},
 		};
 	}
