@@ -1,6 +1,6 @@
 // Imports
 import {FC} from "react";
-import {IProductGrid} from "./types";
+import {IProductGrid} from "@/types/components/index";
 
 // Components
 import Paragraph from "./Elements/Paragraph";

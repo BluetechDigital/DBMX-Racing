@@ -1,12 +1,8 @@
 // Imports
-import {
-	postType,
-	ContentContext,
-	IContentContext,
-	flexibleContentType,
-} from "@/context/context";
+import {postType, ContentContext, flexibleContentType} from "@/context/context";
 import {isEmpty} from "lodash";
 import {motion} from "framer-motion";
+import {IContentContext} from "@/types/context";
 import type {GetServerSideProps, NextPage} from "next";
 import {getAuthToken} from "@/functions/cookies/cookies";
 import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";

@@ -66,6 +66,13 @@ export type IBlogs = [
 	}
 ];
 
+export type IPostTypes = {
+	pages: string;
+	posts: string;
+	previewPage: string;
+	previewPost: string;
+};
+
 export type IMainMenuLinks = {
 	mainMenuLinks: [
 		{
@@ -102,6 +109,18 @@ export type IFooterMenuLinks = {
 	];
 };
 
+export interface IContentContext {
+	seo: ISeo;
+	blogs: IBlogs;
+	content: IContent;
+	mainMenuLinks: IMainMenuLinks;
+	navbarMenuLinks: INavbarMenuLinks;
+	footerMenuLinks: IFooterMenuLinks;
+	themesOptionsContent: IThemesOptionsContent;
+	postTypeFlexiblecontent: IPostTypeFlexiblecontent;
+	contentSliderPostsContent: IContentSliderPostsContent;
+}
+
 export type IThemesOptionsContent = {
 	address: string;
 	email: string;
@@ -119,6 +138,12 @@ export type IThemesOptionsContent = {
 
 export type IPostTypeFlexiblecontent = {
 	postTypeFlexiblecontent: string;
+};
+
+export type IPostTypesFlexiblecontent = {
+	pages: string;
+	previewPage: string;
+	previewPost: string;
 };
 
 export type IContentSliderPostsContent = {

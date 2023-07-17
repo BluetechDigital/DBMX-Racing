@@ -1,6 +1,6 @@
 // Imports
 import {FC} from "react";
-import {IJumboContent} from "./types";
+import {IJumboContent} from "@/types/components/index";
 
 // Components
 import JumboContentCard from "./Cards/JumboContentCard";

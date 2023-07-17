@@ -1,19 +1,19 @@
 // Imports
+import {
+	fadeIn,
+	initial,
+	stagger,
+	fadeInUp,
+	initialTwo,
+} from "../animations/animations";
 import {motion} from "framer-motion";
-import {IContactForm} from "./types";
 import {useRouter} from "next/router";
 import React, {useState, FC} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {sendContactForm} from "@/functions/api";
 import {useContentContext} from "@/context/context";
 import {useFormik, Formik, Field, Form} from "formik";
-import {
-	fadeIn,
-	fadeInUp,
-	initial,
-	initialTwo,
-	stagger,
-} from "../animations/animations";
+import {IContactForm} from "@/types/components/index";
 
 // Styling
 import styles from "../styles/components/ContactForm.module.scss";

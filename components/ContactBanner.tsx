@@ -2,8 +2,8 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {IContactBanner} from "./types";
 import Paragraph from "./Elements/Paragraph";
+import {IContactBanner} from "@/types/components/index";
 import fadeInUp, {fadeIn, initial, initialTwo} from "../animations/animations";
 
 const ContactBanner: FC<IContactBanner> = ({

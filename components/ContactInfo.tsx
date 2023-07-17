@@ -1,8 +1,8 @@
 // Import
 import {FC} from "react";
 import Link from "next/link";
-import {IContactInfo} from "./types";
 import {useContentContext} from "@/context/context";
+import {IContactInfo} from "@/types/components/index";
 
 // Styling
 import styles from "../styles/components/ContactInfo.module.scss";

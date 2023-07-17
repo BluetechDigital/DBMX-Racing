@@ -1,6 +1,6 @@
 // Import
 import {FC} from "react";
-import {ILayout} from "@/components/types";
+import {ILayout} from "@/types/components/index";
 
 // Components
 import Footer from "@/components/Footer";

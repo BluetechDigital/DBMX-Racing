@@ -3,7 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {IJumboContentCard} from "../types";
+import {IJumboContentCard} from "@/types/components/index";
 import Paragraph from ".././Elements/Paragraph";
 import {
 	fadeIn,

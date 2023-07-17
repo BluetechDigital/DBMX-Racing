@@ -1,7 +1,7 @@
 // Import
 import Link from "next/link";
 import Image from "next/image";
-import {IHero} from "./types";
+import {IHero} from "@/types/components/index";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
 import {fadeInUp, initial, stagger} from "../animations/animations";

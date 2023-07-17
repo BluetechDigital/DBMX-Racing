@@ -1,7 +1,7 @@
 // Import
 import {motion} from "framer-motion";
-import {initial, stagger} from "../animations/animations";
 import {useContentContext} from "@/context/context";
+import {initial, stagger} from "../animations/animations";
 
 // Components
 import BlogsCard from "./Cards/BlogsCard";

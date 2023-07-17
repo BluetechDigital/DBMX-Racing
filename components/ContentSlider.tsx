@@ -1,19 +1,19 @@
 // Imports
-import Link from "next/link";
-import Image from "next/image";
-import {IContentSlider} from "./types";
-import DOMPurify from "isomorphic-dompurify";
-import React, {useEffect, useRef, FC} from "react";
-import styles from "../styles/components/ContentSlider.module.scss";
 import {
 	fadeIn,
-	fadeInThree,
-	fadeInUp,
 	initial,
-	initialTwo,
 	stagger,
+	fadeInUp,
+	initialTwo,
+	fadeInThree,
 } from "@/animations/animations";
+import Link from "next/link";
+import Image from "next/image";
 import {motion} from "framer-motion";
+import DOMPurify from "isomorphic-dompurify";
+import React, {useEffect, useRef, FC} from "react";
+import {IContentSlider} from "@/types/components/index";
+import styles from "../styles/components/ContentSlider.module.scss";
 
 const ContentSlider: FC<IContentSlider> = ({
 	content,

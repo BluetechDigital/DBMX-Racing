@@ -1,11 +1,11 @@
 // Imports
 import Link from "next/link";
 import Image from "next/image";
-import {IHeroTwo} from "./types";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
-import {fadeInUp, initial} from "../animations/animations";
+import {IHeroTwo} from "@/types/components/index";
 import {useContentContext} from "@/context/context";
+import {fadeInUp, initial} from "../animations/animations";
 
 // Components
 import SideMenu from "./Elements/SideMenu";

@@ -26,7 +26,7 @@ if (typeof window !== "undefined") {
 
 export default function App({Component, pageProps}: AppProps) {
 	// PostHog Cookies Policy
-	const router = useRouter();
+	const router: any = useRouter();
 
 	useEffect(() => {
 		// Track page views
@@ -40,8 +40,6 @@ export default function App({Component, pageProps}: AppProps) {
 
 	// Page Animation Loader
 	function Loading() {
-		const router: any = useRouter();
-
 		const [loading, setLoading]: any = useState(false);
 
 		useEffect(() => {

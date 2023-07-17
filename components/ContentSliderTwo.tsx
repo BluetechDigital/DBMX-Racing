@@ -1,4 +1,12 @@
 // Import
+import {
+	fadeIn,
+	stagger,
+	initial,
+	fadeInUp,
+	initialTwo,
+	fadeInThree,
+} from "@/animations/animations";
 import Link from "next/link";
 import Image from "next/image";
 import dateFormat from "dateformat";
@@ -6,13 +14,7 @@ import DOMPurify from "isomorphic-dompurify";
 import React, {useEffect, useRef} from "react";
 import {useContentContext} from "@/context/context";
 import styles from "../styles/components/ContentSlider.module.scss";
-import fadeInUp, {
-	fadeIn,
-	fadeInThree,
-	initial,
-	initialTwo,
-	stagger,
-} from "@/animations/animations";
+
 import {motion} from "framer-motion";
 
 const ContentSlider = () => {

@@ -2,16 +2,14 @@
 import {FC, useState} from "react";
 import {motion} from "framer-motion";
 import {useRouter} from "next/router";
-import {initial, fadeInUp, stagger, fadeIn} from "../animations/animations";
-import {getPreviewRedirectUrl} from "@/functions/redirects/redirects";
-
-// Components
+import {useFormik, Formik} from "formik";
+import {loginForm} from "@/functions/api";
 import ReCAPTCHA from "react-google-recaptcha";
+import {getPreviewRedirectUrl} from "@/functions/redirects/redirects";
+import {initial, fadeInUp, stagger, fadeIn} from "@/animations/animations";
 
 // Styling
 import styles from "@/styles/components/ContactForm.module.scss";
-import {useFormik, Formik} from "formik";
-import {loginForm} from "@/functions/api";
 
 const Login: FC = () => {
 	const router = useRouter();

@@ -1,8 +1,8 @@
 import {FC} from "react";
 import Image from "next/image";
-import {ILogoCard} from "../types";
 import {motion} from "framer-motion";
-import {fadeIn, initialTwo} from "../../animations/animations";
+import {ILogoCard} from "@/types/components/index";
+import {fadeIn, initialTwo} from "@/animations/animations";
 
 const LogoCard: FC<ILogoCard> = ({image}) => {
 	return (

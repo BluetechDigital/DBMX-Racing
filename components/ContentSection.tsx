@@ -9,7 +9,7 @@ import {
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {IContentSection} from "./types";
+import {IContentSection} from "@/types/components/index";
 
 // Components
 import Paragraph from "./Elements/Paragraph";

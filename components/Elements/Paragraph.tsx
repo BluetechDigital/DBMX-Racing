@@ -1,8 +1,8 @@
 // Import
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {IParagraphProps} from "../types";
 import DOMPurify from "isomorphic-dompurify";
+import {IParagraphProps} from "@/types/components/index";
 import {fadeInUp, initial} from "../../animations/animations";
 
 const Paragraph: FC<IParagraphProps> = ({content, tailwindStyling}) => {

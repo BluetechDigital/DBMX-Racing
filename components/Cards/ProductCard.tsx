@@ -3,8 +3,8 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {IProductCard} from "../types";
-import {fadeInUp, initial, stagger} from "../../animations/animations";
+import {IProductCard} from "@/types/components/index";
+import {fadeInUp, initial, stagger} from "@/animations/animations";
 
 const ProductCard: FC<IProductCard> = ({title, link, image}) => {
 	return (

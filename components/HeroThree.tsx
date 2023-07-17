@@ -2,10 +2,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import {useState, FC} from "react";
-import {IHeroThree} from "./types";
 import {motion} from "framer-motion";
-import {fadeInUp, initial} from "../animations/animations";
+import {IHeroThree} from "@/types/components/index";
 import {useContentContext} from "@/context/context";
+import {fadeInUp, initial} from "../animations/animations";
 
 // Components
 import SideMenu from "./Elements/SideMenu";

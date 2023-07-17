@@ -1,14 +1,14 @@
 // Imports
 import {motion} from "framer-motion";
-import {IContentContext} from "@/context/context";
+import {IContentContext} from "@/types/context";
 import type {NextPage, GetStaticProps} from "next";
 import {ContentContext, flexibleContentType, postType} from "@/context/context";
 
 // Queries Functions
 import {
 	getMainMenuLinks,
-	getNavbarMenuLinks,
 	getFooterMenuLinks,
+	getNavbarMenuLinks,
 } from "@/functions/graphql/Queries/GetAllMenuLinks";
 import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getAllPagesSlugs} from "@/functions/graphql/Queries/GetAllPagesSlugs";

@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {IMaintenance} from "./types";
+import {IMaintenance} from "@/types/components/index";
 import {fadeIn, initial, initialTwo, stagger} from "../animations/animations";
 
 // Components

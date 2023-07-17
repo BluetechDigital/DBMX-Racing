@@ -1,7 +1,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {ISideMenu} from "../types";
+import {ISideMenu} from "@/types/components/index";
 import {useContentContext} from "@/context/context";
 import styles from "../../styles/components/Hero.module.scss";
 

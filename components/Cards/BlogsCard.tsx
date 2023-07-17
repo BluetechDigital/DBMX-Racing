@@ -3,9 +3,9 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import dateFormat from "dateformat";
-import {IBlogsCard} from "../types";
 import {motion} from "framer-motion";
 import DOMPurify from "isomorphic-dompurify";
+import {IBlogsCard} from "@/types/components/index";
 import {fadeInUp, initial, stagger} from "../../animations/animations";
 
 const BlogsCard: FC<IBlogsCard> = ({

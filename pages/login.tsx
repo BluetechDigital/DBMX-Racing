@@ -1,8 +1,14 @@
 // Imports
+import {
+	homePage,
+	postType,
+	ContentContext,
+	flexibleContentType,
+} from "@/context/context";
 import {motion} from "framer-motion";
 import Layout from "@/components/Layout/Layout";
+import {IContentContext} from "@/types/context";
 import {NextPage, GetServerSideProps} from "next";
-import {ContentContext, IContentContext, flexibleContentType, homePage, postType} from "@/context/context";
 
 // Queries Functions
 import {
@@ -63,7 +69,6 @@ const login: NextPage<IContentContext> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-
 	// Fetch priority content
 	const seoContent: any = await getAllSeoContent(homePage, postType?.pages);
 

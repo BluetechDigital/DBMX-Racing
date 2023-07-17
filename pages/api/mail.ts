@@ -1,20 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// Imports
 import {mailOptions, transporter} from "../../config/nodemailer";
+import {IContactMessageFields, IGenerateEmailContent} from "@/types/mail";
 
-interface CONTACT_MESSAGE_FIELDS {
-	firstName: string;
-	lastName: string;
-	email: string;
-	subject: string;
-	message: string;
-}
-
-interface generateEmailContent {
-	text: string;
-	html: string;
-}
-
-const CONTACT_MESSAGE_FIELDS: CONTACT_MESSAGE_FIELDS | any = {
+const contactMessageFields: IContactMessageFields | any = {
 	firstName: "First Name",
 	lastName: "Last Name",
 	email: "Email",
@@ -22,12 +11,12 @@ const CONTACT_MESSAGE_FIELDS: CONTACT_MESSAGE_FIELDS | any = {
 	message: "Message",
 };
 
-const generateEmailContent = (data: any): generateEmailContent => {
+const generateEmailContent = (data: any): IGenerateEmailContent => {
 	/* Collects all input data 
 	and returns as a long string */
 	const stringData: string = Object.entries(data).reduce(
 		(str, [key, val]) =>
-			(str += `${CONTACT_MESSAGE_FIELDS[key]}: \n${val} \n \n`),
+			(str += `${contactMessageFields[key]}: \n${val} \n \n`),
 		""
 	);
 
@@ -35,7 +24,7 @@ const generateEmailContent = (data: any): generateEmailContent => {
 	returns as a html rendered string */
 	const htmlData: string = Object.entries(data).reduce(
 		(str, [key, val]) =>
-			(str += `<h1 class="form-heading" align="left">${CONTACT_MESSAGE_FIELDS[key]}</h1> <p class="form-answer" align="left">${val}</p>`),
+			(str += `<h1 class="form-heading" align="left">${contactMessageFields[key]}</h1> <p class="form-answer" align="left">${val}</p>`),
 		""
 	);
 	return {

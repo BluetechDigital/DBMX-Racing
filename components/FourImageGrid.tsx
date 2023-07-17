@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {IFourImageGrid} from "./types";
+import {IFourImageGrid} from "@/types/components/index";
 import {fadeInUp, initial, stagger} from "../animations/animations";
 
 // Components

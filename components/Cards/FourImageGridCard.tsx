@@ -3,7 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {IFourImageGridCard} from "../types";
+import {IFourImageGridCard} from "@/types/components/index";
 import {fadeInUp, initial} from "../../animations/animations";
 
 const FourImageGridCard: FC<IFourImageGridCard> = ({title, link, image}) => {

@@ -1,7 +1,7 @@
 // Import
 import {FC} from "react";
 import Link from "next/link";
-import {IBackHoverButton} from "@/components/types";
+import {IBackHoverButton} from "@/types/components/index";
 
 // Styling
 import styles from "@/styles/components/BackHoverButton.module.scss";
