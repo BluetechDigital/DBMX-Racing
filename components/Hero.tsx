@@ -1,15 +1,15 @@
 // Import
 import Link from "next/link";
 import Image from "next/image";
-import {IHero} from "@/types/components/index";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
+import {IHero} from "@/types/components/index";
+import {useGlobalContext} from "@/context/Global";
 import {fadeInUp, initial, stagger} from "../animations/animations";
 
 // Components
 import SideMenu from "./Elements/SideMenu";
 import Paragraph from "./Elements/Paragraph";
-import {useContentContext} from "@/context/context";
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 
 // Styling
@@ -23,7 +23,7 @@ const Hero: FC<IHero> = ({
 	backgroundImage,
 	backgroundVideoUrl,
 }) => {
-	const content = useContentContext();
+	const globalContext = useGlobalContext();
 
 	/* Hides or Displays the Full Nav Menu */
 	const [menuActive, setMenuActive] = useState(false);
@@ -66,8 +66,8 @@ const Hero: FC<IHero> = ({
 						</Link>
 					</div>
 					<ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:gap-x-10">
-						{content.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
-							content.navbarMenuLinks.navbarMenuLinks?.map(
+						{globalContext.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
+							globalContext.navbarMenuLinks.navbarMenuLinks?.map(
 								(item: any, keys: any) => (
 									<li key={keys}>
 										<NavbarMenuLinks

@@ -1,15 +1,16 @@
+// Imports
 import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
+import {useGlobalContext} from "@/context/Global";
 import {ISideMenu} from "@/types/components/index";
-import {useContentContext} from "@/context/context";
 import styles from "../../styles/components/Hero.module.scss";
 
 // Components
 import NavbarMenuLinks from "./../Elements/NavbarMenuLinks";
 
 const SideMenu: FC<ISideMenu> = ({menuActive}) => {
-	const content = useContentContext();
+	const globalContext = useGlobalContext();
 
 	return (
 		<div
@@ -37,8 +38,8 @@ const SideMenu: FC<ISideMenu> = ({menuActive}) => {
 					</div>
 					<div className="px-4 mt-20 lg:mt-0">
 						<ul>
-							{content.mainMenuLinks.mainMenuLinks?.length > 0 ? (
-								content.mainMenuLinks.mainMenuLinks?.map(
+							{globalContext.mainMenuLinks.mainMenuLinks?.length > 0 ? (
+								globalContext.mainMenuLinks.mainMenuLinks?.map(
 									(item: any, keys: any) => (
 										<li
 											key={keys}
@@ -72,25 +73,25 @@ const SideMenu: FC<ISideMenu> = ({menuActive}) => {
 							Tel:
 							<Link
 								className="leading-none transition-all duration-500 ease-in-out text-goldPrime text-tiny hover:text-red"
-								href={`tel:${content.themesOptionsContent.phoneNumber}`}
+								href={`tel:${globalContext.themesOptionsContent.phoneNumber}`}
 							>
-								{content.themesOptionsContent.phoneNumber}
+								{globalContext.themesOptionsContent.phoneNumber}
 							</Link>
 						</span>
 						<span className="flex items-center gap-2 text-goldPrime">
 							Email:
 							<Link
 								className="leading-none transition-all duration-500 ease-in-out text-goldPrime text-tiny hover:text-red"
-								href={`mailto:${content.themesOptionsContent.email}`}
+								href={`mailto:${globalContext.themesOptionsContent.email}`}
 							>
-								{content.themesOptionsContent.email}
+								{globalContext.themesOptionsContent.email}
 							</Link>
 						</span>
 					</div>
 					<div className="flex items-center justify-start gap-4 mb-4 text-center">
 						<Link
 							className="inline-block px-1 text-green"
-							href={content.themesOptionsContent.facebookLink}
+							href={globalContext.themesOptionsContent.facebookLink}
 						>
 							<svg
 								height="100%"
@@ -114,7 +115,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive}) => {
 						</Link>
 						<Link
 							className="inline-block px-1 text-green"
-							href={content.themesOptionsContent.linkedinLink}
+							href={globalContext.themesOptionsContent.linkedinLink}
 						>
 							<svg
 								height="100%"
@@ -138,7 +139,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive}) => {
 						</Link>
 						<Link
 							className="inline-block px-1 text-green"
-							href={content.themesOptionsContent.twitterLink}
+							href={globalContext.themesOptionsContent.twitterLink}
 						>
 							<svg
 								height="100%"

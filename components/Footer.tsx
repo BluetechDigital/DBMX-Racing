@@ -1,13 +1,13 @@
 // Import
 import Link from "next/link";
 import Image from "next/image";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 
 // Components
 import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 
 const Footer = () => {
-	const content = useContentContext();
+	const globalContext = useGlobalContext();
 
 	return (
 		<section className="border-t-[5px] bg-pureBlack border-red">
@@ -32,8 +32,8 @@ const Footer = () => {
 						/>
 					</div>
 					<ul className="flex flex-col items-start justify-center gap-4 sm:items-center lg:flex-row">
-						{content.footerMenuLinks.footerMenuLinks?.length > 0 ? (
-							content.footerMenuLinks.footerMenuLinks?.map(
+						{globalContext.footerMenuLinks.footerMenuLinks?.length > 0 ? (
+							globalContext.footerMenuLinks.footerMenuLinks?.map(
 								(item: any, keys: any) => (
 									<li key={keys} className="mb-1 text-center w-max">
 										<NavbarMenuLinks
@@ -54,27 +54,27 @@ const Footer = () => {
 								Tel:
 								<Link
 									className="text-base leading-none transition-all duration-500 ease-in-out text-goldPrime hover:text-red"
-									href={`tel:${content.themesOptionsContent.phoneNumber}`}
+									href={`tel:${globalContext.themesOptionsContent.phoneNumber}`}
 								>
-									{content.themesOptionsContent.phoneNumber}
+									{globalContext.themesOptionsContent.phoneNumber}
 								</Link>
 							</span>
 							<span className="flex items-center gap-2 text-goldPrime">
 								Tel:
 								<Link
 									className="text-base leading-none transition-all duration-500 ease-in-out text-goldPrime hover:text-red"
-									href={`tel:${content.themesOptionsContent.phoneNumberTwo}`}
+									href={`tel:${globalContext.themesOptionsContent.phoneNumberTwo}`}
 								>
-									{content.themesOptionsContent.phoneNumberTwo}
+									{globalContext.themesOptionsContent.phoneNumberTwo}
 								</Link>
 							</span>
 							<span className="flex items-center gap-2 text-goldPrime">
 								Email:
 								<Link
 									className="text-base leading-none transition-all duration-500 ease-in-out text-goldPrime hover:text-red"
-									href={`mailto:${content.themesOptionsContent.email}`}
+									href={`mailto:${globalContext.themesOptionsContent.email}`}
 								>
-									{content.themesOptionsContent.email}
+									{globalContext.themesOptionsContent.email}
 								</Link>
 							</span>
 						</div>
@@ -98,13 +98,13 @@ const Footer = () => {
 			<div className="p-6 lg:p-2 bg-goldPrimeDarker">
 				<div className="container flex flex-col-reverse items-center justify-center px-0 mx-auto gap-y-8 lg:flex-row lg:justify-between">
 					<p className="max-w-2xl py-2 text-left text-white text-tiny">
-						{content.themesOptionsContent.copyrightText}
+						{globalContext.themesOptionsContent.copyrightText}
 					</p>
 					<div className="flex flex-col items-center justify-center gap-8 sm:flex-row">
 						<div className="flex items-center justify-start gap-4 text-center">
 							<Link
 								className="inline-block px-1 text-green"
-								href={content.themesOptionsContent.facebookLink}
+								href={globalContext.themesOptionsContent.facebookLink}
 							>
 								<svg
 									height="100%"
@@ -128,7 +128,7 @@ const Footer = () => {
 							</Link>
 							<Link
 								className="inline-block px-1 text-green"
-								href={content.themesOptionsContent.twitterLink}
+								href={globalContext.themesOptionsContent.twitterLink}
 							>
 								<svg
 									height="100%"
@@ -152,7 +152,7 @@ const Footer = () => {
 							</Link>
 							<Link
 								className="inline-block px-1 text-green"
-								href={content.themesOptionsContent.linkedinLink}
+								href={globalContext.themesOptionsContent.linkedinLink}
 							>
 								<svg
 									height="100%"

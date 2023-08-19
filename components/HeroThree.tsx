@@ -3,8 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import {useState, FC} from "react";
 import {motion} from "framer-motion";
+import {useGlobalContext} from "@/context/Global";
 import {IHeroThree} from "@/types/components/index";
-import {useContentContext} from "@/context/context";
 import {fadeInUp, initial} from "../animations/animations";
 
 // Components
@@ -22,7 +22,7 @@ const HeroThree: FC<IHeroThree> = ({
 	backgroundVideoUrl,
 	backgroundImageOrVideo,
 }) => {
-	const content = useContentContext();
+	const globalContext = useGlobalContext();
 
 	/* Hides or Displays the Full Nav Menu */
 	const [menuActive, setMenuActive] = useState(false);
@@ -86,8 +86,8 @@ const HeroThree: FC<IHeroThree> = ({
 					</div>
 					<ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:gap-x-10">
 						{/* Menu Link*/}
-						{content.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
-							content.navbarMenuLinks.navbarMenuLinks?.map(
+						{globalContext.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
+							globalContext.navbarMenuLinks.navbarMenuLinks?.map(
 								(item: any, keys: any) => (
 									<li key={keys}>
 										<NavbarMenuLinks

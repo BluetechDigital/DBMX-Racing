@@ -111,13 +111,15 @@ export type IFooterMenuLinks = {
 
 export interface IContentContext {
 	seo: ISeo;
-	blogs: IBlogs;
 	content: IContent;
+	postTypeFlexiblecontent: IPostTypeFlexiblecontent;
+}
+export interface IGlobalContext {
+	blogs: IBlogs;
 	mainMenuLinks: IMainMenuLinks;
 	navbarMenuLinks: INavbarMenuLinks;
 	footerMenuLinks: IFooterMenuLinks;
 	themesOptionsContent: IThemesOptionsContent;
-	postTypeFlexiblecontent: IPostTypeFlexiblecontent;
 	contentSliderPostsContent: IContentSliderPostsContent;
 }
 

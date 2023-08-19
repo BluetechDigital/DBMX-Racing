@@ -11,7 +11,7 @@ import {useRouter} from "next/router";
 import React, {useState, FC} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {sendContactForm} from "@/functions/api";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import {useFormik, Formik, Field, Form} from "formik";
 import {IContactForm} from "@/types/components/index";
 
@@ -23,7 +23,7 @@ import Paragraph from "./Elements/Paragraph";
 
 const ContactForm: FC<IContactForm> = ({title}) => {
 	const router = useRouter();
-	const content = useContentContext();
+	const globalContext = useGlobalContext();
 
 	// Loading, Send & Error Message States
 	const [loading, setLoading] = useState(false);
@@ -421,7 +421,7 @@ const ContactForm: FC<IContactForm> = ({title}) => {
 							Business Hours
 						</h3>
 						<Paragraph
-							content={content.themesOptionsContent.businessHours.content}
+							content={globalContext.themesOptionsContent.businessHours.content}
 							tailwindStyling="font-medium text-base sm:text-medium leading-relaxed text-left text-black"
 						/>
 					</div>

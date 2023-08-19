@@ -5,18 +5,8 @@ import type {NextPage, GetStaticProps} from "next";
 import {postType, ContentContext, flexibleContentType} from "@/context/context";
 
 // Queries Functions
-import {
-	getMainMenuLinks,
-	getNavbarMenuLinks,
-	getFooterMenuLinks,
-} from "@/functions/graphql/Queries/GetAllMenuLinks";
-import {
-	getAllBlogsContent,
-	getAllBlogPostsSlugs,
-} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
 import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoContent";
-import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
+import {getAllBlogPostsSlugs} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
 import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
@@ -26,27 +16,15 @@ import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleCo
 
 const dynamicSinglePosts: NextPage<IContentContext> = ({
 	seo,
-	blogs,
 	content,
-	mainMenuLinks,
-	navbarMenuLinks,
-	footerMenuLinks,
-	themesOptionsContent,
 	postTypeFlexiblecontent,
-	contentSliderPostsContent,
 }) => {
 	return (
 		<ContentContext.Provider
 			value={{
 				seo: seo,
-				blogs: blogs,
 				content: content,
-				mainMenuLinks: mainMenuLinks,
-				navbarMenuLinks: navbarMenuLinks,
-				footerMenuLinks: footerMenuLinks,
-				themesOptionsContent: themesOptionsContent,
 				postTypeFlexiblecontent: postTypeFlexiblecontent,
-				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
 			<motion.div
@@ -87,32 +65,9 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 		flexibleContentType?.pages
 	);
 
-	// Fetch remaining content simultaneously
-	const [
-		blogs,
-		mainMenuLinks,
-		navbarMenuLinks,
-		footerMenuLinks,
-		themesOptionsContent,
-		contentSliderPostsContent,
-	] = await Promise.all([
-		getAllBlogsContent(),
-		getMainMenuLinks(),
-		getNavbarMenuLinks(),
-		getFooterMenuLinks(),
-		getThemesOptionsContent(),
-		getContentSliderBlogPostsPostsContent(),
-	]);
-
 	return {
 		props: {
-			blogs,
-			mainMenuLinks,
-			navbarMenuLinks,
-			footerMenuLinks,
 			seo: seoContent,
-			themesOptionsContent,
-			contentSliderPostsContent,
 			content: flexibleContentComponents?.content,
 			postTypeFlexiblecontent: flexibleContentType?.pages,
 		},

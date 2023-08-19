@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import {useState, FC} from "react";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 
 // Components
 import SideMenu from "./Elements/SideMenu";
@@ -12,7 +12,7 @@ import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 import styles from "../styles/components/Hero.module.scss";
 
 const HeroTwo: FC = () => {
-	const content = useContentContext();
+	const globalContext = useGlobalContext();
 
 	/* Hides or Displays the Full Nav Menu */
 	const [menuActive, setMenuActive] = useState(false);
@@ -38,8 +38,8 @@ const HeroTwo: FC = () => {
 					</div>
 					<ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:gap-x-10">
 						{/* Menu Link*/}
-						{content.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
-							content.navbarMenuLinks.navbarMenuLinks?.map(
+						{globalContext.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
+							globalContext.navbarMenuLinks.navbarMenuLinks?.map(
 								(item: any, keys: any) => (
 									<li key={keys}>
 										<NavbarMenuLinks

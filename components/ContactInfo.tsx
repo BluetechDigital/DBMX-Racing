@@ -1,7 +1,7 @@
 // Import
 import {FC} from "react";
 import Link from "next/link";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import {IContactInfo} from "@/types/components/index";
 
 // Styling
@@ -11,7 +11,7 @@ import styles from "../styles/components/ContactInfo.module.scss";
 import Paragraph from "../components/Elements/Paragraph";
 
 const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
-	const content = useContentContext();
+	const globalContext = useGlobalContext();
 	return (
 		<section className={styles.contactInfo}>
 			<div className="container relative z-10 px-8 mx-auto">
@@ -49,10 +49,10 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 							</h3>
 							<div className="flex flex-col items-center justify-center">
 								<Link
-									href={`mailto:${content.themesOptionsContent.email}`}
+									href={`mailto:${globalContext.themesOptionsContent.email}`}
 									className="text-base font-medium leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
 								>
-									{content.themesOptionsContent.email}
+									{globalContext.themesOptionsContent.email}
 								</Link>
 							</div>
 						</div>
@@ -85,19 +85,19 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								<span className="flex flex-col gap-4 font-medium text-center text-black sm:flex-row text-medium lg:text-left">
 									Tel:
 									<Link
-										href={`tel:${content.themesOptionsContent.phoneNumber}`}
+										href={`tel:${globalContext.themesOptionsContent.phoneNumber}`}
 										className="ml-2 text-base leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
 									>
-										{content.themesOptionsContent.phoneNumber}
+										{globalContext.themesOptionsContent.phoneNumber}
 									</Link>
 								</span>
 								<span className="flex flex-col gap-4 font-medium text-center text-black sm:flex-row text-medium lg:text-left">
 									Phone:
 									<Link
-										href={`tel:${content.themesOptionsContent.phoneNumberTwo}`}
+										href={`tel:${globalContext.themesOptionsContent.phoneNumberTwo}`}
 										className="ml-2 text-base leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
 									>
-										{content.themesOptionsContent.phoneNumberTwo}
+										{globalContext.themesOptionsContent.phoneNumberTwo}
 									</Link>
 								</span>
 							</div>
@@ -135,7 +135,7 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								Address
 							</h3>
 							<Paragraph
-								content={content.themesOptionsContent.address}
+								content={globalContext.themesOptionsContent.address}
 								tailwindStyling="font-medium text-base sm:text-medium leading-relaxed text-black"
 							/>
 						</div>

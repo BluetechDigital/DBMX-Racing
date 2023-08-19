@@ -1,13 +1,14 @@
 // Import
 import {motion} from "framer-motion";
-import {useContentContext} from "@/context/context";
+import {useGlobalContext} from "@/context/Global";
 import {initial, stagger} from "../animations/animations";
 
 // Components
 import BlogsCard from "./Cards/BlogsCard";
 
 const Blogs = () => {
-	const content = useContentContext();
+	const globalContext = useGlobalContext();
+
 	return (
 		<section className="px-4 py-24 bg-white">
 			<div className="container px-4 mx-auto">
@@ -17,8 +18,8 @@ const Blogs = () => {
 					viewport={{once: true}}
 					className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"
 				>
-					{content.blogs?.length > 0 ? (
-						content.blogs.map((item: any, keys: any) => (
+					{globalContext.blogs?.length > 0 ? (
+						globalContext.blogs.map((item: any, keys: any) => (
 							<BlogsCard
 								key={keys}
 								uri={item?.node?.uri}

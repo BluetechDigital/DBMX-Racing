@@ -1,11 +1,27 @@
 // Import
-import postHog from "posthog-js";
 import {useRouter} from "next/router";
 import type {AppProps} from "next/app";
 import {client} from "@/config/apollo";
 import {useState, useEffect} from "react";
-import {PostHogProvider} from "posthog-js/react";
 import {ApolloProvider} from "@apollo/client/react";
+
+// PostHog Cookies Policy
+import postHog from "posthog-js";
+import {PostHogProvider} from "posthog-js/react";
+
+// Global Context Provider
+import {IGlobalContext} from "@/types/context";
+import {GlobalContext} from "@/context/Global";
+
+// Queries Functions
+import {
+	getMainMenuLinks,
+	getNavbarMenuLinks,
+	getFooterMenuLinks,
+} from "@/functions/graphql/Queries/GetAllMenuLinks";
+import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
+import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
+import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 
 // Components
 import CookiePolicyCard from "@/components/Elements/CookiePolicyCard";
@@ -24,7 +40,12 @@ if (typeof window !== "undefined") {
 	});
 }
 
-export default function App({Component, pageProps}: AppProps) {
+export default function App({
+	Component,
+	pageProps,
+	globalProps,
+}: AppProps | any) {
+	// COOKIES POLICY //
 	// PostHog Cookies Policy
 	const router: any = useRouter();
 
@@ -38,6 +59,7 @@ export default function App({Component, pageProps}: AppProps) {
 		};
 	});
 
+	// PAGE LOADING ANIMATION //
 	// Page Animation Loader
 	function Loading() {
 		const [loading, setLoading]: any = useState(false);
@@ -103,14 +125,66 @@ export default function App({Component, pageProps}: AppProps) {
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				{/* Cookie Policy Pop Up */}
-				{postHog.has_opted_in_capturing() ||
-				postHog.has_opted_out_capturing() ? null : (
-					<CookiePolicyCard />
-				)}
-				<Loading />
-				<Component {...pageProps} />
+				<GlobalContext.Provider
+					value={{
+						blogs: globalProps?.blogs,
+						mainMenuLinks: globalProps?.mainMenuLinks,
+						navbarMenuLinks: globalProps?.navbarMenuLinks,
+						footerMenuLinks: globalProps?.footerMenuLinks,
+						themesOptionsContent: globalProps?.themesOptionsContent,
+						contentSliderPostsContent: globalProps?.contentSliderPostsContent,
+					}}
+				>
+					{/* Cookie Policy Pop Up */}
+					{postHog.has_opted_in_capturing() ||
+					postHog.has_opted_out_capturing() ? null : (
+						<CookiePolicyCard />
+					)}
+					<Loading />
+					<Component {...pageProps} />
+				</GlobalContext.Provider>
 			</PostHogProvider>
 		</ApolloProvider>
 	);
 }
+
+App.getInitialProps = async ({Component, ctx}: any) => {
+	let pageProps = {};
+
+	if (Component.getInitialProps) {
+		pageProps = await Component.getInitialProps(ctx);
+	}
+
+	// PUBLIC PAGES //
+	/* Fetch all global content
+	remaining content simultaneously */
+	const [
+		blogs,
+		mainMenuLinks,
+		navbarMenuLinks,
+		footerMenuLinks,
+		themesOptionsContent,
+		contentSliderPostsContent,
+	] = await Promise.all([
+		getAllBlogsContent(),
+		getMainMenuLinks(),
+		getNavbarMenuLinks(),
+		getFooterMenuLinks(),
+		getThemesOptionsContent(),
+		getContentSliderBlogPostsPostsContent(),
+	]);
+
+	const globalProps: IGlobalContext = {
+		blogs: blogs,
+		mainMenuLinks: mainMenuLinks,
+		navbarMenuLinks: navbarMenuLinks,
+		footerMenuLinks: footerMenuLinks,
+		themesOptionsContent: themesOptionsContent,
+		contentSliderPostsContent: contentSliderPostsContent,
+	};
+
+	return {
+		pageProps,
+		globalProps,
+	};
+};

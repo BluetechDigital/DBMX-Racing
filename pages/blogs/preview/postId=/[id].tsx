@@ -11,43 +11,21 @@ import {postType, ContentContext, flexibleContentType} from "@/context/context";
 import {getAllPreviewSeoContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
 import {getAllPreviewFlexibleContentComponents} from "@/functions/graphql/Mutations/GetAllPreviewFlexibleContentComponents";
 
-// Queries Functions
-import {
-	getMainMenuLinks,
-	getNavbarMenuLinks,
-	getFooterMenuLinks,
-} from "@/functions/graphql/Queries/GetAllMenuLinks";
-import {getAllBlogsContent} from "@/functions/graphql/Queries/GetAllBlogPostsSlugs";
-import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesOptions";
-import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
-
 // Components
 import Layout from "@/components/Layout/Layout";
 import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
 const dynamicPreviewPosts: NextPage<IContentContext> = ({
 	seo,
-	blogs,
 	content,
-	mainMenuLinks,
-	navbarMenuLinks,
-	footerMenuLinks,
-	themesOptionsContent,
 	postTypeFlexiblecontent,
-	contentSliderPostsContent,
 }) => {
 	return (
 		<ContentContext.Provider
 			value={{
 				seo: seo,
-				blogs: blogs,
 				content: content,
-				mainMenuLinks: mainMenuLinks,
-				navbarMenuLinks: navbarMenuLinks,
-				footerMenuLinks: footerMenuLinks,
-				themesOptionsContent: themesOptionsContent,
 				postTypeFlexiblecontent: postTypeFlexiblecontent,
-				contentSliderPostsContent: contentSliderPostsContent,
 			}}
 		>
 			<motion.div
@@ -101,32 +79,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 				flexibleContentType?.previewPost
 			);
 
-		// Fetch remaining content simultaneously
-		const [
-			blogs,
-			mainMenuLinks,
-			navbarMenuLinks,
-			footerMenuLinks,
-			themesOptionsContent,
-			contentSliderPostsContent,
-		] = await Promise.all([
-			getAllBlogsContent(),
-			getMainMenuLinks(),
-			getNavbarMenuLinks(),
-			getFooterMenuLinks(),
-			getThemesOptionsContent(),
-			getContentSliderBlogPostsPostsContent(),
-		]);
-
 		return {
 			props: {
-				blogs,
-				mainMenuLinks,
-				navbarMenuLinks,
-				footerMenuLinks,
 				seo: seoContent,
-				themesOptionsContent,
-				contentSliderPostsContent,
 				content: flexibleContentComponents?.content,
 				postTypeFlexiblecontent: flexibleContentType?.previewPost,
 			},
