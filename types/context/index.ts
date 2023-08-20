@@ -114,6 +114,7 @@ export interface IContentContext {
 	content: IContent;
 	postTypeFlexiblecontent: IPostTypeFlexiblecontent;
 }
+
 export interface IGlobalContext {
 	blogs: IBlogs;
 	mainMenuLinks: IMainMenuLinks;
