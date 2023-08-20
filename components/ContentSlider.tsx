@@ -66,40 +66,41 @@ const ContentSlider: FC<IContentSlider> = ({
 
 		let currentIndex: number = 0;
 
-		const intervalId: NodeJS.Timer = setInterval(() => {
-			if (mainChildElements && postChildElements) {
-				const currentMainPostChild = mainChildElements[currentIndex];
-				const nextMainPostIndex =
-					currentIndex + 1 >= mainChildElements.length ? 0 : currentIndex + 1;
-				const nextMainPostChild = mainChildElements[nextMainPostIndex];
+		const intervalId: NodeJS.Timer | any | string | number | undefined =
+			setInterval(() => {
+				if (mainChildElements && postChildElements) {
+					const currentMainPostChild = mainChildElements[currentIndex];
+					const nextMainPostIndex =
+						currentIndex + 1 >= mainChildElements.length ? 0 : currentIndex + 1;
+					const nextMainPostChild = mainChildElements[nextMainPostIndex];
 
-				const currentPostChild = postChildElements[currentIndex];
-				const nextPostIndex =
-					currentIndex + 1 >= postChildElements.length ? 0 : currentIndex + 1;
-				const nextPostChild = postChildElements[nextPostIndex];
+					const currentPostChild = postChildElements[currentIndex];
+					const nextPostIndex =
+						currentIndex + 1 >= postChildElements.length ? 0 : currentIndex + 1;
+					const nextPostChild = postChildElements[nextPostIndex];
 
-				if (
-					currentMainPostChild &&
-					nextMainPostChild &&
-					currentPostChild &&
-					nextPostChild
-				) {
-					// Rest of the code that uses currentMainPostChild, nextMainPostChild,
-					// Main Content
-					currentMainPostChild.classList.remove(mainActive);
-					currentMainPostChild.classList.add(mainNotActive);
-					nextMainPostChild.classList.remove(mainNotActive);
-					nextMainPostChild.classList.add(mainActive);
+					if (
+						currentMainPostChild &&
+						nextMainPostChild &&
+						currentPostChild &&
+						nextPostChild
+					) {
+						// Rest of the code that uses currentMainPostChild, nextMainPostChild,
+						// Main Content
+						currentMainPostChild.classList.remove(mainActive);
+						currentMainPostChild.classList.add(mainNotActive);
+						nextMainPostChild.classList.remove(mainNotActive);
+						nextMainPostChild.classList.add(mainActive);
 
-					// Post Content
-					currentPostChild.classList.remove(postActive);
-					currentPostChild.classList.add(postNotActive);
-					nextPostChild.classList.remove(postNotActive);
-					nextPostChild.classList.add(postActive);
-					currentIndex = nextMainPostIndex;
+						// Post Content
+						currentPostChild.classList.remove(postActive);
+						currentPostChild.classList.add(postNotActive);
+						nextPostChild.classList.remove(postNotActive);
+						nextPostChild.classList.add(postActive);
+						currentIndex = nextMainPostIndex;
+					}
 				}
-			}
-		}, 7000);
+			}, 7000);
 
 		return () => clearInterval(intervalId);
 	}, [mainActive, mainNotActive, postActive, postNotActive]);
