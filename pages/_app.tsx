@@ -24,6 +24,7 @@ import {getThemesOptionsContent} from "@/functions/graphql/Queries/GetAllThemesO
 import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries/GetAllContentSliderPosts";
 
 // Components
+import Footer from "@/components/Footer";
 import CookiePolicyCard from "@/components/Elements/CookiePolicyCard";
 
 // Styling
@@ -142,6 +143,7 @@ export default function App({
 					)}
 					<Loading />
 					<Component {...pageProps} />
+					<Footer />
 				</GlobalContext.Provider>
 			</PostHogProvider>
 		</ApolloProvider>
