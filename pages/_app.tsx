@@ -11,7 +11,6 @@ import {PostHogProvider} from "posthog-js/react";
 
 // Global Context Provider
 import {IGlobalContext} from "@/types/context";
-import {GlobalContext} from "@/context/Global";
 
 // Queries Functions
 import {
@@ -26,6 +25,7 @@ import {getContentSliderBlogPostsPostsContent} from "@/functions/graphql/Queries
 // Components
 import Footer from "@/components/Footer";
 import CookiePolicyCard from "@/components/Elements/CookiePolicyCard";
+import GlobalContextProvider from "@/context/components/GlobalContextProvider";
 
 // Styling
 import "../styles/globals.scss";
@@ -126,16 +126,7 @@ export default function App({
 	return (
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
-				<GlobalContext.Provider
-					value={{
-						blogs: globalProps?.blogs,
-						mainMenuLinks: globalProps?.mainMenuLinks,
-						navbarMenuLinks: globalProps?.navbarMenuLinks,
-						footerMenuLinks: globalProps?.footerMenuLinks,
-						themesOptionsContent: globalProps?.themesOptionsContent,
-						contentSliderPostsContent: globalProps?.contentSliderPostsContent,
-					}}
-				>
+				<GlobalContextProvider globalProps={globalProps}>
 					{/* Cookie Policy Pop Up */}
 					{postHog.has_opted_in_capturing() ||
 					postHog.has_opted_out_capturing() ? null : (
@@ -144,7 +135,7 @@ export default function App({
 					<Loading />
 					<Component {...pageProps} />
 					<Footer />
-				</GlobalContext.Provider>
+				</GlobalContextProvider>
 			</PostHogProvider>
 		</ApolloProvider>
 	);

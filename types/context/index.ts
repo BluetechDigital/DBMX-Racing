@@ -124,6 +124,11 @@ export interface IGlobalContext {
 	contentSliderPostsContent: IContentSliderPostsContent;
 }
 
+export type IGlobalContextProvider = {
+	globalProps: IGlobalContext;
+	children: React.ReactNode;
+};
+
 export type IThemesOptionsContent = {
 	address: string;
 	email: string;
