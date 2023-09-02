@@ -2,7 +2,7 @@
 import {motion} from "framer-motion";
 import {IContentContext} from "@/types/context";
 import type {NextPage, GetStaticProps} from "next";
-import {postType, ContentContext, flexibleContentType} from "@/context/context";
+import {postType, flexibleContentType} from "@/context/context";
 
 // Queries Functions
 import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoContent";

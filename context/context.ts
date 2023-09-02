@@ -26,12 +26,12 @@ export const flexibleContentType: IPostTypesFlexiblecontent = {
 	previewPost: "Post_Flexiblecontent_FlexibleContent",
 };
 
-export const ContentContext = createContext<IContentContext | undefined>(
+export const PageContext = createContext<IContentContext | undefined>(
 	undefined
 );
 
 export const useContentContext = () => {
-	const content = useContext(ContentContext);
+	const content = useContext(PageContext);
 
 	if (content === undefined) {
 		throw new Error(`useDynamicPagesContext must be used to render content.`);

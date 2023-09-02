@@ -5,7 +5,7 @@ import {IContentContext} from "@/types/context";
 import type {GetServerSideProps, NextPage} from "next";
 import {getAuthToken} from "@/functions/cookies/cookies";
 import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";
-import {postType, ContentContext, flexibleContentType} from "@/context/context";
+import {postType, flexibleContentType} from "@/context/context";
 
 // Mutations Functions
 import {getAllPreviewSeoContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";

@@ -1,5 +1,6 @@
+// Imports
 import {FC} from "react";
-import {ContentContext} from "@/context/context";
+import {PageContext} from "../context";
 import {IPageContextProvider} from "@/types/context";
 
 const PageContextProvider: FC<IPageContextProvider> = ({
@@ -9,13 +10,15 @@ const PageContextProvider: FC<IPageContextProvider> = ({
 	postTypeFlexiblecontent,
 }) => {
 	return (
-		<PageContextProvider
-			seo={seo}
-			content={content}
-			postTypeFlexiblecontent={postTypeFlexiblecontent}
+		<PageContext.Provider
+			value={{
+				seo: seo,
+				content: content,
+				postTypeFlexiblecontent: postTypeFlexiblecontent,
+			}}
 		>
 			{children}
-		</PageContextProvider>
+		</PageContext.Provider>
 	);
 };
 
