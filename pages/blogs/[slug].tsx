@@ -12,6 +12,7 @@ import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAl
 // Components
 import Layout from "@/components/Layout/Layout";
 import BackHoverButton from "@/components/Elements/BackHoverButton";
+import PageContextProvider from "@/context/components/PageContextProvider";
 import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
 const dynamicSinglePosts: NextPage<IContentContext> = ({
@@ -20,12 +21,10 @@ const dynamicSinglePosts: NextPage<IContentContext> = ({
 	postTypeFlexiblecontent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexiblecontent: postTypeFlexiblecontent,
-			}}
+		<PageContextProvider
+			seo={seo}
+			content={content}
+			postTypeFlexiblecontent={postTypeFlexiblecontent}
 		>
 			<motion.div
 				exit={{
@@ -40,7 +39,7 @@ const dynamicSinglePosts: NextPage<IContentContext> = ({
 					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
-		</ContentContext.Provider>
+		</PageContextProvider>
 	);
 };
 

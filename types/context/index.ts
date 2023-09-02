@@ -125,8 +125,15 @@ export interface IGlobalContext {
 }
 
 export type IGlobalContextProvider = {
-	globalProps: IGlobalContext;
 	children: React.ReactNode;
+	globalProps: IGlobalContext;
+};
+
+export type IPageContextProvider = {
+	seo: ISeo;
+	content: IContent;
+	children: React.ReactNode;
+	postTypeFlexiblecontent: IPostTypeFlexiblecontent;
 };
 
 export type IThemesOptionsContent = {

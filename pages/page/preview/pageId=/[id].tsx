@@ -4,8 +4,8 @@ import {motion} from "framer-motion";
 import {IContentContext} from "@/types/context";
 import type {GetServerSideProps, NextPage} from "next";
 import {getAuthToken} from "@/functions/cookies/cookies";
+import {postType, flexibleContentType} from "@/context/context";
 import {getLoginPreviewRedirectUrl} from "@/functions/redirects/redirects";
-import {postType, ContentContext, flexibleContentType} from "@/context/context";
 
 // Mutations Functions
 import {getAllPreviewSeoContent} from "@/functions/graphql/Mutations/GetAllPreviewSeoContent";
@@ -13,6 +13,7 @@ import {getAllPreviewFlexibleContentComponents} from "@/functions/graphql/Mutati
 
 // Components
 import Layout from "@/components/Layout/Layout";
+import PageContextProvider from "@/context/components/PageContextProvider";
 import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
 const dynamicPreviewPosts: NextPage<IContentContext> = ({
@@ -21,12 +22,10 @@ const dynamicPreviewPosts: NextPage<IContentContext> = ({
 	postTypeFlexiblecontent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexiblecontent: postTypeFlexiblecontent,
-			}}
+		<PageContextProvider
+			seo={seo}
+			content={content}
+			postTypeFlexiblecontent={postTypeFlexiblecontent}
 		>
 			<motion.div
 				exit={{
@@ -39,7 +38,7 @@ const dynamicPreviewPosts: NextPage<IContentContext> = ({
 					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
-		</ContentContext.Provider>
+		</PageContextProvider>
 	);
 };
 

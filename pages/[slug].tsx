@@ -2,16 +2,16 @@
 import {motion} from "framer-motion";
 import {IContentContext} from "@/types/context";
 import type {NextPage, GetStaticProps} from "next";
-import {ContentContext, flexibleContentType, postType} from "@/context/context";
+import {flexibleContentType, postType} from "@/context/context";
 
 // Queries Functions
-
 import {getAllPagesSlugs} from "@/functions/graphql/Queries/GetAllPagesSlugs";
 import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";
 
 // Components
 import Layout from "@/components/Layout/Layout";
+import PageContextProvider from "@/context/components/PageContextProvider";
 import RenderFlexibleContent from "@/components/FlexibleContent/RenderFlexibleContent";
 
 const dynamicPages: NextPage<IContentContext> = ({
@@ -20,12 +20,10 @@ const dynamicPages: NextPage<IContentContext> = ({
 	postTypeFlexiblecontent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexiblecontent: postTypeFlexiblecontent,
-			}}
+		<PageContextProvider
+			seo={seo}
+			content={content}
+			postTypeFlexiblecontent={postTypeFlexiblecontent}
 		>
 			<motion.div
 				exit={{
@@ -38,7 +36,7 @@ const dynamicPages: NextPage<IContentContext> = ({
 					<RenderFlexibleContent />
 				</Layout>
 			</motion.div>
-		</ContentContext.Provider>
+		</PageContextProvider>
 	);
 };
 
