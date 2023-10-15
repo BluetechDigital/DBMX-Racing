@@ -220,529 +220,545 @@ const ContentSlider: FC = () => {
 	}, [mainActive, mainNotActive, postActive, postNotActive]);
 
 	return (
-		<section
-			className="w-full h-full bg-center bg-no-repeat bg-cover"
-			style={{
-				backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
-			}}
-		>
+		<>
 			<div
-				className="h-[75vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh]"
+				className="w-full h-full bg-center bg-no-repeat bg-cover"
 				style={{
-					gridTemplateRows: "1fr 3fr 1.5fr",
-					gridTemplateColumns: "50px 1fr 1fr 1fr 1fr 50px",
+					backgroundImage: `url("/svg/backgroundSVG/stacked-waves-haikei-blue.svg")`,
 				}}
 			>
 				<div
-					className="relative h-full"
-					style={{gridRow: "1 / 4", gridColumn: "1 / 7"}}
+					className="h-[75vh] sm:h-[65vh] lg:h-[100vh] grid relative gap-y-[2vh]"
+					style={{
+						gridTemplateRows: "1fr 3fr 1.5fr",
+						gridTemplateColumns: "50px 1fr 1fr 1fr 1fr 50px",
+					}}
 				>
-					<div className={`mainPost ${mainPost}`} ref={mainRef}>
-						<article
-							className={`main-post ${mainActive} ${mainContentTailwindcss}`}
-						>
-							<div
-								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover main-post__image"
-								style={{
-									backgroundImage: `url("${contentOne.backgroundImage?.sourceUrl}")`,
-								}}
+					<div
+						className="relative h-full"
+						style={{gridRow: "1 / 4", gridColumn: "1 / 7"}}
+					>
+						<div className={`mainPost ${mainPost}`} ref={mainRef}>
+							<article
+								className={`main-post ${mainActive} ${mainContentTailwindcss}`}
 							>
-								{/* Background Video */}
-								<div className="absolute top-0 bottom-0 left-0 w-full h-full">
-									<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
-										<iframe
-											allowFullScreen
+								<div
+									className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover main-post__image"
+									style={{
+										backgroundImage: `url("${contentOne.backgroundImage?.sourceUrl}")`,
+									}}
+								>
+									{/* Background Video */}
+									<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+										<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
+											<iframe
+												allowFullScreen
+												className={
+													contentOne.backgroundImageOrVideo === "Video"
+														? "absolute top-0 left-0 border-none w-full h-full"
+														: `hidden`
+												}
+												src={contentOne.backgroundVideoUrl}
+											/>
+										</div>
+									</div>
+
+									{/* Image */}
+									<Image
+										width={contentOne.backgroundImage?.mediaDetails?.width}
+										height={contentOne.backgroundImage?.mediaDetails?.height}
+										className={
+											contentOne.backgroundImageOrVideo === "Image"
+												? `block ${mainImageVideoTailwindcss}`
+												: ` hidden`
+										}
+										src={
+											contentOne.backgroundImage?.sourceUrl
+												? contentOne.backgroundImage?.sourceUrl
+												: `/`
+										}
+										alt={`${contentOne.backgroundImage?.altText} image`}
+									/>
+								</div>
+								<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+									<div className="inline-flex m-0 overflow-hidden tag">
+										<span className="py-[6px] px-6 bg-goldPrime">
+											{contentOne.backgroundImageOrVideo}
+										</span>
+									</div>
+									<h2
+										className="title py-4 lg:py-8 text-white text-6xl md:text-7xl lg:text-8xl w-full lg:w-[55rem] leading-[3rem] lg:leading-[4rem]"
+										style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+									>
+										{contentOne?.title}
+									</h2>
+									<Link
+										href={
+											contentOne?.uri ? `/blogs${contentOne?.uri}` : `/blogs`
+										}
+										className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldPrime hover:stroke-goldPrime"
+									>
+										<svg
 											className={
 												contentOne.backgroundImageOrVideo === "Video"
-													? "absolute top-0 left-0 border-none w-full h-full"
-													: `hidden`
+													? `block mr-[12px]`
+													: ` hidden`
 											}
-											src={contentOne.backgroundVideoUrl}
-										/>
+											width="30"
+											height="30"
+											viewBox="0 0 20 20"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<circle
+												cx="10"
+												cy="10"
+												r="9"
+												stroke="#2563eb"
+												strokeWidth="2"
+											/>
+											<path d="M14 10L8 6V14L14 10Z" fill="white" />
+										</svg>
+										<span className="font-semibold text-medium hover:text-blue">
+											{contentOne?.title}
+										</span>
+										<svg
+											className="ml-[12px]"
+											width="37"
+											height="12"
+											viewBox="0 0 37 12"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M0 6H36.0001M36.0001 6L31.0001 1M36.0001 6L31.0001 11"
+												stroke="white"
+											/>
+										</svg>
+									</Link>
+								</div>
+							</article>
+							<article
+								className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
+							>
+								<div
+									className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
+									style={{
+										backgroundImage: `url("${contentTwo.backgroundImage?.sourceUrl}")`,
+									}}
+								>
+									{/* Background Video */}
+									<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+										<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
+											<iframe
+												allowFullScreen
+												className={
+													contentTwo.backgroundImageOrVideo === "Video"
+														? "absolute top-0 left-0 border-none w-full h-full"
+														: `hidden`
+												}
+												src={contentTwo.backgroundVideoUrl}
+											/>
+										</div>
 									</div>
-								</div>
 
-								{/* Image */}
-								<Image
-									width={contentOne.backgroundImage?.mediaDetails?.width}
-									height={contentOne.backgroundImage?.mediaDetails?.height}
-									className={
-										contentOne.backgroundImageOrVideo === "Image"
-											? `block ${mainImageVideoTailwindcss}`
-											: ` hidden`
-									}
-									src={
-										contentOne.backgroundImage?.sourceUrl
-											? contentOne.backgroundImage?.sourceUrl
-											: `/`
-									}
-									alt={`${contentOne.backgroundImage?.altText} image`}
-								/>
-							</div>
-							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
-								<div className="inline-flex m-0 overflow-hidden tag">
-									<span className="py-[6px] px-6 bg-goldPrime">
-										{contentOne.backgroundImageOrVideo}
-									</span>
-								</div>
-								<h2
-									className="title py-4 lg:py-8 text-white text-6xl md:text-7xl lg:text-8xl w-full lg:w-[55rem] leading-[3rem] lg:leading-[4rem]"
-									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
-								>
-									{contentOne?.title}
-								</h2>
-								<Link
-									href={contentOne?.uri ? `/blogs${contentOne?.uri}` : `/blogs`}
-									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldPrime hover:stroke-goldPrime"
-								>
-									<svg
+									{/* Image */}
+									<Image
+										width={contentTwo.backgroundImage?.mediaDetails?.width}
+										height={contentTwo.backgroundImage?.mediaDetails?.height}
 										className={
-											contentOne.backgroundImageOrVideo === "Video"
-												? `block mr-[12px]`
+											contentTwo.backgroundImageOrVideo === "Image"
+												? `block ${mainImageVideoTailwindcss}`
 												: ` hidden`
 										}
-										width="30"
-										height="30"
-										viewBox="0 0 20 20"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
+										src={contentTwo.backgroundImage?.sourceUrl}
+										alt={`${contentTwo.backgroundImage?.altText} image`}
+									/>
+								</div>
+								<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+									<div className="inline-flex m-0 overflow-hidden tag">
+										<span className="py-[6px] px-6 bg-goldPrime">
+											{contentTwo.backgroundImageOrVideo}
+										</span>
+									</div>
+									<h2
+										className="title py-4 lg:py-8 text-white text-6xl md:text-7xl lg:text-8xl w-full lg:w-[55rem] leading-[3rem] lg:leading-[4rem]"
+										style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 									>
-										<circle
-											cx="10"
-											cy="10"
-											r="9"
-											stroke="#2563eb"
-											strokeWidth="2"
-										/>
-										<path d="M14 10L8 6V14L14 10Z" fill="white" />
-									</svg>
-									<span className="font-semibold text-medium hover:text-blue">
-										{contentOne?.title}
-									</span>
-									<svg
-										className="ml-[12px]"
-										width="37"
-										height="12"
-										viewBox="0 0 37 12"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
+										{contentTwo?.title}
+									</h2>
+									<Link
+										href={
+											contentTwo?.uri ? `/blogs${contentTwo?.uri}` : `/blogs`
+										}
+										className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldPrime hover:stroke-goldPrime"
 									>
-										<path
-											d="M0 6H36.0001M36.0001 6L31.0001 1M36.0001 6L31.0001 11"
-											stroke="white"
-										/>
-									</svg>
-								</Link>
-							</div>
-						</article>
-						<article
-							className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
-						>
-							<div
-								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
-								style={{
-									backgroundImage: `url("${contentTwo.backgroundImage?.sourceUrl}")`,
-								}}
-							>
-								{/* Background Video */}
-								<div className="absolute top-0 bottom-0 left-0 w-full h-full">
-									<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
-										<iframe
-											allowFullScreen
+										<svg
 											className={
 												contentTwo.backgroundImageOrVideo === "Video"
-													? "absolute top-0 left-0 border-none w-full h-full"
-													: `hidden`
+													? `block mr-[12px]`
+													: ` hidden`
 											}
-											src={contentTwo.backgroundVideoUrl}
-										/>
+											width="30"
+											height="30"
+											viewBox="0 0 20 20"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<circle
+												cx="10"
+												cy="10"
+												r="9"
+												stroke="#2563eb"
+												strokeWidth="2"
+											/>
+											<path d="M14 10L8 6V14L14 10Z" fill="white" />
+										</svg>
+										<span className="font-semibold text-medium hover:text-blue">
+											{contentTwo?.title}
+										</span>
+										<svg
+											className="ml-[12px]"
+											width="37"
+											height="12"
+											viewBox="0 0 37 12"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M0 6H36.0001M36.0001 6L31.0001 1M36.0001 6L31.0001 11"
+												stroke="white"
+											/>
+										</svg>
+									</Link>
+								</div>
+							</article>
+							<article
+								className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
+							>
+								<div
+									className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
+									style={{
+										backgroundImage: `url("${contentThree.backgroundImage?.sourceUrl}")`,
+									}}
+								>
+									{/* Background Video */}
+									<div className="absolute top-0 bottom-0 left-0 w-full h-full">
+										<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
+											<iframe
+												allowFullScreen
+												className={
+													contentThree.backgroundImageOrVideo === "Video"
+														? "absolute top-0 left-0 border-none w-full h-full"
+														: `hidden`
+												}
+												src={contentThree.backgroundVideoUrl}
+											/>
+										</div>
 									</div>
-								</div>
 
-								{/* Image */}
-								<Image
-									width={contentTwo.backgroundImage?.mediaDetails?.width}
-									height={contentTwo.backgroundImage?.mediaDetails?.height}
-									className={
-										contentTwo.backgroundImageOrVideo === "Image"
-											? `block ${mainImageVideoTailwindcss}`
-											: ` hidden`
-									}
-									src={contentTwo.backgroundImage?.sourceUrl}
-									alt={`${contentTwo.backgroundImage?.altText} image`}
-								/>
-							</div>
-							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
-								<div className="inline-flex m-0 overflow-hidden tag">
-									<span className="py-[6px] px-6 bg-goldPrime">
-										{contentTwo.backgroundImageOrVideo}
-									</span>
-								</div>
-								<h2
-									className="title py-4 lg:py-8 text-white text-6xl md:text-7xl lg:text-8xl w-full lg:w-[55rem] leading-[3rem] lg:leading-[4rem]"
-									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
-								>
-									{contentTwo?.title}
-								</h2>
-								<Link
-									href={contentTwo?.uri ? `/blogs${contentTwo?.uri}` : `/blogs`}
-									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldPrime hover:stroke-goldPrime"
-								>
-									<svg
+									{/* Image */}
+									<Image
+										width={contentThree.backgroundImage?.mediaDetails?.width}
+										height={contentThree.backgroundImage?.mediaDetails?.height}
 										className={
-											contentTwo.backgroundImageOrVideo === "Video"
-												? `block mr-[12px]`
+											contentThree.backgroundImageOrVideo === "Image"
+												? `block ${mainImageVideoTailwindcss}`
 												: ` hidden`
 										}
-										width="30"
-										height="30"
-										viewBox="0 0 20 20"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
+										src={contentThree.backgroundImage?.sourceUrl}
+										alt={`${contentThree.backgroundImage?.altText} image`}
+									/>
+								</div>
+								<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
+									<div className="inline-flex m-0 overflow-hidden tag">
+										<span className="py-[6px] px-6 bg-goldPrime">
+											{contentThree.backgroundImageOrVideo}
+										</span>
+									</div>
+									<h2
+										className="title py-4 lg:py-8 text-white text-6xl md:text-7xl lg:text-8xl w-full lg:w-[55rem] leading-[3rem] lg:leading-[4rem]"
+										style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 									>
-										<circle
-											cx="10"
-											cy="10"
-											r="9"
-											stroke="#2563eb"
-											strokeWidth="2"
-										/>
-										<path d="M14 10L8 6V14L14 10Z" fill="white" />
-									</svg>
-									<span className="font-semibold text-medium hover:text-blue">
-										{contentTwo?.title}
-									</span>
-									<svg
-										className="ml-[12px]"
-										width="37"
-										height="12"
-										viewBox="0 0 37 12"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
+										{contentThree?.title}
+									</h2>
+									<Link
+										href={
+											contentThree?.uri
+												? `/blogs${contentThree?.uri}`
+												: `/blogs`
+										}
+										className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldPrime hover:stroke-goldPrime"
 									>
-										<path
-											d="M0 6H36.0001M36.0001 6L31.0001 1M36.0001 6L31.0001 11"
-											stroke="white"
-										/>
-									</svg>
-								</Link>
-							</div>
-						</article>
-						<article
-							className={`main-post ${mainNotActive} ${mainContentTailwindcss}`}
-						>
-							<div
-								className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
-								style={{
-									backgroundImage: `url("${contentThree.backgroundImage?.sourceUrl}")`,
-								}}
-							>
-								{/* Background Video */}
-								<div className="absolute top-0 bottom-0 left-0 w-full h-full">
-									<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
-										<iframe
-											allowFullScreen
+										<svg
 											className={
 												contentThree.backgroundImageOrVideo === "Video"
-													? "absolute top-0 left-0 border-none w-full h-full"
-													: `hidden`
+													? `block mr-[12px]`
+													: ` hidden`
 											}
-											src={contentThree.backgroundVideoUrl}
-										/>
-									</div>
+											width="30"
+											height="30"
+											viewBox="0 0 20 20"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<circle
+												cx="10"
+												cy="10"
+												r="9"
+												stroke="#2563eb"
+												strokeWidth="2"
+											/>
+											<path d="M14 10L8 6V14L14 10Z" fill="white" />
+										</svg>
+										<span className="font-semibold text-medium hover:text-blue">
+											{contentThree?.title}
+										</span>
+										<svg
+											className="ml-[12px]"
+											width="37"
+											height="12"
+											viewBox="0 0 37 12"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M0 6H36.0001M36.0001 6L31.0001 1M36.0001 6L31.0001 11"
+												stroke="white"
+											/>
+										</svg>
+									</Link>
 								</div>
-
-								{/* Image */}
-								<Image
-									width={contentThree.backgroundImage?.mediaDetails?.width}
-									height={contentThree.backgroundImage?.mediaDetails?.height}
-									className={
-										contentThree.backgroundImageOrVideo === "Image"
-											? `block ${mainImageVideoTailwindcss}`
-											: ` hidden`
-									}
-									src={contentThree.backgroundImage?.sourceUrl}
-									alt={`${contentThree.backgroundImage?.altText} image`}
-								/>
-							</div>
-							<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
-								<div className="inline-flex m-0 overflow-hidden tag">
-									<span className="py-[6px] px-6 bg-goldPrime">
-										{contentThree.backgroundImageOrVideo}
-									</span>
-								</div>
-								<h2
-									className="title py-4 lg:py-8 text-white text-6xl md:text-7xl lg:text-8xl w-full lg:w-[55rem] leading-[3rem] lg:leading-[4rem]"
-									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
-								>
-									{contentThree?.title}
-								</h2>
-								<Link
-									href={
-										contentThree?.uri ? `/blogs${contentThree?.uri}` : `/blogs`
-									}
-									className="postLink text-white uppercase tracking-[0.25rem] inline-flex items-center no-underline hover:text-goldPrime hover:stroke-goldPrime"
-								>
-									<svg
-										className={
-											contentThree.backgroundImageOrVideo === "Video"
-												? `block mr-[12px]`
-												: ` hidden`
-										}
-										width="30"
-										height="30"
-										viewBox="0 0 20 20"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<circle
-											cx="10"
-											cy="10"
-											r="9"
-											stroke="#2563eb"
-											strokeWidth="2"
-										/>
-										<path d="M14 10L8 6V14L14 10Z" fill="white" />
-									</svg>
-									<span className="font-semibold text-medium hover:text-blue">
-										{contentThree?.title}
-									</span>
-									<svg
-										className="ml-[12px]"
-										width="37"
-										height="12"
-										viewBox="0 0 37 12"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											d="M0 6H36.0001M36.0001 6L31.0001 1M36.0001 6L31.0001 11"
-											stroke="white"
-										/>
-									</svg>
-								</Link>
-							</div>
-						</article>
+							</article>
+						</div>
 					</div>
-				</div>
 
-				<motion.div
-					initial={initial}
-					whileInView={stagger}
-					viewport={{once: true}}
-					ref={postRef}
-					className={`postPost ${postPost}`}
-				>
-					<motion.article
-						initial={initialTwo}
+					<motion.div
+						initial={initial}
+						whileInView={stagger}
 						viewport={{once: true}}
-						whileInView={postNotActive ? fadeIn : fadeInThree}
-						className={`${post} ${postActive} ${postContentTailwindcss}`}
+						ref={postRef}
+						className={`postPost ${postPost}`}
 					>
-						<Link
-							href={contentOne?.uri ? `/blogs${contentOne?.uri}` : `/blogs`}
+						<motion.article
+							initial={initialTwo}
+							viewport={{once: true}}
+							whileInView={postNotActive ? fadeIn : fadeInThree}
+							className={`${post} ${postActive} ${postContentTailwindcss}`}
 						>
-							<div className="absolute top-0 left-0 h-[5px] w-full">
-								<div
-									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
-								/>
-							</div>
-							<motion.header
-								initial={initial}
-								whileInView={stagger}
-								viewport={{once: true}}
-								className="flex items-center justify-between header"
+							<Link
+								href={contentOne?.uri ? `/blogs${contentOne?.uri}` : `/blogs`}
 							>
-								<motion.span
-									initial={initialTwo}
-									whileInView={fadeIn}
-									viewport={{once: true}}
-									className="text-sm text-white uppercase"
-								>
-									{contentOne.backgroundImageOrVideo}
-								</motion.span>
-								<motion.span
-									initial={initialTwo}
-									whileInView={fadeIn}
-									viewport={{once: true}}
-									className="text-sm text-white "
-								>
-									{dateFormat(new Date(contentOne?.date), "dddd, mmmm d, yyyy")}
-								</motion.span>
-							</motion.header>
-							<motion.div
-								initial={initial}
-								whileInView={stagger}
-								viewport={{once: true}}
-								className="flex flex-col justify-between gap-4"
-							>
-								<motion.h3
+								<div className="absolute top-0 left-0 h-[5px] w-full">
+									<div
+										className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
+									/>
+								</div>
+								<motion.header
 									initial={initial}
-									whileInView={fadeInUp}
+									whileInView={stagger}
 									viewport={{once: true}}
-									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
-									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+									className="flex items-center justify-between header"
 								>
-									{contentOne.titleTwo}
-								</motion.h3>
+									<motion.span
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="text-sm text-white uppercase"
+									>
+										{contentOne.backgroundImageOrVideo}
+									</motion.span>
+									<motion.span
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="text-sm text-white "
+									>
+										{dateFormat(
+											new Date(contentOne?.date),
+											"dddd, mmmm d, yyyy"
+										)}
+									</motion.span>
+								</motion.header>
 								<motion.div
 									initial={initial}
-									whileInView={fadeInUp}
+									whileInView={stagger}
 									viewport={{once: true}}
-									className={
-										contentOne.paragraph
-											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
-											: `hidden`
-									}
-									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-										contentOne.paragraph
-									)}
-								/>
-							</motion.div>
-						</Link>
-					</motion.article>
-					<motion.article
-						initial={initialTwo}
-						viewport={{once: true}}
-						whileInView={postNotActive ? fadeIn : fadeInThree}
-						className={`${post} ${postNotActive} ${postContentTailwindcss}`}
-					>
-						<Link
-							href={contentTwo?.uri ? `/blogs${contentTwo?.uri}` : `/blogs`}
+									className="flex flex-col justify-between gap-4"
+								>
+									<motion.h3
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="title py-4 mt-8 text-white text-xl leading-[2rem]"
+										style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+									>
+										{contentOne.titleTwo}
+									</motion.h3>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className={
+											contentOne.paragraph
+												? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
+												: `hidden`
+										}
+										dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
+											contentOne.paragraph
+										)}
+									/>
+								</motion.div>
+							</Link>
+						</motion.article>
+						<motion.article
+							initial={initialTwo}
+							viewport={{once: true}}
+							whileInView={postNotActive ? fadeIn : fadeInThree}
+							className={`${post} ${postNotActive} ${postContentTailwindcss}`}
 						>
-							<div className="absolute top-0 left-0 h-[5px] w-full">
-								<div
-									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
-								/>
-							</div>
-							<motion.header
-								initial={initial}
-								whileInView={stagger}
-								viewport={{once: true}}
-								className="flex items-center justify-between header"
+							<Link
+								href={contentTwo?.uri ? `/blogs${contentTwo?.uri}` : `/blogs`}
 							>
-								<motion.span
-									initial={initialTwo}
-									whileInView={fadeIn}
-									viewport={{once: true}}
-									className="text-sm text-white uppercase"
-								>
-									{contentTwo.backgroundImageOrVideo}
-								</motion.span>
-								<motion.span
-									initial={initialTwo}
-									whileInView={fadeIn}
-									viewport={{once: true}}
-									className="text-sm text-white "
-								>
-									{dateFormat(new Date(contentTwo?.date), "dddd, mmmm d, yyyy")}
-								</motion.span>
-							</motion.header>
-							<motion.div
-								initial={initial}
-								whileInView={stagger}
-								viewport={{once: true}}
-								className="flex flex-col justify-between gap-4"
-							>
-								<motion.h3
+								<div className="absolute top-0 left-0 h-[5px] w-full">
+									<div
+										className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
+									/>
+								</div>
+								<motion.header
 									initial={initial}
-									whileInView={fadeInUp}
+									whileInView={stagger}
 									viewport={{once: true}}
-									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
-									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+									className="flex items-center justify-between header"
 								>
-									{contentTwo.title}
-								</motion.h3>
+									<motion.span
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="text-sm text-white uppercase"
+									>
+										{contentTwo.backgroundImageOrVideo}
+									</motion.span>
+									<motion.span
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="text-sm text-white "
+									>
+										{dateFormat(
+											new Date(contentTwo?.date),
+											"dddd, mmmm d, yyyy"
+										)}
+									</motion.span>
+								</motion.header>
 								<motion.div
 									initial={initial}
-									whileInView={fadeInUp}
+									whileInView={stagger}
 									viewport={{once: true}}
-									className={
-										contentTwo.paragraph
-											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
-											: `hidden`
-									}
-									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-										contentTwo.paragraph
-									)}
-								/>
-							</motion.div>
-						</Link>
-					</motion.article>
-					<motion.article
-						initial={initialTwo}
-						viewport={{once: true}}
-						whileInView={postNotActive ? fadeIn : fadeInThree}
-						className={`${post} ${postNotActive} ${postContentTailwindcss}`}
-					>
-						<Link
-							href={contentThree?.uri ? `/blogs${contentThree?.uri}` : `/blogs`}
+									className="flex flex-col justify-between gap-4"
+								>
+									<motion.h3
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="title py-4 mt-8 text-white text-xl leading-[2rem]"
+										style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+									>
+										{contentTwo.title}
+									</motion.h3>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className={
+											contentTwo.paragraph
+												? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
+												: `hidden`
+										}
+										dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
+											contentTwo.paragraph
+										)}
+									/>
+								</motion.div>
+							</Link>
+						</motion.article>
+						<motion.article
+							initial={initialTwo}
+							viewport={{once: true}}
+							whileInView={postNotActive ? fadeIn : fadeInThree}
+							className={`${post} ${postNotActive} ${postContentTailwindcss}`}
 						>
-							<div className="absolute top-0 left-0 h-[5px] w-full">
-								<div
-									className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
-								/>
-							</div>
-							<motion.header
-								initial={initial}
-								whileInView={stagger}
-								viewport={{once: true}}
-								className="flex items-center justify-between header"
+							<Link
+								href={
+									contentThree?.uri ? `/blogs${contentThree?.uri}` : `/blogs`
+								}
 							>
-								<motion.span
-									initial={initialTwo}
-									whileInView={fadeIn}
-									viewport={{once: true}}
-									className="text-sm text-white uppercase"
-								>
-									{contentThree.backgroundImageOrVideo}
-								</motion.span>
-								<motion.span
-									initial={initialTwo}
-									whileInView={fadeIn}
-									viewport={{once: true}}
-									className="text-sm text-white "
-								>
-									{dateFormat(
-										new Date(contentThree?.date),
-										"dddd, mmmm d, yyyy"
-									)}
-								</motion.span>
-							</motion.header>
-							<motion.div
-								initial={initial}
-								whileInView={stagger}
-								viewport={{once: true}}
-								className="flex flex-col justify-between gap-4"
-							>
-								<motion.h3
+								<div className="absolute top-0 left-0 h-[5px] w-full">
+									<div
+										className={`${progressBarFill} h-[inherit] bg-orange transition-all ease-in-out duration-75`}
+									/>
+								</div>
+								<motion.header
 									initial={initial}
-									whileInView={fadeInUp}
+									whileInView={stagger}
 									viewport={{once: true}}
-									className="title py-4 mt-8 text-white text-xl leading-[2rem]"
-									style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+									className="flex items-center justify-between header"
 								>
-									{contentThree.title}
-								</motion.h3>
+									<motion.span
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="text-sm text-white uppercase"
+									>
+										{contentThree.backgroundImageOrVideo}
+									</motion.span>
+									<motion.span
+										initial={initialTwo}
+										whileInView={fadeIn}
+										viewport={{once: true}}
+										className="text-sm text-white "
+									>
+										{dateFormat(
+											new Date(contentThree?.date),
+											"dddd, mmmm d, yyyy"
+										)}
+									</motion.span>
+								</motion.header>
 								<motion.div
 									initial={initial}
-									whileInView={fadeInUp}
+									whileInView={stagger}
 									viewport={{once: true}}
-									className={
-										contentThree.paragraph
-											? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
-											: `hidden`
-									}
-									dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-										contentThree.paragraph
-									)}
-								/>
-							</motion.div>
-						</Link>
-					</motion.article>
-				</motion.div>
+									className="flex flex-col justify-between gap-4"
+								>
+									<motion.h3
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className="title py-4 mt-8 text-white text-xl leading-[2rem]"
+										style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
+									>
+										{contentThree.title}
+									</motion.h3>
+									<motion.div
+										initial={initial}
+										whileInView={fadeInUp}
+										viewport={{once: true}}
+										className={
+											contentThree.paragraph
+												? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
+												: `hidden`
+										}
+										dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
+											contentThree.paragraph
+										)}
+									/>
+								</motion.div>
+							</Link>
+						</motion.article>
+					</motion.div>
+				</div>
 			</div>
-		</section>
+		</>
 	);
 };
 
