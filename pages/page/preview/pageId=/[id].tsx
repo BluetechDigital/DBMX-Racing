@@ -1,6 +1,5 @@
 // Imports
 import {isEmpty} from "lodash";
-import {motion} from "framer-motion";
 import {IContentContext} from "@/types/context";
 import type {GetServerSideProps, NextPage} from "next";
 import {getAuthToken} from "@/functions/cookies/cookies";
@@ -21,25 +20,19 @@ const dynamicPreviewPosts: NextPage<IContentContext> = ({
 	postTypeFlexiblecontent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexiblecontent: postTypeFlexiblecontent,
-			}}
-		>
-			<motion.div
-				exit={{
-					opacity: 0,
+		<>
+			<ContentContext.Provider
+				value={{
+					seo: seo,
+					content: content,
+					postTypeFlexiblecontent: postTypeFlexiblecontent,
 				}}
-				initial="initial"
-				animate="animate"
 			>
 				<Layout>
 					<RenderFlexibleContent />
 				</Layout>
-			</motion.div>
-		</ContentContext.Provider>
+			</ContentContext.Provider>
+		</>
 	);
 };
 

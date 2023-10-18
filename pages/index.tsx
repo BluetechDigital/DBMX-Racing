@@ -5,7 +5,6 @@ import {
 	ContentContext,
 	flexibleContentType,
 } from "@/context/context";
-import {motion} from "framer-motion";
 import {IContentContext} from "@/types/context";
 import type {NextPage, GetStaticProps} from "next";
 
@@ -23,25 +22,19 @@ const Home: NextPage<IContentContext> = ({
 	postTypeFlexiblecontent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexiblecontent: postTypeFlexiblecontent,
-			}}
-		>
-			<motion.div
-				exit={{
-					opacity: 0,
+		<>
+			<ContentContext.Provider
+				value={{
+					seo: seo,
+					content: content,
+					postTypeFlexiblecontent: postTypeFlexiblecontent,
 				}}
-				initial="initial"
-				animate="animate"
 			>
 				<Layout>
 					<RenderFlexibleContent />
 				</Layout>
-			</motion.div>
-		</ContentContext.Provider>
+			</ContentContext.Provider>
+		</>
 	);
 };
 

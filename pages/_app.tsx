@@ -1,4 +1,5 @@
 // Import
+import {motion} from "framer-motion";
 import {useRouter} from "next/router";
 import type {AppProps} from "next/app";
 import {client} from "@/config/apollo";
@@ -127,14 +128,22 @@ export default function App({
 		<ApolloProvider client={client}>
 			<PostHogProvider client={postHog}>
 				<GlobalContextProvider globalProps={globalProps}>
-					{/* Cookie Policy Pop Up */}
-					{postHog.has_opted_in_capturing() ||
-					postHog.has_opted_out_capturing() ? null : (
-						<CookiePolicyCard />
-					)}
-					<Loading />
-					<Component {...pageProps} />
-					<Footer />
+					<motion.div
+						exit={{
+							opacity: 0,
+						}}
+						initial="initial"
+						animate="animate"
+					>
+						{/* Cookie Policy Pop Up */}
+						{postHog.has_opted_in_capturing() ||
+						postHog.has_opted_out_capturing() ? null : (
+							<CookiePolicyCard />
+						)}
+						<Loading />
+						<Component {...pageProps} />
+						<Footer />
+					</motion.div>
 				</GlobalContextProvider>
 			</PostHogProvider>
 		</ApolloProvider>

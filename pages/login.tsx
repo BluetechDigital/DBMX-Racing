@@ -5,7 +5,6 @@ import {
 	ContentContext,
 	flexibleContentType,
 } from "@/context/context";
-import {motion} from "framer-motion";
 import Layout from "@/components/Layout/Layout";
 import {IContentContext} from "@/types/context";
 import {NextPage, GetServerSideProps} from "next";
@@ -24,27 +23,20 @@ const login: NextPage<IContentContext> = ({
 	postTypeFlexiblecontent,
 }) => {
 	return (
-		<ContentContext.Provider
-			value={{
-				seo: seo,
-				content: content,
-				postTypeFlexiblecontent: postTypeFlexiblecontent,
-			}}
-		>
-			<motion.div
-				exit={{
-					opacity: 0,
+		<>
+			<ContentContext.Provider
+				value={{
+					seo: seo,
+					content: content,
+					postTypeFlexiblecontent: postTypeFlexiblecontent,
 				}}
-				initial="initial"
-				animate="animate"
 			>
 				<Layout>
 					<HeroFour />
-
 					<Login />
 				</Layout>
-			</motion.div>
-		</ContentContext.Provider>
+			</ContentContext.Provider>
+		</>
 	);
 };
 
