@@ -2,36 +2,26 @@
 Custom reusable Animation Properties/variables */
 
 // WhileInView
-export interface Initial {
+export type Initial = {
 	y: number;
 	opacity: number;
-}
+};
 
-export interface InitialTwo {
+export type InitialTwo = {
 	y: number;
 	opacity: number;
-}
+};
 
-export interface FadeIn {
+export type FadeIn = {
 	opacity: number;
 	transition: {
 		duration: number;
 		delay: number;
 		ease: string;
 	};
-}
+};
 
-export interface FadeInTwo {
-	y: number;
-	opacity: number;
-	transition: {
-		delay: number;
-		duration: number;
-		ease: string;
-	};
-}
-
-export interface FadeInThree {
+export type FadeInTwo = {
 	y: number;
 	opacity: number;
 	transition: {
@@ -39,9 +29,9 @@ export interface FadeInThree {
 		duration: number;
 		ease: string;
 	};
-}
+};
 
-export interface FadeInUp {
+export type FadeInThree = {
 	y: number;
 	opacity: number;
 	transition: {
@@ -49,9 +39,19 @@ export interface FadeInUp {
 		duration: number;
 		ease: string;
 	};
-}
+};
 
-export interface Stagger {
+export type FadeInUp = {
+	y: number;
+	opacity: number;
+	transition: {
+		delay: number;
+		duration: number;
+		ease: string;
+	};
+};
+
+export type Stagger = {
 	y: number;
 	opacity: number;
 	transition: {
@@ -61,21 +61,21 @@ export interface Stagger {
 		staggerChildren: number;
 		delayChildren: number;
 	};
-}
+};
 
-export interface SlideInRightInitial {
+export type SlideInRightInitial = {
 	y: number;
 	x: number;
 	opacity: number;
-}
+};
 
-export interface SlideInLeftInitial {
+export type SlideInLeftInitial = {
 	y: number;
 	x: number;
 	opacity: number;
-}
+};
 
-export interface SlideInRightFinish {
+export type SlideInRightFinish = {
 	x: number;
 	y: 0;
 	opacity: number;
@@ -85,4 +85,4 @@ export interface SlideInRightFinish {
 		ease: string;
 		staggerChildren: number;
 	};
-}
+};

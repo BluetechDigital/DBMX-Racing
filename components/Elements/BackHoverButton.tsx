@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {FC} from "react";
 import Link from "next/link";
 import {IBackHoverButton} from "@/types/components/index";
@@ -10,7 +10,7 @@ const BackHoverButton: FC<IBackHoverButton> = ({link}) => {
 	return (
 		<div className="absolute items-center justify-center hidden w-full h-full xl:flex">
 			<div className="fixed left-10 z-[994] top-[7.5rem] flex justify-center">
-				<Link href={link ? `${link}` : `/`} className={styles.cta}>
+				<Link href={link ? link : `/`} className={styles.cta}>
 					<span className={styles.span}>
 						<svg
 							width="45px"

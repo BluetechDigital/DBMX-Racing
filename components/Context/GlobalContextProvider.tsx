@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {GlobalContext} from "../Global";
+import {GlobalContext} from "../../context/Global";
 import {IGlobalContextProvider} from "@/types/context";
 
 const GlobalContextProvider: FC<IGlobalContextProvider> = ({

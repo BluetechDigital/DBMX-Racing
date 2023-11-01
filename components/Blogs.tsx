@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {motion} from "framer-motion";
 import {useGlobalContext} from "@/context/Global";
 import {initial, stagger} from "../animations/animations";
@@ -19,8 +19,8 @@ const Blogs = () => {
 						viewport={{once: true}}
 						className="grid gap-4 mb-16 -m-4 sm:gap-y-2 sm:gap-x-0 lg:gap-4 grid-col md:grid-cols-2 lg:grid-cols-3"
 					>
-						{globalContext.blogs?.length > 0 ? (
-							globalContext.blogs.map((item: any, keys: any) => (
+						{globalContext?.blogs?.length > 0 ? (
+							globalContext?.blogs.map((item: any, keys: any) => (
 								<BlogsCard
 									key={keys}
 									uri={item?.node?.uri}

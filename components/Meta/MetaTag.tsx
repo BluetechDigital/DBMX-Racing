@@ -1,4 +1,4 @@
-// Import
+// Imports
 import Head from "next/head";
 import {useContentContext} from "@/context/context";
 
@@ -7,54 +7,58 @@ const MetaTag = () => {
 	return (
 		<Head>
 			{/* <!-- Website Title --> */}
-			<title key="title">{`${content.seo.title} | Motocross Accessories & Parts`}</title>
-			<meta name="description" content={content.seo.metaDesc} />
+			<title key="title">{`${content?.seo?.title} | Motocross Accessories & Parts`}</title>
+			<meta name="description" content={content?.seo?.metaDesc} />
 			<link rel="icon" href="/img/logos\DBMX Racing Ico.ico" />
 			<meta
 				name="robots"
-				content={`${content.seo.metaRobotsNoindex} , ${content.seo.metaRobotsNofollow}`}
+				content={`${content?.seo?.metaRobotsNoindex} , ${content?.seo?.metaRobotsNofollow}`}
 				key="metaRobots"
 			/>
-			<link rel="canonical" href={content.seo.canonical} key="metaCanonical" />
+			<link
+				rel="canonical"
+				href={content?.seo?.canonical}
+				key="metaCanonical"
+			/>
 
 			{/* OpenGraph */}
 			<meta
 				property="og:title"
-				content={content.seo.opengraphTitle}
+				content={content?.seo?.opengraphTitle}
 				key="ogTitle"
 			/>
-			<meta name="og:url" content={content.seo.opengraphUrl} key="ogUrl" />
+			<meta name="og:url" content={content?.seo?.opengraphUrl} key="ogUrl" />
 			<meta
 				name="og:image"
-				content={content.seo.opengraphImage?.mediaItemUrl}
+				content={content?.seo?.opengraphImage?.mediaItemUrl}
 				key="ogImage"
 			/>
 			<meta
 				name="image"
 				property="og:image"
-				content={content.seo.opengraphImage?.mediaItemUrl}
+				content={content?.seo?.opengraphImage?.mediaItemUrl}
 				key="ogLinkedInImage"
 			/>
 			<meta
 				name="og:description"
-				content={content.seo.opengraphDescription}
+				content={content?.seo?.opengraphDescription}
 				key="ogDesc"
 			/>
 
 			{/* Twitter */}
 			<meta
 				name="twitter:title"
-				content={content.seo.twitterTitle}
+				content={content?.seo?.twitterTitle}
 				key="twitterTitle"
 			/>
 			<meta
 				name="twitter:description"
-				content={content.seo.twitterDescription}
+				content={content?.seo?.twitterDescription}
 				key="twitterDesc"
 			/>
 			<meta
 				name="twitter:image"
-				content={content.seo.twitterImage?.mediaItemUrl}
+				content={content?.seo?.twitterImage?.mediaItemUrl}
 				key="twitterImage"
 			/>
 			<meta

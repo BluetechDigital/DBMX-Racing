@@ -423,7 +423,7 @@ const ContactForm: FC<IContactForm> = ({title}) => {
 							</h3>
 							<Paragraph
 								content={
-									globalContext.themesOptionsContent.businessHours.content
+									globalContext?.themesOptionsContent?.businessHours.content
 								}
 								tailwindStyling="font-medium text-base sm:text-medium leading-relaxed text-left text-black"
 							/>

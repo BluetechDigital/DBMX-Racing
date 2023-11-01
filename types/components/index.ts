@@ -1,5 +1,5 @@
 // Components Cards
-export interface IBlogsCard {
+export type IBlogsCard = {
 	uri: string;
 	date: string;
 	title: string;
@@ -14,9 +14,8 @@ export interface IBlogsCard {
 			};
 		};
 	};
-}
-
-export interface IFourImageGridCard {
+};
+export type IFourImageGridCard = {
 	title: string;
 	link: {
 		url: string;
@@ -31,9 +30,8 @@ export interface IFourImageGridCard {
 			width: number;
 		};
 	};
-}
-
-export interface IJumboContentCard {
+};
+export type IJumboContentCard = {
 	title: string;
 	subtitle: string;
 	paragraph: string;
@@ -52,9 +50,8 @@ export interface IJumboContentCard {
 		title: string;
 		target: string;
 	};
-}
-
-export interface ILogoCard {
+};
+export type ILogoCard = {
 	image: {
 		altText: string;
 		sourceUrl: string;
@@ -63,9 +60,8 @@ export interface ILogoCard {
 			width: number;
 		};
 	};
-}
-
-export interface IProductCard {
+};
+export type IProductCard = {
 	title: string;
 	link: {
 		url: string;
@@ -80,35 +76,32 @@ export interface IProductCard {
 			width: number;
 		};
 	};
-}
+};
 
 // Elements
-export interface IBackHoverButton {
+export type IBackHoverButton = {
 	link: string;
-}
-
-export interface INavbarMenuLinks {
+};
+export type INavbarMenuLinks = {
 	url: string;
 	label: string;
 	tailwindStyling: string;
-}
-
-export interface IParagraphProps {
+};
+export type IParagraphProps = {
 	content: string;
 	tailwindStyling: string;
-}
-
-export interface ISideMenu {
+};
+export type ISideMenu = {
 	menuActive: boolean;
-}
+};
 
 // layout
-export interface ILayout {
+export type ILayout = {
 	children: React.ReactNode;
-}
+};
 
 // Components
-export interface IContactBanner {
+export type IContactBanner = {
 	title: string;
 	paragraph: string;
 	backgroundImage: string;
@@ -117,18 +110,15 @@ export interface IContactBanner {
 		title: string;
 		target: string;
 	};
-}
-
-export interface IContactForm {
+};
+export type IContactForm = {
 	title: string;
-}
-
-export interface IContactInfo {
+};
+export type IContactInfo = {
 	title: string;
 	paragraph: string;
-}
-
-export interface IContentSection {
+};
+export type IContentSection = {
 	title: string;
 	subtitle: string;
 	bottomContent: {
@@ -146,9 +136,8 @@ export interface IContentSection {
 			};
 		};
 	};
-}
-
-export interface IContentSlider {
+};
+export type IContentSlider = {
 	content: {
 		tag: string;
 		title: string;
@@ -212,9 +201,8 @@ export interface IContentSlider {
 			};
 		};
 	};
-}
-
-export interface IContentStats {
+};
+export type IContentStats = {
 	title: string;
 	paragraph: string;
 	statsOne: {
@@ -227,9 +215,18 @@ export interface IContentStats {
 		subtitle: string;
 		paragraph: string;
 	};
-}
-
-export interface IErrorPage {
+};
+export type IGoogleReviews = {
+	title: string;
+};
+export type IGoogleReviewsCard = {
+	date: any;
+	rating: any;
+	name: string;
+	textarea: string;
+	profilePhoto: string;
+};
+export type IErrorPage = {
 	title: string;
 	paragraph: string;
 	backgroundImage: string;
@@ -238,9 +235,8 @@ export interface IErrorPage {
 		title: string;
 		target: string;
 	};
-}
-
-export interface IFourImageGrid {
+};
+export type IFourImageGrid = {
 	title: string;
 	servicesGrid: [
 		{
@@ -261,9 +257,8 @@ export interface IFourImageGrid {
 			};
 		}
 	];
-}
-
-export interface IHero {
+};
+export type IHero = {
 	title: string;
 	paragraph: string;
 	backgroundImage: string;
@@ -278,9 +273,8 @@ export interface IHero {
 		title: string;
 		target: string;
 	};
-}
-
-export interface IHeroThree {
+};
+export type IHeroThree = {
 	title: string;
 	paragraph: string;
 	backgroundVideoUrl: string;
@@ -293,15 +287,13 @@ export interface IHeroThree {
 			height: number;
 		};
 	};
-}
-
-export interface IHeroTwo {
+};
+export type IHeroTwo = {
 	title: string;
 	paragraph: string;
 	backgroundImage: string;
-}
-
-export interface IJumboContent {
+};
+export type IJumboContent = {
 	jumboContentSection: [
 		{
 			content: {
@@ -327,9 +319,8 @@ export interface IJumboContent {
 			};
 		}
 	];
-}
-
-export interface ILogos {
+};
+export type ILogos = {
 	title: string;
 	logoGrid: [
 		{
@@ -344,9 +335,8 @@ export interface ILogos {
 			};
 		}
 	];
-}
-
-export interface IMaintenance {
+};
+export type IMaintenance = {
 	title: string;
 	paragraph: string;
 	backgroundVideoUrl: string;
@@ -359,9 +349,8 @@ export interface IMaintenance {
 			height: number;
 		};
 	};
-}
-
-export interface IProductGrid {
+};
+export type IProductGrid = {
 	title: string;
 	subtitle: string;
 	paragraph: string;
@@ -384,14 +373,12 @@ export interface IProductGrid {
 			};
 		}
 	];
-}
-
-export interface IStoreLocation {
+};
+export type IStoreLocation = {
 	title: string;
 	paragraph: string;
-}
-
-export interface ITitleParagraph {
+};
+export type ITitleParagraph = {
 	title: string;
 	paragraph: string;
-}
+};

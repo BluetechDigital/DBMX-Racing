@@ -10,13 +10,13 @@ import Paragraph from "./Elements/Paragraph";
 const StoreLocation: FC<IStoreLocation> = ({title, paragraph}) => {
 	return (
 		<>
-			<div className="bg-white ">
+			<div className="bg-white">
 				<div className="container p-4 mx-auto">
 					<motion.div
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
-						className="flex flex-col py-28"
+						className="flex flex-col py-16"
 					>
 						<h2 className="text-black text-center tracking-normal leading-normal sm:leading-[2.75rem] font-[600]  text-lg sm:text-3xl md:text-4xl">
 							{title}

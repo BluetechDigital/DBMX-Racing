@@ -4,7 +4,6 @@ import type {NextPage, GetStaticProps} from "next";
 import {ContentContext, flexibleContentType, postType} from "@/context/context";
 
 // Queries Functions
-
 import {getAllPagesSlugs} from "@/functions/graphql/Queries/GetAllPagesSlugs";
 import {getAllSeoContent} from "@/functions/graphql/Queries/GetAllSeoContent";
 import {getAllFlexibleContentComponents} from "@/functions/graphql/Queries/GetAllFlexibleContentComponents";

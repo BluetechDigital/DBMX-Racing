@@ -168,6 +168,10 @@ export async function getAllFlexibleContentComponents(
                           }
                         }
                       }
+                      ... on ${postTypeFlexiblecontent}_GoogleReviews {
+                        fieldGroupName
+                        title
+                      }
                       ... on ${postTypeFlexiblecontent}_TrustedBrands {
                         fieldGroupName
                         title

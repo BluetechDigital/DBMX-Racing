@@ -40,7 +40,7 @@ const ContactBanner: FC<IContactBanner> = ({
 								tailwindStyling="w-full lg:max-w-[40rem] mt-4 text-center lg:text-left text-white text-base"
 							/>
 						</div>
-						<Link href={`${buttonLink?.url}`} target={`${buttonLink?.target}`}>
+						<Link href={buttonLink?.url} target={buttonLink?.target}>
 							<motion.button
 								initial={initialTwo}
 								whileInView={fadeIn}

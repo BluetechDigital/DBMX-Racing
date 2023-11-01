@@ -4,12 +4,11 @@ import Image from "next/image";
 import {useState, FC} from "react";
 import {useGlobalContext} from "@/context/Global";
 
-// Components
-import SideMenu from "./Elements/SideMenu";
-import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
-
 // Styling
 import styles from "../styles/components/Hero.module.scss";
+
+// Components
+import NavbarMenuLinks from "./Elements/NavbarMenuLinks";
 
 const HeroTwo: FC = () => {
 	const globalContext = useGlobalContext();
@@ -42,8 +41,8 @@ const HeroTwo: FC = () => {
 						</div>
 						<ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:gap-x-10">
 							{/* Menu Link*/}
-							{globalContext.navbarMenuLinks.navbarMenuLinks?.length > 0 ? (
-								globalContext.navbarMenuLinks.navbarMenuLinks?.map(
+							{globalContext?.navbarMenuLinks?.navbarMenuLinks?.length > 0 ? (
+								globalContext?.navbarMenuLinks?.navbarMenuLinks?.map(
 									(item: any, keys: any) => (
 										<li key={keys}>
 											<NavbarMenuLinks
@@ -58,19 +57,8 @@ const HeroTwo: FC = () => {
 								<></>
 							)}
 						</ul>
-						<button
-							type="button"
-							onClick={toggleMenu}
-							aria-label="toggle menu"
-							className={menuActive ? styles.navToggleOpen : styles.navToggle}
-						>
-							<span aria-hidden="true"></span>
-						</button>
 					</nav>
 				</div>
-
-				{/* Hidden Side Menu */}
-				<SideMenu menuActive={menuActive} />
 			</div>
 		</>
 	);

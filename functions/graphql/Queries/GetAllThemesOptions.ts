@@ -22,6 +22,8 @@ export async function getThemesOptionsContent() {
 								businessHours {
 									content
 								}
+								displayDiscountsBanner
+								discountsBannerTextarea
 							}
 						}
 					}

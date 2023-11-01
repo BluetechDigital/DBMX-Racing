@@ -109,20 +109,20 @@ export type IFooterMenuLinks = {
 	];
 };
 
-export interface IContentContext {
+export type IContentContext = {
 	seo: ISeo;
 	content: IContent;
 	postTypeFlexiblecontent: IPostTypeFlexiblecontent;
-}
+};
 
-export interface IGlobalContext {
+export type IGlobalContext = {
 	blogs: IBlogs;
 	mainMenuLinks: IMainMenuLinks;
 	navbarMenuLinks: INavbarMenuLinks;
 	footerMenuLinks: IFooterMenuLinks;
 	themesOptionsContent: IThemesOptionsContent;
 	contentSliderPostsContent: IContentSliderPostsContent;
-}
+};
 
 export type IGlobalContextProvider = {
 	globalProps: IGlobalContext;
@@ -142,6 +142,8 @@ export type IThemesOptionsContent = {
 	businessHours: {
 		content: string;
 	};
+	displayDiscountsBanner: boolean;
+	discountsBannerTextarea: string;
 };
 
 export type IPostTypeFlexiblecontent = {

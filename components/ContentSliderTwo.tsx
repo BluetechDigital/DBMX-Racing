@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {
 	fadeIn,
 	stagger,
@@ -22,36 +22,36 @@ const ContentSlider: FC = () => {
 
 	// Content Slide One
 	const contentOne = {
-		uri: globalContext.contentSliderPostsContent?.content[0]?.uri,
-		date: globalContext.contentSliderPostsContent?.content[0]?.date,
-		title: globalContext.contentSliderPostsContent?.content[0]?.title,
+		uri: globalContext?.contentSliderPostsContent?.content[0]?.uri,
+		date: globalContext?.contentSliderPostsContent?.content[0]?.date,
+		title: globalContext?.contentSliderPostsContent?.content[0]?.title,
 		paragraph:
-			globalContext.contentSliderPostsContent?.content[0].template
+			globalContext?.contentSliderPostsContent?.content[0].template
 				.flexibleContent.flexibleContent[1].paragraph,
 		titleTwo:
-			globalContext.contentSliderPostsContent?.content[0].template
+			globalContext?.contentSliderPostsContent?.content[0].template
 				.flexibleContent.flexibleContent[1].title,
 
 		backgroundVideoUrl:
-			globalContext.contentSliderPostsContent?.content[0]?.template
+			globalContext?.contentSliderPostsContent?.content[0]?.template
 				.flexibleContent.flexibleContent[0].backgroundVideoUrl,
 		backgroundImageOrVideo:
-			globalContext.contentSliderPostsContent?.content[0]?.template
+			globalContext?.contentSliderPostsContent?.content[0]?.template
 				.flexibleContent.flexibleContent[0].backgroundImageOrVideo,
 		backgroundImage: {
 			altText:
-				globalContext.contentSliderPostsContent?.content[0]?.template
+				globalContext?.contentSliderPostsContent?.content[0]?.template
 					.flexibleContent.flexibleContent[0].backgroundImage.altText,
 			sourceUrl:
-				globalContext.contentSliderPostsContent?.content[0]?.template
+				globalContext?.contentSliderPostsContent?.content[0]?.template
 					.flexibleContent.flexibleContent[0].backgroundImage.sourceUrl,
 			mediaDetails: {
 				height:
-					globalContext.contentSliderPostsContent?.content[0]?.template
+					globalContext?.contentSliderPostsContent?.content[0]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.height,
 				width:
-					globalContext.contentSliderPostsContent?.content[0]?.template
+					globalContext?.contentSliderPostsContent?.content[0]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.width,
 			},
@@ -60,36 +60,36 @@ const ContentSlider: FC = () => {
 
 	// Content Slide Two
 	const contentTwo = {
-		uri: globalContext.contentSliderPostsContent?.content[1]?.uri,
-		date: globalContext.contentSliderPostsContent?.content[1]?.date,
-		title: globalContext.contentSliderPostsContent?.content[1]?.title,
+		uri: globalContext?.contentSliderPostsContent?.content[1]?.uri,
+		date: globalContext?.contentSliderPostsContent?.content[1]?.date,
+		title: globalContext?.contentSliderPostsContent?.content[1]?.title,
 		paragraph:
-			globalContext.contentSliderPostsContent?.content[1].template
+			globalContext?.contentSliderPostsContent?.content[1].template
 				.flexibleContent.flexibleContent[1].paragraph,
 		titleTwo:
-			globalContext.contentSliderPostsContent?.content[1].template
+			globalContext?.contentSliderPostsContent?.content[1].template
 				.flexibleContent.flexibleContent[1].title,
 
 		backgroundVideoUrl:
-			globalContext.contentSliderPostsContent?.content[1]?.template
+			globalContext?.contentSliderPostsContent?.content[1]?.template
 				.flexibleContent.flexibleContent[0]?.backgroundVideoUrl,
 		backgroundImageOrVideo:
-			globalContext.contentSliderPostsContent?.content[1]?.template
+			globalContext?.contentSliderPostsContent?.content[1]?.template
 				.flexibleContent.flexibleContent[0].backgroundImageOrVideo,
 		backgroundImage: {
 			altText:
-				globalContext.contentSliderPostsContent?.content[1]?.template
+				globalContext?.contentSliderPostsContent?.content[1]?.template
 					.flexibleContent.flexibleContent[0].backgroundImage.altText,
 			sourceUrl:
-				globalContext.contentSliderPostsContent?.content[1]?.template
+				globalContext?.contentSliderPostsContent?.content[1]?.template
 					.flexibleContent.flexibleContent[0].backgroundImage.sourceUrl,
 			mediaDetails: {
 				height:
-					globalContext.contentSliderPostsContent?.content[1]?.template
+					globalContext?.contentSliderPostsContent?.content[1]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.height,
 				width:
-					globalContext.contentSliderPostsContent?.content[1]?.template
+					globalContext?.contentSliderPostsContent?.content[1]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.width,
 			},
@@ -98,36 +98,36 @@ const ContentSlider: FC = () => {
 
 	// Content Slide Three
 	const contentThree = {
-		uri: globalContext.contentSliderPostsContent?.content[2]?.uri,
-		date: globalContext.contentSliderPostsContent?.content[2]?.date,
-		title: globalContext.contentSliderPostsContent?.content[2]?.title,
+		uri: globalContext?.contentSliderPostsContent?.content[2]?.uri,
+		date: globalContext?.contentSliderPostsContent?.content[2]?.date,
+		title: globalContext?.contentSliderPostsContent?.content[2]?.title,
 		paragraph:
-			globalContext.contentSliderPostsContent?.content[2].template
+			globalContext?.contentSliderPostsContent?.content[2].template
 				.flexibleContent.flexibleContent[1].paragraph,
 		titleTwo:
-			globalContext.contentSliderPostsContent?.content[2].template
+			globalContext?.contentSliderPostsContent?.content[2].template
 				.flexibleContent.flexibleContent[1].title,
 
 		backgroundVideoUrl:
-			globalContext.contentSliderPostsContent?.content[2]?.template
+			globalContext?.contentSliderPostsContent?.content[2]?.template
 				.flexibleContent.flexibleContent[0]?.backgroundVideoUrl,
 		backgroundImageOrVideo:
-			globalContext.contentSliderPostsContent?.content[2]?.template
+			globalContext?.contentSliderPostsContent?.content[2]?.template
 				.flexibleContent.flexibleContent[0].backgroundImageOrVideo,
 		backgroundImage: {
 			altText:
-				globalContext.contentSliderPostsContent?.content[2]?.template
+				globalContext?.contentSliderPostsContent?.content[2]?.template
 					.flexibleContent.flexibleContent[0].backgroundImage.altText,
 			sourceUrl:
-				globalContext.contentSliderPostsContent?.content[2]?.template
+				globalContext?.contentSliderPostsContent?.content[2]?.template
 					.flexibleContent.flexibleContent[0].backgroundImage.sourceUrl,
 			mediaDetails: {
 				height:
-					globalContext.contentSliderPostsContent?.content[2]?.template
+					globalContext?.contentSliderPostsContent?.content[2]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.height,
 				width:
-					globalContext.contentSliderPostsContent?.content[2]?.template
+					globalContext?.contentSliderPostsContent?.content[2]?.template
 						.flexibleContent.flexibleContent[0].backgroundImage.mediaDetails
 						.width,
 			},
@@ -245,7 +245,7 @@ const ContentSlider: FC = () => {
 								<div
 									className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover main-post__image"
 									style={{
-										backgroundImage: `url("${contentOne.backgroundImage?.sourceUrl}")`,
+										backgroundImage: `url("${contentOne?.backgroundImage?.sourceUrl}")`,
 									}}
 								>
 									{/* Background Video */}
@@ -254,36 +254,36 @@ const ContentSlider: FC = () => {
 											<iframe
 												allowFullScreen
 												className={
-													contentOne.backgroundImageOrVideo === "Video"
+													contentOne?.backgroundImageOrVideo === "Video"
 														? "absolute top-0 left-0 border-none w-full h-full"
 														: `hidden`
 												}
-												src={contentOne.backgroundVideoUrl}
+												src={contentOne?.backgroundVideoUrl}
 											/>
 										</div>
 									</div>
 
 									{/* Image */}
 									<Image
-										width={contentOne.backgroundImage?.mediaDetails?.width}
-										height={contentOne.backgroundImage?.mediaDetails?.height}
+										width={contentOne?.backgroundImage?.mediaDetails?.width}
+										height={contentOne?.backgroundImage?.mediaDetails?.height}
 										className={
-											contentOne.backgroundImageOrVideo === "Image"
+											contentOne?.backgroundImageOrVideo === "Image"
 												? `block ${mainImageVideoTailwindcss}`
 												: ` hidden`
 										}
 										src={
-											contentOne.backgroundImage?.sourceUrl
-												? contentOne.backgroundImage?.sourceUrl
+											contentOne?.backgroundImage?.sourceUrl
+												? contentOne?.backgroundImage?.sourceUrl
 												: `/`
 										}
-										alt={`${contentOne.backgroundImage?.altText} image`}
+										alt={`${contentOne?.backgroundImage?.altText} image`}
 									/>
 								</div>
 								<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 									<div className="inline-flex m-0 overflow-hidden tag">
 										<span className="py-[6px] px-6 bg-goldPrime">
-											{contentOne.backgroundImageOrVideo}
+											{contentOne?.backgroundImageOrVideo}
 										</span>
 									</div>
 									<h2
@@ -300,7 +300,7 @@ const ContentSlider: FC = () => {
 									>
 										<svg
 											className={
-												contentOne.backgroundImageOrVideo === "Video"
+												contentOne?.backgroundImageOrVideo === "Video"
 													? `block mr-[12px]`
 													: ` hidden`
 											}
@@ -344,7 +344,7 @@ const ContentSlider: FC = () => {
 								<div
 									className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
 									style={{
-										backgroundImage: `url("${contentTwo.backgroundImage?.sourceUrl}")`,
+										backgroundImage: `url("${contentTwo?.backgroundImage?.sourceUrl}")`,
 									}}
 								>
 									{/* Background Video */}
@@ -353,32 +353,32 @@ const ContentSlider: FC = () => {
 											<iframe
 												allowFullScreen
 												className={
-													contentTwo.backgroundImageOrVideo === "Video"
+													contentTwo?.backgroundImageOrVideo === "Video"
 														? "absolute top-0 left-0 border-none w-full h-full"
 														: `hidden`
 												}
-												src={contentTwo.backgroundVideoUrl}
+												src={contentTwo?.backgroundVideoUrl}
 											/>
 										</div>
 									</div>
 
 									{/* Image */}
 									<Image
-										width={contentTwo.backgroundImage?.mediaDetails?.width}
-										height={contentTwo.backgroundImage?.mediaDetails?.height}
+										width={contentTwo?.backgroundImage?.mediaDetails?.width}
+										height={contentTwo?.backgroundImage?.mediaDetails?.height}
 										className={
-											contentTwo.backgroundImageOrVideo === "Image"
+											contentTwo?.backgroundImageOrVideo === "Image"
 												? `block ${mainImageVideoTailwindcss}`
 												: ` hidden`
 										}
-										src={contentTwo.backgroundImage?.sourceUrl}
-										alt={`${contentTwo.backgroundImage?.altText} image`}
+										src={contentTwo?.backgroundImage?.sourceUrl}
+										alt={`${contentTwo?.backgroundImage?.altText} image`}
 									/>
 								</div>
 								<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 									<div className="inline-flex m-0 overflow-hidden tag">
 										<span className="py-[6px] px-6 bg-goldPrime">
-											{contentTwo.backgroundImageOrVideo}
+											{contentTwo?.backgroundImageOrVideo}
 										</span>
 									</div>
 									<h2
@@ -395,7 +395,7 @@ const ContentSlider: FC = () => {
 									>
 										<svg
 											className={
-												contentTwo.backgroundImageOrVideo === "Video"
+												contentTwo?.backgroundImageOrVideo === "Video"
 													? `block mr-[12px]`
 													: ` hidden`
 											}
@@ -439,7 +439,7 @@ const ContentSlider: FC = () => {
 								<div
 									className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover"
 									style={{
-										backgroundImage: `url("${contentThree.backgroundImage?.sourceUrl}")`,
+										backgroundImage: `url("${contentThree?.backgroundImage?.sourceUrl}")`,
 									}}
 								>
 									{/* Background Video */}
@@ -448,32 +448,32 @@ const ContentSlider: FC = () => {
 											<iframe
 												allowFullScreen
 												className={
-													contentThree.backgroundImageOrVideo === "Video"
+													contentThree?.backgroundImageOrVideo === "Video"
 														? "absolute top-0 left-0 border-none w-full h-full"
 														: `hidden`
 												}
-												src={contentThree.backgroundVideoUrl}
+												src={contentThree?.backgroundVideoUrl}
 											/>
 										</div>
 									</div>
 
 									{/* Image */}
 									<Image
-										width={contentThree.backgroundImage?.mediaDetails?.width}
-										height={contentThree.backgroundImage?.mediaDetails?.height}
+										width={contentThree?.backgroundImage?.mediaDetails?.width}
+										height={contentThree?.backgroundImage?.mediaDetails?.height}
 										className={
-											contentThree.backgroundImageOrVideo === "Image"
+											contentThree?.backgroundImageOrVideo === "Image"
 												? `block ${mainImageVideoTailwindcss}`
 												: ` hidden`
 										}
-										src={contentThree.backgroundImage?.sourceUrl}
-										alt={`${contentThree.backgroundImage?.altText} image`}
+										src={contentThree?.backgroundImage?.sourceUrl}
+										alt={`${contentThree?.backgroundImage?.altText} image`}
 									/>
 								</div>
 								<div className="absolute top-[35%] sm:top-[50%] lg:top-[20%] xl:top-[25%] :top-[35%] left-[4%] transform translate-y-[-40%] text-white w-[90%]">
 									<div className="inline-flex m-0 overflow-hidden tag">
 										<span className="py-[6px] px-6 bg-goldPrime">
-											{contentThree.backgroundImageOrVideo}
+											{contentThree?.backgroundImageOrVideo}
 										</span>
 									</div>
 									<h2
@@ -492,7 +492,7 @@ const ContentSlider: FC = () => {
 									>
 										<svg
 											className={
-												contentThree.backgroundImageOrVideo === "Video"
+												contentThree?.backgroundImageOrVideo === "Video"
 													? `block mr-[12px]`
 													: ` hidden`
 											}
@@ -566,7 +566,7 @@ const ContentSlider: FC = () => {
 										viewport={{once: true}}
 										className="text-sm text-white uppercase"
 									>
-										{contentOne.backgroundImageOrVideo}
+										{contentOne?.backgroundImageOrVideo}
 									</motion.span>
 									<motion.span
 										initial={initialTwo}
@@ -593,19 +593,19 @@ const ContentSlider: FC = () => {
 										className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 										style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 									>
-										{contentOne.titleTwo}
+										{contentOne?.titleTwo}
 									</motion.h3>
 									<motion.div
 										initial={initial}
 										whileInView={fadeInUp}
 										viewport={{once: true}}
 										className={
-											contentOne.paragraph
+											contentOne?.paragraph
 												? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
 												: `hidden`
 										}
 										dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-											contentOne.paragraph
+											contentOne?.paragraph
 										)}
 									/>
 								</motion.div>
@@ -637,7 +637,7 @@ const ContentSlider: FC = () => {
 										viewport={{once: true}}
 										className="text-sm text-white uppercase"
 									>
-										{contentTwo.backgroundImageOrVideo}
+										{contentTwo?.backgroundImageOrVideo}
 									</motion.span>
 									<motion.span
 										initial={initialTwo}
@@ -664,19 +664,19 @@ const ContentSlider: FC = () => {
 										className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 										style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 									>
-										{contentTwo.title}
+										{contentTwo?.title}
 									</motion.h3>
 									<motion.div
 										initial={initial}
 										whileInView={fadeInUp}
 										viewport={{once: true}}
 										className={
-											contentTwo.paragraph
+											contentTwo?.paragraph
 												? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
 												: `hidden`
 										}
 										dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-											contentTwo.paragraph
+											contentTwo?.paragraph
 										)}
 									/>
 								</motion.div>
@@ -710,7 +710,7 @@ const ContentSlider: FC = () => {
 										viewport={{once: true}}
 										className="text-sm text-white uppercase"
 									>
-										{contentThree.backgroundImageOrVideo}
+										{contentThree?.backgroundImageOrVideo}
 									</motion.span>
 									<motion.span
 										initial={initialTwo}
@@ -737,19 +737,19 @@ const ContentSlider: FC = () => {
 										className="title py-4 mt-8 text-white text-xl leading-[2rem]"
 										style={{textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)"}}
 									>
-										{contentThree.title}
+										{contentThree?.title}
 									</motion.h3>
 									<motion.div
 										initial={initial}
 										whileInView={fadeInUp}
 										viewport={{once: true}}
 										className={
-											contentThree.paragraph
+											contentThree?.paragraph
 												? `block paragraph mt-2 text-white text-base text-left leading-[1.5rem]`
 												: `hidden`
 										}
 										dangerouslySetInnerHTML={createTrimmedParagraphMarkup(
-											contentThree.paragraph
+											contentThree?.paragraph
 										)}
 									/>
 								</motion.div>

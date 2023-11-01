@@ -2,7 +2,11 @@
 const nextConfig = {
 	reactStrictMode: true,
 	images: {
-		domains: ["dbmx-racing.local", "mydummysite.co.uk"],
+		domains: [
+			"dbmx-racing.local",
+			"mydummysite.co.uk",
+			"lh3.googleusercontent.com",
+		],
 	},
 };
 

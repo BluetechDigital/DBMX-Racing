@@ -167,6 +167,10 @@ export const getAllPreviewFlexibleContentComponents = async (
 									}
 								}
 							}
+							... on ${postTypeFlexiblecontent}_GoogleReviews {
+								fieldGroupName
+								title
+							}
 							... on ${postTypeFlexiblecontent}_TrustedBrands {
 								fieldGroupName
 								title

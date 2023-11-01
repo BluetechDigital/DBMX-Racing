@@ -1,4 +1,4 @@
-// Import
+// Imports
 import {FC} from "react";
 import {useContentContext} from "@/context/context";
 
@@ -8,6 +8,7 @@ import Blogs from "@/components/Blogs";
 import Logos from "@/components/Logos";
 import Maintenance from "../Maintenance";
 import HeroTwo from "@/components/HeroTwo";
+import GoogleReviews from "../GoogleReviews";
 import HeroThree from "@/components/HeroThree";
 import ErrorPage from "@/components/ErrorPage";
 import ContactInfo from "@/components/ContactInfo";
@@ -26,11 +27,11 @@ import ContentSliderTwo from "@/components/ContentSliderTwo";
 const RenderFlexibleContent: FC = () => {
 	const content = useContentContext();
 
-	const Flexiblecontent = content.postTypeFlexiblecontent;
+	const Flexiblecontent = content?.postTypeFlexiblecontent;
 	return (
 		<>
-			{content.content.length > 0 ? (
-				content.content.map((item: any, keys: any) => (
+			{content?.content?.length > 0 ? (
+				content?.content?.map((item: any, keys: any) => (
 					<section key={keys}>
 						{item?.fieldGroupName === `${Flexiblecontent}_HeroSection` ? (
 							<>
@@ -65,7 +66,6 @@ const RenderFlexibleContent: FC = () => {
 						) : item?.fieldGroupName === `${Flexiblecontent}_TitleParagraph` ? (
 							<>
 								<TitleParagraph
-									key={keys}
 									title={item?.title}
 									paragraph={item?.paragraph}
 								/>
@@ -81,10 +81,7 @@ const RenderFlexibleContent: FC = () => {
 						) : item?.fieldGroupName ===
 						  `${Flexiblecontent}_JumboContentSection` ? (
 							<>
-								<JumboContent
-									key={keys}
-									jumboContentSection={item?.contentSection}
-								/>
+								<JumboContent jumboContentSection={item?.contentSection} />
 							</>
 						) : item?.fieldGroupName === `${Flexiblecontent}_ContentStats` ? (
 							<>
@@ -111,6 +108,10 @@ const RenderFlexibleContent: FC = () => {
 									productGrid={item?.products}
 								/>
 							</>
+						) : item?.fieldGroupName === `${Flexiblecontent}_GoogleReviews` ? (
+							<>
+								<GoogleReviews title={item?.title} />
+							</>
 						) : item?.fieldGroupName === `${Flexiblecontent}_TrustedBrands` ? (
 							<>
 								<Logos title={item?.title} logoGrid={item?.logos} />
@@ -135,7 +136,6 @@ const RenderFlexibleContent: FC = () => {
 						) : item?.fieldGroupName === `${Flexiblecontent}_ContactBanner` ? (
 							<>
 								<ContactBanner
-									key={keys}
 									title={item?.title}
 									paragraph={item?.paragraph}
 									buttonLink={item?.buttonLink}

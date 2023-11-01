@@ -8,7 +8,7 @@ const NavbarMenuLinks: FC<INavbarMenuLinks> = ({
 	tailwindStyling,
 }) => {
 	return (
-		<Link className={tailwindStyling} href={url}>
+		<Link className={tailwindStyling} href={url ? url : "/"}>
 			{label}
 		</Link>
 	);
