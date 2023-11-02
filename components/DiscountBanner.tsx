@@ -6,9 +6,6 @@ import {useGlobalContext} from "@/context/Global";
 import Paragraph from "./Elements/Paragraph";
 const DiscountBanner: FC = () => {
 	const globalContext = useGlobalContext();
-
-	// Use #DBMX20 in store for 20% discount
-
 	return (
 		<>
 			<div
