@@ -1,0 +1,35 @@
+// Imports
+@import "../base/fonts";
+@import "../base/colors";
+
+.cta {
+	.title {
+		span {
+			@apply text-accent-default;
+		}
+	}
+}
+
+.ctaTwo {
+	.paragraph {
+		span {
+			@apply text-accent-default;
+		}
+	}
+
+	.paragraphClipPath {
+		clip-path: none;
+
+		@media screen and (min-width: 1024px) {
+			clip-path: polygon(0 0, 100% 0%, 92% 100%, 0% 100%);
+		}
+	}
+
+	.ctaTwoButtonLink {
+		clip-path: none;
+
+		@media screen and (min-width: 1024px) {
+			clip-path: polygon(10% 0, 100% 0%, 100% 100%, 0% 100%);
+		}
+	}
+}

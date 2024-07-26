@@ -1,42 +1,51 @@
 // Imports
-import {useState, FC} from "react";
+import {FC} from "react";
 import {motion} from "framer-motion";
 import {IHeroTwo} from "@/types/components/index";
-import {fadeInUp, initial} from "../animations/animations";
+import {fadeIn, initialTwo} from "@/animations/animations";
 
 // Styling
-import styles from "../styles/components/Hero.module.scss";
+import styles from "@/styles/components/Hero.module.scss";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
 const HeroTwo: FC<IHeroTwo> = ({title, paragraph, backgroundImage}) => {
 	return (
 		<>
-			<div className={styles.hero}>
+			<div
+				className={
+					styles.heroTwo + ` relative z-50 w-full pt-[100px] lg:pt-[110px]`
+				}
+			>
 				<div
-					className="flex flex-col bg-cover bg-center bg-no-repeat relative h-full min-h-[65vh]"
+					className="py-20 w-full h-[35vh] lg:h-[30vh] flex flex-col items-center lg:items-baseline justify-center relative bg-primary-darker bg-center bg-no-repeat bg-cover"
 					style={{
-						backgroundImage: `linear-gradient(0deg,rgb(78, 1, 4, 0.65),rgb(78, 1, 4, 0.65)),url("${backgroundImage}")`,
+						backgroundImage: `linear-gradient(
+								0deg,
+								rgb(0, 0, 0, 0.40),
+								rgba(0, 0, 0, 0.40),
+								rgba(0, 0, 0, 0.40)
+							),url("${
+								backgroundImage?.sourceUrl
+									? backgroundImage?.sourceUrl
+									: "/svg/background/grid-background-06.svg"
+							}")`,
 					}}
 				>
-					<div className="container relative flex flex-col items-center justify-center px-4 pt-0 m-auto text-center xl:pt-20 2xl:pt-0">
-						<div className="max-w-3xl">
-							<motion.h1
-								initial={initial}
-								whileInView={fadeInUp}
-								viewport={{once: true}}
-								className="flex flex-col sm:block text-center mb-3 text-xl sm:text-3xl md:text-6xl lg:text-7xl text-white font-bold lg:leading-[4rem]"
-							>
-								{title}
-							</motion.h1>
-						</div>
-						<div className="max-w-xl">
-							<Paragraph
-								content={paragraph}
-								tailwindStyling="py-6 text-white leading-[1.75rem] font-[500] text-base sm:text-medium text-center"
-							/>
-						</div>
+					<div className="lg:container mx-auto relative z-10 flex flex-col items-center lg:items-start px-">
+						<motion.h1
+							initial={initialTwo}
+							whileInView={fadeIn}
+							viewport={{once: true}}
+							className="text-center lg:text-left uppercase font-VitroTrialHeavy italic text-2xl lg:text-4xl text-white leading-snug lg:leading-[2.5rem]"
+						>
+							{title}
+						</motion.h1>
+						<Paragraph
+							content={paragraph}
+							tailwindStyling="max-w-2xl mx-auto lg:mx-0 mt-2 text-white leading-relaxed text-lg text-center lg:text-left"
+						/>
 					</div>
 				</div>
 			</div>

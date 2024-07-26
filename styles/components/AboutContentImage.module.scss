@@ -1,0 +1,11 @@
+// Imports
+@import "../base/fonts";
+@import "../base/colors";
+
+.aboutContentImage {
+	.title {
+		span {
+			@apply text-primary-default;
+		}
+	}
+}

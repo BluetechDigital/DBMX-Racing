@@ -1,36 +1,49 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {ITitleParagraph} from "@/types/components/index";
-import {fadeInUp, initial} from "../animations/animations";
+import {ITitleParagraph} from "@/types/components";
+import {fadeInUp, initial} from "@/animations/animations";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
-const TitleParagraph: FC<ITitleParagraph> = ({title, paragraph}) => {
+const TitleParagraph: FC<ITitleParagraph> = ({
+	title,
+	paragraph,
+	displayParagraph,
+}) => {
 	return (
-		<>
-			<div className="bg-white">
-				<div className="container p-0 mx-auto">
-					<div className="flex flex-col px-4">
-						<motion.div
-							initial={initial}
-							whileInView={fadeInUp}
-							viewport={{once: true}}
-							className="py-16 sm:py-20 md:py-28"
-						>
-							<h2 className="max-w-3xl mx-auto text-black text-center tracking-normal leading-normal sm:leading-[2.75rem] font-[900] text-lg sm:text-3xl md:text-4xl">
-								{title}
-							</h2>
-							<Paragraph
-								content={paragraph}
-								tailwindStyling="w-full lg:max-w-[50rem] mx-auto mt-4 px-4 py-8 text-black text-left text-base"
-							/>
-						</motion.div>
-					</div>
-				</div>
-			</div>
-		</>
+		<div className="bg-white lg:container p-0 mx-auto flex flex-col px-4">
+			<motion.div
+				initial={initial}
+				whileInView={fadeInUp}
+				viewport={{once: true}}
+				className="py-10 px-4"
+			>
+				<motion.h2
+					initial={initial}
+					whileInView={fadeInUp}
+					viewport={{once: true}}
+					className={
+						title
+							? "mb-10 text-center font-semibold leading-relaxed text-lg lg:text-3xl text-pureBlack"
+							: "hidden"
+					}
+				>
+					{title}
+				</motion.h2>
+				<Paragraph
+					content={paragraph}
+					tailwindStyling={
+						paragraph
+							? `lg:max-w-6xl mx-auto mb-10 text-pureBlack leading-[1.75rem] text-paragraph text-center ${
+									displayParagraph ? "lg:text-center" : "lg:text-left"
+							  }`
+							: "hidden"
+					}
+				/>
+			</motion.div>
+		</div>
 	);
 };
 

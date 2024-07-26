@@ -1,97 +1,234 @@
 // Imports
+import {
+	stagger,
+	initial,
+	fadeInUp,
+	slideInRightFinish,
+	slideInRightInitial,
+} from "@/animations/animations";
 import {FC} from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {motion} from "framer-motion";
 import {IHero} from "@/types/components/index";
-import {fadeInUp, initial, stagger} from "../animations/animations";
-
-// Styling
-import styles from "../styles/components/Hero.module.scss";
 
 // Components
-import Paragraph from "./Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
+import RenderStars from "@/components/Elements/RenderStars";
 
 const Hero: FC<IHero> = ({
 	title,
+	ctaLink,
+	videoUrl,
 	paragraph,
 	buttonLink,
+	displayVideo,
+	ctaParagraph,
 	buttonLinkTwo,
 	backgroundImage,
-	backgroundVideoUrl,
 }) => {
+	const hoverStyling =
+		"flex item-center lg:items-baseline justify-center px-6 h-full min-h-[35vh] lg:min-h-[25vh] bg-primary-dark opacity-0 group-hover:opacity-90 group-hover:w-full transition-all ease-in-out duration-500";
 	return (
 		<>
-			<div className={styles.hero}>
+			<div className="bg-white pt-20">
 				<div
-					className="relative flex flex-col h-full min-h-screen bg-center bg-no-repeat bg-cover"
-					style={{backgroundImage: `url("${backgroundImage}")`}}
+					className="relative flex flex-col h-full min-h-[75vh] bg-center bg-no-repeat bg-cover"
+					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 				>
 					{/* Background Video */}
 					<div className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
-						<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-screen">
+						<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-[75vh]">
 							<iframe
 								allowFullScreen
 								className={
-									backgroundVideoUrl
+									videoUrl && displayVideo
 										? "absolute top-0 left-0 border-none w-full h-full"
 										: `hidden`
 								}
-								src={backgroundVideoUrl}
+								src={videoUrl}
 							/>
 						</div>
-						<div className="absolute top-0 h-screen bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-darkerRedTwo from-5% via-darkerRedTwo via-10% to-transparent to-100%" />
+						<div className="absolute top-0 h-[105vh] min-h-screen lg:h-[75vh] bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-pureBlack/50 from-5% via-pureBlack/50 via-10% to-transparent to-100%" />
 					</div>
-					<div className="container relative flex flex-col items-baseline justify-center px-4 m-auto text-center sm:text-left">
-						<div className="max-w-3xl">
-							<h1 className="flex flex-col sm:block text-left mb-3 text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-bold leading-[2rem] sm:leading-[3rem] lg:leading-[4rem]">
-								{title}
-							</h1>
+					<div className="relative group">
+						<div>
+							<span className={`w-3/4 delay-200 ${hoverStyling}`}></span>
+							<span className={`w-2/4 delay-300 ${hoverStyling}`}></span>
+							<span className={`w-1/4 delay-500 ${hoverStyling}`}></span>
 						</div>
-						<div className="max-w-xl">
-							<Paragraph
-								content={paragraph}
-								tailwindStyling="mb-6 py-6 text-white leading-[1.75rem] font-[500] text-base sm:text-medium text-center sm:text-left"
-							/>
+						<div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col lg:flex-row items-center justify-between w-full">
+							<div className="lg:container py-20 lg:py-0 mx-auto w-3/4">
+								<div className="flex flex-col items-baseline justify-center px-4">
+									<motion.h1
+										initial={initial}
+										variants={stagger}
+										whileInView="animate"
+										viewport={{once: true}}
+										className="font-VitroTrialHeavy italic max-w-3xl flex flex-col text-center lg:text-left mb-6 text-6xl lg:text-8xl uppercase text-white font-bold leading-tight"
+									>
+										{title}
+									</motion.h1>
+									<div className="max-w-2xl">
+										<Paragraph
+											content={paragraph}
+											tailwindStyling="mb-6 text-white leading-[1.75rem] font-normal font-NeoGramTrial text-xl text-center lg:text-left"
+										/>
+										<motion.div
+											initial={initial}
+											variants={stagger}
+											whileInView="animate"
+											viewport={{once: true}}
+											className="flex flex-col items-center justify-center gap-4 md:flex-row sm:justify-start"
+										>
+											<Link
+												href={`${buttonLink?.url}`}
+												target={buttonLink?.target}
+												aria-label={`${buttonLink?.title}`}
+												className={buttonLink?.url ? "block" : "hidden"}
+											>
+												<motion.button
+													initial={initial}
+													whileInView={fadeInUp}
+													viewport={{once: true}}
+													className="block buttonStyling-white font-semibold text-medium w-fit sm:mx-0"
+												>
+													{buttonLink?.title}
+												</motion.button>
+											</Link>
+											<Link
+												href={`${buttonLinkTwo?.url}`}
+												target={buttonLinkTwo?.target}
+												aria-label={`${buttonLinkTwo?.title}`}
+												className={buttonLink?.url ? "block" : "hidden"}
+											>
+												<motion.button
+													initial={initial}
+													whileInView={fadeInUp}
+													viewport={{once: true}}
+													className="buttonStyling-alt-two font-semibold text-medium w-fit sm:mx-0"
+												>
+													{buttonLinkTwo?.title}
+												</motion.button>
+											</Link>
+										</motion.div>
+									</div>
+								</div>
+							</div>
 							<motion.div
-								initial={initial}
-								whileInView={stagger}
 								viewport={{once: true}}
-								className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-start"
+								initial={slideInRightInitial}
+								whileInView={slideInRightFinish}
+								className="w-full lg:w-fit lg:max-w-sm xl:max-w-md lg:absolute right-0 bottom-0 flex flex-col items-center justify-end p-0 lg:gap-4 h-fit"
 							>
-								<Link
-									href={buttonLink?.url ? buttonLink?.url : `/`}
-									target={buttonLink?.target}
+								<motion.div
+									initial={initial}
+									variants={stagger}
+									whileInView="animate"
+									viewport={{once: true}}
+									className="bg-lightGrey/25 w-full py-3 px-4 grid sm:grid-cols-2 items-center justify-center lg:justify-start gap-6"
 								>
-									<motion.button
-										initial={initial}
-										whileInView={fadeInUp}
-										viewport={{once: true}}
-										className={
-											buttonLink?.url
-												? `block px-6 py-3 font-semibold tracking-widest text-base transition duration-200 w-fit sm:mx-0 hover:bg-darkerRed text-black hover:text-white bg-white rounded-t-lg rounded-l-lg`
-												: `hidden`
-										}
+									<div className="flex items-center justify-center lg:justify-start gap-3">
+										<Image
+											width={1000}
+											height={1000}
+											alt={`Facebook reviews logo`}
+											src="/img/facebook-logo.png"
+											className="my-auto lg:mx-0 w-10 h-10 object-cover object-center"
+										/>
+										<div className="flex flex-col gap-[7.5px]">
+											<span className="flex items-center justify-start gap-[1px]">
+												<RenderStars rating={5} color="White" />
+											</span>
+											<span className="uppercase text-tiny font-NeoGramTrial text-white">
+												4.8 Rating
+											</span>
+										</div>
+									</div>
+									<div className="flex items-center justify-center lg:justify-start gap-3">
+										<Image
+											width={1000}
+											height={1000}
+											alt={`Google reviews logo`}
+											src="/svg/google-tile-logo.svg"
+											className="bg-white rounded-full my-auto lg:mx-0 p-1 w-10 h-10 object-cover object-center"
+										/>
+										<div className="flex flex-col gap-[7.5px]">
+											<span className="flex items-center justify-start gap-[1px]">
+												<RenderStars rating={5} color="White" />
+											</span>
+											<span className="uppercase text-tiny font-NeoGramTrial text-white">
+												4.5 Rating
+											</span>
+										</div>
+									</div>
+								</motion.div>
+								<div className="py-6 px-8 w-full bg-primary-dark">
+									<Link
+										href={`${ctaLink?.url}`}
+										target={ctaLink?.target}
+										aria-label={`${ctaLink?.title}`}
+										className={`${
+											ctaLink?.url ? "w-full my-2" : "hidden"
+										} block lg:hidden`}
 									>
-										{buttonLink?.title}
-									</motion.button>
-								</Link>
-								<Link
-									href={buttonLinkTwo?.url ? buttonLinkTwo?.url : `/`}
-									target={buttonLinkTwo?.target}
-								>
-									<motion.button
-										initial={initial}
-										whileInView={fadeInUp}
-										viewport={{once: true}}
-										className={
-											buttonLink?.url
-												? `block px-6 py-3 font-semibold tracking-widest text-base text-white transition duration-200 w-fit sm:mx-0 hover:bg-darkerRed bg-red rounded-t-lg rounded-l-lg`
-												: `hidden`
-										}
-									>
-										{buttonLinkTwo?.title}
-									</motion.button>
-								</Link>
+										<div className="w-full p-4 lg:px-6 text-lg buttonStyling-alt-three">
+											{ctaLink?.title}
+										</div>
+									</Link>
+									<div className="text-left xl:text-center">
+										<Link
+											href={`${ctaLink?.url}`}
+											target={ctaLink?.target}
+											aria-label={`${ctaParagraph} Form button link`}
+											className="flex items-center justify-between gap-4 font-VitroTrialHeavy uppercase leading-relaxed text-white tracking-wider text-tiny md:text-base lg:text-medium"
+										>
+											<span style={{wordSpacing: "1px"}}>{ctaParagraph}</span>
+											<span className="group xl:hidden flex items-center justify-end px-2 h-12 w-fit lg:h-16 rounded-full bg-accent-default hover:bg-primary-darker transition-all duration-500 ease-in-out">
+												<svg
+													className="w-8 h-8 p-1 rotate-[-45deg] group-hover:rotate-[0deg] transition-all duration-500 ease-in-out"
+													xmlns="http://www.w3.org/2000/svg"
+													width="31.905"
+													height="24.247"
+													viewBox="0 0 31.905 24.247"
+												>
+													<g
+														id="Group_14"
+														data-name="Group 14"
+														transform="translate(-443.5 -2073.925)"
+													>
+														<line
+															id="Line_2"
+															data-name="Line 2"
+															x2="30.063"
+															transform="translate(443.5 2086.054)"
+															fill="none"
+															stroke="#ffffff"
+															strokeWidth="3"
+														/>
+														<path
+															id="Path_49"
+															data-name="Path 49"
+															d="M463.015,2090.015l11.306,11.082L463.3,2112.131"
+															transform="translate(-1.047 -15.019)"
+															fill="none"
+															stroke="#ffffff"
+															strokeWidth="3"
+														/>
+													</g>
+												</svg>
+											</span>
+										</Link>
+										<Link
+											href={`${ctaLink?.url}`}
+											target={ctaLink?.target}
+											aria-label={`${ctaLink?.title}`}
+											className={`hidden xl:block w-full mx-auto mt-2 text-medium buttonStyling-alt-two`}
+										>
+											{ctaLink?.title}
+										</Link>
+									</div>
+								</div>
 							</motion.div>
 						</div>
 					</div>

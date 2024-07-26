@@ -1,0 +1,11 @@
+// Imports
+@import "../base/fonts";
+@import "../base/colors";
+
+.testimonials {
+	p {
+		a {
+			@apply font-semibold underline text-primary-default hover:text-primary-default transition-all ease-in-out duration-500;
+		}
+	}
+}

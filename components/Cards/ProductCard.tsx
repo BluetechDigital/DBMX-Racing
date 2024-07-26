@@ -10,11 +10,16 @@ const ProductCard: FC<IProductCard> = ({title, link, image}) => {
 	return (
 		<motion.div
 			initial={initial}
-			whileInView={stagger}
+			variants={stagger}
+			whileInView="animate"
 			viewport={{once: true}}
-			className="w-full"
+			className="w-full group"
 		>
-			<Link href={link?.url ? link?.url : `/`} target={link?.target}>
+			<Link
+				href={`${link?.url}`}
+				target={link?.target}
+				aria-label={`${link?.title}`}
+			>
 				<motion.div
 					initial={initial}
 					whileInView={fadeInUp}
@@ -23,13 +28,17 @@ const ProductCard: FC<IProductCard> = ({title, link, image}) => {
 				>
 					<Image
 						priority={true}
-						alt={image?.altText}
 						src={image?.sourceUrl}
-						width={image?.mediaDetails?.width}
-						height={image?.mediaDetails?.height}
+						alt={`${image?.altText}`}
+						width={
+							image?.mediaDetails?.width ? image?.mediaDetails?.width : 500
+						}
+						height={
+							image?.mediaDetails?.height ? image?.mediaDetails?.height : 500
+						}
 						className={
 							image?.sourceUrl
-								? `block w-full mb-7 transition-transform duration-500 transform h-full min-h-[200px] sm:min-h-[350px] max-h-[350px] group-hover:scale-102 object-cover object center`
+								? `block mb-7 w-full h-full min-h-[200px] sm:min-h-[250px] lg:min-h-[350px] max-h-[350px] object-cover object center`
 								: `hidden`
 						}
 					/>
@@ -38,7 +47,7 @@ const ProductCard: FC<IProductCard> = ({title, link, image}) => {
 					initial={initial}
 					whileInView={fadeInUp}
 					viewport={{once: true}}
-					className="text-base font-bold tracking-widest text-center sm:text-left text-goldPrime"
+					className="text-lg tracking-wide text-center text-white group-hover:text-accent-default uppercase font-VitroTrialHeavy italic"
 				>
 					{title}
 				</motion.h4>

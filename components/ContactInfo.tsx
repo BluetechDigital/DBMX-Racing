@@ -1,32 +1,57 @@
 // Imports
 import {FC} from "react";
 import Link from "next/link";
-import {useGlobalContext} from "@/context/Global";
+import {motion} from "framer-motion";
+import {useGlobalContext} from "@/context/global";
 import {IContactInfo} from "@/types/components/index";
+import {fadeIn, initial, stagger, initialTwo} from "@/animations/animations";
 
 // Styling
-import styles from "../styles/components/ContactInfo.module.scss";
+import styles from "@/styles/components/ContactInfo.module.scss";
 
 // Components
-import Paragraph from "../components/Elements/Paragraph";
+import Paragraph from "@/components/Elements/Paragraph";
 
 const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 	const globalContext = useGlobalContext();
+
 	return (
 		<>
-			<div className={styles.contactInfo}>
-				<div className="container relative z-10 px-8 mx-auto">
-					<h2 className="mb-10 text-lg font-bold leading-none text-center text-black sm:text-3xl md:text-4xl tracking-px-n">
+			<div
+				className={styles.contactInfo}
+				style={{
+					backgroundImage: `linear-gradient(
+						0deg,
+						rgba(255, 255, 255, 1),
+						rgba(255, 255, 255, 0.95),
+						rgba(255, 255, 255, 0.85),
+						rgba(255, 255, 255, 0.80)
+					),url("/svg/background/grid-background-12.svg")`,
+				}}
+			>
+				<div className="lg:container relative z-10 px-8 mx-auto">
+					<motion.h2
+						initial={initialTwo}
+						whileInView={fadeIn}
+						viewport={{once: true}}
+						className="mb-5 text-pureBlack uppercase font-VitroTrialHeavy italic text-center leading-relaxed text-2xl lg:text-4xl"
+					>
 						{title}
-					</h2>
+					</motion.h2>
 					<Paragraph
 						content={paragraph}
-						tailwindStyling="mb-20 text-base text-black text-center leading-normal md:max-w-3xl mx-auto"
+						tailwindStyling="mb-10 md:max-w-3xl mx-auto text-pureBlack text-lg text-center"
 					/>
-					<div className="flex flex-col items-center justify-center gap-4 lg:grid lg:grid-cols-3">
-						<div className="w-full h-full lg:min-h-[300px] p-3 border border-darkRed">
-							<div className="flex flex-col items-center justify-center gap-4 text-center p-11">
-								<div className="relative w-16 h-16 mx-auto mb-6 border rounded-full border-darkRed">
+					<motion.div
+						initial={initial}
+						variants={stagger}
+						whileInView="animate"
+						viewport={{once: true}}
+						className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-4"
+					>
+						<div className="w-full h-full lg:min-h-[300px] bg-white border border-primary-dark">
+							<div className="flex flex-col items-center justify-center gap-4 text-center p-6">
+								<div className="relative w-16 h-16 mx-auto mb-2 border rounded-full border-primary-dark">
 									<div className="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
 										<svg
 											width="32"
@@ -45,22 +70,28 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 										</svg>
 									</div>
 								</div>
-								<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl text-darkRed">
-									Send Email
+								<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl uppercase font-VitroTrialHeavy italic text-primary-dark">
+									Email Us
 								</h3>
 								<div className="flex flex-col items-center justify-center">
 									<Link
 										href={`mailto:${globalContext?.themesOptionsContent?.email}`}
-										className="text-base font-medium leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
+										className="text-lg text-pureBlack font-NeoGramTrial hover:text-primary-default transition-all duration-500 ease-in-out"
 									>
 										{globalContext?.themesOptionsContent?.email}
+									</Link>
+									<Link
+										href={`mailto:${globalContext?.themesOptionsContent?.emailTwo}`}
+										className="text-lg text-pureBlack font-NeoGramTrial hover:text-primary-default transition-all duration-500 ease-in-out"
+									>
+										{globalContext?.themesOptionsContent?.emailTwo}
 									</Link>
 								</div>
 							</div>
 						</div>
-						<div className="w-full h-full lg:min-h-[300px] p-3 border border-darkRed">
-							<div className="flex flex-col items-center justify-center gap-4 text-center p-11">
-								<div className="relative w-16 h-16 mx-auto mb-6 border rounded-full border-darkRed">
+						<div className="w-full h-full lg:min-h-[300px] bg-white border border-primary-dark">
+							<div className="flex flex-col items-center justify-center gap-4 text-center p-6">
+								<div className="relative w-16 h-16 mx-auto mb-2 border rounded-full border-primary-dark">
 									<div className="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
 										<svg
 											width="32"
@@ -79,24 +110,24 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 										</svg>
 									</div>
 								</div>
-								<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl text-darkRed">
+								<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl uppercase font-VitroTrialHeavy italic text-primary-dark">
 									Call Us
 								</h3>
 								<div className="flex flex-col items-center justify-center gap-4 sm:gap-2">
-									<span className="flex flex-col gap-4 font-medium text-center text-black sm:flex-row text-medium lg:text-left">
+									<span className="flex flex-col gap-4 text-center text-pureBlack sm:flex-row text-lg lg:text-left">
 										Tel:
 										<Link
 											href={`tel:${globalContext?.themesOptionsContent?.phoneNumber}`}
-											className="ml-2 text-base leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
+											className="ml-2 text-lg text-pureBlack font-NeoGramTrial hover:text-primary-default transition-all duration-500 ease-in-out"
 										>
 											{globalContext?.themesOptionsContent?.phoneNumber}
 										</Link>
 									</span>
-									<span className="flex flex-col gap-4 font-medium text-center text-black sm:flex-row text-medium lg:text-left">
+									<span className="flex flex-col gap-4 font-medium text-center text-pureBlack sm:flex-row text-lg lg:text-left">
 										Phone:
 										<Link
 											href={`tel:${globalContext?.themesOptionsContent?.phoneNumberTwo}`}
-											className="ml-2 text-base leading-relaxed text-black transition-all duration-500 ease-in-out sm:text-medium hover:text-darkRed "
+											className="ml-2 text-lg text-pureBlack font-NeoGramTrial hover:text-primary-default transition-all duration-500 ease-in-out"
 										>
 											{globalContext?.themesOptionsContent?.phoneNumberTwo}
 										</Link>
@@ -104,9 +135,9 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 								</div>
 							</div>
 						</div>
-						<div className="w-full h-full lg:min-h-[300px] p-3 border border-darkRed">
-							<div className="flex flex-col items-center justify-center gap-4 text-center p-11">
-								<div className="relative w-16 h-16 mx-auto mb-6 border rounded-full border-darkRed">
+						<div className="w-full h-full lg:min-h-[300px] bg-white border border-primary-dark">
+							<div className="flex flex-col items-center justify-center gap-4 text-center p-6">
+								<div className="relative w-16 h-16 mx-auto mb-2 border rounded-full border-primary-dark">
 									<div className="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
 										<svg
 											width="32"
@@ -132,16 +163,48 @@ const ContactInfo: FC<IContactInfo> = ({title, paragraph}) => {
 										</svg>
 									</div>
 								</div>
-								<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl text-darkRed">
-									Address
+								<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl uppercase font-VitroTrialHeavy italic text-primary-dark">
+									Find Us
 								</h3>
 								<Paragraph
 									content={globalContext?.themesOptionsContent?.address}
-									tailwindStyling="font-medium text-base sm:text-medium leading-relaxed text-black"
+									tailwindStyling="text-lg text-pureBlack font-NeoGramTrial"
 								/>
 							</div>
 						</div>
-					</div>
+						<div className="w-full h-full lg:min-h-[300px] bg-white border border-primary-dark">
+							<div className="flex flex-col items-center justify-center gap-4 text-center p-6">
+								<div className="relative w-16 h-16 mx-auto mb-2 border rounded-full border-primary-dark">
+									<div className="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+										<svg
+											width="32"
+											height="33"
+											viewBox="0 0 32 33"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M4 11.1666L14.5208 18.1805C15.4165 18.7776 16.5835 18.7776 17.4792 18.1805L28 11.1666M6.66667 25.8333H25.3333C26.8061 25.8333 28 24.6394 28 23.1666V9.83329C28 8.36053 26.8061 7.16663 25.3333 7.16663H6.66667C5.19391 7.16663 4 8.36053 4 9.83329V23.1666C4 24.6394 5.19391 25.8333 6.66667 25.8333Z"
+												stroke="#a70107"
+												strokeWidth="2"
+												strokeLinecap="round"
+												strokeLinejoin="round"
+											></path>
+										</svg>
+									</div>
+								</div>
+								<h3 className="mb-4 text-lg font-bold leading-snug sm:text-xl uppercase font-VitroTrialHeavy italic text-primary-dark">
+									Opening Hours
+								</h3>
+								<div className="flex flex-col items-center justify-center">
+									<Paragraph
+										content={globalContext?.themesOptionsContent?.openingHours}
+										tailwindStyling="openingHours text-pureBlack text-lg text-left font-NeoGramTrial"
+									/>
+								</div>
+							</div>
+						</div>
+					</motion.div>
 				</div>
 			</div>
 		</>

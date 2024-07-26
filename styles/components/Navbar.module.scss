@@ -1,14 +1,13 @@
 // Imports
-@import "../fonts";
-@import "../colors";
+@import "../base/fonts";
+@import "../base/colors";
 
 .navbar {
 	nav {
 		ul {
 			li {
 				a {
-					font-family: $fontStyle_body;
-					@apply uppercase tracking-wide font-bold;
+					@apply uppercase tracking-wide font-bold font-Inter;
 				}
 			}
 		}
@@ -40,16 +39,16 @@
 	}
 
 	::-webkit-scrollbar-track {
-		background: $darkRed;
+		background: $primary-dark;
 	}
 
 	::-webkit-scrollbar-thumb {
-		background: $red;
+		background: $primary-default;
 		border-radius: 100px;
 
 		&:hover {
 			transition: all 0.5s;
-			background-color: $lightRed;
+			background-color: $primary-light;
 		}
 	}
 }
@@ -70,7 +69,6 @@
 	width: 70px;
 	height: 70px;
 	border: none;
-	border-radius: 15%;
 	line-height: 0.6;
 	text-align: center;
 
@@ -81,7 +79,7 @@
 		height: 2px;
 		width: 34px;
 		border-radius: 1px;
-		background: #ffffff;
+		background: $white;
 		vertical-align: middle;
 		&:before,
 		&:after {
@@ -90,7 +88,7 @@
 			content: "";
 			height: 2px;
 			border-radius: 1px;
-			background: #ffffff;
+			background: $white;
 			// for the hover state
 			transition: all 200ms;
 		}
@@ -128,9 +126,8 @@
 	height: 50px;
 	border: none;
 	line-height: 0.6;
-	border-radius: 15%;
 	text-align: center;
-	background: $red;
+	background: $primary-default;
 
 	span {
 		height: 0px;
@@ -139,7 +136,7 @@
 		border-radius: 1px;
 		vertical-align: middle;
 		display: inline-block;
-		background: $baseColor_white;
+		background: $white;
 
 		&:after,
 		&:before {
@@ -151,7 +148,7 @@
 			position: absolute;
 			border-radius: 1px;
 			display: inline-block;
-			background: $baseColor_white;
+			background: $white;
 			// for the hover state
 			transition: all 200ms;
 		}
@@ -167,7 +164,7 @@
 		}
 	}
 	&:hover {
-		background: $darkRed;
+		background: $primary-dark;
 		transition: all 500ms ease-in-out;
 	}
 }

@@ -1,0 +1,37 @@
+/*===== FONTS =====*/
+@font-face {
+	font-family: Inter;
+	src: url("../fonts/Inter.woff");
+}
+
+@font-face {
+	font-family: PlusJakartaSans;
+	src: url("../fonts/PlusJakartaSans.woff");
+}
+
+@font-face {
+	font-family: VitroTrialHeavy;
+	src: url("../fonts/VitroTrial-Heavy.woff");
+}
+
+@font-face {
+	font-family: NeoGramTrial;
+	src: url("../fonts/NeoGramTrial.woff");
+}
+
+// Font Stack Properties
+$main: "VitroTrialHeavy", "PlusJakartaSans";
+$secondary: "NeoGramTrial", "PlusJakartaSans";
+$body: "Inter", "Inter";
+
+.font-VitroTrialHeavy {
+	font-family: $main;
+}
+
+.font-NeoGramTrial {
+	font-family: $secondary;
+}
+
+.font-Inter {
+	font-family: $body;
+}

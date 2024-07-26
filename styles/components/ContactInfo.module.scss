@@ -1,11 +1,11 @@
 // Imports
-@import "../fonts";
-@import "../colors";
+@import "../base/fonts";
+@import "../base/colors";
 
 .contactInfo {
-	@apply relative pt-24 overflow-hidden bg-white pb-36;
+	@apply relative py-24 overflow-hidden bg-white bg-center bg-no-repeat bg-cover;
 
 	svg:hover {
-		fill: $baseColor_white !important;
+		fill: $white !important;
 	}
 }

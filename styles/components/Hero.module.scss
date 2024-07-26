@@ -1,7 +1,49 @@
 // Imports
-@import "../fonts";
-@import "../colors";
+@import "../base/fonts";
+@import "../base/colors";
 
 .hero {
-	@apply bg-red bg-gradient-to-t from-darkRed;
+	.externalLink {
+		font-family: $main;
+	}
+
+	.swiper-button-prev::after {
+		content: "next";
+		width: 15px !important;
+		height: 15px !important;
+		font-size: 15px !important;
+		font-weight: 900 !important;
+		color: $white !important;
+	}
+
+	.swiper-button-next::after {
+		content: "next";
+		width: 15px !important;
+		height: 15px !important;
+		font-size: 15px !important;
+		font-weight: 900 !important;
+		color: $white !important;
+	}
+}
+
+.heroTwo {
+	.externalLink {
+		font-family: $main;
+	}
+
+	.leftSideContent {
+		clip-path: none;
+
+		@media screen and (min-width: 1024px) {
+			clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
+		}
+	}
+
+	.rightSideContent {
+		clip-path: none;
+
+		@media screen and (min-width: 1024px) {
+			clip-path: polygon(10% 0, 100% 0%, 100% 100%, 0 100%);
+		}
+	}
 }

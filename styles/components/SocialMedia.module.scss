@@ -1,0 +1,11 @@
+// Imports
+@import "../base/fonts";
+@import "../base/colors";
+
+.socialMediaGrid {
+	.title {
+		a {
+			@apply underline decoration-primary-default text-primary-default hover:decoration-primary-dark hover:text-primary-dark transition-all duration-500 ease-in-out;
+		}
+	}
+}

@@ -1,25 +1,19 @@
-// Imports
 import nodemailer from "nodemailer";
-import {IMailOptions} from "@/types/mail";
 
+const host: any = process.env.EMAIL_HOST;
 const email: any = process.env.EMAIL_USER;
-const pass: any = process.env.EMAIL_PASS;
+const password: any = process.env.EMAIL_PASS;
 
-export const transporter: any = nodemailer.createTransport({
-	host: "gmail",
-	service: "gmail",
+export const emailTransporter: any = nodemailer.createTransport({
+	host: host,
+	service: host,
 	port: 587,
-	secure: false,
+	secure: true,
 	auth: {
 		user: email,
-		pass: pass,
+		pass: password,
 	},
 	tls: {rejectUnauthorized: false},
-	logger: true,
-	debug: true,
+	logger: false,
+	debug: false,
 });
-
-export const mailOptions: IMailOptions = {
-	from: email,
-	to: email,
-};
