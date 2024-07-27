@@ -27,7 +27,6 @@ const ProductCard: FC<IProductCard> = ({title, link, image}) => {
 					className="bg-white"
 				>
 					<Image
-						priority={true}
 						src={image?.sourceUrl}
 						alt={`${image?.altText}`}
 						width={

@@ -1,37 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Project Description
 
-## Getting Started
+1. All images are in 4K resolution, click to enlarge for better viewing.
 
-First, run the development server:
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts.jpg" width="1080px" height="550px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (5).jpg" width="1080px" height="550px">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Project Context
+This is a Next.js 13 project website I've built for a Motocross accessories and parts local business. A Typescript based project using nextjs 13 static side rendering. This projects is developed solely with Next.js 13 - featuring, Typescript, Javascript, React 18, Tailwind, and a Headless Wordpress CMS API
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Develop a website using Next.js framework.
+2. Show my ability to develope a headless-CMS, jamstack, Server Side Rendering & Firebase backend web application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# My Objective
+To further learn Firebase backen, fire cloud storage and Next.js 13 framework.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Deployment
 
-## Learn More
+Deployed with vercel here: 
 
-To learn more about Next.js, take a look at the following resources:
+a). https://dbmx-racing.vercel.app/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Image Galley
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# DBMX-Racing
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts.jpg" width="1080px" height="550px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (2).jpg" width="1080px" height="550px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (3).jpg" width="1080px" height="550px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (4).jpg" width="1080px" height="550px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (5).jpg" width="1080px" height="550px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (6).jpg" width="1080px" height="850px">
+<img src="public/img/screenshots/DBMX-Racing-Motocross-Accessories-Parts (7).jpg" width="1080px" height="850px">

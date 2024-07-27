@@ -17,6 +17,7 @@ const GoogleReviewsCard: FC<IGoogleReviewsCard> = ({
 	profilePhoto,
 }) => {
 	const ratingArray = Array.from({length: rating}, (_, index) => index);
+
 	return (
 		<>
 			<motion.div
@@ -45,13 +46,43 @@ const GoogleReviewsCard: FC<IGoogleReviewsCard> = ({
 							}
 							className="object-cover object-center mx-auto sm:mx-0 w-16 h-16 transition-all duration-500 ease-in-out rounded-full cursor-pointer ring-pureBlack"
 						/>
-						<div className="flex flex-col gap-1">
+						<div className="flex flex-col items-start justify-center gap-2">
 							<span className="text-pureBlack text-medium uppercase font-VitroTrialHeavy text-center lg:text-left">
 								{name}
 							</span>
-							<span className="font-NeoGramTrial text-base text-pureBlack text-center lg:text-left">
-								{dateFormat(date, "mmmm d, yyyy")}
+							<span className="flex flex-row items-center justify-center gap-1 text-lg tracking-normal text-center text-pureBlack">
+								{ratingArray?.length > 0 ? (
+									ratingArray?.map((item: any, index: number) => (
+										<Fragment key={index}>
+											<svg
+												fill="#f6ad37"
+												viewBox="0 0 16 16"
+												xmlns="http://www.w3.org/2000/svg"
+												className="object-contain object-center w-[20px] h-[20px]"
+											>
+												<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+												<g
+													id="SVGRepo_tracerCarrier"
+													strokeLinecap="round"
+													strokeLinejoin="round"
+												></g>
+												<g id="SVGRepo_iconCarrier">
+													{" "}
+													<g>
+														{" "}
+														<polygon points="8 11.43 3.67 14 4.84 9.19 1 5.97 6.05 5.57 8 1 9.95 5.57 15 5.97 11.15 9.19 12.33 14 8 11.43"></polygon>{" "}
+													</g>{" "}
+												</g>
+											</svg>
+										</Fragment>
+									))
+								) : (
+									<></>
+								)}
 							</span>
+							{/* <span className="font-NeoGramTrial text-base text-pureBlack text-center lg:text-left">
+								{dateFormat(date, "mmmm d, yyyy")}
+							</span> */}
 						</div>
 					</div>
 					<svg
@@ -86,36 +117,6 @@ const GoogleReviewsCard: FC<IGoogleReviewsCard> = ({
 					viewport={{once: true}}
 					className="flex flex-col gap-4"
 				>
-					<span className="flex flex-row items-center justify-center gap-1 text-lg font-semibold tracking-normal text-center text-pureBlack">
-						{ratingArray?.length > 0 ? (
-							ratingArray?.map((item: any, index: number) => (
-								<Fragment key={index}>
-									<svg
-										fill="#f6ad37"
-										viewBox="0 0 16 16"
-										xmlns="http://www.w3.org/2000/svg"
-										className="object-contain object-center w-[20px] h-[20px]"
-									>
-										<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-										<g
-											id="SVGRepo_tracerCarrier"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										></g>
-										<g id="SVGRepo_iconCarrier">
-											{" "}
-											<g>
-												{" "}
-												<polygon points="8 11.43 3.67 14 4.84 9.19 1 5.97 6.05 5.57 8 1 9.95 5.57 15 5.97 11.15 9.19 12.33 14 8 11.43"></polygon>{" "}
-											</g>{" "}
-										</g>
-									</svg>
-								</Fragment>
-							))
-						) : (
-							<></>
-						)}
-					</span>
 					<Paragraph
 						content={
 							textarea?.length > 200
