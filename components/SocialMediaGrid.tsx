@@ -10,7 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 import {ISocialMediaGrid} from "@/types/components";
 
 // Styling

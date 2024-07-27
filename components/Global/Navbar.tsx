@@ -10,7 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
 import {useState, FC, Fragment} from "react";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 
 // Styling
 import styles from "@/styles/components/Navbar.module.scss";

@@ -3,7 +3,7 @@
 // Imports
 import {FC} from "react";
 import Link from "next/link";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 
 const NavbarTop: FC = () => {
 	const globalContext = useGlobalContext();

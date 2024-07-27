@@ -11,7 +11,7 @@ import {
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 
 // Components
 import Paragraph from "@/components/Elements/Paragraph";

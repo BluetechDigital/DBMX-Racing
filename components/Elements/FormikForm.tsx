@@ -12,7 +12,7 @@ import {motion} from "framer-motion";
 import {useRouter} from "next/navigation";
 import ReCAPTCHA from "react-google-recaptcha";
 import {IFormikForm} from "@/types/components";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 import {sendContactForm} from "@/lib/contactForm";
 import React, {useState, FC, Fragment} from "react";
 import {useFormik, Formik, Field, Form} from "formik";

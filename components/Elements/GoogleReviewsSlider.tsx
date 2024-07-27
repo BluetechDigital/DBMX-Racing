@@ -2,7 +2,7 @@
 
 // Imports
 import useWindowSize from "@/Hooks/useWindowSize";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 import {LazyMotion, domMax, motion} from "framer-motion";
 import {FC, Fragment, useEffect, useRef, useState} from "react";
 

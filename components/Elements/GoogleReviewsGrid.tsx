@@ -8,7 +8,7 @@ import {
 } from "@/animations/animations";
 import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 
 // Components
 import GoogleReviewsCard from "@/components/Cards/GoogleReviewsCard";

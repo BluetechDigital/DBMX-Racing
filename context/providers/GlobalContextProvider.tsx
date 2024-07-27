@@ -3,7 +3,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {GlobalContext} from "@/context/global";
+import {GlobalContext} from "@/context/Global";
 import {IGlobalContextProvider} from "@/types/context/Providers";
 
 // Components

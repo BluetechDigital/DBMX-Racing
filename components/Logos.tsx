@@ -1,9 +1,15 @@
 // Imports
+import {
+	fadeIn,
+	initial,
+	stagger,
+	initialTwo,
+	arrayLoopStaggerChildren,
+} from "@/animations/animations";
 import Image from "next/image";
 import {FC, Fragment} from "react";
 import {motion} from "framer-motion";
 import {ILogos} from "@/types/components/index";
-import {fadeIn, initial, stagger, initialTwo} from "@/animations/animations";
 
 const Logos: FC<ILogos> = ({title, logoGrid}) => {
 	return (
@@ -29,25 +35,33 @@ const Logos: FC<ILogos> = ({title, logoGrid}) => {
 							{logoGrid?.length > 0 ? (
 								logoGrid.map((item: any, index: number) => (
 									<Fragment key={index}>
-										<Image
-											src={item?.image?.sourceUrl}
-											alt={`${item?.image?.altText}`}
-											width={
-												item?.image?.mediaDetails?.width
-													? item?.image?.mediaDetails?.width
-													: 500
-											}
-											height={
-												item?.image?.mediaDetails?.height
-													? item?.image?.mediaDetails?.height
-													: 500
-											}
-											className={
-												item?.image?.sourceUrl
-													? `block w-[150px] h-full sm:w-[150px] lg:w-full lg:h-[125px] object-contain object-center`
-													: `hidden`
-											}
-										/>
+										<motion.div
+											custom={index}
+											initial={initial}
+											whileInView="animate"
+											viewport={{once: true}}
+											variants={arrayLoopStaggerChildren}
+										>
+											<Image
+												src={item?.image?.sourceUrl}
+												alt={`${item?.image?.altText}`}
+												width={
+													item?.image?.mediaDetails?.width
+														? item?.image?.mediaDetails?.width
+														: 500
+												}
+												height={
+													item?.image?.mediaDetails?.height
+														? item?.image?.mediaDetails?.height
+														: 500
+												}
+												className={
+													item?.image?.sourceUrl
+														? `block w-[150px] h-full sm:w-[150px] lg:w-full lg:h-[125px] object-contain object-center`
+														: `hidden`
+												}
+											/>
+										</motion.div>
 									</Fragment>
 								))
 							) : (

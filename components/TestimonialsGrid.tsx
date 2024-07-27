@@ -1,7 +1,7 @@
 // Imports
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 import {ITestimonialsGrid} from "@/types/components/index";
 import {fadeInUp, initial, stagger} from "@/animations/animations";
 

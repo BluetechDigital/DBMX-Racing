@@ -2,7 +2,7 @@
 import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 import {IContactInfo} from "@/types/components/index";
 import {fadeIn, initial, stagger, initialTwo} from "@/animations/animations";
 

@@ -13,7 +13,7 @@ import Image from "next/image";
 import {motion} from "framer-motion";
 import {FC, Fragment, useState} from "react";
 import {ISideMenu} from "@/types/components";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 
 // Styling
 import styles from "@/styles/components/Navbar.module.scss";

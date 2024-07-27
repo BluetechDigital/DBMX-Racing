@@ -5,7 +5,7 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {motion} from "framer-motion";
-import {useGlobalContext} from "@/context/global";
+import {useGlobalContext} from "@/context/Global";
 import {stagger, initial, fadeInUp} from "@/animations/animations";
 
 // Styling
