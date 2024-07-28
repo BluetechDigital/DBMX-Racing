@@ -52,7 +52,7 @@ const Hero: FC<IHero> = ({
 					<div className="h-full lg:relative z-10 flex flex-col xl:flex-row bg-pureBlack/50">
 						<div className="lg:container py-20 px-4 xl:py-0 mx-auto">
 							<div className="h-full flex flex-col items-baseline justify-center px-4 xl:px-0">
-								<motion.h1
+								{/* <motion.h1
 									initial={initial}
 									variants={stagger}
 									whileInView="animate"
@@ -60,7 +60,7 @@ const Hero: FC<IHero> = ({
 									className="font-VitroTrialHeavy italic xl:max-w-3xl flex flex-col text-center xl:text-left mb-6 text-6xl lg:text-7xl 2xl:text-8xl uppercase text-white font-bold leading-tight"
 								>
 									{title}
-								</motion.h1>
+								</motion.h1> */}
 								{/* <div className="xl:max-w-2xl">
 									<Paragraph
 										content={paragraph}
