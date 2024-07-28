@@ -5,6 +5,12 @@ import {IGlobalProps} from "@/types/context/Providers";
 // Global Styling
 import "@/styles/globals.scss";
 
+// Google Reviews
+import {getGoogleReviews} from "@/functions/googleReviews";
+
+// Instagram Feed
+import {getAllInstagramFeedContent} from "@/functions/InstagramFeed";
+
 // Queries Functions
 import {
 	getMobileLinks,
@@ -15,12 +21,6 @@ import {
 } from "@/graphql/GetAllMenuLinks";
 import {getThemesOptionsContent} from "@/graphql/GetAllThemesOptions";
 import {getAllTestimonialsContent} from "@/graphql/GetAllTestimonials";
-
-// Instagram Feed
-import {getAllInstagramFeedContent} from "@/functions/InstagramFeed";
-
-// Google Reviews
-import {getGoogleReviews} from "@/functions/googleReviews";
 
 // Components
 import Navbar from "@/components/Global/Navbar";
@@ -73,7 +73,7 @@ const App = async ({children}: AppProps | any) => {
 
 	return (
 		<html lang="en">
-			<body className="overflow-x-hidden">
+			<body className="overflow-hidden">
 				<ApolloContextProvider>
 					<GlobalContextProvider globalProps={globalProps}>
 						<Navbar />

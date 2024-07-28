@@ -57,7 +57,7 @@ const TitleContentImage: FC<ITitleContentImage> = ({
 		<>
 			<div
 				id={`#${sectionId}`}
-				className={`titleContentImage py-12 px-4 ${backgroundColor}`}
+				className={`titleContentImage py-12 px-4 ${backgroundColor} overflow-hidden`}
 			>
 				<div className="lg:container mx-auto p-0">
 					<div className={title ? "block py-4" : "hidden"}>
@@ -81,7 +81,7 @@ const TitleContentImage: FC<ITitleContentImage> = ({
 					<div
 						className={`flex ${
 							displayContentOption == "Right" ? "flex-col-reverse" : "flex-col"
-						} gap-4 lg:gap-x-16 px-4 lg:px-0 mx-auto items-center justify-center lg:flex-row`}
+						} gap-4 lg:gap-x-16 px-4 lg:px-0 mx-auto items-center justify-center lg:flex-row overflow-hidden`}
 					>
 						<motion.div
 							viewport={{once: true}}
