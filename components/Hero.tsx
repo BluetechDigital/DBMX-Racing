@@ -64,9 +64,9 @@ const Hero: FC<IHero> = ({
 								<div className="xl:max-w-2xl">
 									<Paragraph
 										content={paragraph}
-										tailwindStyling="mb-6 text-white leading-[1.75rem] font-normal font-NeoGramTrial text-xl text-center xl:text-left"
+										tailwindStyling="mb-6 text-white leading-[1.75rem] font-NeoGramTrial text-lg md:text-xl text-center xl:text-left"
 									/>
-									<motion.div
+									{/* <motion.div
 										initial={initial}
 										variants={stagger}
 										whileInView="animate"
@@ -103,7 +103,7 @@ const Hero: FC<IHero> = ({
 												{buttonLinkTwo?.title}
 											</motion.button>
 										</Link>
-									</motion.div>
+									</motion.div> */}
 								</div>
 							</div>
 						</div>
