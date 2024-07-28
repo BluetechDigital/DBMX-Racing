@@ -30,7 +30,6 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 
 	// Hides or Display Our Services sublinks
 	const displayOurServicesSublinks = () => {
-		setMenuActive(false);
 		setOurServicesSublinksOpen(!ourServicesSublinksOpen);
 	};
 
@@ -88,6 +87,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 											>
 												<span className="py-4 px-0 flex flex-row justify-between items-center gap-2">
 													<Link
+														onClick={toggleMenu}
 														href={`${item?.node?.url}`}
 														aria-label={`${item?.node?.label} page link`}
 														target={`${
@@ -127,6 +127,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 																	(item: any, index: number) => (
 																		<Fragment key={index}>
 																			<li
+																				onClick={toggleMenu}
 																				className={`${
 																					index < 1
 																						? "border-t-[1px] border-accent-default border-opacity-50"
@@ -162,6 +163,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 											<motion.li
 												custom={index}
 												initial={initial}
+												onClick={toggleMenu}
 												whileInView="animate"
 												className="py-4 px-0"
 												viewport={{once: true}}
