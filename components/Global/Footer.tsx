@@ -398,7 +398,7 @@ const Footer: FC = () => {
 							<div className="flex flex-col lg:flex-row justify-between lg:-my-2 gap-6">
 								<Paragraph
 									content={globalContext?.themesOptionsContent?.copyrightText}
-									tailwindStyling="text-white text-paragraph sm:text-lg text-center lg:text-left tracking-[0.05rem] font-VitroTrialHeavy uppercase italic"
+									tailwindStyling="text-white text-paragraph text-sm sm:text-base md:text-lg text-center lg:text-left tracking-[0.05rem] font-VitroTrialHeavy uppercase italic"
 								/>
 								<div className="w-auto">
 									<Link

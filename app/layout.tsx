@@ -76,7 +76,7 @@ const App = async ({children}: AppProps | any) => {
 			<body className="overflow-x-hidden">
 				<ApolloContextProvider>
 					<GlobalContextProvider globalProps={globalProps}>
-						<Navbar />
+						{/* <Navbar /> */}
 						{children}
 						<Footer />
 						<BackToTopButton />
