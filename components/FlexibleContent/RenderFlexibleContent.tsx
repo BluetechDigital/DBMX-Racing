@@ -45,7 +45,7 @@ const RenderFlexibleContent: FC = () => {
 		// [`${FlexibleContent}_SocialMediaGrid`]: SocialMediaGrid,
 		// [`${FlexibleContent}_TestimonialsGrid`]: TestimonialsGrid,
 		// [`${FlexibleContent}_TitleContentImage`]: TitleContentImage,
-		// [`${FlexibleContent}_AboutContentImage`]: AboutContentImage,
+		[`${FlexibleContent}_AboutContentImage`]: AboutContentImage,
 	};
 
 	return (
