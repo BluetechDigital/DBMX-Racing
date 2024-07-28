@@ -106,6 +106,7 @@ const TitleContentImageCard: FC<ITitleContentImageCard> = ({
 				</div>
 				<div className={buttonLink?.title ? "flex mt-6" : "hidden"}>
 					<Link
+						className="w-full"
 						href={`${buttonLink?.url}`}
 						target={buttonLink?.target}
 						aria-label={`${buttonLink?.title}`}
