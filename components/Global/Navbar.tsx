@@ -39,7 +39,7 @@ const Navbar: FC = () => {
 			<nav className={styles.navbar + " "}>
 				<div className="fixed flex z-[999] flex-col w-full">
 					<NavbarTop />
-					<div className="relative bg-pureBlack grid grid-cols-2 lg:grid-cols-4 items-center justify-between w-full px-6 py-3 z-[999]">
+					<div className="relative z-[999] h-[70px] w-full bg-pureBlack grid grid-cols-2 lg:grid-cols-4 items-center justify-between px-6 py-3">
 						<div className="w-fit flex flex-col items-center">
 							<Link
 								href="/"
@@ -53,7 +53,7 @@ const Navbar: FC = () => {
 									width={500}
 									alt="DBMX Racing"
 									src="/img/logos/DBMX Racing logo.jpg"
-									className="object-contain object-center w-full h-[50px]"
+									className="object-contain object-center w-full h-[30px] h-[50px]"
 								/>
 							</Link>
 						</div>
