@@ -31,12 +31,12 @@ const Hero: FC<IHero> = ({
 		<>
 			<div className="bg-white pt-28">
 				<div
-					className="h-[75vh] relative mt-2 bg-center bg-no-repeat bg-cover"
+					className="h-full lg:h-[75vh] relative lg:mt-2 bg-center bg-no-repeat bg-cover"
 					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 				>
 					{/* Background Video */}
-					<div className="lg:absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
-						<div className="hidden xl:block relative pb-[56.25%] overflow-hidden bg-center bg-no-repeat bg-cover">
+					<div className="hidden lg:block lg:absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
+						<div className="hidden xl:block relative h-[75vh] pb-[56.25%] overflow-hidden bg-center bg-no-repeat bg-cover">
 							<iframe
 								allowFullScreen
 								className={

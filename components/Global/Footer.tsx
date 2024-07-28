@@ -23,7 +23,7 @@ const Footer: FC = () => {
 				className="relative h-full min-h-screen lg:min-h-[65vh] 2xl:min-h-[60vh] w-full m-0 pt-2 pb-4 bg-pureBlack"
 				style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}
 			>
-				<div className="lg:fixed bottom-0 h-full lg:h-[65vh] 2xl:h-[60vh] w-full flex flex-col items-center justify-between pt-24 px-12 lg:px-0 xl:px-16">
+				<div className="lg:fixed bottom-0 h-full lg:h-[65vh] 2xl:h-[60vh] w-full flex flex-col items-center justify-between pt-6 sm:pt-24 px-4 sm:px-12 lg:px-0 xl:px-16">
 					<div className="flex flex-col lg:flex-row items-center justify-start lg:-m-12 lg:divide-x lg:divide-lightGrey lg:container mx-auto">
 						<div className="w-full h-full lg:w-1/3 py-8 px-0 lg:px-4 xl:px-6 2xl:px-6 xl:py-12">
 							<motion.h3
@@ -37,11 +37,11 @@ const Footer: FC = () => {
 							<div className="relative p-1.5">
 								<Paragraph
 									content={globalContext?.themesOptionsContent?.textarea}
-									tailwindStyling="max-w-full lg:max-w-lg text-white text-xl font-medium text-left font-NeoGramTrial"
+									tailwindStyling="max-w-full lg:max-w-lg text-white text-lg sm:text-xl font-medium text-left font-NeoGramTrial"
 								/>
 								<Paragraph
 									content={globalContext?.themesOptionsContent?.address}
-									tailwindStyling="max-w-full lg:max-w-lg text-white font-VitroTrialHeavy uppercase italic text-xl leading-relaxed text-left"
+									tailwindStyling="max-w-full lg:max-w-lg text-white font-VitroTrialHeavy uppercase italic text-lg sm:text-xl leading-relaxed text-left"
 								/>
 							</div>
 						</div>
@@ -83,7 +83,7 @@ const Footer: FC = () => {
 											</g>
 										</svg>
 									</div>
-									<span className="text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
+									<span className="text-lg sm:text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
 										{globalContext?.themesOptionsContent?.phoneNumber}
 									</span>
 								</Link>
@@ -110,7 +110,7 @@ const Footer: FC = () => {
 											</g>
 										</svg>
 									</div>
-									<span className="text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
+									<span className="text-lg sm:text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
 										{globalContext?.themesOptionsContent?.phoneNumberTwo}
 									</span>
 								</Link>
@@ -141,7 +141,7 @@ const Footer: FC = () => {
 											</g>
 										</svg>
 									</div>
-									<span className="text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
+									<span className="text-lg sm:text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
 										{globalContext?.themesOptionsContent?.email}
 									</span>
 								</Link>
@@ -172,7 +172,7 @@ const Footer: FC = () => {
 											</g>
 										</svg>
 									</div>
-									<span className="text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
+									<span className="text-lg sm:text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
 										{globalContext?.themesOptionsContent?.emailTwo}
 									</span>
 								</Link>
@@ -233,7 +233,7 @@ const Footer: FC = () => {
 												/>
 											</svg>
 										</div>
-										<span className="text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
+										<span className="text-lg sm:text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
 											Facebook
 										</span>
 									</Link>
@@ -279,7 +279,7 @@ const Footer: FC = () => {
 												></path>
 											</svg>
 										</div>
-										<span className="text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
+										<span className="text-lg sm:text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
 											Twitter
 										</span>
 									</Link>
@@ -335,7 +335,7 @@ const Footer: FC = () => {
 												</g>
 											</svg>
 										</div>
-										<span className="text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
+										<span className="text-lg sm:text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
 											Instagram
 										</span>
 									</Link>
@@ -385,7 +385,7 @@ const Footer: FC = () => {
 												</defs>
 											</svg>
 										</div>
-										<span className="text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
+										<span className="text-lg sm:text-xl text-white group-hover:text-primary-default font-medium font-NeoGramTrial transition-all duration-500 ease-in-out">
 											Linkedin
 										</span>
 									</Link>
@@ -398,7 +398,7 @@ const Footer: FC = () => {
 							<div className="flex flex-col lg:flex-row justify-between lg:-my-2 gap-6">
 								<Paragraph
 									content={globalContext?.themesOptionsContent?.copyrightText}
-									tailwindStyling="text-white text-lg text-center lg:text-left tracking-[0.05rem] font-VitroTrialHeavy uppercase italic"
+									tailwindStyling="text-white text-paragraph sm:text-lg text-center lg:text-left tracking-[0.05rem] font-VitroTrialHeavy uppercase italic"
 								/>
 								<div className="w-auto">
 									<Link
@@ -417,7 +417,7 @@ const Footer: FC = () => {
 											/>
 											<Paragraph
 												content={`Website by BluetechDigital`}
-												tailwindStyling="w-fit lg:w-full text-base text-center lg:text-left tracking-[0.05rem]"
+												tailwindStyling="w-fit lg:w-full text-sm sm:text-base text-center lg:text-left tracking-[0.05rem]"
 											/>
 										</span>
 									</Link>
