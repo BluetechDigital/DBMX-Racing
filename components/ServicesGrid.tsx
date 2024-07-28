@@ -137,7 +137,7 @@ const ServicesGrid: FC<IServicesGrid> = ({
 									</div>
 								</div>
 							</motion.div>
-							<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center justify-between">
+							<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center justify-between lg:items-start">
 								{servicesGrid?.length > 0 ? (
 									servicesGrid?.map((item: any, index: number) => (
 										<Fragment key={index}>
@@ -147,6 +147,7 @@ const ServicesGrid: FC<IServicesGrid> = ({
 												whileInView="animate"
 												viewport={{once: true}}
 												variants={arrayLoopStaggerChildren}
+												className="w-full h-full group/card relative"
 											>
 												<ServicesGridCard
 													link={item?.link}

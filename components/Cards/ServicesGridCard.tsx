@@ -3,7 +3,7 @@ import {FC} from "react";
 import Link from "next/link";
 import {motion} from "framer-motion";
 import {IServicesGridCard} from "@/types/components";
-import {initial, stagger, fadeInUp} from "@/animations/animations";
+import {initial, fadeInUp} from "@/animations/animations";
 
 // Components
 import Paragraph from "@/components/Elements/Paragraph";
@@ -19,10 +19,9 @@ const ServicesGridCard: FC<IServicesGridCard> = ({
 			<Link
 				href={`${link?.url}`}
 				target={link?.target}
-				className="group/card relative"
 				aria-label={`${link?.title}`}
 			>
-				<div className="min-h-[350px] md:min-h-[300px] lg:min-h-[400px] bg-lightGrey group-hover/card:bg-primary-dark p-6 flex flex-col justify-between h-full transition-all duration-500 ease-in-out">
+				<div className="h-full min-h-[350px] md:min-h-[300px] lg:min-h-[400px] bg-lightGrey group-hover/card:bg-primary-dark p-6 flex flex-col justify-between transition-all duration-500 ease-in-out">
 					<motion.h4
 						initial={initial}
 						whileInView={fadeInUp}
