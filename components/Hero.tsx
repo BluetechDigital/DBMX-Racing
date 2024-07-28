@@ -29,7 +29,7 @@ const Hero: FC<IHero> = ({
 }) => {
 	return (
 		<>
-			<div className="bg-white pt-28 overflow-x-hidden">
+			<div className="bg-white pt-28">
 				<div
 					className="relative mt-2 bg-center bg-no-repeat bg-cover"
 					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
@@ -49,7 +49,7 @@ const Hero: FC<IHero> = ({
 						</div>
 						<div className="absolute top-0 h-full lg:h-[75vh] bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-pureBlack/50 from-5% via-pureBlack/50 via-10% to-transparent to-100%" />
 					</div>
-					<div className="min-h-full xl:min-h-[75vh] relative z-10 h-full flex flex-col xl:flex-row">
+					{/* <div className="h-full min-h-full xl:min-h-[75vh] relative z-10 flex flex-col xl:flex-row">
 						<div className="lg:container py-20 px-4 xl:py-0 mx-auto">
 							<div className="h-full flex flex-col items-baseline justify-center px-4 xl:px-0">
 								<motion.h1
@@ -222,7 +222,7 @@ const Hero: FC<IHero> = ({
 								</div>
 							</div>
 						</motion.div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</>
