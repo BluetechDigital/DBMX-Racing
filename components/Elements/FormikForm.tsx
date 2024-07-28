@@ -204,7 +204,7 @@ const FormikForm: FC<IFormikForm> = ({title}) => {
 						viewport={{once: true}}
 						className="flex flex-col gap-4"
 					>
-						<div className="flex flex-col sm:flex-row gap-4">
+						<div className="flex flex-col lg:flex-row gap-4">
 							<motion.div
 								initial={initial}
 								whileInView={fadeInUp}
@@ -252,7 +252,7 @@ const FormikForm: FC<IFormikForm> = ({title}) => {
 								/>
 							</motion.div>
 						</div>
-						<div className="flex flex-col sm:flex-row gap-4">
+						<div className="flex flex-col lg:flex-row gap-4">
 							<motion.div
 								initial={initial}
 								whileInView={fadeInUp}
