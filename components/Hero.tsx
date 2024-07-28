@@ -107,7 +107,7 @@ const Hero: FC<IHero> = ({
 								</div>
 							</div>
 						</div>
-						<motion.div
+						{/* <motion.div
 							viewport={{once: true}}
 							initial={slideInRightInitial}
 							whileInView={slideInRightFinish}
@@ -221,7 +221,7 @@ const Hero: FC<IHero> = ({
 									</Link>
 								</div>
 							</div>
-						</motion.div>
+						</motion.div> */}
 					</div>
 				</div>
 			</div>
