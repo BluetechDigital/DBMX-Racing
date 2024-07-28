@@ -49,7 +49,7 @@ const Hero: FC<IHero> = ({
 						</div>
 						<div className="absolute top-0 h-full lg:h-[75vh] bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-pureBlack/50 from-5% via-pureBlack/50 via-10% to-transparent to-100%" />
 					</div>
-					{/* <div className="h-full min-h-full xl:min-h-[75vh] relative z-10 flex flex-col xl:flex-row">
+					<div className="overflow-hidden h-full min-h-full xl:min-h-[75vh] relative z-10 flex flex-col xl:flex-row">
 						<div className="lg:container py-20 px-4 xl:py-0 mx-auto">
 							<div className="h-full flex flex-col items-baseline justify-center px-4 xl:px-0">
 								<motion.h1
@@ -222,7 +222,7 @@ const Hero: FC<IHero> = ({
 								</div>
 							</div>
 						</motion.div>
-					</div> */}
+					</div>
 				</div>
 			</div>
 		</>
