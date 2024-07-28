@@ -30,12 +30,12 @@ const Hero: FC<IHero> = ({
 	return (
 		<>
 			<div
-				className="bg-white pt-28 h-full lg:h-[75vh] relative lg:mt-2 bg-center bg-no-repeat bg-cover overflow-hidden"
+				className="bg-white pt-28 h-full lg:h-[75vh] relative lg:mt-2 bg-center bg-no-repeat bg-cover"
 				style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 			>
 				{/* Background Video */}
 				<div className="hidden lg:block lg:absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
-					<div className="hidden xl:block relative h-[75vh] pb-[56.25%] overflow-hidden bg-center bg-no-repeat bg-cover">
+					<div className="hidden xl:block relative h-[75vh] pb-[56.25%] bg-center bg-no-repeat bg-cover">
 						<iframe
 							allowFullScreen
 							className={
@@ -47,7 +47,7 @@ const Hero: FC<IHero> = ({
 						/>
 					</div>
 				</div>
-				<div className="h-full relative z-10 flex flex-col xl:flex-row bg-pureBlack/50 lg:bg-pureBlack/20 overflow-hidden">
+				<div className="h-full relative z-10 flex flex-col xl:flex-row bg-pureBlack/50 lg:bg-pureBlack/20n">
 					<div className="lg:container py-20 px-4 xl:py-0 mx-auto">
 						<div className="h-full flex flex-col items-baseline justify-center px-4 xl:px-0">
 							<motion.h1
