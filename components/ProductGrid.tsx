@@ -81,7 +81,7 @@ const ProductGrid: FC<IProductGrid> = ({
 						variants={stagger}
 						whileInView="animate"
 						viewport={{once: true}}
-						className="grid items-start justify-center grid-cols-2 gap-x-4 gap-y-16 sm:-mb-8 2xl:gap-10 xl:-mx-4 lg:grid-cols-4 lg:justify-between xl:-mx-8"
+						className="grid grid-cols-2 gap-x-4 gap-y-16 2xl:gap-4 lg:grid-cols-4 items-start justify-center lg:justify-between overflow-hidden"
 					>
 						{productGrid?.length > 0 ? (
 							productGrid.map((item: any, index: number) => (
@@ -89,6 +89,7 @@ const ProductGrid: FC<IProductGrid> = ({
 									<motion.div
 										custom={index}
 										initial={initial}
+										className="group"
 										whileInView="animate"
 										viewport={{once: true}}
 										variants={arrayLoopStaggerChildren}
