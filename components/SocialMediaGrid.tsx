@@ -65,7 +65,7 @@ const SocialMediaGrid: FC<ISocialMediaGrid> = ({title}) => {
 											whileInView="animate"
 											viewport={{once: true}}
 											variants={arrayLoopStaggerChildren}
-											className="group h-[250px] sm:h-[350px] lg:h-[375px] bg-cover bg-center bg-no-repeat"
+											className="group h-[250px] lg:h-[300px] 2xl:h-[375px] bg-cover bg-center bg-no-repeat"
 											style={{
 												backgroundImage: `url("${
 													item?.media_type === "VIDEO"

@@ -18,8 +18,7 @@ const CTA: FC<ICta> = ({title, buttonLink, backgroundImage}) => {
 		<>
 			<div
 				className={
-					styles.cta +
-					` cta p-4 lg:px-0 lg:py-12 bg-center bg-no-repeat bg-cover`
+					styles.cta + ` cta p-4 lg:py-12 bg-center bg-no-repeat bg-cover`
 				}
 				style={{
 					backgroundImage: `linear-gradient(

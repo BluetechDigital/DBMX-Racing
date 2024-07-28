@@ -13,7 +13,7 @@ const ProductCard: FC<IProductCard> = ({title, link, image}) => {
 			variants={stagger}
 			whileInView="animate"
 			viewport={{once: true}}
-			className="w-full group"
+			className="w-full h-full  group"
 		>
 			<Link
 				href={`${link?.url}`}
@@ -37,7 +37,7 @@ const ProductCard: FC<IProductCard> = ({title, link, image}) => {
 						}
 						className={
 							image?.sourceUrl
-								? `block mb-7 w-full h-full min-h-[200px] sm:min-h-[250px] lg:min-h-[350px] max-h-[350px] object-cover object center`
+								? `block mb-7 w-full h-[200px] sm:h-[250px] lg:h-[325px] 2xl:h-[350px] max-h-[375px] object-cover object center`
 								: `hidden`
 						}
 					/>

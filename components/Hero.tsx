@@ -28,16 +28,16 @@ const Hero: FC<IHero> = ({
 	backgroundImage,
 }) => {
 	const hoverStyling =
-		"flex item-center lg:items-baseline justify-center px-6 h-full min-h-[35vh] lg:min-h-[25vh] bg-primary-dark opacity-0 group-hover:opacity-90 group-hover:w-full transition-all ease-in-out duration-500";
+		"hidden xl:flex item-center lg:items-baseline justify-center px-6 h-full xl:min-h-[25vh] bg-primary-dark opacity-0 group-hover:opacity-90 group-hover:w-full transition-all ease-in-out duration-500";
 	return (
 		<>
-			<div className="bg-white pt-20">
+			<div className="bg-white pt-28 lg:pt-20">
 				<div
-					className="relative flex flex-col h-full min-h-[75vh] bg-center bg-no-repeat bg-cover"
+					className="relative flex flex-col h-full lg:min-h-full xl:min-h-[75vh] bg-center bg-no-repeat bg-cover"
 					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 				>
 					{/* Background Video */}
-					<div className="absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
+					<div className="lg:absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
 						<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-[75vh]">
 							<iframe
 								allowFullScreen
@@ -57,19 +57,19 @@ const Hero: FC<IHero> = ({
 							<span className={`w-2/4 delay-300 ${hoverStyling}`}></span>
 							<span className={`w-1/4 delay-500 ${hoverStyling}`}></span>
 						</div>
-						<div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col lg:flex-row items-center justify-between w-full">
-							<div className="lg:container py-20 lg:py-0 mx-auto w-3/4">
-								<div className="flex flex-col items-baseline justify-center px-4">
+						<div className="static xl:absolute top-0 bottom-0 left-0 right-0 flex flex-col xl:flex-row items-center justify-between w-full">
+							<div className="lg:container py-20 xl:py-0 mx-auto w-full xl:w-3/4">
+								<div className="flex flex-col items-center xl:items-baseline justify-center px-4">
 									<motion.h1
 										initial={initial}
 										variants={stagger}
 										whileInView="animate"
 										viewport={{once: true}}
-										className="font-VitroTrialHeavy italic max-w-3xl flex flex-col text-center lg:text-left mb-6 text-6xl lg:text-8xl uppercase text-white font-bold leading-tight"
+										className="font-VitroTrialHeavy italic max-w-2xl 2xl:max-w-3xl flex flex-col text-center lg:text-left mb-6 text-6xl lg:text-7xl 2xl:text-8xl uppercase text-white font-bold leading-tight"
 									>
 										{title}
 									</motion.h1>
-									<div className="max-w-2xl">
+									<div className="lg:max-w-2xl">
 										<Paragraph
 											content={paragraph}
 											tailwindStyling="mb-6 text-white leading-[1.75rem] font-normal font-NeoGramTrial text-xl text-center lg:text-left"
@@ -79,7 +79,7 @@ const Hero: FC<IHero> = ({
 											variants={stagger}
 											whileInView="animate"
 											viewport={{once: true}}
-											className="flex flex-col items-center justify-center gap-4 md:flex-row sm:justify-start"
+											className="flex flex-col items-center justify-center gap-4 lg:flex-row sm:justify-start"
 										>
 											<Link
 												href={`${buttonLink?.url}`}
@@ -119,7 +119,7 @@ const Hero: FC<IHero> = ({
 								viewport={{once: true}}
 								initial={slideInRightInitial}
 								whileInView={slideInRightFinish}
-								className="w-full lg:w-fit lg:max-w-sm xl:max-w-md lg:absolute right-0 bottom-0 flex flex-col items-center justify-end p-0 lg:gap-4 h-fit"
+								className="w-full xl:w-fit xl:max-w-sm xl:max-w-md xl:absolute right-0 bottom-0 flex flex-col items-center justify-end p-0 xl:gap-4 h-fit"
 							>
 								<motion.div
 									initial={initial}

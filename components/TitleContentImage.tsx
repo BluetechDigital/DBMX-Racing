@@ -57,7 +57,7 @@ const TitleContentImage: FC<ITitleContentImage> = ({
 		<>
 			<div
 				id={`#${sectionId}`}
-				className={`titleContentImage py-12 ${backgroundColor}`}
+				className={`titleContentImage py-12 px-4 ${backgroundColor}`}
 			>
 				<div className="lg:container mx-auto p-0">
 					<div className={title ? "block py-4" : "hidden"}>

@@ -25,7 +25,10 @@ const CTATwo: FC<ICtaTwo> = ({paragraph, buttonLink}) => {
 				variants={stagger}
 				whileInView="animate"
 				viewport={{once: true}}
-				className={styles.ctaTwo + " ctaTwo flex flex-wrap justify-between"}
+				className={
+					styles.ctaTwo +
+					" ctaTwo flex flex-wrap justify-between overflow-hidden"
+				}
 			>
 				<motion.div
 					viewport={{once: true}}
@@ -33,7 +36,7 @@ const CTATwo: FC<ICtaTwo> = ({paragraph, buttonLink}) => {
 					whileInView={slideInRightFinish}
 					className={
 						styles.paragraphClipPath +
-						" bg-primary-darker py-2 px-16 w-full lg:w-2/5"
+						" bg-primary-darker py-2 lg:px-4 2xl:px-16 w-full lg:w-2/5"
 					}
 				>
 					<Paragraph

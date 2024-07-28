@@ -88,9 +88,8 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 											>
 												<span className="py-4 px-0 flex flex-row justify-between items-center gap-2">
 													<Link
-														onClick={toggleMenu}
 														href={`${item?.node?.url}`}
-														aria-label={`${item?.node?.title}`}
+														aria-label={`${item?.node?.label} page link`}
 														target={`${
 															item?.node?.target ? item?.node?.target : "_self"
 														}`}
@@ -135,7 +134,6 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 																				} hover:border-primary-default bg-primary-default hover:bg-primary-darker border-y-[1px] border-accent-default border-opacity-50 text-center transition-all ease-in-out duration-500`}
 																			>
 																				<Link
-																					onClick={toggleMenu}
 																					href={`${item?.node?.url}`}
 																					target={`${
 																						item?.node?.target
@@ -164,7 +162,6 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 											<motion.li
 												custom={index}
 												initial={initial}
-												onClick={toggleMenu}
 												whileInView="animate"
 												className="py-4 px-0"
 												viewport={{once: true}}
@@ -173,7 +170,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 												<Link
 													href={`${item?.node?.url}`}
 													target={item?.node?.target}
-													aria-label={`${item?.node?.title}`}
+													aria-label={`${item?.node?.label} page link`}
 												>
 													<span
 														className="text-pureBlack uppercase font-VitroTrialHeavy italic
@@ -194,9 +191,9 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 					<div className="mt-20">
 						<motion.div
 							initial={initial}
-							viewport={{once: true}}
 							variants={stagger}
 							whileInView="animate"
+							viewport={{once: true}}
 							className="flex flex-col items-center justify-between gap-4"
 						>
 							<h4 className="mb-5 text-xl font-semibold tracking-normal text-center md:text-left text-pureBlack uppercase font-VitroTrialHeavy italic">
@@ -204,6 +201,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 							</h4>
 							<div className="flex items-center justify-center gap-4 text-center">
 								<Link
+									onClick={toggleMenu}
 									href={`${globalContext?.themesOptionsContent?.facebookLink?.url}`}
 									target={
 										globalContext?.themesOptionsContent?.facebookLink?.target
@@ -235,6 +233,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 									</svg>
 								</Link>
 								<Link
+									onClick={toggleMenu}
 									href={`${globalContext?.themesOptionsContent?.twitterLink?.url}`}
 									target={
 										globalContext?.themesOptionsContent?.twitterLink?.target
@@ -261,6 +260,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 									</svg>
 								</Link>
 								<Link
+									onClick={toggleMenu}
 									href={`${globalContext?.themesOptionsContent?.instagramLink?.url}`}
 									target={
 										globalContext?.themesOptionsContent?.instagramLink?.target
@@ -304,6 +304,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 									</svg>
 								</Link>
 								<Link
+									onClick={toggleMenu}
 									href={`${globalContext?.themesOptionsContent?.linkedinLink?.url}`}
 									target={
 										globalContext?.themesOptionsContent?.linkedinLink?.target
@@ -498,6 +499,7 @@ const SideMenu: FC<ISideMenu> = ({menuActive, setMenuActive}) => {
 											<motion.li
 												custom={index}
 												initial={initial}
+												onClick={toggleMenu}
 												whileInView="animate"
 												viewport={{once: true}}
 												variants={arrayLoopStaggerChildren}

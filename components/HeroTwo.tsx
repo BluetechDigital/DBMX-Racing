@@ -19,7 +19,7 @@ const HeroTwo: FC<IHeroTwo> = ({title, paragraph, backgroundImage}) => {
 				}
 			>
 				<div
-					className="py-20 w-full h-[35vh] lg:h-[30vh] flex flex-col items-center lg:items-baseline justify-center relative bg-primary-darker bg-center bg-no-repeat bg-cover"
+					className="py-20 px-4 w-full h-[40vh] 2xl:h-[30vh] flex flex-col items-center lg:items-baseline justify-center relative bg-primary-darker bg-center bg-no-repeat bg-cover"
 					style={{
 						backgroundImage: `linear-gradient(
 								0deg,

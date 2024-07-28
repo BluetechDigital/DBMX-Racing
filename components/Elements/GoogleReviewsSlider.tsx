@@ -54,7 +54,7 @@ const GoogleReviewsSlider: FC = () => {
 	return (
 		<>
 			<LazyMotion features={domMax}>
-				<div className="px-4 lg:px-0 overflow-x-hidden">
+				<div className="px-4 lg:px-0 overflow-hidden">
 					<div className="py-0 lg:py-10 pl-3/20">
 						<div className="hidden lg:flex w-full mr-0 items-center justify-end gap-8">
 							{/* Prev */}
