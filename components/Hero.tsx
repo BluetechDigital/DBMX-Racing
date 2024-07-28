@@ -62,10 +62,10 @@ const Hero: FC<IHero> = ({
 									{title}
 								</motion.h1>
 								<div className="xl:max-w-2xl">
-									<Paragraph
+									{/* <Paragraph
 										content={paragraph}
 										tailwindStyling="mb-6 text-white leading-[1.75rem] font-NeoGramTrial text-lg md:text-xl text-center xl:text-left"
-									/>
+									/> */}
 									{/* <motion.div
 										initial={initial}
 										variants={stagger}
