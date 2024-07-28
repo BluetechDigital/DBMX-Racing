@@ -12,7 +12,7 @@
 
 html,
 body {
-	@apply p-0 m-0;
+	@apply p-0 m-0 bg-white;
 	scroll-behavior: smooth;
 	font-family: -apple-system, $body, BlinkMacSystemFont, Segoe UI, Roboto,
 		Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;

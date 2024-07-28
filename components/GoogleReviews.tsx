@@ -11,7 +11,7 @@ import GoogleReviewsSlider from "@/components/Elements/GoogleReviewsSlider";
 const GoogleReviews: FC<IGoogleReviews> = ({title, displaySlider}) => {
 	return (
 		<>
-			<div className="bg-white lg:container py-12 px-4 mx-auto hidden">
+			<div className="lg:container py-12 px-4 mx-auto">
 				<motion.div
 					initial={initial}
 					whileInView={fadeInUp}
