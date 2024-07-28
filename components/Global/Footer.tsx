@@ -25,7 +25,7 @@ const Footer: FC = () => {
 			>
 				<div className="lg:fixed bottom-0 h-full lg:h-[65vh] 2xl:h-[60vh] w-full flex flex-col items-center justify-between pt-6 sm:pt-24 px-4 sm:px-12 lg:px-0 xl:px-16">
 					<div className="flex flex-col lg:flex-row items-center justify-start lg:-m-12 lg:divide-x lg:divide-lightGrey lg:container mx-auto">
-						<div className="w-full h-full lg:w-1/3 py-8 px-0 lg:px-4 xl:px-6 2xl:px-6 xl:py-12">
+						<div className="w-full h-full lg:w-1/3 py-8 px-0 lg:px-4 xl:px-6 xl:py-12">
 							<motion.h3
 								initial={initial}
 								whileInView={fadeInUp}
@@ -45,7 +45,7 @@ const Footer: FC = () => {
 								/>
 							</div>
 						</div>
-						<div className="w-full h-full lg:w-1/3 py-8 px-0 lg:px-4 xl:px-6 2xl:px-6 xl:py-12">
+						<div className="w-full h-full lg:w-1/3 py-8 px-0 lg:px-4 xl:px-6 xl:py-12">
 							<motion.h3
 								initial={initial}
 								whileInView={fadeInUp}
@@ -178,7 +178,7 @@ const Footer: FC = () => {
 								</Link>
 							</motion.ul>
 						</div>
-						<div className="w-full h-full lg:w-1/3 py-8 px-0 lg:px-4 xl:px-6 2xl:px-6 xl:py-12">
+						<div className="w-full h-full lg:w-1/3 py-8 px-0 lg:px-4 xl:px-6 xl:py-12">
 							<motion.h3
 								initial={initial}
 								whileInView={fadeInUp}
@@ -394,7 +394,7 @@ const Footer: FC = () => {
 						</div>
 					</div>
 					<div className="border-t border-lightGrey mt-6 lg:mt-0 w-full">
-						<div className="lg:container mx-auto px-0 pt-6 lg:py-6 lg:px-6 xl:px-0">
+						<div className="lg:container mx-auto px-0 lg:p-6 xl:px-0">
 							<div className="flex flex-col lg:flex-row justify-between lg:-my-2 gap-6">
 								<Paragraph
 									content={globalContext?.themesOptionsContent?.copyrightText}
