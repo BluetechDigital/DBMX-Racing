@@ -30,7 +30,7 @@ const RenderFlexibleContent: FC = () => {
 	// Components Key Value Pairs
 	const componentMap: any = {
 		[`${FlexibleContent}_Cta`]: CTA,
-		[`${FlexibleContent}_Hero`]: Hero,
+		// [`${FlexibleContent}_Hero`]: Hero,
 		[`${FlexibleContent}_Logos`]: Logos,
 		[`${FlexibleContent}_CtaTwo`]: CTATwo,
 		[`${FlexibleContent}_HeroTwo`]: HeroTwo,

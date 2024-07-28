@@ -53,7 +53,7 @@ const Navbar: FC = () => {
 									width={500}
 									alt="DBMX Racing"
 									src="/img/logos/DBMX Racing logo.jpg"
-									className="object-contain object-center w-full h-[50px]"
+									className="object-contain object-center w-full h-[30px] lg:h-[50px]"
 								/>
 							</Link>
 						</div>
