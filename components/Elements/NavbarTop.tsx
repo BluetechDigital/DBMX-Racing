@@ -47,7 +47,7 @@ const NavbarTop: FC = () => {
 					<Link
 						aria-label="Email Address"
 						href={`mailto:${globalContext?.themesOptionsContent?.email}`}
-						className="text-tiny font-VitroTrialHeavy italic uppercase lg:tracking-wide text-pureBlack hover:text-primary-default"
+						className="text-sm md:text-tiny font-VitroTrialHeavy italic uppercase lg:tracking-wide text-pureBlack hover:text-primary-default"
 					>
 						{globalContext?.themesOptionsContent?.email}
 					</Link>
@@ -81,7 +81,7 @@ const NavbarTop: FC = () => {
 					<Link
 						aria-label="Phone Number"
 						href={`tel:${globalContext?.themesOptionsContent?.phoneNumber}`}
-						className="text-tiny font-VitroTrialHeavy italic uppercase lg:tracking-wide text-pureBlack hover:text-primary-default"
+						className="text-sm md:text-tiny font-VitroTrialHeavy italic uppercase lg:tracking-wide text-pureBlack hover:text-primary-default"
 					>
 						{globalContext?.themesOptionsContent?.phoneNumber}
 					</Link>
