@@ -26,7 +26,7 @@ const ServicesGridCard: FC<IServicesGridCard> = ({
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
-						className="font-VitroTrialHeavy uppercase text-base text-center md:text-left text-primary-default group-hover/card:text-accent-default transition-all duration-500 ease-in-out"
+						className="font-VitroTrialHeavy uppercase text-base text-center lg:text-left text-primary-default group-hover/card:text-accent-default transition-all duration-500 ease-in-out"
 					>
 						{title}
 					</motion.h4>
@@ -34,7 +34,7 @@ const ServicesGridCard: FC<IServicesGridCard> = ({
 						initial={initial}
 						whileInView={fadeInUp}
 						viewport={{once: true}}
-						className="font-VitroTrialHeavy uppercase italic mt-4 text-xl leading-tight text-pureBlack group-hover/card:text-white transition-all duration-500 ease-in-out"
+						className="font-VitroTrialHeavy uppercase italic mt-4 text-xl leading-tight text-center lg:text-left text-pureBlack group-hover/card:text-white transition-all duration-500 ease-in-out"
 					>
 						{title}
 					</motion.h3>
