@@ -27,7 +27,16 @@ const Hero: FC<IHero> = ({
 	buttonLinkTwo,
 	backgroundImage,
 }) => {
-	return <>hello</>;
+	return (
+		<>
+			<div
+				className="h-[75vh] lg:h-[75vh] bg-white pt-28 lg:mt-2 bg-center bg-no-repeat bg-cover"
+				style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
+			>
+				<div className="relative"></div>
+			</div>
+		</>
+	);
 };
 
 export default Hero;
