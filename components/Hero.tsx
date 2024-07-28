@@ -31,26 +31,26 @@ const Hero: FC<IHero> = ({
 		<>
 			<div className="bg-white pt-28">
 				<div
-					className="relative mt-2 bg-center bg-no-repeat bg-cover"
+					className="h-[75vh] relative mt-2 bg-center bg-no-repeat bg-cover"
 					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 				>
 					{/* Background Video */}
 					<div className="lg:absolute top-0 bottom-0 left-0 w-full h-full overflow-hidden">
-						<div className="hidden xl:block relative pb-[56.25%] overflow-hidden max-w-full h-auto bg-center bg-no-repeat bg-cover min-h-full xl:min-h-[75vh]">
+						<div className="hidden xl:block relative pb-[56.25%] overflow-hidden bg-center bg-no-repeat bg-cover">
 							<iframe
 								allowFullScreen
 								className={
 									videoUrl && displayVideo
-										? "absolute top-0 left-0 border-none w-full h-full"
+										? "absolute top-0 left-0 border-none w-full h-full overflow-hidden"
 										: `hidden`
 								}
 								src={videoUrl}
 							/>
 						</div>
-						<div className="absolute top-0 h-full lg:h-[75vh] bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-pureBlack/50 from-5% via-pureBlack/50 via-10% to-transparent to-100%" />
+						<div className="h-full absolute top-0 bottom-0 left-0 w-full opacity-90 bg-gradient-to-b from-pureBlack/50 from-5% via-pureBlack/50 via-10% to-transparent to-100%" />
 					</div>
-					<div className="relative z-10 flex flex-col xl:flex-row h-full min-h-full xl:min-h-[75vh]">
-						{/* <div className="lg:container py-20 px-4 xl:py-0 mx-auto">
+					<div className="h-full relative z-10 flex flex-col xl:flex-row">
+						<div className="lg:container py-20 px-4 xl:py-0 mx-auto">
 							<div className="h-full flex flex-col items-baseline justify-center px-4 xl:px-0">
 								<motion.h1
 									initial={initial}
@@ -106,7 +106,7 @@ const Hero: FC<IHero> = ({
 									</motion.div>
 								</div>
 							</div>
-						</div> */}
+						</div>
 						<motion.div
 							viewport={{once: true}}
 							initial={slideInRightInitial}
