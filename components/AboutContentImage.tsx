@@ -27,8 +27,7 @@ const AboutContentImage: FC<IAboutContentImage> = ({
 	return (
 		<div
 			className={
-				styles.aboutContentImage +
-				" aboutContentImage py-10 px-4 lg:py-16 overflow-hidden"
+				styles.aboutContentImage + " aboutContentImage py-10 px-4 lg:py-16"
 			}
 		>
 			<div className="lg:container mx-auto flex flex-col-reverse lg:flex-row gap-6 lg:gap-10">

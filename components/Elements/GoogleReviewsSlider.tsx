@@ -127,7 +127,7 @@ const GoogleReviewsSlider: FC = () => {
 							</span>
 						</motion.button>
 					</div>
-					{/* <motion.div
+					<motion.div
 						initial={{translateX: "0px"}}
 						animate={{translateX: `${largeTranslate}px`}}
 						transition={{duration: 0.5, type: "spring"}}
@@ -155,7 +155,7 @@ const GoogleReviewsSlider: FC = () => {
 						) : (
 							<></>
 						)}
-					</motion.div> */}
+					</motion.div>
 					<div className="lg:hidden w-full flex items-center justify-end gap-8">
 						{/* Prev */}
 						<motion.button
