@@ -81,7 +81,7 @@ const ProductGrid: FC<IProductGrid> = ({
 						variants={stagger}
 						whileInView="animate"
 						viewport={{once: true}}
-						className="grid items-start justify-center grid-cols-2 gap-x-4 gap-y-16 px-4 sm:items-center sm:-mb-8 2xl:gap-10 xl:-mx-4 lg:grid-cols-4 lg:justify-between xl:-mx-8"
+						className="grid items-start justify-center grid-cols-2 gap-x-4 gap-y-16 sm:-mb-8 2xl:gap-10 xl:-mx-4 lg:grid-cols-4 lg:justify-between xl:-mx-8"
 					>
 						{productGrid?.length > 0 ? (
 							productGrid.map((item: any, index: number) => (

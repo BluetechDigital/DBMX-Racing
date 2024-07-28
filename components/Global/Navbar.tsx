@@ -96,7 +96,7 @@ const Navbar: FC = () => {
 						<div className="block">
 							<button
 								type="button"
-								// onClick={toggleMenu}
+								onClick={toggleMenu}
 								aria-label="toggle menu"
 								className={menuActive ? styles.navToggleOpen : styles.navToggle}
 							>

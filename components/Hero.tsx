@@ -31,9 +31,9 @@ const Hero: FC<IHero> = ({
 		"hidden xl:flex item-center lg:items-baseline justify-center px-6 h-full xl:min-h-[25vh] bg-primary-dark opacity-0 group-hover:opacity-90 group-hover:w-full transition-all ease-in-out duration-500";
 	return (
 		<>
-			<div className="bg-white pt-28 lg:pt-20">
+			<div className="bg-white pt-28">
 				<div
-					className="relative flex flex-col h-full lg:min-h-full xl:min-h-[75vh] bg-center bg-no-repeat bg-cover"
+					className="relative mt-2 flex flex-col h-full lg:min-h-full xl:min-h-[75vh] bg-center bg-no-repeat bg-cover"
 					style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 				>
 					{/* Background Video */}
@@ -59,13 +59,13 @@ const Hero: FC<IHero> = ({
 						</div>
 						<div className="static xl:absolute top-0 bottom-0 left-0 right-0 flex flex-col xl:flex-row items-center justify-between w-full">
 							<div className="lg:container py-20 xl:py-0 mx-auto w-full xl:w-3/4">
-								<div className="flex flex-col items-center xl:items-baseline justify-center px-4">
+								<div className="flex flex-col items-center xl:items-baseline justify-center px-4 xl:px-0">
 									<motion.h1
 										initial={initial}
 										variants={stagger}
 										whileInView="animate"
 										viewport={{once: true}}
-										className="font-VitroTrialHeavy italic max-w-2xl 2xl:max-w-3xl flex flex-col text-center lg:text-left mb-6 text-6xl lg:text-7xl 2xl:text-8xl uppercase text-white font-bold leading-tight"
+										className="font-VitroTrialHeavy italic max-w-2xl 2xl:max-w-3xl flex flex-col text-center xl:text-left mb-6 text-6xl lg:text-7xl 2xl:text-8xl uppercase text-white font-bold leading-tight"
 									>
 										{title}
 									</motion.h1>
@@ -128,7 +128,7 @@ const Hero: FC<IHero> = ({
 									viewport={{once: true}}
 									className="bg-lightGrey/25 w-full py-3 px-4 grid sm:grid-cols-2 items-center justify-center lg:justify-start gap-6"
 								>
-									<div className="flex items-center justify-center lg:justify-start gap-3">
+									<div className="flex items-center justify-center xl:justify-start gap-3">
 										<Image
 											width={1000}
 											height={1000}
@@ -145,7 +145,7 @@ const Hero: FC<IHero> = ({
 											</span>
 										</div>
 									</div>
-									<div className="flex items-center justify-center lg:justify-start gap-3">
+									<div className="flex items-center justify-center xl:justify-start gap-3">
 										<Image
 											width={1000}
 											height={1000}
@@ -170,7 +170,7 @@ const Hero: FC<IHero> = ({
 										aria-label={`${ctaLink?.title}`}
 										className={`${
 											ctaLink?.url ? "w-full my-2" : "hidden"
-										} block lg:hidden`}
+										} block md:hidden`}
 									>
 										<div className="w-full p-4 lg:px-6 text-lg buttonStyling-alt-three">
 											{ctaLink?.title}

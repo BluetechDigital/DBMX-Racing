@@ -25,7 +25,7 @@ const OurServicesCard: FC<IOurServicesCard> = ({
 					initial={initial}
 					whileInView={fadeInUp}
 					viewport={{once: true}}
-					className="group bg-center bg-no-repeat bg-cover transition-all duration-500 ease-in-out md:hover:scale-105"
+					className="group w-full h-full bg-center bg-no-repeat bg-cover transition-all duration-500 ease-in-out md:hover:scale-105"
 					style={{
 						backgroundImage: `linear-gradient(
 										0deg,
@@ -44,7 +44,7 @@ const OurServicesCard: FC<IOurServicesCard> = ({
 						viewport={{once: true}}
 						className={
 							link?.url
-								? "flex flex-col items-center justify-center min-h-[300px] lg:min-h-[365px] xl:min-h-[350px] 2xl:min-h-[325px] h-full max-h-[450px] hover:bg-pureBlack/60 transition-all duration-500 ease-in-out"
+								? "flex flex-col items-center justify-center min-h-[400px] xl:min-h-[350px] 2xl:min-h-[325px] h-full max-h-[450px] hover:bg-pureBlack/60 transition-all duration-500 ease-in-out"
 								: "hidden"
 						}
 					>
@@ -54,7 +54,7 @@ const OurServicesCard: FC<IOurServicesCard> = ({
 									initial={initial}
 									whileInView={fadeInUp}
 									viewport={{once: true}}
-									className="my-3 max-w-sm mx-auto lg:mx-0 text-center lg:text-left leading-relaxed text-white uppercase font-VitroTrialHeavy italic text-lg lg:text-2xl transition-all duration-500 ease-in-out"
+									className="my-3 max-w-sm mx-auto lg:mx-0 text-center lg:text-left leading-tight text-white uppercase font-VitroTrialHeavy italic text-xl sm:text-2xl transition-all duration-500 ease-in-out"
 								>
 									{title}
 								</motion.h3>
@@ -64,7 +64,7 @@ const OurServicesCard: FC<IOurServicesCard> = ({
 											? paragraph?.substring(0, 175) + "..."
 											: paragraph
 									}
-									tailwindStyling="text-center lg:text-left text-white text-base"
+									tailwindStyling="text-center lg:text-left text-white text-base sm:text-paragraph"
 								/>
 							</div>
 							<motion.button

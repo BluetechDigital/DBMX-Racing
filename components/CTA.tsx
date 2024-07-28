@@ -37,7 +37,7 @@ const CTA: FC<ICta> = ({title, buttonLink, backgroundImage}) => {
 						viewport={{once: true}}
 						className={
 							title
-								? "w-full flex flex-col lg:flex-row items-center lg:items-end justify-between py-4 gap-10 lg:gap-3"
+								? "w-full flex flex-col lg:flex-row items-center lg:items-end justify-between gap-10 lg:gap-3"
 								: "hidden"
 						}
 					>
