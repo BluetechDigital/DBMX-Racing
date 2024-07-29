@@ -105,12 +105,7 @@ const Hero: FC<IHero> = ({
 							</div>
 						</div>
 					</div>
-					<motion.div
-						viewport={{once: true}}
-						initial={slideInRightInitial}
-						whileInView={slideInRightFinish}
-						className="w-full xl:w-fit xl:max-w-sm xl:max-w-md xl:absolute right-0 bottom-0 flex flex-col items-center justify-end p-0 xl:gap-4 h-fit"
-					>
+					<div className="w-full xl:w-fit xl:max-w-sm xl:absolute right-0 bottom-0 flex flex-col items-center justify-end p-0 xl:gap-4 h-fit">
 						<motion.div
 							initial={initial}
 							variants={stagger}
@@ -153,7 +148,13 @@ const Hero: FC<IHero> = ({
 								</div>
 							</div>
 						</motion.div>
-						<div className="py-6 px-8 w-full bg-primary-dark">
+						<motion.div
+							initial={initial}
+							variants={stagger}
+							whileInView="animate"
+							viewport={{once: true}}
+							className="py-6 px-8 w-full bg-primary-dark"
+						>
 							<Link
 								href={`${ctaLink?.url}`}
 								target={ctaLink?.target}
@@ -218,8 +219,8 @@ const Hero: FC<IHero> = ({
 									{ctaLink?.title}
 								</Link>
 							</div>
-						</div>
-					</motion.div>
+						</motion.div>
+					</div>
 				</div>
 			</div>
 		</>
