@@ -47,7 +47,7 @@ const Hero: FC<IHero> = ({
 						/>
 					</div>
 				</div>
-				<div className="h-full relative z-10 flex flex-col xl:flex-row bg-pureBlack/50 lg:bg-pureBlack/20n">
+				<div className="h-full relative z-10 flex flex-col xl:flex-row bg-pureBlack/50 lg:bg-pureBlack/20">
 					<div className="lg:container py-20 px-4 xl:py-0 mx-auto">
 						<div className="h-full flex flex-col items-baseline justify-center px-4 xl:px-0">
 							<motion.h1
