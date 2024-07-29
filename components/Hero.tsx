@@ -30,7 +30,7 @@ const Hero: FC<IHero> = ({
 	return (
 		<>
 			<div
-				className="bg-white pt-28 h-full lg:h-[75vh] relative lg:mt-2 bg-center bg-no-repeat bg-cover"
+				className="bg-white pt-28 h-full lg:h-[75vh] relative bg-center bg-no-repeat bg-cover"
 				style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 			>
 				{/* Background Video */}
