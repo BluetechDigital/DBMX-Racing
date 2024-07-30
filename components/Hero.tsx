@@ -30,7 +30,7 @@ const Hero: FC<IHero> = ({
 	return (
 		<>
 			<div
-				className="bg-white pt-28 h-full lg:h-[75vh] relative bg-center bg-no-repeat bg-cover"
+				className="bg-white pt-28 h-full min-w-screen lg:h-[75vh] relative bg-center bg-no-repeat bg-cover"
 				style={{backgroundImage: `url("${backgroundImage?.sourceUrl}")`}}
 			>
 				{/* Background Video */}
@@ -47,7 +47,7 @@ const Hero: FC<IHero> = ({
 						/>
 					</div>
 				</div>
-				<div className="h-full relative z-10 flex flex-col xl:flex-row bg-pureBlack/50 lg:bg-pureBlack/20">
+				<div className="h-full lg:relative z-10 flex flex-col xl:flex-row bg-pureBlack/50 lg:bg-pureBlack/20">
 					<div className="lg:container py-20 px-4 xl:py-0 mx-auto">
 						<div className="h-full flex flex-col items-baseline justify-center px-4 xl:px-0">
 							<motion.h1
