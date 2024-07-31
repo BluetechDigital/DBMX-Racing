@@ -39,7 +39,7 @@ const Navbar: FC = () => {
 			<nav className={styles.navbar + " "}>
 				<div className="fixed flex z-[999] flex-col w-full">
 					<NavbarTop />
-					<div className="relative z-[999] h-fit py-0 w-full bg-pureBlack grid grid-cols-2 lg:grid-cols-4 items-center justify-between px-6 ">
+					<div className="relative z-[999] h-fit py-3 w-full bg-pureBlack grid grid-cols-2 lg:grid-cols-4 items-center justify-between px-6 ">
 						<div className="w-fit flex flex-col items-center">
 							<Link
 								href="/"
