@@ -2,56 +2,59 @@
 import {render} from "@react-email/components";
 import {emailTransporter} from "@/config/nodemailer";
 import {IBusinessEmail, ICustomerEmail} from "@/types/email";
-import {getThemesOptionsContent} from "@/graphql/GetAllThemesOptions";
 
 // Components
 import CustomerEnquiryConfirmationEmail from "@/components/Emails/CustomerEnquiryConfirmationEmail";
 import BusinessCustomerEnquiryConfirmationEmail from "@/components/Emails/BusinessCustomerEnquiryConfirmationEmail";
+import {IThemesOptionsContent} from "@/types/context";
 
-export const sendContactForm = async (data: any) => {
-	// console.log(`
+export const sendContactForm = async (
+	values: any,
+	themesOptionsContent: IThemesOptionsContent
+) => {
+	console.log(`
 
-	// 	Send Contact Form:
+		Send Contact Form:
 
-	// 	email: ${data?.email}
-	// 	firstName: ${data?.firstName}
-	// 	lastName: ${data?.lastName}
-	// 	message: ${data?.message}
-	// 	phoneNumber: ${data?.phoneNumber}
-	// 	selectedServices: ${data?.selectedServices}
-	// 	subject: ${data?.subject}
+		email: ${values?.email}
+		firstName: ${values?.firstName}
+		lastName: ${values?.lastName}
+		message: ${values?.message}
+		phoneNumber: ${values?.phoneNumber}
+		selectedServices: ${values?.selectedServices}
+		subject: ${values?.subject}
+		themesOptionsContent: ${themesOptionsContent?.email}
 
-	// 	`);
+		`);
 
 	// If any of these values are undefined
 	if (
-		!data?.email ||
-		!data?.message ||
-		!data?.subject ||
-		!data?.lastName ||
-		!data?.firstName ||
-		!data?.phoneNumber ||
-		!data?.selectedServices
+		!values?.email ||
+		!values?.message ||
+		!values?.subject ||
+		!values?.lastName ||
+		!values?.firstName ||
+		!values?.phoneNumber ||
+		!values?.selectedServices
 	) {
 		console.log(`Error`);
 	}
 
 	try {
 		const imagesDirUrl: any = process.env.IMAGE_DIR_URL;
-		const themesOptionsContent: any = await getThemesOptionsContent();
 
 		/* Render React Customer Enquiry 
 			Confirmation Email Component*/
 		const customerEmailHtml: string = render(
 			<CustomerEnquiryConfirmationEmail
-				email={`${data?.email}`}
+				email={`${values?.email}`}
 				imagesDirUrl={imagesDirUrl}
-				subject={`${data?.subject}`}
-				lastName={`${data?.lastName}`}
-				phoneNumber={data?.phoneNumber}
-				firstName={`${data?.firstName}`}
+				subject={`${values?.subject}`}
+				lastName={`${values?.lastName}`}
+				phoneNumber={values?.phoneNumber}
+				firstName={`${values?.firstName}`}
 				themesOptionsContent={themesOptionsContent}
-				selectedServices={`${data?.selectedServices}`}
+				selectedServices={`${values?.selectedServices}`}
 			/>
 		);
 
@@ -59,22 +62,22 @@ export const sendContactForm = async (data: any) => {
 			Enquiry Confirmation Email Component*/
 		const businessEmailHtml: string = render(
 			<BusinessCustomerEnquiryConfirmationEmail
-				email={`${data?.email}`}
+				email={`${values?.email}`}
 				imagesDirUrl={imagesDirUrl}
-				subject={`${data?.subject}`}
-				message={`${data?.message}`}
-				lastName={`${data?.lastName}`}
-				phoneNumber={data?.phoneNumber}
-				firstName={`${data?.firstName}`}
+				subject={`${values?.subject}`}
+				message={`${values?.message}`}
+				lastName={`${values?.lastName}`}
+				phoneNumber={values?.phoneNumber}
+				firstName={`${values?.firstName}`}
 				themesOptionsContent={themesOptionsContent}
-				selectedServices={`${data?.selectedServices}`}
+				selectedServices={`${values?.selectedServices}`}
 			/>
 		);
 
 		/* Customer Enquiry Confirmation Email */
 		const customerEmail: ICustomerEmail = {
 			from: `${themesOptionsContent?.email}`,
-			to: `${data?.email}`,
+			to: `${values?.email}`,
 			subject: `Thank You for Contacting DBMX Racing`,
 			html: customerEmailHtml,
 		};
@@ -83,7 +86,7 @@ export const sendContactForm = async (data: any) => {
 		const businessEmail: IBusinessEmail = {
 			from: `${themesOptionsContent?.email}`,
 			to: `${themesOptionsContent?.email}`,
-			subject: `New Website Inquiry: ${data?.subject}`,
+			subject: `New Website Inquiry: ${values?.subject}`,
 			html: businessEmailHtml,
 		};
 

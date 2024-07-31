@@ -58,9 +58,11 @@ h2 {
 
 // Contact Info Component
 .openingHours {
-	p {
-		strong {
-			@apply font-VitroTrialHeavy uppercase italic mr-4;
+	table {
+		td {
+			strong {
+				@apply font-VitroTrialHeavy uppercase italic mr-6;
+			}
 		}
 	}
 }
