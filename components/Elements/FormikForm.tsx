@@ -13,8 +13,8 @@ import {useRouter} from "next/navigation";
 import ReCAPTCHA from "react-google-recaptcha";
 import {IFormikForm} from "@/types/components";
 import {useGlobalContext} from "@/context/Global";
-import {sendContactForm} from "@/lib/contactForm";
 import React, {useState, FC, Fragment} from "react";
+import {sendContactForm} from "@/lib/sendContactForm";
 import {useFormik, Formik, Field, Form} from "formik";
 
 // Styling
@@ -107,8 +107,7 @@ const FormikForm: FC<IFormikForm> = ({title}) => {
 		onSubmit: async (values: any) => {
 			if (reCaptchaResult) {
 				try {
-					console.log(values);
-					await sendContactForm(values, globalContext?.themesOptionsContent);
+					await sendContactForm(values);
 				} catch (error) {
 					setErrorMessage(true);
 					throw new Error(
@@ -135,7 +134,7 @@ const FormikForm: FC<IFormikForm> = ({title}) => {
 				setLoading(false);
 				setMessageSent(true);
 				setTimeout(() => {
-					router.refresh;
+					router.refresh();
 				}, 3000);
 			} catch (error) {
 				setErrorMessage(true);
