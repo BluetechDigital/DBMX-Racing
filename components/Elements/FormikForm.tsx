@@ -10,15 +10,24 @@ import {
 } from "@/animations/animations";
 import {motion} from "framer-motion";
 import {useRouter} from "next/navigation";
+import {render} from "@react-email/components";
 import ReCAPTCHA from "react-google-recaptcha";
-import {IFormikForm} from "@/types/components";
 import {useGlobalContext} from "@/context/Global";
 import React, {useState, FC, Fragment} from "react";
-import {sendContactForm} from "@/lib/sendContactForm";
+import {emailTransporter} from "@/config/nodemailer";
 import {useFormik, Formik, Field, Form} from "formik";
+
+// Types
+import {IFormikForm} from "@/types/components";
+import {IBusinessEmail, ICustomerEmail} from "@/types/email";
+import {getThemesOptionsContent} from "@/graphql/GetAllThemesOptions";
 
 // Styling
 import styles from "@/styles/components/ContactForm.module.scss";
+
+// Components
+import CustomerEnquiryConfirmationEmail from "@/components/Emails/CustomerEnquiryConfirmationEmail";
+import BusinessCustomerEnquiryConfirmationEmail from "@/components/Emails/BusinessCustomerEnquiryConfirmationEmail";
 
 const FormikForm: FC<IFormikForm> = ({title}) => {
 	const router = useRouter();
@@ -107,11 +116,11 @@ const FormikForm: FC<IFormikForm> = ({title}) => {
 		onSubmit: async (values: any) => {
 			if (reCaptchaResult) {
 				try {
-					await sendContactForm(values);
+					await sendEmailHandler(values);
 				} catch (error) {
 					setErrorMessage(true);
 					throw new Error(
-						"Error Message: Something went wrong with Sending your Message. Please try again."
+						"Error Message: Something went wrong with sending your message. Please try again."
 					);
 				}
 			} else {
@@ -152,9 +161,9 @@ const FormikForm: FC<IFormikForm> = ({title}) => {
 	return (
 		<>
 			<Formik
+				className="w-full lg:w-1/2"
 				onSubmit={formik?.onSubmit}
 				initialValues={formik?.initialValues}
-				className="w-full lg:w-1/2"
 			>
 				<Form className="relative z-10 lg:container mx-6 lg:mx-auto p-10 lg:px-24 md:max-w-5xl bg-pureBlack">
 					{loading ? (
@@ -456,6 +465,67 @@ const FormikForm: FC<IFormikForm> = ({title}) => {
 			</Formik>
 		</>
 	);
+};
+
+const sendEmailHandler = async (values: any) => {
+	console.log(values);
+
+	try {
+		const imagesDirUrl: any = process.env.IMAGE_DIR_URL;
+		const themesOptionsContent: any = await getThemesOptionsContent();
+
+		/* Render React Customer Enquiry 
+			Confirmation Email Component*/
+		const customerEmailHtml: string = render(
+			<CustomerEnquiryConfirmationEmail
+				email={`${values?.email}`}
+				imagesDirUrl={imagesDirUrl}
+				subject={`${values?.subject}`}
+				lastName={`${values?.lastName}`}
+				phoneNumber={values?.phoneNumber}
+				firstName={`${values?.firstName}`}
+				themesOptionsContent={themesOptionsContent}
+				selectedServices={`${values?.selectedServices}`}
+			/>
+		);
+
+		/* Render React Business Customer 
+			Enquiry Confirmation Email Component*/
+		const businessEmailHtml: string = render(
+			<BusinessCustomerEnquiryConfirmationEmail
+				email={`${values?.email}`}
+				imagesDirUrl={imagesDirUrl}
+				subject={`${values?.subject}`}
+				message={`${values?.message}`}
+				lastName={`${values?.lastName}`}
+				phoneNumber={values?.phoneNumber}
+				firstName={`${values?.firstName}`}
+				themesOptionsContent={themesOptionsContent}
+				selectedServices={`${values?.selectedServices}`}
+			/>
+		);
+
+		/* Customer Enquiry Confirmation Email */
+		const customerEmail: ICustomerEmail = {
+			from: `${themesOptionsContent?.email}`,
+			to: `${values?.email}`,
+			subject: `Thank You for Contacting Bluetech Digital Ltd`,
+			html: customerEmailHtml,
+		};
+
+		/* Business Customer Enquiry Confirmation Email */
+		const businessEmail: IBusinessEmail = {
+			from: `${themesOptionsContent?.email}`,
+			to: `${themesOptionsContent?.email}`,
+			subject: `New Website Inquiry: ${values?.subject}`,
+			html: businessEmailHtml,
+		};
+
+		// await emailTransporter.sendMail({...customerEmail});
+		// await emailTransporter.sendMail({...businessEmail});
+	} catch (err) {
+		console.log(err);
+	}
 };
 
 export default FormikForm;
