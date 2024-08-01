@@ -394,7 +394,7 @@ const Footer: FC = () => {
 						</div>
 					</div>
 					<div className="border-t border-lightGrey mt-6 lg:mt-0 w-full">
-						<div className="lg:container mx-auto px-0 lg:p-6 xl:px-0">
+						<div className="lg:container mx-auto px-0 p-6 xl:px-0">
 							<div className="flex flex-col lg:flex-row justify-between lg:-my-2 gap-6">
 								<Paragraph
 									content={globalContext?.themesOptionsContent?.copyrightText}
