@@ -15,14 +15,14 @@ export const emailTransporter: any = nodemailer.createTransport({
 		pass: password,
 	},
 	tls: {rejectUnauthorized: false},
-	logger: true,
-	debug: true,
+	logger: false,
+	debug: false,
 });
 
-// emailTransporter.verify(function (error: any, success: any) {
-// 	if (error) {
-// 		console.log("Connection error:", error);
-// 	} else {
-// 		console.log("Server is ready to take our messages");
-// 	}
-// });
+emailTransporter.verify(function (error: any, success: any) {
+	if (error) {
+		console.log("Connection error:", error);
+	} else {
+		console.log("Server is ready to take our messages");
+	}
+});

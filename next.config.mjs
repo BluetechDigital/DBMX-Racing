@@ -1,12 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
-	routes: [
-		{
-			path: "/api/email",
-			page: "./app/api/email",
-		},
-	],
 	images: {
 		remotePatterns: [
 			{
