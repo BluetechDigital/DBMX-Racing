@@ -21,6 +21,12 @@ const nextConfig = {
 				port: "",
 				pathname: `${process.env.IMAGE_REMOTE_PATHNAME_THREE}/**`,
 			},
+			{
+				protocol: "https",
+				hostname: `${process.env.IMAGE_REMOTE_PATTERNS_HOSTNAME_FOUR}`,
+				port: "",
+				pathname: `${process.env.IMAGE_REMOTE_PATHNAME_FOUR}/**`,
+			},
 		],
 	},
 };
